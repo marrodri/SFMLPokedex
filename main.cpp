@@ -2,14 +2,46 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Screen.h"
+#include "UIComponent.h"
+#include "Font/Font.h"
 
 int main()
 {
-    Screen s;
-    sf::RenderWindow window(sf::VideoMode(600, 600), "My window");
-    sf::CircleShape shape(300.f);
+    const int  WINDOW_WIDTH=600;
+    const int  WINDOW_HEIGHT=600;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "My window");
+    //setting the shape
+    sf::CircleShape shape(150.f);
     shape.setFillColor(sf::Color(100, 250, 50));
+    //setting the text.
+    Font font;
+    sf::Text text;
+    text.setFont(font.getFont());
+    text.setString("Hello world");
+    text.setCharacterSize(24);
+//    text.setPosition(100,100);
+    /**
+    **centering text to object
+     * */
+     //text global bounds
+    sf::FloatRect  textFloatRect = text.getGlobalBounds();
+    //text object global bounds
+    sf::FloatRect shapeFloatRect = shape.getGlobalBounds();
+
+    //setting the coordinates to center
+    sf::Vector2f center = {textFloatRect.width/2.0f, textFloatRect.height/2};
+
+    //setting the localbound coordinate
+    sf::Vector2f localBounds = {center.x + text.getLocalBounds().left, center.y+text.getLocalBounds().top};
+
+    //for rounding object.
+    // Nope, round the values. because its pixel perfect
+    sf::Vector2f rounded = {std::round(localBounds.x), std::round(localBounds.y)};
+    text.setOrigin(rounded);
+    text.setPosition({shapeFloatRect.left+shapeFloatRect.width/2, shapeFloatRect.top + shapeFloatRect.height/2});
+
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -19,6 +51,7 @@ int main()
                 window.close();
         }
         window.draw(shape);
+        window.draw(text);
         window.display();
     }
 
