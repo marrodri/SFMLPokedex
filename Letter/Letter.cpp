@@ -9,7 +9,7 @@ Letter::Letter() {
 }
 
 Letter::Letter(char characterCode, sf::Font &font, int characterSize) {
-    characterCode = characterCode;
+    this->characterCode = characterCode;
     text.setFont(font);
     text.setString(characterCode);
     text.setCharacterSize(characterSize);
@@ -32,6 +32,12 @@ sf::Vector2f Letter::getPosition() {
 sf::Glyph Letter::getGlyph() {
     return glyphData;
 }
+
+
+char Letter::getChar() {
+    return characterCode;
+}
+
 
 /**
  * SFML main methods

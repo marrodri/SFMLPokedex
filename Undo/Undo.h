@@ -15,6 +15,7 @@ public:
 
     static void pushNewAction(char letter, ActionsEnum action, ComponentEnum component);
     static Action undoAction();
+    static bool empty();
 };
 
 

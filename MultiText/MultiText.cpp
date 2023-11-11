@@ -85,6 +85,13 @@ int MultiText::getFullWidth() {
     return totalTextWidth;
 }
 
+bool MultiText::empty() {
+    return multiText.empty();
+}
+
+Letter &MultiText::top() {
+    return multiText.back();
+}
 
 /**
  * setters
@@ -110,34 +117,15 @@ void MultiText::setTextColor(sf::Color &color) {
  * SFML inherited functions.
  **/
 
-
-// -receive the text and cocatenate the text. Delete the text when pressing
-// the backspace.
 void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (event.type == sf::Event::KeyPressed) {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && !multiText.empty()) {
-            // -pop letter from the multiText.
-            deleteText();
-        }
-    }
-    else if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
-        if (!isKeyPressed) {
-            //clear the muliText list.
-            multiText.clear();
-            isKeyPressed = true;
-        }
-        //push new letter to the multiText.
-        pushNewLetter(event.text.unicode);
-    }
 }
 
 void MultiText::update() {
-//    sf::Clock clock;
     sf::Time time = clock.getElapsedTime();
-if(time.asSeconds() >= 1){
-    toggleCursor = !toggleCursor;
-    clock.restart();
-}
+    if(time.asSeconds() >= 1){
+        toggleCursor = !toggleCursor;
+        clock.restart();
+    }
     updateCursorPosition();
 }
 
@@ -147,9 +135,7 @@ void MultiText::draw(sf::RenderTarget &target, sf::RenderStates states) const {
         target.draw(letter);
     }
     if(toggleCursor){
-        //
         target.draw(cursor);
-        std::cout << "drawing cursor: " << toggleCursor <<"\n";
     }
 }
 

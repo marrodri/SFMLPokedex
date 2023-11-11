@@ -37,14 +37,19 @@ private:
     /**
      * private methods.
      **/
-    void deleteText();
-    void pushNewLetter(char newCharacter);
+
     void updateCursorPosition();
 
 public:
     MultiText();
     MultiText(int xPos, int yPos, int sizeFont);
     MultiText(sf::Vector2f position, int sizeFont, sf::Font &font);
+
+    /**
+     * methods
+     **/
+    void deleteText();
+    void pushNewLetter(char newCharacter);
 
     /**
      * Iterators.
@@ -65,6 +70,8 @@ public:
      * getters
      **/
      int getFullWidth();
+     bool empty();
+     Letter &top();
 
     /**
      * SFML virtual methods

@@ -12,12 +12,18 @@ Undo::Undo() {
 }
 
 void Undo::pushNewAction(char letter, ActionsEnum action, ComponentEnum component) {
-//    Action newAction = Action({letter, action, component});
+    Action newAction = Action({letter, action, component});
 
-    Action newAction = Action({'b', WRITE, TEXTINPUT});
+//    Action newAction = Action({'b', WRITE, TEXTINPUT});
     previousActions.push(newAction);
 }
 
 Action Undo::undoAction() {
-    return previousActions.top();
+    Action undoAction = previousActions.top();
+    previousActions.pop();
+    return undoAction;
+}
+
+bool Undo::empty(){
+    return previousActions.empty();
 }

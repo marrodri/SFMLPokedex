@@ -8,7 +8,9 @@
 
 #include "../Components/Component.h"
 #include "../MultiText/MultiText.h"
-#include "Actions.h"
+#include "../Undo/Actions.h"
+#include "../Undo/Undo.h"
+
 #include <stack>
 class TextInput : public Component{
 
@@ -35,7 +37,6 @@ public:
      * methods
      * */
 
-    void undoAction();
     /**
     * SFML methods
     **/

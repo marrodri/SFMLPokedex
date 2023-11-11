@@ -11,7 +11,7 @@ class Letter: public Component {
 private:
     sf::Glyph glyphData;
     sf::Text text;
-    char caracterCode;
+    char characterCode;
 public:
     Letter();
     Letter(char characterCode, sf::Font &font, int characterSize);
@@ -30,6 +30,7 @@ public:
      * */
     sf::Glyph getGlyph();
     sf::Vector2f getPosition();
+    char getChar();
 
 };
 

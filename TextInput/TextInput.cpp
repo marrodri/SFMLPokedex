@@ -32,14 +32,10 @@ TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
     ///initialize previousActions(TOMORROW)
 }
 
-void TextInput::undoAction() {
-
-
-}
 
 
 bool TextInput::isTextColiding() {
-    return (multiText.getFullWidth() >= textInputArea.getSize().y);
+    return (multiText.getFullWidth() >= (textInputArea.getSize().x -10));
 }
 
 /**
@@ -49,11 +45,38 @@ bool TextInput::isTextColiding() {
 void TextInput::eventHandler(sf::RenderWindow &window, sf::Event event) {
     //collision detection. when the length of the text goes to the border
     //of the textInputField, stop writing.
-    if(!isTextColiding()){
-        multiText.eventHandler(window, event);
-    }
+//    multiText.eventHandler(window, event);
 
+
+    if (event.type == sf::Event::KeyPressed) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::Z)
+        && !Undo::empty()){
+            Action prevAction =Undo::undoAction();
+            switch(prevAction.action){
+                case WRITE:
+                    multiText.pushNewLetter(prevAction.letter);
+                    break;
+                case DELETE:
+                    multiText.deleteText();
+                    break;
+            }
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && !multiText.empty()) {
+            // -pop letter from the multiText.
+
+            Undo::pushNewAction(multiText.top().getChar(),WRITE, TEXTINPUT);
+            multiText.deleteText();
+
+        }
+    } else if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)
+               && !isTextColiding()) {
+        //push new letter to the multiText.
+        multiText.pushNewLetter(event.text.unicode);
+        Undo::pushNewAction('\0', DELETE, TEXTINPUT);
+
+    }
 }
+
 
 void TextInput::update() {
     multiText.update();
