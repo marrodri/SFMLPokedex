@@ -21,6 +21,11 @@ void Letter::setPosition(float x, float y){
     text.setPosition(x,y);
 }
 
+void Letter::setColor(const sf::Color &color) {
+    text.setFillColor(color);
+
+}
+
 /**
  * getters
  * */

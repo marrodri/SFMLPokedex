@@ -24,6 +24,7 @@ public:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
     void setPosition(float x, float y);
+    void setColor(const sf::Color &color);
 
     /**
      * getters
