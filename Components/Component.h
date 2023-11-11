@@ -7,8 +7,6 @@
 
 #include <SFML/Graphics.hpp>
 
-
-
 //this is an interface.
 class Component : public sf::Drawable {
 // before, this class had eventHandler, update and draw. Now, it was separated with the
