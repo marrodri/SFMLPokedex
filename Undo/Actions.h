@@ -5,11 +5,16 @@
 #ifndef SFMLTEMPLATE_ACTIONS_H
 #define SFMLTEMPLATE_ACTIONS_H
 
-enum ActionsEnum{WRITE, DELETE};
+/*
+ * WRITE, DELETE
+ * */
+enum ActionsEnum{WRITE, DELETE, SLIDE};
+enum ComponentEnum{TEXTINPUT, SLIDER};
 
 struct Action{
     char letter;
     ActionsEnum action;
+    ComponentEnum component;
 
 };
 #endif //SFMLTEMPLATE_ACTIONS_H
