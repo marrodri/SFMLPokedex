@@ -18,9 +18,7 @@ private:
     Letter prevLetter;
     bool isKeyPressed = false;
 
-    /*
-     * Iterators.
-     * */
+
 
     /**
      * private methods.
@@ -30,6 +28,14 @@ private:
 
 public:
     MultiText();
+    MultiText(int xPos, int yPos, int sizeFont);
+
+    /*
+     * Iterators.
+     * */
+    typedef std::list<Letter>::iterator iterator;
+    iterator begin();
+    iterator end();
 
     /**
      * SFML virtual methods

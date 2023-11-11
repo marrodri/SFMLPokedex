@@ -13,6 +13,18 @@ MultiText::MultiText() {
     }
 }
 
+/**
+ * iterators
+ **/
+ MultiText::iterator MultiText::begin() {
+     return multiText.begin();
+ }
+
+MultiText::iterator MultiText::end() {
+    return multiText.end();
+}
+
+
 // -
 void MultiText::deleteText() {
     multiText.pop_back();

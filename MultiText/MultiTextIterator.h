@@ -4,9 +4,14 @@
 
 #ifndef SFMLTEMPLATE_MULTITEXTITERATOR_H
 #define SFMLTEMPLATE_MULTITEXTITERATOR_H
+#include "../Letter/Letter.h"
+
+#include <iterator>
+class MultiTextIterator: public std::iterator<std::bidirectional_iterator_tag, Letter> {
+private:
 
 
-class MultiTextIterator {
+public:
 
 };
 
