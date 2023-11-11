@@ -7,7 +7,7 @@
 sf::Font Font::font;
 
 void Font::loadFont() {
-    font.loadFromFile("joystix-monospace.otf");
+    font.loadFromFile("OpenSans-Bold.ttf");
 }
 
 sf::Font &Font::getFont() {
