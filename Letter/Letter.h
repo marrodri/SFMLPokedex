@@ -14,7 +14,7 @@ private:
     char caracterCode;
 public:
     Letter();
-    Letter(char characterCode, sf::Font &font, int fontSize);
+    Letter(char characterCode, sf::Font &font, int characterSize);
 
     /**sfml*/
     void eventHandler(sf::RenderWindow &window, sf::Event event);

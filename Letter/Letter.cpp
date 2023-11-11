@@ -8,12 +8,12 @@
 Letter::Letter() {
 }
 
-Letter::Letter(char characterCode, sf::Font &font, int fontSize) {
+Letter::Letter(char characterCode, sf::Font &font, int characterSize) {
     characterCode = characterCode;
     text.setFont(font);
     text.setString(characterCode);
-    text.setCharacterSize(fontSize);
-    glyphData = font.getGlyph(characterCode, fontSize, "regular");
+    text.setCharacterSize(characterSize);
+    glyphData = font.getGlyph(characterCode, characterSize, "regular");
     text.setPosition(0,0);
 }
 
