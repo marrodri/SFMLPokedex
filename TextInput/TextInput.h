@@ -10,6 +10,7 @@
 #include "../MultiText/MultiText.h"
 #include "../Undo/Actions.h"
 #include "../Undo/Undo.h"
+#include "../Label/Label.h"
 
 #include <stack>
 class TextInput : public Component{
@@ -23,7 +24,8 @@ class TextInput : public Component{
 private:
     MultiText multiText;
     sf::RectangleShape textInputArea;
-    sf::Text label;
+//    sf::Text label;
+    Label label;
     bool isFocused;
     std::stack<Action> actionHistory;
 
