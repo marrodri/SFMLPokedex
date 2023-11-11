@@ -8,7 +8,8 @@
 
 #include "../Components/Component.h"
 #include "../MultiText/MultiText.h"
-
+#include "Actions.h"
+#include <stack>
 class TextInput : public Component{
 
 //
@@ -22,11 +23,22 @@ private:
     sf::RectangleShape textInputArea;
     sf::Text label;
     bool isFocused;
-//    stack previousActions;
+    std::stack<Action> actionHistory;
+
+
+    bool isTextColiding();
 public:
     TextInput();
     TextInput(sf::Vector2f position, sf::Vector2f size, sf::Font &textInputfont, sf::Font &labelFont, std::string label);
 
+    /**
+     * methods
+     * */
+
+    void undoAction();
+    /**
+    * SFML methods
+    **/
     void eventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
