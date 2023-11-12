@@ -15,6 +15,5 @@ struct Action{
     char letter;
     ActionsEnum action;
     ComponentEnum component;
-
 };
 #endif //SFMLTEMPLATE_ACTIONS_H

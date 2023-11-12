@@ -5,7 +5,7 @@
 #include "Undo.h"
 
 //initializing static variables.
-std::stack<Action> Undo::previousActions;
+
 
 Undo::Undo() {
 

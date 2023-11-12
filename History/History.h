@@ -9,13 +9,13 @@
 #include "Actions.h"
 class Undo {
 private:
-    static std::stack<Action> previousActions;
+     std::stack<Action> previousActions;
 public:
     Undo();
 
-    static void pushNewAction(char letter, ActionsEnum action, ComponentEnum component);
-    static Action undoAction();
-    static bool empty();
+     void pushNewAction(char letter, ActionsEnum action, ComponentEnum component);
+     Action undoAction();
+     bool empty();
 };
 
 
