@@ -68,6 +68,7 @@ void TextInput::useSnapshotText() {
  * */
 
 void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+
     ///mouse event handler
     if (MouseEvents<sf::RectangleShape>::hovered(textInputArea, window))
     {

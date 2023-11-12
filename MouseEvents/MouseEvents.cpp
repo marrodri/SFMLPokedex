@@ -7,18 +7,17 @@
 #include "MouseEvents.h"
 
 template<typename T> sf::Clock MouseEvents<T>::clock;
-template<typename T>  int MouseEvents<T>::clicks;
+template<typename T>  int MouseEvents<T>::clicks = 0;
 
 /**
  * public methods
  * */
 template<typename T>
 void MouseEvents<T>::countClicks(sf::Event event) {
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if(event.type == sf::Event::MouseButtonReleased)
     {
-        clicks++;
+        ++clicks;
     }
-
 }
 
 /**
@@ -44,38 +43,33 @@ bool MouseEvents<T>::hovered(T &object, sf::RenderWindow &window) {
     return object.getGlobalBounds().contains(mpos);
 }
 
-
-/**
- * TODO Later
- * */
 template<typename T>
 bool MouseEvents<T>::mouseDoubleClicked() {
-    if(clicks >=1){
+    if (clicks >= 1) {
         sf::Time time = clock.getElapsedTime();
-        if(time.asMilliseconds() < 1000000){
-            if(clicks <= 2){
-                clicks=0;
+        if (time.asSeconds() < 2) {
+            if (clicks >= 2) {
+                clicks = 0;
                 clock.restart();
-                std::cout << "triple click running\n";
+
                 return true;
             }
-        }
-        else{
+        } else {
             clock.restart();
-            clicks =0;
+            clicks = 0;
         }
     }
     return false;
+}
 
 template<typename T>
 bool MouseEvents<T>::mouseTripleClicked() {
     if(clicks >=1){
         sf::Time time = clock.getElapsedTime();
-        if(time.asMilliseconds() < 1000000){
-            if(clicks <= 3){
-                clicks=0;
+        if(time.asSeconds() < 3){
+            if(clicks >= 3){
+                clicks = 0;
                 clock.restart();
-                std::cout << "triple click running\n";
                 return true;
             }
         }
@@ -89,7 +83,8 @@ bool MouseEvents<T>::mouseTripleClicked() {
 
 template<typename T>
 bool MouseEvents<T>::draggedOver(T &object, sf::RenderWindow &window, sf::Event event) {
-    return false;
+    sf::Vector2f mpos = (sf::Vector2f) sf::Mouse::getPosition(window);
+    return (object.getGlobalBounds().contains(mpos) && sf::Mouse::isButtonPressed(sf::Mouse::Left));
 }
 
 #endif
