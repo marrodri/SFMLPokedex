@@ -16,7 +16,6 @@ private:
     std::list<Letter> multiText;
     Letter prevLetter;
     bool isKeyPressed = false;
-    sf::Color color;
     sf::Vector2f initialPosition;
     int characterSize=24;
 
@@ -27,18 +26,17 @@ private:
 
     //isOnFocus(bonus), this should be used only in
     //the eventHandler and someparts in update();
-    bool isOnFocus = true;
-
-
-
+    bool isFocussed = true;
 
 
     /**
      * private methods.
      **/
-
     void updateCursorPosition();
-
+    void highlightText();
+    bool isKeyword(std::list<Letter>::iterator letter);
+    bool stringCompare(const std::string &keyword, std::list<Letter>::iterator letter);
+    int getKeywordLen(std::list<Letter>::iterator letter);
 public:
     MultiText();
     MultiText(int xPos, int yPos, int sizeFont);
@@ -63,7 +61,8 @@ public:
     void setPosition(sf::Vector2f position);
     void setTextCharacterSize(int textCharacterSize);
     void setFont(sf::Font &font);
-    void setTextTypeColor(Letter &letter);
+    void setOnFocus(bool focus);
+//    void setTextTypeColor(Letter &letter);
 
     /**
      * getters

@@ -128,9 +128,11 @@ void TextInput::update() {
     }
     if(checkState(CLICKED)){
         isFocused = true;
+        multiText.setOnFocus(true);
     }
     else if(!checkState(CLICKED)){
         isFocused = false;
+        multiText.setOnFocus(false);
     }
     if(isFocused){
         multiText.update();

@@ -47,7 +47,7 @@ void MultiText::deleteText() {
 void MultiText::pushNewLetter(char newCharacter) {
     Letter newLetter(newCharacter, Font::getFont(), characterSize);
     //highlighting different letter.
-    setTextTypeColor(newLetter);
+//    setTextTypeColor(newLetter);
 
     //pushing new letter
     if (multiText.empty()) {
@@ -63,6 +63,7 @@ void MultiText::pushNewLetter(char newCharacter) {
         newLetter.setPosition(prevPosition.x + prevLetterGlyph.advance,initialPosition.y);
         multiText.push_back(newLetter);
     }
+
 }
 
 void MultiText::updateCursorPosition() {
@@ -71,6 +72,95 @@ void MultiText::updateCursorPosition() {
     }
     else{
         cursor.setPosition(initialPosition.x, initialPosition.y);
+    }
+}
+
+
+bool MultiText::stringCompare(const std::string &keyword, iterator letter){
+    int length = keyword.size();
+    int counter =0;
+    std::cout << "string cmp++++++\n";
+    for(auto letter=multiText.begin(); letter != multiText.end() && letter->getChar() == keyword[counter]
+    &&  counter < keyword.size(); letter++){
+        std::cout <<"letter: "<< letter->getChar() <<"\n";
+        std::cout <<"keyword[counter]: "<< keyword[counter]<<"\n";
+        counter++;
+    }
+    if(counter == length){
+        std::cout << "returning true stringCmp\n";
+        return true;
+    }
+    std::cout << "returning false stringCmp\n";
+    return false;
+}
+
+//return the size of the keyword, otherwise
+bool MultiText::isKeyword(std::list<Letter>::iterator letter){
+    if(letter->getChar() == 'i' || letter->getChar() == 'c' || letter->getChar() == 'd' || letter->getChar() == 'f'){
+//        return true;
+        if(stringCompare("int", letter)){
+            return true;
+        }
+        if(stringCompare("char", letter)){
+            return true;
+        }
+        if(stringCompare("double", letter)){
+            return true;
+        }
+        if(stringCompare("float", letter)){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+int MultiText::getKeywordLen(std::list<Letter>::iterator letter){
+    if(stringCompare("int", letter)){
+        return 3;
+    }
+    if(stringCompare("char", letter)){
+        return 4;
+    }
+    if(stringCompare("double", letter)){
+        return 6;
+    }
+    if(stringCompare("float", letter)){
+        return 5;
+    }
+    return 0;
+}
+
+
+void MultiText::highlightText() {
+    int keywordLen =0;
+    for(auto letter=multiText.begin(); letter != multiText.end(); )
+    {
+        std::cout << letter->getChar()<<"->";
+        if (isKeyword(letter)){
+            keywordLen = getKeywordLen(letter);
+            if(keywordLen >0){
+                for(int i=0; i < (keywordLen - 1); i++){
+                    letter->setColor(sf::Color::Blue);
+                    std::cout << letter->getChar() <<"";
+                    ++letter;
+                }
+                letter->setColor(sf::Color::Blue);
+                ++letter;
+            }
+        }
+        else if(isalpha(letter->getChar())){
+            letter->setColor(sf::Color::White);
+            ++letter;
+        }
+        else if(isdigit(letter->getChar())){
+            letter->setColor(sf::Color::Red);
+            ++letter;
+        }
+        else{
+            letter->setColor(sf::Color::Green);
+            ++letter;
+        }
     }
 }
 
@@ -106,21 +196,14 @@ void MultiText::setTextCharacterSize(int textCharacterSize) {
 }
 
 void MultiText::setFont(sf::Font &font) {
-    //font.
 }
 
-void MultiText::setTextTypeColor(Letter &letter) {
-    //color.
-    if(isalpha(letter.getChar())){
-        letter.setColor(sf::Color::White);
-    }
-    else if(isdigit(letter.getChar())){
-        letter.setColor(sf::Color::Yellow);
-    }
-    else{
-        letter.setColor(sf::Color::Cyan);
-    }
+void MultiText::setOnFocus(bool focus) {
+    isFocussed= focus;
 }
+
+
+
 
 /**
  * SFML inherited functions.
@@ -136,6 +219,7 @@ void MultiText::update() {
         clock.restart();
     }
     updateCursorPosition();
+    highlightText();
 }
 
 void MultiText::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -143,7 +227,7 @@ void MultiText::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     for(Letter letter: multiText) {
         target.draw(letter);
     }
-    if(toggleCursor){
+    if(toggleCursor && isFocussed){
         target.draw(cursor);
     }
 }
