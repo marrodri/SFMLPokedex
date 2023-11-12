@@ -11,22 +11,23 @@
 #include "../Undo/Actions.h"
 #include "../Undo/Undo.h"
 #include "../Label/Label.h"
+#include "../States/States.h"
+//#include "../Snapshot/Snapshot.h"
 
 #include <stack>
-class TextInput : public Component{
-
-//
+class TextInput : public Component,  public States, public Undo{
 /**
  *    -textInput, this will have a box that will define the size of the input,
  *    x and y coordinates for the position. An on focus click that will focus the object when being clicked on.
  *    and the text must be centered and must not go outside of the text.
  * */
+
 private:
     MultiText multiText;
     sf::RectangleShape textInputArea;
 //    sf::Text label;
     Label label;
-    bool isFocused;
+    bool isFocused = true;
     std::stack<Action> actionHistory;
 
 

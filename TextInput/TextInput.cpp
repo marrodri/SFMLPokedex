@@ -45,7 +45,33 @@ bool TextInput::isTextColiding() {
  * */
 
 void TextInput::eventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (event.type == sf::Event::KeyPressed) {
+    //add the mouse here.
+
+    //get position of the mouse.
+    sf::Vector2f mpos = (sf::Vector2f ) sf::Mouse::getPosition(window);
+    //if mouse is in the bounds of the box.
+    if (textInputArea.getGlobalBounds().contains(mpos))
+    {
+        enableState(HOVERED);
+    }
+    else{
+        disabledState(HOVERED);
+    }
+    /**
+     * in case that is not
+     * */
+    if(event.type == sf::Event::MouseButtonReleased){
+        if(textInputArea.getGlobalBounds().contains(mpos)){
+            enableState(CLICKED);
+        }
+        else{
+            disabledState(CLICKED);
+        }
+//
+//        event.type == sf::Event::MouseButtonReleased
+    }
+
+    if (event.type == sf::Event::KeyPressed && isFocused) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::Z)
         && !Undo::empty()){
             Action prevAction =Undo::undoAction();
@@ -63,15 +89,29 @@ void TextInput::eventHandler(sf::RenderWindow &window, sf::Event event) {
             multiText.deleteText();
         }
     } else if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)
-               && !isTextColiding()) {
+               && !isTextColiding() && isFocused) {
         multiText.pushNewLetter(event.text.unicode);
         Undo::pushNewAction('\0', DELETE, TEXTINPUT);
     }
 }
 
-
 void TextInput::update() {
-    multiText.update();
+    if(checkState(HOVERED) && !checkState(CLICKED)){
+        textInputArea.setFillColor(sf::Color::Blue);
+    }
+    else{
+        textInputArea.setFillColor(sf::Color::Black);
+    }
+    if(checkState(CLICKED)){
+        isFocused = true;
+    }
+    else if(!checkState(CLICKED)){
+        isFocused = false;
+    }
+    if(isFocused){
+        multiText.update();
+    }
+
 }
 
 void TextInput::draw(sf::RenderTarget &target, sf::RenderStates states) const {
