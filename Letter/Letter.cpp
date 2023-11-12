@@ -23,12 +23,11 @@ void Letter::setPosition(float x, float y){
 
 void Letter::setColor(const sf::Color &color) {
     text.setFillColor(color);
-
 }
 
 /**
  * getters
- * */
+ **/
 
 sf::Vector2f Letter::getPosition() {
     return text.getPosition();
@@ -38,17 +37,15 @@ sf::Glyph Letter::getGlyph() {
     return glyphData;
 }
 
-
 char Letter::getChar() {
     return characterCode;
 }
 
-
 /**
  * SFML main methods
- * */
+ **/
 
-void Letter::eventHandler(sf::RenderWindow &window, sf::Event event) {
+void Letter::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void Letter::update() {

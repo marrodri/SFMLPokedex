@@ -84,6 +84,83 @@ build CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o: CXX_COMPILER__sfmlTemplate_un
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
   OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Font
 
+build CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/MultiText/MultiText.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/MultiText
+
+build CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Letter/Letter.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Letter
+
+build CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/MultiText/MultiTextIterator.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/MultiText
+
+build CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Typing/Typing.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Typing
+
+build CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/TextInput/TextInput.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/TextInput
+
+build CMakeFiles/sfmlTemplate.dir/History/History.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/History/History.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/History/History.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/History
+
+build CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Snapshot/Snapshot.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Snapshot
+
+build CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Label/Label.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Label
+
+build CMakeFiles/sfmlTemplate.dir/States/States.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/States/States.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/States/States.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/States
+
+build CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/KeyShortcuts/KeyShortcuts.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/KeyShortcuts
+
+build CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/MouseEvents/MouseEvents.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/MouseEvents
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target sfmlTemplate
@@ -92,7 +169,7 @@ build CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o: CXX_COMPILER__sfmlTemplate_un
 #############################################
 # Link the executable sfmlTemplate
 
-build sfmlTemplate: CXX_EXECUTABLE_LINKER__sfmlTemplate_Debug CMakeFiles/sfmlTemplate.dir/main.cpp.o CMakeFiles/sfmlTemplate.dir/App.cpp.o CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o CMakeFiles/sfmlTemplate.dir/Screen.cpp.o CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
+build sfmlTemplate: CXX_EXECUTABLE_LINKER__sfmlTemplate_Debug CMakeFiles/sfmlTemplate.dir/main.cpp.o CMakeFiles/sfmlTemplate.dir/App.cpp.o CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o CMakeFiles/sfmlTemplate.dir/Screen.cpp.o CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o CMakeFiles/sfmlTemplate.dir/History/History.cpp.o CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o CMakeFiles/sfmlTemplate.dir/States/States.cpp.o CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib  /opt/homebrew/lib/libsfml-audio.2.6.0.dylib  /opt/homebrew/lib/libsfml-window.2.6.0.dylib  /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir

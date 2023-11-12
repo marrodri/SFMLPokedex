@@ -5,9 +5,9 @@
 #ifndef SFMLTEMPLATE_LETTER_H
 #define SFMLTEMPLATE_LETTER_H
 
-#include <SFML/Graphics.hpp>
-#include "../Components/Component.h"
-class Letter: public Component {
+#include "../Components/GUIComponent.h"
+
+class Letter : public GUIComponent {
 private:
     sf::Glyph glyphData;
     sf::Text text;
@@ -17,7 +17,7 @@ public:
     Letter(char characterCode, sf::Font &font, int characterSize);
 
     /**sfml*/
-    void eventHandler(sf::RenderWindow &window, sf::Event event);
+    void addEventHandler(sf::RenderWindow &window, sf::Event event);
 
     void update();
 

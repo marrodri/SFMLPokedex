@@ -5,8 +5,9 @@
 #ifndef SFMLTEMPLATE_LABEL_H
 #define SFMLTEMPLATE_LABEL_H
 
-#include "../Components/Component.h"
-class Label : public Component {
+#include "../Components/GUIComponent.h"
+
+class Label : public GUIComponent {
 private:
     sf::Text label;
     std::string labelString;
@@ -16,7 +17,7 @@ public:
 
     /**
      * setters
-     * */
+     **/
     void setLabelString(std::string &labelString);
     void setPosition(sf::Vector2f position);
     void setFontSize(int fontSize);
@@ -34,8 +35,7 @@ public:
     /**
      * SFML Methods
      * */
-
-    void eventHandler(sf::RenderWindow &window, sf::Event event) override;
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
 

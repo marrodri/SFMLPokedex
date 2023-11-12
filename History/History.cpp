@@ -2,28 +2,28 @@
 // Created by Marthel Rodriguez on 11/11/23.
 //
 
-#include "Undo.h"
+#include "History.h"
 
 //initializing static variables.
 
 
-Undo::Undo() {
+History::History() {
 
 }
 
-void Undo::pushNewAction(char letter, ActionsEnum action, ComponentEnum component) {
-    Action newAction = Action({letter, action, component});
+void History::pushNewAction(char letter, ActionsEnum action, ComponentEnum component) {
+    HistoryNode newAction = HistoryNode({letter, action, component});
 
 //    Action newAction = Action({'b', WRITE, TEXTINPUT});
     previousActions.push(newAction);
 }
 
-Action Undo::undoAction() {
-    Action undoAction = previousActions.top();
+HistoryNode History::undoAction() {
+    HistoryNode undoAction = previousActions.top();
     previousActions.pop();
     return undoAction;
 }
 
-bool Undo::empty(){
+bool History::empty(){
     return previousActions.empty();
 }

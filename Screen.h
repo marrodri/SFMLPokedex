@@ -16,7 +16,7 @@ class Screen : public sf::Drawable {
     sf::Font font;
 protected:
     Screen();
-    Screen(sf::Vector2 dimensions, sf::Font font);
+    Screen(sf::Vector2f dimensions, sf::Font font);
     virtual void draw(sf::RenderStates &window, sf::RenderStates states) const;
 };
 

@@ -6,12 +6,11 @@
 #define SFMLTEMPLATE_MULTITEXT_H
 
 #include <list>
-#include <SFML/Graphics.hpp>
-#include "../Components/Component.h"
+#include "../Components/GUIComponent.h"
 #include <iostream>
 #include "../Letter/Letter.h"
 
-class MultiText : public Component {
+class MultiText : public GUIComponent {
 private:
     sf::Glyph prevLetterGlyph;
     std::list<Letter> multiText;
@@ -64,7 +63,7 @@ public:
     void setPosition(sf::Vector2f position);
     void setTextCharacterSize(int textCharacterSize);
     void setFont(sf::Font &font);
-    void setTextColor(sf::Color &color);
+    void setTextTypeColor(Letter &letter);
 
     /**
      * getters
@@ -76,7 +75,7 @@ public:
     /**
      * SFML virtual methods
      **/
-    void eventHandler(sf::RenderWindow &window, sf::Event event);
+    void addEventHandler(sf::RenderWindow &window, sf::Event event);
 
     void update();
 

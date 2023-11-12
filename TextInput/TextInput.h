@@ -6,16 +6,16 @@
 #define SFMLTEMPLATE_TEXTINPUT_H
 
 
-#include "../Components/Component.h"
+#include "../Components/GUIComponent.h"
 #include "../MultiText/MultiText.h"
-#include "../Undo/Actions.h"
-#include "../Undo/Undo.h"
 #include "../Label/Label.h"
-#include "../States/States.h"
+#include "../KeyShortcuts/KeyShortcuts.h"
+//#include "../History/Actions.h"
+//#include "../History/History.h"
 //#include "../Snapshot/Snapshot.h"
 
 #include <stack>
-class TextInput : public Component,  public States, public Undo{
+class TextInput : public GUIComponent {
 /**
  *    -textInput, this will have a box that will define the size of the input,
  *    x and y coordinates for the position. An on focus click that will focus the object when being clicked on.
@@ -25,25 +25,23 @@ class TextInput : public Component,  public States, public Undo{
 private:
     MultiText multiText;
     sf::RectangleShape textInputArea;
-//    sf::Text label;
     Label label;
     bool isFocused = true;
-    std::stack<Action> actionHistory;
-
-
+    std::stack<HistoryNode> actionHistory;
     bool isTextColiding();
 public:
     TextInput();
     TextInput(sf::Vector2f position, sf::Vector2f size, sf::Font &textInputfont, sf::Font &labelFont, std::string label);
 
     /**
-     * methods
+     * snapshot methods
      * */
-
+    void snapshotTextString();
+    void useSnapshotText();
     /**
     * SFML methods
     **/
-    void eventHandler(sf::RenderWindow &window, sf::Event event) override;
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
 

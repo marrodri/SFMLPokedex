@@ -2,21 +2,21 @@
 // Created by Marthel Rodriguez on 11/11/23.
 //
 
-#ifndef SFMLTEMPLATE_UNDO_H
-#define SFMLTEMPLATE_UNDO_H
+#ifndef SFMLTEMPLATE_HISTORY_H
+#define SFMLTEMPLATE_HISTORY_H
 
 #include <stack>
-#include "Actions.h"
-class Undo {
+#include "HistoryNode.h"
+class History {
 private:
-     std::stack<Action> previousActions;
+     std::stack<HistoryNode> previousActions;
 public:
-    Undo();
+    History();
 
      void pushNewAction(char letter, ActionsEnum action, ComponentEnum component);
-     Action undoAction();
+     HistoryNode undoAction();
      bool empty();
 };
 
 
-#endif //SFMLTEMPLATE_UNDO_H
+#endif //SFMLTEMPLATE_HISTORY_H

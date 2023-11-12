@@ -14,7 +14,6 @@ MultiText::MultiText() {
 }
 
 MultiText::MultiText(sf::Vector2f position, int sizeFont, sf::Font &font){
-
     initialPosition = position;
     characterSize = sizeFont;
 
@@ -30,9 +29,9 @@ MultiText::MultiText(sf::Vector2f position, int sizeFont, sf::Font &font){
 /**
  * iterators
  **/
- MultiText::iterator MultiText::begin() {
-     return multiText.begin();
- }
+MultiText::iterator MultiText::begin() {
+    return multiText.begin();
+}
 
 MultiText::iterator MultiText::end() {
     return multiText.end();
@@ -47,10 +46,13 @@ void MultiText::deleteText() {
 
 void MultiText::pushNewLetter(char newCharacter) {
     Letter newLetter(newCharacter, Font::getFont(), characterSize);
+    //highlighting different letter.
+    setTextTypeColor(newLetter);
+
+    //pushing new letter
     if (multiText.empty()) {
         newLetter.setPosition(initialPosition.x, initialPosition.y);
         multiText.push_back(newLetter);
-
     }
     else{
         //update the multitext each time.
@@ -61,9 +63,7 @@ void MultiText::pushNewLetter(char newCharacter) {
         newLetter.setPosition(prevPosition.x + prevLetterGlyph.advance,initialPosition.y);
         multiText.push_back(newLetter);
     }
-
 }
-
 
 void MultiText::updateCursorPosition() {
     if(!multiText.empty()){
@@ -109,15 +109,24 @@ void MultiText::setFont(sf::Font &font) {
     //font.
 }
 
-void MultiText::setTextColor(sf::Color &color) {
+void MultiText::setTextTypeColor(Letter &letter) {
     //color.
+    if(isalpha(letter.getChar())){
+        letter.setColor(sf::Color::White);
+    }
+    else if(isdigit(letter.getChar())){
+        letter.setColor(sf::Color::Yellow);
+    }
+    else{
+        letter.setColor(sf::Color::Cyan);
+    }
 }
 
 /**
  * SFML inherited functions.
  **/
 
-void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
+void MultiText::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void MultiText::update() {

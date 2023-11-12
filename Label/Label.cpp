@@ -43,7 +43,7 @@ void Label::setFont(sf::Font &font) {
  * SFML methods
  * */
 
-void Label::eventHandler(sf::RenderWindow &window, sf::Event event) {
+void Label::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
 }
 

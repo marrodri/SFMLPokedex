@@ -28,8 +28,8 @@ void App::run() {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            firstNameInput.eventHandler(window, event);
-            lastNameInput.eventHandler(window, event);
+            firstNameInput.addEventHandler(window, event);
+            lastNameInput.addEventHandler(window, event);
         }
         firstNameInput.update();
         lastNameInput.update();

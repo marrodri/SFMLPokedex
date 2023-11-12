@@ -2,24 +2,28 @@
 // Created by Marthel Rodriguez on 10/12/23.
 //
 
-#ifndef SFMLTEMPLATE_COMPONENT_H
-#define SFMLTEMPLATE_COMPONENT_H
+#ifndef SFMLTEMPLATE_GUICOMPONENT_H
+#define SFMLTEMPLATE_GUICOMPONENT_H
 
+#include "../History/HistoryNode.h"
+#include "../History/History.h"
+//TODO: make this an interface
+#include "../Snapshot/Snapshot.h"
+
+#include "../States/States.h"
 #include <SFML/Graphics.hpp>
+#include "EventHandler.h"
 
-//this is an interface.
-class Component : public sf::Drawable {
-// before, this class had eventHandler, update and draw. Now, it was separated with the
-// goal of making it more modular, so it can be used more globally.
 
+class GUIComponent : public sf::Drawable, public EventHandler, public States, public History, public Snapshot  {
 public:
-    //polymorphism, I don't know how to handle events, but
-    //I NEED MY CHILDREN TO MUST USE eventHandler.
-    virtual void eventHandler(sf::RenderWindow &window, sf::Event event) = 0;
+     void draw(sf::RenderTarget& target, sf::RenderStates states) const override = 0;
 
-    virtual void update() = 0;
-    //in your sfml_portfolio you used to pass states to this class.
-    //remember why!
+    //from eventHandler
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override= 0;
+    void update() override = 0;
+
+    //TODO: Implement the Snapshot Interface
 };
 
-#endif //SFMLTEMPLATE_COMPONENT_H
+#endif //SFMLTEMPLATE_GUICOMPONENT_H
