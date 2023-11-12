@@ -6,6 +6,7 @@
 #define SFMLTEMPLATE_MOUSEEVENTS_H
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 template <typename T>
 class MouseEvents {
 private:
