@@ -6,21 +6,34 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
-
-//#include "UIComponent.h"
 #include "Font/Font.h"
-#include "MultiText/MultiText.h"
 #include "TextInput/TextInput.h"
+
+std::vector<GUIComponent*> App::components;
+
+void App::init(){
+    Font font;
+    TextInput firstNameInput(sf::Vector2f(80,310), sf::Vector2f(220,60), font.getFont(), font.getFont(), "First Name");
+    TextInput lastNameInput(sf::Vector2f(80,450), sf::Vector2f(220,60), font.getFont(), font.getFont(), "Last Name");
+    addComponent(firstNameInput);
+    addComponent(lastNameInput);
+}
+
+void App::addComponent(GUIComponent& component){
+    components.push_back(&component);
+}
 
 void App::run() {
     const int  WINDOW_WIDTH=600;
     const int  WINDOW_HEIGHT=800;
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "My window");
-
+    window.setFramerateLimit(60);
+//    init();
     Font font;
-    sf::Text text;
     TextInput firstNameInput(sf::Vector2f(80,310), sf::Vector2f(220,60), font.getFont(), font.getFont(), "First Name");
     TextInput lastNameInput(sf::Vector2f(80,450), sf::Vector2f(220,60), font.getFont(), font.getFont(), "Last Name");
+    addComponent(firstNameInput);
+    addComponent(lastNameInput);
     while (window.isOpen())
     {
         sf::Event event;
@@ -28,15 +41,17 @@ void App::run() {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            firstNameInput.addEventHandler(window, event);
-            lastNameInput.addEventHandler(window, event);
+            for(GUIComponent* &g: components){
+                g->addEventHandler(window, event);
+            }
         }
-        firstNameInput.update();
-        lastNameInput.update();
+        for(GUIComponent* &g: components){
+            g->update();
+        }
         window.clear();
-        window.draw(firstNameInput);
-        window.draw(lastNameInput);
-
+        for(GUIComponent* &g: components){
+            window.draw(*g);
+        }
         window.display();
     }
 }
