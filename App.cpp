@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include "Font/Font.h"
 #include "TextInput/TextInput.h"
+#include "Item/Item.h"
+#include "Dropdown/Dropdown.h"
 
 std::vector<GUIComponent*> App::components;
 
@@ -32,8 +34,12 @@ void App::run() {
     Font font;
     TextInput firstNameInput(sf::Vector2f(80,310), sf::Vector2f(220,60), font.getFont(), font.getFont(), "First Name");
     TextInput lastNameInput(sf::Vector2f(80,450), sf::Vector2f(220,60), font.getFont(), font.getFont(), "Last Name");
+//    Item item;
+    Dropdown dropdown;
     addComponent(firstNameInput);
     addComponent(lastNameInput);
+//    addComponent(item);
+    addComponent(dropdown);
     while (window.isOpen())
     {
         sf::Event event;
