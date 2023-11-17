@@ -82,6 +82,7 @@ void Item::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if(MouseEvents<sf::RectangleShape>::hovered(box,window)){
         std::cout << "hovered :)\n";
         enableState(HOVERED);
+        SoundFX::playHoverSound();
     }
     else{
         disabledState(HOVERED);
@@ -90,6 +91,7 @@ void Item::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         //kinda works, but it still receiving data.
         if(MouseEvents<sf::RectangleShape>::hovered(box, window)){
             enableState(CLICKED);
+            SoundFX::playClickSound();
         }
     }
     else{

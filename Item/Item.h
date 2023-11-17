@@ -10,12 +10,11 @@
 #include "../MouseEvents/MouseEvents.h"
 #include <iostream>
 #include "../Font/Font.h"
+#include "ItemStruct.h"
 #include "../Helper/HelperFunctions.h"
+#include "../SoundFX/SoundFX.h"
 
-struct ItemStruct{
-    std::string text;
-    void (*functPtr)();
-};
+
 
 class Item : public GUIComponent {
 private:
