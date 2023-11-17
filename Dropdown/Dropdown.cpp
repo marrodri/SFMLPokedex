@@ -14,10 +14,10 @@ void output3(){
     std::cout << "output 3 clicked\n";
 }
 
-
 Dropdown::Dropdown(){
     button.setOnClickFunction(output1);
     button.setText("button 1");
+    itemList.setInitPos(button.getPos());
     itemList.pushItem({"button2",output2});
     itemList.pushItem({"button3",output3});
 }
@@ -30,7 +30,6 @@ void Dropdown::toggleDropDownVisibility(){
 void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(button);
     if (isDropdownVisible) {
-
         for (auto itemIterator = itemList.begin();  itemIterator != itemList.end(); ++itemIterator){
             itemIterator->draw(target, states);
         }
@@ -53,5 +52,4 @@ void Dropdown::update() {
             itemIterator->update();
         }
     }
-
 }

@@ -13,7 +13,7 @@ private:
     Item button;
     ItemList itemList;
     bool isDropdownVisible=true;
-
+    sf::Vector2f initPos;
     void toggleDropDownVisibility();
 public:
     Dropdown();
@@ -23,6 +23,7 @@ public:
      **/
      void setButton(std::string text, void (*pFunct)());
      void setItemList(std::vector<ItemStruct> listOfItemStructs);
+
 
 
     /*

@@ -14,15 +14,17 @@
 
 class ItemList {
 private:
-
+    sf::Vector2f initPos;
 public:
     std::vector<Item> itemList;
     ItemList();
     ItemList(std::vector<ItemStruct> initlist);
 
+
     /**
      * methods
      * */
+    void setInitPos(sf::Vector2f initPos);
 
     void pushItem(ItemStruct newItemData);
     void popItem();
@@ -35,8 +37,8 @@ public:
 
     /**
      * iterators
-     * */
-     typedef std::vector<Item>::iterator iterator;
+     **/
+    typedef std::vector<Item>::iterator iterator;
     iterator begin();
     iterator end();
 

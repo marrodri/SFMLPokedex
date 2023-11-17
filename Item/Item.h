@@ -17,7 +17,6 @@ struct ItemStruct{
     void (*functPtr)();
 };
 
-
 class Item : public GUIComponent {
 private:
     sf::RectangleShape box;

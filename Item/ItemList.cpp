@@ -25,11 +25,12 @@ void ItemList::pushItem(ItemStruct newItemData) {
     newItem.setTextColor(sf::Color::White);
 
     if(itemList.empty()){
-        newItem.setPosition({30, 50});
+        newItem.setPosition({initPos.x, initPos.y+30});
 
     }
     else{
-        newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 50});
+
+        newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 30});
     }
 
     itemList.push_back(newItem);
@@ -38,6 +39,10 @@ void ItemList::pushItem(ItemStruct newItemData) {
 
 void ItemList::popItem() {
 
+}
+
+void ItemList::setInitPos(sf::Vector2f initPos) {
+    this->initPos = initPos;
 }
 
 /**
