@@ -15,17 +15,20 @@ void output3(){
 }
 
 Dropdown::Dropdown(){
-    button.setOnClickFunction(output1);
+//    button.setOnClickFunction(&Dropdown::toggleDropdownMenu);
     button.setText("button 1");
+    button.setOnClickTemplateFunction(&Dropdown::toggleDropdownMenu, *this);
+
     itemList.setInitPos(button.getPos());
     itemList.pushItem({"button2",output2});
     itemList.pushItem({"button3",output3});
+
 }
 
-void Dropdown::toggleDropDownVisibility(){
-    std::cout << "togglingDropDown from parent class\n";
-    isDropdownVisible = !isDropdownVisible;
-}
+//void Dropdown::toggleDropDownVisibility(){
+//    std::cout << "togglingDropDown from parent class\n";
+//    isDropdownVisible = !isDropdownVisible;
+//}
 
 void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(button);
@@ -52,4 +55,9 @@ void Dropdown::update() {
             itemIterator->update();
         }
     }
+}
+
+void Dropdown::toggleDropdownMenu() {
+    isDropdownVisible = !isDropdownVisible;
+
 }

@@ -2,14 +2,18 @@
 // Created by Marthel Rodriguez on 11/14/23.
 //
 
+#ifndef SFMLTEMPLATE_ITEMLIST_CPP
+#define SFMLTEMPLATE_ITEMLIST_CPP
 #include "ItemList.h"
 
 
-ItemList::ItemList() {
+template<typename T>
+ItemList<T>::ItemList() {
 
 }
 
-ItemList::ItemList(std::vector<ItemStruct> initlist) {
+template<typename T>
+ItemList<T>::ItemList(std::vector<ItemStruct> initlist) {
 
 }
 
@@ -17,8 +21,9 @@ ItemList::ItemList(std::vector<ItemStruct> initlist) {
  * methods
  * */
 
-void ItemList::pushItem(ItemStruct newItemData) {
-    Item newItem;
+template<typename T>
+void ItemList<T>::pushItem(ItemStruct newItemData) {
+    Item<T> newItem;
     newItem.setOnClickFunction(newItemData.functPtr);
     newItem.setFont(Font::getFont());
     newItem.setText(newItemData.text);
@@ -26,22 +31,20 @@ void ItemList::pushItem(ItemStruct newItemData) {
 
     if(itemList.empty()){
         newItem.setPosition({initPos.x, initPos.y+30});
-
     }
     else{
-
         newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 30});
     }
-
     itemList.push_back(newItem);
 }
 
-
-void ItemList::popItem() {
+template<typename T>
+void ItemList<T>::popItem() {
 
 }
 
-void ItemList::setInitPos(sf::Vector2f initPos) {
+template<typename T>
+void ItemList<T>::setInitPos(sf::Vector2f initPos) {
     this->initPos = initPos;
 }
 
@@ -49,28 +52,34 @@ void ItemList::setInitPos(sf::Vector2f initPos) {
  * iterators
  **/
 
-ItemList::iterator ItemList::begin(){
+template<typename T>
+typename ItemList<T>::iterator ItemList<T>::begin(){
     return itemList.begin();
 }
 
-ItemList::iterator ItemList::end() {
+template<typename T>
+typename ItemList<T>::iterator ItemList<T>::end() {
     return itemList.end();
 }
 
 
-ItemList::constIterator ItemList::begin() const {
+template<typename T>
+typename ItemList<T>::constIterator ItemList<T>::begin() const {
     return itemList.begin();
 }
 
-ItemList::constIterator ItemList::end() const {
+template<typename T>
+typename ItemList<T>::constIterator ItemList<T>::end() const {
     return itemList.end();
 }
 
 /**
  * getters
  * */
-std::vector<Item> &ItemList::getItemList() {
+ template<typename T>
+std::vector<Item<T>> &ItemList<T>::getItemList() {
     return itemList;
 }
 
 
+#endif

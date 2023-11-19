@@ -15,23 +15,33 @@
 #include "../SoundFX/SoundFX.h"
 
 
-
+template<typename T>
 class Item : public GUIComponent {
 private:
     sf::RectangleShape box;
     sf::Text textUI;
     sf::Color hoveredColor = sf::Color::Blue;
 
-    void (*pOnClick)();
+    /**
+     * function pointers.
+     * */
+    void (*pFunc)() = nullptr;
+    T *objInst;
+    void (T::*pTemplateFunc)() = nullptr;
 public:
     Item();
     /**
      * onClick function
      * */
+     void onClick();
 
     /**
      * setters
      * */
+     void setObjInstantce(T &obj) {
+            objInst = obj;
+    }
+
     void setPosition(sf::Vector2f position);
     void setText(std::string text);
     void setFont(sf::Font &font);
@@ -42,6 +52,9 @@ public:
     void setDropdownShadow();
     //TODO: check how to pass a function that will be run when being clicked.
     void setOnClickFunction(void (*pOnClick)());
+
+//    template<typename T> inline
+     void setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
 
     /**
      * getters
@@ -58,5 +71,5 @@ public:
 
 };
 
-
+#include "Item.cpp"
 #endif //SFMLTEMPLATE_ITEM_H

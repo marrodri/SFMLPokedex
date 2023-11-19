@@ -12,11 +12,12 @@
 
 
 
+template<typename T>
 class ItemList {
 private:
     sf::Vector2f initPos;
 public:
-    std::vector<Item> itemList;
+    std::vector<Item<T>> itemList;
     ItemList();
     ItemList(std::vector<ItemStruct> initlist);
 
@@ -31,24 +32,27 @@ public:
     /**
      * getters
      * */
-    std::vector<Item> &getItemList();
+    std::vector<Item<T>> &getItemList();
 
 
 
     /**
      * iterators
      **/
-    typedef std::vector<Item>::iterator iterator;
+
+    typedef  typename std::vector<Item<T>>::iterator iterator;
     iterator begin();
     iterator end();
 
-    typedef std::vector<Item>::const_iterator constIterator;
+    typedef  typename std::vector<Item<T>>::const_iterator constIterator;
     constIterator begin() const;
     constIterator end() const;
 
 
 
 };
+
+#include "ItemList.cpp"
 
 
 #endif //SFMLTEMPLATE_ITEMLIST_H

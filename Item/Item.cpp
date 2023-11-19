@@ -2,18 +2,16 @@
 // Created by Marthel Rodriguez on 11/14/23.
 //
 
+#ifndef SFMLTEMPLATE_ITEM_CPP
+#define SFMLTEMPLATE_ITEM_CPP
 #include "Item.h"
 
 /**
  * constructors
- * */
+ **/
 
-//void outputClicked(){
-//    std::cout <<"clicked :)";
-//}
-
-Item::Item() {
-
+template<typename T>
+Item<T>::Item() {
     setFont(Font::getFont());
     textUI.setString("sample Text");
     textUI.setCharacterSize(10);
@@ -23,62 +21,101 @@ Item::Item() {
     HelperFunctions<sf::RectangleShape>::centerText(box,textUI);
     box.setOutlineColor(sf::Color::White);
     box.setOutlineThickness(1);
-//    pOnClick = outputClicked;
+}
+
+
+/**
+ * methods
+ **/
+
+template<typename T>
+void Item<T>::onClick() {
+    if(pFunc){
+        pFunc();
+    }
+    else{
+        std::cout << "pOnClick is null; set a function\n";
+    }
+    if(this->pTemplateFunc){
+        (*objInst.*(pTemplateFunc))();
+    }
+    else{
+        std::cout << "tempPOnClick is not initialized.\n";
+    }
 }
 
 /**
  * setters
  **/
-void Item::setPosition(sf::Vector2f position) {
+template<typename T>
+void Item<T>::setPosition(sf::Vector2f position) {
     box.setPosition(position);
     HelperFunctions<sf::RectangleShape>::centerText(box, textUI);
 
 }
 
-void Item::setText(std::string text) {
+template<typename T>
+void Item<T>::setText(std::string text) {
     textUI.setString(text);
     HelperFunctions<sf::RectangleShape>::centerText(box, textUI);
 }
 
-void Item::setFont(sf::Font &font) {
+template<typename T>
+void Item<T>::setFont(sf::Font &font) {
     textUI.setFont(font);
 }
 
-void Item::setTextColor(const sf::Color &color) {
+template<typename T>
+void Item<T>::setTextColor(const sf::Color &color) {
     textUI.setFillColor(color);
 }
 
-void Item::setBorderWidth(int borderWidth) {
+template<typename T>
+void Item<T>::setBorderWidth(int borderWidth) {
 
 }
 
-void Item::setHoverColor(const sf::Color &color) {
+template<typename T>
+void Item<T>::setHoverColor(const sf::Color &color) {
     hoveredColor = color;
 }
 
 //TODO Later.
-void Item::setDropdownShadow() {
+template<typename T>
+void Item<T>::setDropdownShadow() {
 
 }
 
-void Item::setOnClickFunction(void (*pOnClick)()) {
-    this->pOnClick = pOnClick;
+
+///TODO: function setters with template
+template<typename T>
+void Item<T>::setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst){
+    this->objInst = &objInst;
+    this->pTemplateFunc = pTemplateFunc;
+}
+
+template<typename T>
+void Item<T>::setOnClickFunction(void (*pOnClick)()) {
+    this->pFunc = pOnClick;
 }
 
 
-sf::Vector2f Item::getPos(){
+template<typename T>
+sf::Vector2f Item<T>::getPos(){
     return box.getPosition();
 }
 
 /**
  * GUIComponent virtual methods
  * */
-void Item::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+template<typename T>
+void Item<T>::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(box);
     target.draw(textUI);
 }
 
-void Item::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+template<typename T>
+void Item<T>::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if(MouseEvents<sf::RectangleShape>::hovered(box,window)){
         std::cout << "hovered :)\n";
         enableState(HOVERED);
@@ -92,14 +129,15 @@ void Item::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         if(MouseEvents<sf::RectangleShape>::hovered(box, window)){
             enableState(CLICKED);
             SoundFX::playClickSound();
+            onClick();
         }
     }
     else{
         disabledState(CLICKED);
     }
 }
-
-void Item::update() {
+template<typename T>
+void Item<T>::update() {
 
     if(checkState(HOVERED)){
         box.setFillColor(sf::Color::Blue);
@@ -108,7 +146,10 @@ void Item::update() {
         box.setFillColor(sf::Color::Black);
     }
     if(checkState(CLICKED)){
-        pOnClick();
+        onClick();
     }
 
 }
+
+
+#endif
