@@ -28,11 +28,13 @@ public:
     void setInitPos(sf::Vector2f initPos);
 
     void pushItem(ItemStruct newItemData);
+    void pushItem(Item<T> &newItem);
     void popItem();
     /**
      * getters
      * */
     std::vector<Item<T>> &getItemList();
+    Item<T> &getItem(int i);
 
 
 

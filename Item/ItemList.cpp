@@ -39,6 +39,24 @@ void ItemList<T>::pushItem(ItemStruct newItemData) {
 }
 
 template<typename T>
+void ItemList<T>::pushItem(Item<T> &newItem) {
+//    Item<T> newItem;
+//    newItem.setOnClickFunction(newItemData.functPtr);
+    newItem.setFont(Font::getFont());
+//    newItem.setText(newItemData.text);
+    newItem.setTextColor(sf::Color::White);
+
+    if(itemList.empty()){
+        newItem.setPosition({initPos.x, initPos.y+30});
+    }
+    else{
+        newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 30});
+    }
+    itemList.push_back(newItem);
+}
+
+
+template<typename T>
 void ItemList<T>::popItem() {
 
 }
@@ -81,5 +99,9 @@ std::vector<Item<T>> &ItemList<T>::getItemList() {
     return itemList;
 }
 
+template<typename T>
+Item<T> &ItemList<T>::getItem(int i) {
+    return itemList(i);
+}
 
 #endif

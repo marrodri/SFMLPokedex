@@ -36,7 +36,18 @@ add_executable(sfmlTemplate main.cpp
         KeyShortcuts/KeyShortcuts.cpp
         KeyShortcuts/KeyShortcuts.h
         MouseEvents/MouseEvents.cpp
-        MouseEvents/MouseEvents.h)
+        MouseEvents/MouseEvents.h
+        Item/Item.cpp
+        Item/Item.h
+        Item/ItemList.cpp
+        Item/ItemList.h
+        Helper/HelperFunctions.cpp
+        Helper/HelperFunctions.h
+        Dropdown/Dropdown.cpp
+        Dropdown/Dropdown.h
+        SoundFX/SoundFX.cpp
+        SoundFX/SoundFX.h
+        Item/ItemStruct.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

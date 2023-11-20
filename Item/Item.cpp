@@ -30,17 +30,23 @@ Item<T>::Item() {
 
 template<typename T>
 void Item<T>::onClick() {
-    if(pFunc){
-        pFunc();
-    }
-    else{
-        std::cout << "pOnClick is null; set a function\n";
-    }
-    if(this->pTemplateFunc){
+//    if (pFunc) {
+//        pFunc();
+//    }
+//    else {
+//        std::cout << "pOnClick is null; set a function\n";
+//    }
+    if (this->pTemplateFunc) {
         (*objInst.*(pTemplateFunc))();
     }
-    else{
+    else {
         std::cout << "tempPOnClick is not initialized.\n";
+    }
+    if(this->pTemplateFuncWithItem){
+        (*objInst.*(pTemplateFuncWithItem))(*this);
+    }
+    else {
+        std::cout << "tempPOnClickWithItem is not initialized.\n";
     }
 }
 
@@ -55,7 +61,8 @@ void Item<T>::setPosition(sf::Vector2f position) {
 }
 
 template<typename T>
-void Item<T>::setText(std::string text) {
+void Item<T>::setText(const std::string &text) {
+    data = text;
     textUI.setString(text);
     HelperFunctions<sf::RectangleShape>::centerText(box, textUI);
 }
@@ -86,12 +93,18 @@ void Item<T>::setDropdownShadow() {
 
 }
 
-
 ///TODO: function setters with template
 template<typename T>
 void Item<T>::setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst){
     this->objInst = &objInst;
     this->pTemplateFunc = pTemplateFunc;
+}
+
+
+template<typename T>
+void Item<T>::setOnClickTemplateFunction(void (T::*pTemplateFuncWithItem)(Item<T> &item), T &objInst) {
+    this->pTemplateFuncWithItem = pTemplateFuncWithItem;
+    this->objInst = &objInst;
 }
 
 template<typename T>
@@ -100,9 +113,18 @@ void Item<T>::setOnClickFunction(void (*pOnClick)()) {
 }
 
 
+/**
+ * getters
+ * */
+
 template<typename T>
 sf::Vector2f Item<T>::getPos(){
     return box.getPosition();
+}
+
+template<typename T>
+std::string &Item<T>::getData() {
+    return data;
 }
 
 /**
@@ -124,9 +146,9 @@ void Item<T>::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     else{
         disabledState(HOVERED);
     }
-    if(MouseEvents<sf::RectangleShape>::mouseClicked(window, event)){
+    if (MouseEvents<sf::RectangleShape>::mouseClicked(window, event)) {
         //kinda works, but it still receiving data.
-        if(MouseEvents<sf::RectangleShape>::hovered(box, window)){
+        if (MouseEvents<sf::RectangleShape>::hovered(box, window)) {
             enableState(CLICKED);
             SoundFX::playClickSound();
             onClick();
@@ -138,17 +160,15 @@ void Item<T>::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 template<typename T>
 void Item<T>::update() {
-
-    if(checkState(HOVERED)){
+    if (checkState(HOVERED)) {
         box.setFillColor(sf::Color::Blue);
     }
-    else{
+    else {
         box.setFillColor(sf::Color::Black);
     }
-    if(checkState(CLICKED)){
-        onClick();
-    }
-
+//    if (checkState(CLICKED)) {
+//        onClick();
+//    }
 }
 
 

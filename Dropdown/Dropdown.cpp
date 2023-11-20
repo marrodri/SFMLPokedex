@@ -4,31 +4,28 @@
 
 #include "Dropdown.h"
 
-void output1(){
-    std::cout << "output 1 clicked\n";
-}
-void output2(){
-    std::cout << "output 2 clicked\n";
-}
-void output3(){
-    std::cout << "output 3 clicked\n";
-}
-
 Dropdown::Dropdown(){
 //    button.setOnClickFunction(&Dropdown::toggleDropdownMenu);
     button.setText("button 1");
     button.setOnClickTemplateFunction(&Dropdown::toggleDropdownMenu, *this);
 
     itemList.setInitPos(button.getPos());
-    itemList.pushItem({"button2",output2});
-    itemList.pushItem({"button3",output3});
 
+    Item<Dropdown> button1;
+    button1.setText("button 1");
+    button1.setOnClickTemplateFunction(&Dropdown::setData, *this);
+    Item<Dropdown> button2;
+    button2.setText("button 2");
+    button2.setOnClickTemplateFunction(&Dropdown::setData, *this);
+
+    Item<Dropdown> button3;
+    button3.setText("button 3");
+    button3.setOnClickTemplateFunction(&Dropdown::setData, *this);
+
+    itemList.pushItem(button1);
+    itemList.pushItem(button2);
+    itemList.pushItem(button3);
 }
-
-//void Dropdown::toggleDropDownVisibility(){
-//    std::cout << "togglingDropDown from parent class\n";
-//    isDropdownVisible = !isDropdownVisible;
-//}
 
 void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(button);
@@ -60,4 +57,17 @@ void Dropdown::update() {
 void Dropdown::toggleDropdownMenu() {
     isDropdownVisible = !isDropdownVisible;
 
+}
+
+
+void Dropdown::setData(Item<Dropdown> &clickedItem) {
+    //when this item is click, pass the data of the item to the header, with the goal of
+    // displaying the data at the main button. How?
+    //ways to do it: pass the MAIN item that must be updated. and when the item which the
+    //user clicks, then pass the data attributes to the MAIN item and update the string,
+    //or objects/data of the main item, and update the MAIN item UI. then close the dropdown
+    //menu, but this should be a different detail.
+    std::cout << "setting data for dropdown menu\n";
+    toggleDropdownMenu();
+    button.setText(clickedItem.getData());
 }

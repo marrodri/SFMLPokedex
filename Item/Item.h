@@ -14,13 +14,16 @@
 #include "../Helper/HelperFunctions.h"
 #include "../SoundFX/SoundFX.h"
 
-
+enum ItemType {SELECTED,OPTION};
 template<typename T>
 class Item : public GUIComponent {
 private:
     sf::RectangleShape box;
     sf::Text textUI;
     sf::Color hoveredColor = sf::Color::Blue;
+    std::string data;
+    ItemType itemType;
+
 
     /**
      * function pointers.
@@ -28,6 +31,7 @@ private:
     void (*pFunc)() = nullptr;
     T *objInst;
     void (T::*pTemplateFunc)() = nullptr;
+    void (T::*pTemplateFuncWithItem)(Item &item) = nullptr;
 public:
     Item();
     /**
@@ -43,7 +47,7 @@ public:
     }
 
     void setPosition(sf::Vector2f position);
-    void setText(std::string text);
+    void setText(const std::string &text);
     void setFont(sf::Font &font);
     void setTextColor(const sf::Color &color);
     void setBorderWidth(int borderWidth);
@@ -52,23 +56,18 @@ public:
     void setDropdownShadow();
     //TODO: check how to pass a function that will be run when being clicked.
     void setOnClickFunction(void (*pOnClick)());
-
-//    template<typename T> inline
-     void setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
+    void setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
+    void setOnClickTemplateFunction(void (T::*pTemplateFuncWithItem)(Item<T> &item), T &objInst);
 
     /**
      * getters
      * */
      sf::Vector2f getPos();
-
+     std::string &getData();
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
-
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
-
     void update() override;
-
-
 };
 
 #include "Item.cpp"

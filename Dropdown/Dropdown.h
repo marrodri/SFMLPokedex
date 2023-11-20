@@ -32,7 +32,11 @@ public:
      void setButton(std::string text, void (*pFunct)());
      void setItemList(std::vector<ItemStruct> listOfItemStructs);
 
+     //*
+     //
+     // */
     void toggleDropdownMenu();
+    void setData(Item<Dropdown> &clickedItem);
 
     /*
      * GUIComponent virtual methods

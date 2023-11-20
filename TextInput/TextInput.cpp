@@ -108,12 +108,15 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                 useSnapshotText();
             }
         }
+        //when deleting a character,
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && !multiText.empty()) {
             History::pushNewAction(multiText.top().getChar(), WRITE, TEXTINPUT);
             multiText.deleteText();
+            //when using backspace, store the write function with the most recent character to write it back.
         }
     } else if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)
                && !isTextColiding() && isFocused) {
+        //when writing characters, store the delete function to history.
         multiText.pushNewLetter(event.text.unicode);
         History::pushNewAction('\0', DELETE, TEXTINPUT);
     }
