@@ -8,8 +8,8 @@ add_executable(sfmlTemplate main.cpp
         App.h
         Input/Input.cpp
         Input/Input.h
-        Screen.cpp
-        Screen.h
+        Screen/Screen.cpp
+        Screen/Screen.h
         Font/Font.cpp
         Font/Font.h
         Components/GUIComponent.h
@@ -47,7 +47,15 @@ add_executable(sfmlTemplate main.cpp
         Dropdown/Dropdown.h
         SoundFX/SoundFX.cpp
         SoundFX/SoundFX.h
-        Item/ItemStruct.h)
+        Item/ItemStruct.h
+        Screen/HomeScreen/HomeScreen.cpp
+        Screen/HomeScreen/HomeScreen.h
+        Screen/PokemonScreen/PokemonScreen.cpp
+        Screen/PokemonScreen/PokemonScreen.h
+        Screen/SearchInput/SearchInput.cpp
+        Screen/SearchInput/SearchInput.h
+        Screen/SideMenu/SideMenu.cpp
+        Screen/SideMenu/SideMenu.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

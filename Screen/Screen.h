@@ -5,8 +5,9 @@
 #ifndef SFMLTEMPLATE_SCREEN_H
 #define SFMLTEMPLATE_SCREEN_H
 #include <SFML/Graphics.hpp>
-
-class Screen : public sf::Drawable {
+#include "../Components/GUIComponent.h"
+//this is where the background will be used.
+class Screen : public GUIComponent {
     //sf::drawable has no idea how to draw a screen.
     //the children must be implemented how to draw in the screen.
 
@@ -14,10 +15,23 @@ class Screen : public sf::Drawable {
     sf::RectangleShape box;
     sf::Text text;
     sf::Font font;
-protected:
+    sf::RectangleShape background;
+    //DropDown Menu Bar.
+
+
+public:
     Screen();
+    Screen(sf::Vector2f windowSize);
     Screen(sf::Vector2f dimensions, sf::Font font);
-    virtual void draw(sf::RenderStates &window, sf::RenderStates states) const;
+
+
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
+
+    void update() override;
+
+
 };
 
 
