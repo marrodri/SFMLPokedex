@@ -11,7 +11,8 @@
 #include "Item/Item.h"
 #include "Dropdown/Dropdown.h"
 #include "Screen/Screen.h"
-
+#include "Images/Images.h"
+#include "AnimatedSprite/AnimatedSprite.h"
 std::vector<GUIComponent*> App::components;
 
 void App::init(){
@@ -27,14 +28,23 @@ void App::addComponent(GUIComponent& component){
 }
 
 void App::run() {
+    srand(time(0));
     //init window
     const int  WINDOW_WIDTH=800;
     const int  WINDOW_HEIGHT=600;
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "My window");
     window.setFramerateLimit(60);
+
+    //bulbasaur
+//    AnimatedSprite animatedSprite(Images::get3DImage(0),1,41);
+    //polywirl
+    AnimatedSprite animatedSprite(Images::get3DImage(0),1,40);
+    animatedSprite.setPosition(50,50);
+    animatedSprite.setTime(20);
+    addComponent(animatedSprite);
     Font font;
-    Screen screen(sf::Vector2f({800,600}));
-    addComponent(screen);
+//    Screen screen(sf::Vector2f({800,600}));
+//    addComponent(screen);
     while (window.isOpen())
     {
         sf::Event event;

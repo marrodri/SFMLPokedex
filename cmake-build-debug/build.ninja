@@ -70,12 +70,12 @@ build CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o: CXX_COMPILER__sfmlTemplate_
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
   OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Input
 
-build CMakeFiles/sfmlTemplate.dir/Screen.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Screen.cpp || cmake_object_order_depends_target_sfmlTemplate
-  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Screen.cpp.o.d
+build CMakeFiles/sfmlTemplate.dir/Screen/Screen.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Screen/Screen.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Screen/Screen.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
   INCLUDES = -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
-  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Screen
 
 build CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Font/Font.cpp || cmake_object_order_depends_target_sfmlTemplate
   DEP_FILE = CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o.d
@@ -196,6 +196,48 @@ build CMakeFiles/sfmlTemplate.dir/SoundFX/SoundFX.cpp.o: CXX_COMPILER__sfmlTempl
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
   OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/SoundFX
 
+build CMakeFiles/sfmlTemplate.dir/Screen/HomeScreen/HomeScreen.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Screen/HomeScreen/HomeScreen.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Screen/HomeScreen/HomeScreen.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Screen/HomeScreen
+
+build CMakeFiles/sfmlTemplate.dir/Screen/PokemonScreen/PokemonScreen.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Screen/PokemonScreen/PokemonScreen.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Screen/PokemonScreen/PokemonScreen.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Screen/PokemonScreen
+
+build CMakeFiles/sfmlTemplate.dir/Screen/SearchInput/SearchInput.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Screen/SearchInput/SearchInput.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Screen/SearchInput/SearchInput.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Screen/SearchInput
+
+build CMakeFiles/sfmlTemplate.dir/Screen/SideMenu/SideMenu.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Screen/SideMenu/SideMenu.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Screen/SideMenu/SideMenu.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Screen/SideMenu
+
+build CMakeFiles/sfmlTemplate.dir/Images/Images.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Images/Images.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Images/Images.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Images
+
+build CMakeFiles/sfmlTemplate.dir/AnimatedSprite/AnimatedSprite.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/AnimatedSprite/AnimatedSprite.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/AnimatedSprite/AnimatedSprite.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/AnimatedSprite
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target sfmlTemplate
@@ -204,7 +246,7 @@ build CMakeFiles/sfmlTemplate.dir/SoundFX/SoundFX.cpp.o: CXX_COMPILER__sfmlTempl
 #############################################
 # Link the executable sfmlTemplate
 
-build sfmlTemplate: CXX_EXECUTABLE_LINKER__sfmlTemplate_Debug CMakeFiles/sfmlTemplate.dir/main.cpp.o CMakeFiles/sfmlTemplate.dir/App.cpp.o CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o CMakeFiles/sfmlTemplate.dir/Screen.cpp.o CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o CMakeFiles/sfmlTemplate.dir/History/History.cpp.o CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o CMakeFiles/sfmlTemplate.dir/States/States.cpp.o CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o CMakeFiles/sfmlTemplate.dir/Item/Item.cpp.o CMakeFiles/sfmlTemplate.dir/Item/ItemList.cpp.o CMakeFiles/sfmlTemplate.dir/Helper/HelperFunctions.cpp.o CMakeFiles/sfmlTemplate.dir/Dropdown/Dropdown.cpp.o CMakeFiles/sfmlTemplate.dir/SoundFX/SoundFX.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
+build sfmlTemplate: CXX_EXECUTABLE_LINKER__sfmlTemplate_Debug CMakeFiles/sfmlTemplate.dir/main.cpp.o CMakeFiles/sfmlTemplate.dir/App.cpp.o CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o CMakeFiles/sfmlTemplate.dir/Screen/Screen.cpp.o CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o CMakeFiles/sfmlTemplate.dir/History/History.cpp.o CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o CMakeFiles/sfmlTemplate.dir/States/States.cpp.o CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o CMakeFiles/sfmlTemplate.dir/Item/Item.cpp.o CMakeFiles/sfmlTemplate.dir/Item/ItemList.cpp.o CMakeFiles/sfmlTemplate.dir/Helper/HelperFunctions.cpp.o CMakeFiles/sfmlTemplate.dir/Dropdown/Dropdown.cpp.o CMakeFiles/sfmlTemplate.dir/SoundFX/SoundFX.cpp.o CMakeFiles/sfmlTemplate.dir/Screen/HomeScreen/HomeScreen.cpp.o CMakeFiles/sfmlTemplate.dir/Screen/PokemonScreen/PokemonScreen.cpp.o CMakeFiles/sfmlTemplate.dir/Screen/SearchInput/SearchInput.cpp.o CMakeFiles/sfmlTemplate.dir/Screen/SideMenu/SideMenu.cpp.o CMakeFiles/sfmlTemplate.dir/Images/Images.cpp.o CMakeFiles/sfmlTemplate.dir/AnimatedSprite/AnimatedSprite.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib  /opt/homebrew/lib/libsfml-audio.2.6.0.dylib  /opt/homebrew/lib/libsfml-window.2.6.0.dylib  /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir

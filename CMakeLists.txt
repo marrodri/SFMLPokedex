@@ -55,7 +55,11 @@ add_executable(sfmlTemplate main.cpp
         Screen/SearchInput/SearchInput.cpp
         Screen/SearchInput/SearchInput.h
         Screen/SideMenu/SideMenu.cpp
-        Screen/SideMenu/SideMenu.h)
+        Screen/SideMenu/SideMenu.h
+        Images/Images.cpp
+        Images/Images.h
+        AnimatedSprite/AnimatedSprite.cpp
+        AnimatedSprite/AnimatedSprite.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

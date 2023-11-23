@@ -19,11 +19,11 @@ void SearchInput::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 }
 
 void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    GUIComponent::addEventHandler(window, event);
+//    GUIComponent::addEventHandler(window, event);
 }
 
 void SearchInput::update() {
-    GUIComponent::update();
+//    GUIComponent::update();
 }
 
 
