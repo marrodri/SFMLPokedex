@@ -9,6 +9,7 @@
 class Logo :public GUIComponent{
 private:
     sf::RectangleShape logoContainer;
+
 public:
     Logo();
 

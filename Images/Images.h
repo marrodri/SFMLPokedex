@@ -7,13 +7,15 @@
 
 #include <map>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 
 enum images
 {
-    BACKGROUND1, BACKGROUND2, BACKGROUND3, POKEMONSPRITE1, POKEMONSPRITE2
+    LOGO, BACKGROUND1, BACKGROUND2, BACKGROUND3
 };
 class Images {
+private:
     static std::map<images, sf::Texture> textures;
     static std::array<sf::Texture,150> textures3D;
 
@@ -25,6 +27,8 @@ class Images {
     static void load3DTexture(int i);
 
 public:
+    Images();
+
     static sf::Texture &getImage(images image);
     static sf::Texture &get3DImage(int i);
 
