@@ -7,6 +7,7 @@
 #include "MouseEvents.h"
 
 template<typename T> sf::Clock MouseEvents<T>::clock;
+template<typename T> sf::Cursor MouseEvents<T>::cursor;
 template<typename T>  int MouseEvents<T>::clicks = 0;
 
 /**
@@ -85,6 +86,22 @@ template<typename T>
 bool MouseEvents<T>::draggedOver(T &object, sf::RenderWindow &window, sf::Event event) {
     sf::Vector2f mpos = (sf::Vector2f) sf::Mouse::getPosition(window);
     return (object.getGlobalBounds().contains(mpos) && sf::Mouse::isButtonPressed(sf::Mouse::Left));
+}
+
+
+template<typename T>
+void MouseEvents<T>::setHand(sf::RenderWindow &window) {
+    if(cursor.loadFromSystem(sf::Cursor::Hand)){
+        window.setMouseCursor(cursor);
+    }
+
+}
+
+template<typename T>
+void MouseEvents<T>::setArrow(sf::RenderWindow &window) {
+    if(cursor.loadFromSystem(sf::Cursor::Arrow)){
+        window.setMouseCursor(cursor);
+    }
 }
 
 #endif

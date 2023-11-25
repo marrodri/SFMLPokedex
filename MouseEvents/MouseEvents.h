@@ -12,6 +12,7 @@ class MouseEvents {
 private:
     // this is what I used to determine if a double click or triple click occurred
     static sf::Clock clock;
+    static sf::Cursor cursor;
     static int clicks;
     static void countClicks(sf::Event event);
 public:
@@ -32,6 +33,13 @@ public:
 
     // returns tru if the mouse is hovered over the object
     static bool hovered(T& object, sf::RenderWindow& window);
+
+
+    /**
+     * mouse cursor ui event
+     * */
+    static void setHand(sf::RenderWindow &window);
+    static void setArrow(sf::RenderWindow &window);
 };
 #include "MouseEvents.cpp"
 
