@@ -72,7 +72,9 @@ add_executable(sfmlTemplate main.cpp
         Layout/Logo/Logo.h
         Components/ButtonInterface.h
         Layout/MainScreen/MainScreenButton/MainScreenButton.cpp
-        Layout/MainScreen/MainScreenButton/MainScreenButton.h)
+        Layout/MainScreen/MainScreenButton/MainScreenButton.h
+        StateManager/PokemonManager.cpp
+        StateManager/PokemonManager.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

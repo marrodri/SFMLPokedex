@@ -15,10 +15,28 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
     box.setOutlineThickness(2);
 
     box.setPosition(pos);
+
+    ///img text, replaced with an animated sprite.
     text.setFont(font);
     text.setCharacterSize(15);
-    text.setString("Pichu");
+    text.setString("Sprite");
+
+
+    ///number in top left cornet
+    number.setCharacterSize(15);
+    number.setString("#1");
+    number.setFont(font);
+
+    pokemonName.setCharacterSize(14);
+    pokemonName.setString("Charizard");
+    pokemonName.setFont(font);
+
+    //text or sprite is centered.
     HelperFunctions<sf::RectangleShape>::centerText(box, text);
+    //
+
+    HelperFunctions<sf::RectangleShape>::centerTextVertically(box, pokemonName, 80);
+    HelperFunctions<sf::RectangleShape>::positionTextByBounds(box, number, {12,12});
 }
 
 /**
@@ -35,6 +53,8 @@ sf::Vector2f GridButton::getSize() {
 
 void GridButton::setPosition(sf::Vector2f pos) {
     box.setPosition(pos);
+    HelperFunctions<sf::RectangleShape>::centerTextVertically(box, pokemonName, 95);
+    HelperFunctions<sf::RectangleShape>::positionTextByBounds(box, number, {12,12});
     HelperFunctions<sf::RectangleShape>::centerText(box, text);
 }
 
@@ -45,6 +65,8 @@ void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     ///
     target.draw(box);
     target.draw(text);
+    target.draw(number);
+    target.draw(pokemonName);
 }
 
 void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {

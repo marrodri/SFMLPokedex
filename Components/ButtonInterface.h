@@ -6,7 +6,7 @@
 #define SFMLTEMPLATE_BUTTONINTERFACE_H
 
 /**
- * Protected Button Interface
+ * Protected MainScreenButton Interface
  * */
 class ButtonInterface{
     virtual void onClick() = 0;

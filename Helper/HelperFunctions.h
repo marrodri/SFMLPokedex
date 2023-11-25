@@ -15,6 +15,8 @@ template<typename T>
 class HelperFunctions {
 public:
     static void centerText(const T &obj, sf::Text &text);
+    static void centerTextVertically(const T &obj, sf::Text &text, float yCoord);
+    static void positionTextByBounds(const T &obj, sf::Text &text, sf::Vector2f position);
 };
 
 #include "HelperFunctions.cpp"

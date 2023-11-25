@@ -14,6 +14,8 @@ class GridButton : public GUIComponent, private ButtonInterface{
 private:
     sf::RectangleShape box;
     sf::Text text;
+    sf::Text number;
+    sf::Text pokemonName;
     //TODO: create a pointer struct for storing the Pokemon
     /**
     * button interface methods
