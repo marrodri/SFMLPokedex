@@ -59,7 +59,17 @@ add_executable(sfmlTemplate main.cpp
         Images/Images.cpp
         Images/Images.h
         AnimatedSprite/AnimatedSprite.cpp
-        AnimatedSprite/AnimatedSprite.h)
+        AnimatedSprite/AnimatedSprite.h
+        Screen/HomeScreen/Views/GridView.cpp
+        Screen/HomeScreen/Views/GridView.h
+        Screen/HomeScreen/Views/TileView.cpp
+        Screen/HomeScreen/Views/TileView.h
+        Button/GridButton.cpp
+        Button/GridButton.h
+        Button/TileButton.cpp
+        Button/TileButton.h
+        Screen/Logo/Logo.cpp
+        Screen/Logo/Logo.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

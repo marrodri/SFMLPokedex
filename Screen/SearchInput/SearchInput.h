@@ -6,7 +6,7 @@
 #define SFMLTEMPLATE_SEARCHINPUT_H
 
 #include "../../Components/GUIComponent.h"
-class SearchInput :GUIComponent {
+class SearchInput :public GUIComponent {
 private:
     sf::RectangleShape textInput;
     sf::Text placeholder;

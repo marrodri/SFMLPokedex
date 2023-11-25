@@ -5,8 +5,21 @@
 #ifndef SFMLTEMPLATE_HOMESCREEN_H
 #define SFMLTEMPLATE_HOMESCREEN_H
 
+#include "../../Components/GUIComponent.h"
+#include "./Views/GridView.h"
+class HomeScreen: public GUIComponent{
 
-class HomeScreen {
+private:
+    GridView gridView;
+    sf::RectangleShape homeScreen;
+public:
+    HomeScreen();
+
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
+
+    void update() override;
 
 };
 
