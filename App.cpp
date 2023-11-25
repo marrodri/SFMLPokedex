@@ -43,7 +43,7 @@ void App::run() {
     ///animated sprite
     //bulbasaur
 //    AnimatedSprite animatedSprite(Images::get3DImage(0),1,41);
-    //polywirl
+    //polywhirl
     AnimatedSprite animatedSprite(Images::get3DImage(0),1,40);
     animatedSprite.setPosition(50,50);
     animatedSprite.setTime(20);

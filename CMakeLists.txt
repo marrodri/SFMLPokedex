@@ -69,7 +69,8 @@ add_executable(sfmlTemplate main.cpp
         Button/TileButton.cpp
         Button/TileButton.h
         Screen/Logo/Logo.cpp
-        Screen/Logo/Logo.h)
+        Screen/Logo/Logo.h
+        Components/ButtonInterface.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

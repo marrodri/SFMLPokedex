@@ -7,6 +7,7 @@
 
 #include <map>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 
 enum images

@@ -3,6 +3,7 @@
 //
 
 #include "GridButton.h"
+#include "../SoundFX/SoundFX.h"
 
 GridButton::GridButton() {
 }
@@ -47,16 +48,25 @@ void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
 void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     ///
+
     if (MouseEvents<sf::RectangleShape>::hovered(box,window)) {
+        if (!checkState(HOVERED)) {
+            SoundFX::playHoverSound();
+            MouseEvents<sf::RectangleShape>::setHand(window);
+        }
         enableState(HOVERED);
-        MouseEvents<sf::RectangleShape>::setHand(window);
     }
     else {
+        if(checkState(HOVERED)){
+            MouseEvents<sf::RectangleShape>::setArrow(window);
+        }
         disabledState(HOVERED);
-        MouseEvents<sf::RectangleShape>::setArrow(window);
     }
     if (MouseEvents<sf::RectangleShape>::mouseClicked(box, window)) {
         std::cout << "clicking grid button\n";
+        SoundFX::playClickSound();
+        MouseEvents<sf::RectangleShape>::setArrow(window);
+        onClick();
     }
 }
 
@@ -68,4 +78,22 @@ void GridButton::update() {
     else {
         box.setFillColor(sf::Color::Green);
     }
+}
+
+//TODO: add the logic that moves from grid view,
+// to the main pokemon.
+void GridButton::onClick() {
+    std::cout << "clicking function\n";
+}
+
+void GridButton::setOnClickFunction() {
+
+}
+
+void GridButton::onHoverSound() {
+
+}
+
+void GridButton::onClickSound() {
+
 }

@@ -13,7 +13,6 @@ Images::Images() {
 }
 
 std::string Images::getPath(images image) {
-//    return std::__cxx11::string();
     switch (image) {
         case LOGO:
             return "Resources/Images/logo/sfmlPokedex_logo.png";
@@ -30,7 +29,7 @@ std::string Images::getPath(images image) {
 
 
 //for the 3d, you will create an array of paths.
-
+//TODO: update the stub function
 std::string Images::get3DPokemonPath(int i) {
 //    return "Resources/Sprites/3DSprites/001.png";
     return "Resources/Sprites/3DSprites/061.png";
