@@ -8,8 +8,8 @@ add_executable(sfmlTemplate main.cpp
         App.h
         Input/Input.cpp
         Input/Input.h
-        Screen/Screen.cpp
-        Screen/Screen.h
+        Layout/Layout.cpp
+        Layout/Layout.h
         Font/Font.cpp
         Font/Font.h
         Components/GUIComponent.h
@@ -48,29 +48,31 @@ add_executable(sfmlTemplate main.cpp
         SoundFX/SoundFX.cpp
         SoundFX/SoundFX.h
         Item/ItemStruct.h
-        Screen/HomeScreen/HomeScreen.cpp
-        Screen/HomeScreen/HomeScreen.h
-        Screen/PokemonScreen/PokemonScreen.cpp
-        Screen/PokemonScreen/PokemonScreen.h
-        Screen/SearchInput/SearchInput.cpp
-        Screen/SearchInput/SearchInput.h
-        Screen/SideMenu/SideMenu.cpp
-        Screen/SideMenu/SideMenu.h
+        Layout/MainScreen/MainScreen.cpp
+        Layout/MainScreen/MainScreen.h
+        Layout/PokemonScreen/PokemonScreen.cpp
+        Layout/PokemonScreen/PokemonScreen.h
+        Layout/SearchInput/SearchInput.cpp
+        Layout/SearchInput/SearchInput.h
+        Layout/SideMenu/SideMenu.cpp
+        Layout/SideMenu/SideMenu.h
         Images/Images.cpp
         Images/Images.h
         AnimatedSprite/AnimatedSprite.cpp
         AnimatedSprite/AnimatedSprite.h
-        Screen/HomeScreen/Views/GridView.cpp
-        Screen/HomeScreen/Views/GridView.h
-        Screen/HomeScreen/Views/TileView.cpp
-        Screen/HomeScreen/Views/TileView.h
+        Layout/MainScreen/Views/GridView.cpp
+        Layout/MainScreen/Views/GridView.h
+        Layout/MainScreen/Views/TileView.cpp
+        Layout/MainScreen/Views/TileView.h
         Button/GridButton.cpp
         Button/GridButton.h
         Button/TileButton.cpp
         Button/TileButton.h
-        Screen/Logo/Logo.cpp
-        Screen/Logo/Logo.h
-        Components/ButtonInterface.h)
+        Layout/Logo/Logo.cpp
+        Layout/Logo/Logo.h
+        Components/ButtonInterface.h
+        Layout/MainScreen/MainScreenButton/MainScreenButton.cpp
+        Layout/MainScreen/MainScreenButton/MainScreenButton.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

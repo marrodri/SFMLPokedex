@@ -10,14 +10,16 @@
 #include "TextInput/TextInput.h"
 #include "Item/Item.h"
 #include "Dropdown/Dropdown.h"
-#include "Screen/Screen.h"
-#include "Screen/HomeScreen/Views/GridView.h"
-#include "Screen/SideMenu/SideMenu.h"
-#include "Screen/Logo/Logo.h"
-#include "Screen/SearchInput/SearchInput.h"
+#include "Layout/Layout.h"
+#include "Layout/MainScreen/Views/GridView.h"
+#include "Layout/SideMenu/SideMenu.h"
+#include "Layout/Logo/Logo.h"
+#include "Layout/SearchInput/SearchInput.h"
 #include "Images/Images.h"
 #include "AnimatedSprite/AnimatedSprite.h"
 #include "Button/GridButton.h"
+#include "Layout/MainScreen/MainScreen.h"
+
 std::vector<GUIComponent*> App::components;
 
 void App::init(){
@@ -48,11 +50,8 @@ void App::run() {
     animatedSprite.setPosition(50,50);
     animatedSprite.setTime(20);
 
-    ////gridView TODO: move this to the HomeScreen init and draw it.
-    GridView gridView(sf::Vector2f (250,100));
-    for(int i =0; i<32; i++){
-        gridView.pushItem(i);
-    }
+    MainScreen mainScreen;
+
 
 
     ///SearchInput.
@@ -64,13 +63,13 @@ void App::run() {
     Logo logo;
 
     ///Background
-    Screen screen(sf::Vector2f({WINDOW_WIDTH,WINDOW_HEIGHT}));
+    Layout screen(sf::Vector2f({WINDOW_WIDTH, WINDOW_HEIGHT}));
     /**
      * order of animation(far behind->most from): background->screen
      * */
     addComponent(screen);
     addComponent(animatedSprite);
-    addComponent(gridView);
+    addComponent(mainScreen);
     addComponent(searchInput);
     addComponent(sideMenu);
     addComponent(logo);

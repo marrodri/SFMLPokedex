@@ -13,6 +13,7 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
     box.setFillColor(sf::Color::Green);
     box.setOutlineColor(sf::Color::White);
     box.setOutlineThickness(2);
+
     box.setPosition(pos);
     text.setFont(font);
     text.setCharacterSize(15);
@@ -77,6 +78,7 @@ void GridButton::update() {
     }
     else {
         box.setFillColor(sf::Color::Green);
+
     }
 }
 

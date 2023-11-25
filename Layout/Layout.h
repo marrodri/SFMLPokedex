@@ -2,12 +2,12 @@
 // Created by Marthel Rodriguez on 10/12/23.
 //
 
-#ifndef SFMLTEMPLATE_SCREEN_H
-#define SFMLTEMPLATE_SCREEN_H
+#ifndef SFMLTEMPLATE_LAYOUT_H
+#define SFMLTEMPLATE_LAYOUT_H
 #include <SFML/Graphics.hpp>
 #include "../Components/GUIComponent.h"
 //this is where the background will be used.
-class Screen : public GUIComponent {
+class Layout : public GUIComponent {
     //sf::drawable has no idea how to draw a screen.
     //the children must be implemented how to draw in the screen.
 
@@ -20,9 +20,9 @@ class Screen : public GUIComponent {
 
 
 public:
-    Screen();
-    Screen(sf::Vector2f windowSize);
-    Screen(sf::Vector2f dimensions, sf::Font font);
+    Layout();
+    Layout(sf::Vector2f windowSize);
+    Layout(sf::Vector2f dimensions, sf::Font font);
 
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
@@ -35,4 +35,4 @@ public:
 };
 
 
-#endif //SFMLTEMPLATE_SCREEN_H
+#endif //SFMLTEMPLATE_LAYOUT_H
