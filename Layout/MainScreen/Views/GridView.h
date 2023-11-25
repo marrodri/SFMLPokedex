@@ -6,10 +6,12 @@
 #define SFMLTEMPLATE_GRIDVIEW_H
 
 #include "../../../Button/GridButton.h"
+#include "../../../StateManager/PokemonManager.h"
 #include <vector>
 class GridView: public GUIComponent {
 private:
     std::vector<GridButton*> listOfGridButtons;
+    PokemonManager pokemonManager;
     sf::Vector2f position;
 
     ///TODO: replace int i, with a pointer of pokemon struct

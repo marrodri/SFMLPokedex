@@ -7,7 +7,7 @@
 
 /**
  * constructors
- * */
+ **/
 GridView::GridView() {
 
 }
@@ -18,7 +18,7 @@ GridView::GridView(sf::Vector2f pos) :position(pos){
 
 /**
  * methods
- * */
+ **/
 
 ///private method
 GridButton *GridView::createNewGridButton(int i) {
