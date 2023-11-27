@@ -46,17 +46,19 @@ void App::run() {
     //bulbasaur
 //    AnimatedSprite animatedSprite(Images::get3DImage(0),1,41);
     //polywhirl
+
+    sf::RectangleShape wholeSprite;
+//    wholeSprite.setTexture(&Images::get3DImage(0));
+//    wholeSprite.setPosition(0,0);
+//    wholeSprite.setSize({100, 100});
     AnimatedSprite animatedSprite(Images::get3DImage(0),1,40);
     animatedSprite.setPosition(50,50);
-    animatedSprite.setTime(20);
+    animatedSprite.setTime(1000);
 
+    //animated screen
     MainScreen mainScreen;
-
-
-
     ///SearchInput.
     SearchInput  searchInput;
-
     ///Side Menu
     SideMenu sideMenu;
     ///Logo
@@ -67,12 +69,13 @@ void App::run() {
     /**
      * order of animation(far behind->most from): background->screen
      * */
-    addComponent(screen);
+//    addComponent(screen);
     addComponent(animatedSprite);
-    addComponent(mainScreen);
-    addComponent(searchInput);
-    addComponent(sideMenu);
-    addComponent(logo);
+
+//    addComponent(mainScreen);
+//    addComponent(searchInput);
+//    addComponent(sideMenu);
+//    addComponent(logo);
     while (window.isOpen())
     {
         sf::Event event;
@@ -91,6 +94,7 @@ void App::run() {
         for(GUIComponent* &g: components){
             window.draw(*g);
         }
+        window.draw(wholeSprite);
         window.display();
     }
 }
