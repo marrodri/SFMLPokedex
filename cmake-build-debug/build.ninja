@@ -245,13 +245,6 @@ build CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views/GridView.cpp.o: CXX_CO
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
   OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views
 
-build CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views/TileView.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Layout/MainScreen/Views/TileView.cpp || cmake_object_order_depends_target_sfmlTemplate
-  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views/TileView.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
-  INCLUDES = -isystem /opt/homebrew/include
-  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
-  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views
-
 build CMakeFiles/sfmlTemplate.dir/Button/GridButton.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Button/GridButton.cpp || cmake_object_order_depends_target_sfmlTemplate
   DEP_FILE = CMakeFiles/sfmlTemplate.dir/Button/GridButton.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
@@ -287,6 +280,20 @@ build CMakeFiles/sfmlTemplate.dir/StateManager/PokemonManager.cpp.o: CXX_COMPILE
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
   OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/StateManager
 
+build CMakeFiles/sfmlTemplate.dir/Data/PokemonList.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/Data/PokemonList.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/Data/PokemonList.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir/Data
+
+build CMakeFiles/sfmlTemplate.dir/SFMLPokedex.cpp.o: CXX_COMPILER__sfmlTemplate_unscanned_Debug /Users/marrodri95/CLionProjects/sfmlTemplate/SFMLPokedex.cpp || cmake_object_order_depends_target_sfmlTemplate
+  DEP_FILE = CMakeFiles/sfmlTemplate.dir/SFMLPokedex.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/sfmlTemplate.dir
+  OBJECT_FILE_DIR = CMakeFiles/sfmlTemplate.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target sfmlTemplate
@@ -295,7 +302,7 @@ build CMakeFiles/sfmlTemplate.dir/StateManager/PokemonManager.cpp.o: CXX_COMPILE
 #############################################
 # Link the executable sfmlTemplate
 
-build sfmlTemplate: CXX_EXECUTABLE_LINKER__sfmlTemplate_Debug CMakeFiles/sfmlTemplate.dir/main.cpp.o CMakeFiles/sfmlTemplate.dir/App.cpp.o CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/Layout.cpp.o CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o CMakeFiles/sfmlTemplate.dir/History/History.cpp.o CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o CMakeFiles/sfmlTemplate.dir/States/States.cpp.o CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o CMakeFiles/sfmlTemplate.dir/Item/Item.cpp.o CMakeFiles/sfmlTemplate.dir/Item/ItemList.cpp.o CMakeFiles/sfmlTemplate.dir/Helper/HelperFunctions.cpp.o CMakeFiles/sfmlTemplate.dir/Dropdown/Dropdown.cpp.o CMakeFiles/sfmlTemplate.dir/SoundFX/SoundFX.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/MainScreen.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/PokemonScreen/PokemonScreen.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/SearchInput/SearchInput.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/SideMenu/SideMenu.cpp.o CMakeFiles/sfmlTemplate.dir/Images/Images.cpp.o CMakeFiles/sfmlTemplate.dir/AnimatedSprite/AnimatedSprite.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views/GridView.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views/TileView.cpp.o CMakeFiles/sfmlTemplate.dir/Button/GridButton.cpp.o CMakeFiles/sfmlTemplate.dir/Button/TileButton.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/Logo/Logo.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/MainScreenButton/MainScreenButton.cpp.o CMakeFiles/sfmlTemplate.dir/StateManager/PokemonManager.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
+build sfmlTemplate: CXX_EXECUTABLE_LINKER__sfmlTemplate_Debug CMakeFiles/sfmlTemplate.dir/main.cpp.o CMakeFiles/sfmlTemplate.dir/App.cpp.o CMakeFiles/sfmlTemplate.dir/Input/Input.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/Layout.cpp.o CMakeFiles/sfmlTemplate.dir/Font/Font.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiText.cpp.o CMakeFiles/sfmlTemplate.dir/Letter/Letter.cpp.o CMakeFiles/sfmlTemplate.dir/MultiText/MultiTextIterator.cpp.o CMakeFiles/sfmlTemplate.dir/Typing/Typing.cpp.o CMakeFiles/sfmlTemplate.dir/TextInput/TextInput.cpp.o CMakeFiles/sfmlTemplate.dir/History/History.cpp.o CMakeFiles/sfmlTemplate.dir/Snapshot/Snapshot.cpp.o CMakeFiles/sfmlTemplate.dir/Label/Label.cpp.o CMakeFiles/sfmlTemplate.dir/States/States.cpp.o CMakeFiles/sfmlTemplate.dir/KeyShortcuts/KeyShortcuts.cpp.o CMakeFiles/sfmlTemplate.dir/MouseEvents/MouseEvents.cpp.o CMakeFiles/sfmlTemplate.dir/Item/Item.cpp.o CMakeFiles/sfmlTemplate.dir/Item/ItemList.cpp.o CMakeFiles/sfmlTemplate.dir/Helper/HelperFunctions.cpp.o CMakeFiles/sfmlTemplate.dir/Dropdown/Dropdown.cpp.o CMakeFiles/sfmlTemplate.dir/SoundFX/SoundFX.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/MainScreen.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/PokemonScreen/PokemonScreen.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/SearchInput/SearchInput.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/SideMenu/SideMenu.cpp.o CMakeFiles/sfmlTemplate.dir/Images/Images.cpp.o CMakeFiles/sfmlTemplate.dir/AnimatedSprite/AnimatedSprite.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/Views/GridView.cpp.o CMakeFiles/sfmlTemplate.dir/Button/GridButton.cpp.o CMakeFiles/sfmlTemplate.dir/Button/TileButton.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/Logo/Logo.cpp.o CMakeFiles/sfmlTemplate.dir/Layout/MainScreen/MainScreenButton/MainScreenButton.cpp.o CMakeFiles/sfmlTemplate.dir/StateManager/PokemonManager.cpp.o CMakeFiles/sfmlTemplate.dir/Data/PokemonList.cpp.o CMakeFiles/sfmlTemplate.dir/SFMLPokedex.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib  /opt/homebrew/lib/libsfml-audio.2.6.0.dylib  /opt/homebrew/lib/libsfml-window.2.6.0.dylib  /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   OBJECT_DIR = CMakeFiles/sfmlTemplate.dir

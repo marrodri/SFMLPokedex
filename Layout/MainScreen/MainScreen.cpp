@@ -4,11 +4,21 @@
 
 #include "MainScreen.h"
 #include "../../Font/Font.h"
+#include "../../SFMLPokedex.h"
 
 MainScreen::MainScreen(): gridView(sf::Vector2f (250,100)), leftButton( {840, 551},"L"),
     rightButton({890, 551},"R") {
+    int j=0;
     for (int i =0; i<32; i++) {
-        gridView.pushItem(i);
+        gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j));
+        PokemonStruct passedPok = SFMLPokedex::pokemonList.getPokemonData(j);
+        std::cout << passedPok.number << "\n";
+        std::cout << passedPok.name << "\n";
+        std::cout << passedPok.about << "\n";
+        j++;
+        if(j==3){
+            j=0;
+        }
     }
     homeScreenContainer.setFillColor(sf::Color::Black);
     homeScreenContainer.setPosition({247, 100});
@@ -40,8 +50,6 @@ void MainScreen::update() {
     leftButton.update();
     //update for the main page.
     //update the currPageIndex;
-
-
 }
 
 

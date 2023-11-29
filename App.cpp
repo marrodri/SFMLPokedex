@@ -4,7 +4,6 @@
 
 #include "App.h"
 #include <iostream>
-
 #include <SFML/Graphics.hpp>
 #include "Font/Font.h"
 #include "TextInput/TextInput.h"
@@ -37,23 +36,19 @@ void App::addComponent(GUIComponent& component){
 void App::run() {
     srand(time(0));
     //init window
-    const int  WINDOW_WIDTH=950;
-    const int  WINDOW_HEIGHT=600;
+    const int WINDOW_WIDTH=1000;
+    const int WINDOW_HEIGHT=600;
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "My window");
     window.setFramerateLimit(60);
 
     ///animated sprite
     //bulbasaur
-//    AnimatedSprite animatedSprite(Images::get3DImage(0),1,41);
+    //AnimatedSprite animatedSprite(Images::get3DImage(0),1,41);
     //polywhirl
 
-    sf::RectangleShape wholeSprite;
-//    wholeSprite.setTexture(&Images::get3DImage(0));
-//    wholeSprite.setPosition(0,0);
-//    wholeSprite.setSize({100, 100});
-    AnimatedSprite animatedSprite(Images::get3DImage(0),1,40);
-    animatedSprite.setPosition(50,50);
-    animatedSprite.setTime(50);
+//    AnimatedSprite animatedSprite(Images::get3DImage(0),1,40);
+//    animatedSprite.setPosition(50,50);
+//    animatedSprite.setTime(50);
 
     //animated screen
     MainScreen mainScreen;
@@ -70,12 +65,12 @@ void App::run() {
      * order of animation(far behind->most from): background->screen
      * */
 //    addComponent(screen);
-    addComponent(animatedSprite);
+//    addComponent(animatedSprite);
 
-//    addComponent(mainScreen);
-//    addComponent(searchInput);
-//    addComponent(sideMenu);
-//    addComponent(logo);
+    addComponent(mainScreen);
+    addComponent(searchInput);
+    addComponent(sideMenu);
+    addComponent(logo);
     while (window.isOpen())
     {
         sf::Event event;
@@ -83,18 +78,17 @@ void App::run() {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            for(GUIComponent* &g: components){
+            for (GUIComponent* &g: components) {
                 g->addEventHandler(window, event);
             }
         }
-        for(GUIComponent* &g: components){
+        for (GUIComponent* &g: components) {
             g->update();
         }
         window.clear();
-        for(GUIComponent* &g: components){
+        for (GUIComponent* &g: components) {
             window.draw(*g);
         }
-        window.draw(wholeSprite);
         window.display();
     }
 }

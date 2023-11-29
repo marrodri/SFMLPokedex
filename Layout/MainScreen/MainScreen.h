@@ -33,7 +33,6 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
-
 };
 
 

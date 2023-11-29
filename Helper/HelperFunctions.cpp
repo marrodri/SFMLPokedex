@@ -10,7 +10,7 @@
 
 
 template<typename T>
-void HelperFunctions<T>::centerText(const T &obj, sf::Text &text)
+void HelperFunctions::centerText(const T &obj, sf::Text &text)
 {
     sf::FloatRect textRect = text.getGlobalBounds();
     sf::FloatRect tRect = obj.getGlobalBounds();
@@ -21,8 +21,20 @@ void HelperFunctions<T>::centerText(const T &obj, sf::Text &text)
     text.setPosition({tRect.left + tRect.width/2, tRect.top + tRect.height/2});
 }
 
+template<typename T, typename U>
+void HelperFunctions::centerItem(const T &obj, U &item)
+{
+    sf::FloatRect textRect = item.getGlobalBounds();
+    sf::FloatRect tRect = obj.getGlobalBounds();
+    sf::Vector2f center = {textRect.width/2.0f, textRect.height/2.f};
+    sf::Vector2f localBounds = {center.x + item.getLocalBounds().left, center.y + item.getLocalBounds().top};
+    sf::Vector2f rounded = {std::round(localBounds.x), std::round(localBounds.y)};
+    item.setOrigin(rounded);
+    item.setPosition({tRect.left + tRect.width/2, tRect.top + tRect.height/2});
+}
+
 template<typename T>
-void HelperFunctions<T>::centerTextVertically(const T &obj, sf::Text &text, float yCoord)
+void HelperFunctions::centerTextVertically(const T &obj, sf::Text &text, float yCoord)
 {
     sf::FloatRect textRect = text.getGlobalBounds();
     sf::FloatRect tRect = obj.getGlobalBounds();
@@ -34,7 +46,7 @@ void HelperFunctions<T>::centerTextVertically(const T &obj, sf::Text &text, floa
 }
 
 template<typename T>
-void HelperFunctions<T>::positionTextByBounds(const T &obj, sf::Text &text, sf::Vector2f position){
+void HelperFunctions::positionTextByBounds(const T &obj, sf::Text &text, sf::Vector2f position){
     sf::FloatRect textRect = text.getGlobalBounds();
     sf::FloatRect tRect = obj.getGlobalBounds();
     sf::Vector2f center = {textRect.width/2.0f, textRect.height/2.f};

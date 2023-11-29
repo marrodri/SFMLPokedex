@@ -62,8 +62,6 @@ add_executable(sfmlTemplate main.cpp
         AnimatedSprite/AnimatedSprite.h
         Layout/MainScreen/Views/GridView.cpp
         Layout/MainScreen/Views/GridView.h
-        Layout/MainScreen/Views/TileView.cpp
-        Layout/MainScreen/Views/TileView.h
         Button/GridButton.cpp
         Button/GridButton.h
         Button/TileButton.cpp
@@ -74,7 +72,12 @@ add_executable(sfmlTemplate main.cpp
         Layout/MainScreen/MainScreenButton/MainScreenButton.cpp
         Layout/MainScreen/MainScreenButton/MainScreenButton.h
         StateManager/PokemonManager.cpp
-        StateManager/PokemonManager.h)
+        StateManager/PokemonManager.h
+        Data/PokemonStruct.h
+        Data/PokemonList.cpp
+        Data/PokemonList.h
+        SFMLPokedex.cpp
+        SFMLPokedex.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

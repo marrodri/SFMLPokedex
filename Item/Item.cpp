@@ -18,7 +18,7 @@ Item<T>::Item() {
 
     box.setPosition({200, 200});
     box.setSize({100, 30});
-    HelperFunctions<sf::RectangleShape>::centerText(box,textUI);
+    HelperFunctions::centerText(box,textUI);
     box.setOutlineColor(sf::Color::White);
     box.setOutlineThickness(1);
 }
@@ -56,7 +56,7 @@ void Item<T>::onClick() {
 template<typename T>
 void Item<T>::setPosition(sf::Vector2f position) {
     box.setPosition(position);
-    HelperFunctions<sf::RectangleShape>::centerText(box, textUI);
+    HelperFunctions::centerText(box, textUI);
 
 }
 
@@ -64,7 +64,7 @@ template<typename T>
 void Item<T>::setText(const std::string &text) {
     data = text;
     textUI.setString(text);
-    HelperFunctions<sf::RectangleShape>::centerText(box, textUI);
+    HelperFunctions::centerText(box, textUI);
 }
 
 template<typename T>
@@ -100,7 +100,6 @@ void Item<T>::setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst)
     this->pTemplateFunc = pTemplateFunc;
 }
 
-
 template<typename T>
 void Item<T>::setOnClickTemplateFunction(void (T::*pTemplateFuncWithItem)(Item<T> &item), T &objInst) {
     this->pTemplateFuncWithItem = pTemplateFuncWithItem;
@@ -111,7 +110,6 @@ template<typename T>
 void Item<T>::setOnClickFunction(void (*pOnClick)()) {
     this->pFunc = pOnClick;
 }
-
 
 /**
  * getters

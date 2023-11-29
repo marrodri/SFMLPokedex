@@ -7,15 +7,18 @@
 
 #include "../../../Button/GridButton.h"
 #include "../../../StateManager/PokemonManager.h"
+#include "../../../Data/PokemonStruct.h"
 #include <vector>
 class GridView: public GUIComponent {
 private:
     std::vector<GridButton*> listOfGridButtons;
-    PokemonManager pokemonManager;
     sf::Vector2f position;
 
     ///TODO: replace int i, with a pointer of pokemon struct
     GridButton *createNewGridButton(int i);
+    GridButton *createNewGridButton(PokemonStruct &pokemonData);
+    //What was this for. dont plan super ahead!!!
+//    PokemonManager pokemonManager;
 public:
     GridView();
 
@@ -25,6 +28,8 @@ public:
      * methods
      * */
     void pushItem(int i);
+    void pushItem(PokemonStruct &pokemonData);
+    void updateGridButtonData(PokemonStruct &pokemonData, int i);
 
     /**
      * overriden methods

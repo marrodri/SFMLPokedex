@@ -4,12 +4,13 @@
 
 #include "GridButton.h"
 #include "../SoundFX/SoundFX.h"
+#include "../Images/Images.h"
 
 GridButton::GridButton() {
 }
 
 GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
-    box.setSize({85,110});
+    box.setSize({85, 110});
     box.setFillColor(sf::Color::Green);
     box.setOutlineColor(sf::Color::White);
     box.setOutlineThickness(2);
@@ -32,11 +33,40 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
     pokemonName.setFont(font);
 
     //text or sprite is centered.
-    HelperFunctions<sf::RectangleShape>::centerText(box, text);
+    HelperFunctions::centerText(box, text);
     //
+    HelperFunctions::centerTextVertically(box, pokemonName, 80);
+    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+}
 
-    HelperFunctions<sf::RectangleShape>::centerTextVertically(box, pokemonName, 80);
-    HelperFunctions<sf::RectangleShape>::positionTextByBounds(box, number, {12,12});
+GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonData):sprite3D(Images::get3DImage(pokemonData.number),1, pokemonData.cols) {
+    box.setSize({90, 110});
+    box.setFillColor(sf::Color::Green);
+    box.setOutlineColor(sf::Color::White);
+    box.setOutlineThickness(2);
+    box.setPosition(pos);
+
+    ///img text, replaced with an animated sprite.
+//    text.setFont(font);
+//    text.setCharacterSize(15);
+//    text.setString("Sprite");
+
+    ///number in top left cornet
+    number.setCharacterSize(15);
+    number.setString(std::string(std::to_string(pokemonData.number)));
+    number.setFont(font);
+
+    pokemonName.setCharacterSize(14);
+    pokemonName.setString(pokemonData.name);
+    pokemonName.setFont(font);
+
+    //text or sprite is centered.
+//    HelperFunctions::centerItem(box, sprite3D);
+    HelperFunctions::centerTextVertically(box, pokemonName, 80);
+    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+
+
+    sprite3D.setTime(40);
 }
 
 /**
@@ -53,9 +83,10 @@ sf::Vector2f GridButton::getSize() {
 
 void GridButton::setPosition(sf::Vector2f pos) {
     box.setPosition(pos);
-    HelperFunctions<sf::RectangleShape>::centerTextVertically(box, pokemonName, 95);
-    HelperFunctions<sf::RectangleShape>::positionTextByBounds(box, number, {12,12});
-    HelperFunctions<sf::RectangleShape>::centerText(box, text);
+    HelperFunctions::centerTextVertically(box, pokemonName, 95);
+    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+//    HelperFunctions::centerText(box, text);
+    HelperFunctions::centerItem(box, sprite3D);
 }
 
 /**
@@ -64,23 +95,23 @@ void GridButton::setPosition(sf::Vector2f pos) {
 void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     ///
     target.draw(box);
-    target.draw(text);
+//    target.draw(text);
+
     target.draw(number);
     target.draw(pokemonName);
+    sprite3D.draw(target,states);
 }
 
 void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     ///
-
-    if (MouseEvents<sf::RectangleShape>::hovered(box,window)) {
+    if (MouseEvents<sf::RectangleShape>::hovered(box, window)) {
         if (!checkState(HOVERED)) {
             SoundFX::playHoverSound();
             MouseEvents<sf::RectangleShape>::setHand(window);
         }
         enableState(HOVERED);
-    }
-    else {
-        if(checkState(HOVERED)){
+    } else {
+        if (checkState(HOVERED)) {
             MouseEvents<sf::RectangleShape>::setArrow(window);
         }
         disabledState(HOVERED);
@@ -97,11 +128,10 @@ void GridButton::update() {
     ///
     if (checkState(HOVERED)) {
         box.setFillColor(sf::Color::Cyan);
-    }
-    else {
+    } else {
         box.setFillColor(sf::Color::Green);
-
     }
+    sprite3D.update();
 }
 
 //TODO: add the logic that moves from grid view,

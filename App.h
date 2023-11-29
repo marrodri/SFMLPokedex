@@ -10,13 +10,20 @@
 
 
 #include "Components/GUIComponent.h"
+
 class App {
 private:
     static std::vector<GUIComponent*> components;
 public:
+
+
+    /**
+     * main
+     **/
     static void init();
     static void addComponent(GUIComponent& component);
     static void run();
+
 };
 
 

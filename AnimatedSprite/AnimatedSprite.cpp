@@ -44,6 +44,7 @@ void AnimatedSprite::animate() {
 //texture was initialized somewhere before.
 void AnimatedSprite::setup(sf::Texture &texture, int rows, int cols) {
     setTexture(texture);
+
     width = texture.getSize().x;
     height = texture.getSize().y;
 
@@ -56,6 +57,8 @@ void AnimatedSprite::setupIntRect(sf::Vector2u imgSize, int rows, int cols) {
     intRect.height = imgSize.y / rows;
     intRect.left = 0;
     intRect.top = 0;
+
+
     setTextureRect(intRect);
 }
 
@@ -66,8 +69,6 @@ int AnimatedSprite::getTime() const {
 void AnimatedSprite::setTime(int time) {
     AnimatedSprite::time = time;
 }
-
-
 
 size AnimatedSprite::getSize() {
     return {width, height};

@@ -15,7 +15,7 @@ MainScreenButton::MainScreenButton(sf::Vector2f position, std::string text) {
     this->text.setFont(Font::getFont());
     this->text.setCharacterSize(24);
     buttonContainer.setSize({35, 35});
-    HelperFunctions<sf::RectangleShape>::centerText(buttonContainer, this->text);
+    HelperFunctions::centerText(buttonContainer, this->text);
     buttonContainer.setFillColor(sf::Color::Yellow);
 
 }
