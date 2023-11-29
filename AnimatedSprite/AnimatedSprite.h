@@ -19,6 +19,8 @@ class AnimatedSprite: public sf::Sprite, public GUIComponent{
     sf::IntRect intRect;
     sf::Clock clock;
     size spriteSize = {0, 0};
+    int rows;
+    int cols;
 
 private:
     int time = 250;//250 milliseconds, quarter of a second

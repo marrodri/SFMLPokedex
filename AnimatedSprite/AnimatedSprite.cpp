@@ -10,6 +10,8 @@ AnimatedSprite::AnimatedSprite() {
 }
 
 AnimatedSprite::AnimatedSprite(sf::Texture &texture, int rows, int cols) {
+    this->rows =rows;
+    this->cols = cols;
     setup(texture, rows, cols);
 //    setupIntRect(texture.getSize(), rows, cols);
 }
@@ -22,7 +24,11 @@ void AnimatedSprite::draw(sf::RenderTarget &target, sf::RenderStates states) con
 
 void AnimatedSprite::animate() {
     if (clock.getElapsedTime().asMilliseconds() > time) {
-        if (intRect.left >= intRect.width) {
+        //this is left
+
+        ///prev issue: you were passing the whole width of the int, not the whole width of the sprite.
+        ///which is fixed!!!!
+        if (intRect.left >= cols * intRect.width) {
             //reset the rectangle to the first frame
             intRect.left = 0;
         } else {

@@ -53,7 +53,7 @@ void App::run() {
 //    wholeSprite.setSize({100, 100});
     AnimatedSprite animatedSprite(Images::get3DImage(0),1,40);
     animatedSprite.setPosition(50,50);
-    animatedSprite.setTime(1000);
+    animatedSprite.setTime(50);
 
     //animated screen
     MainScreen mainScreen;
