@@ -5,6 +5,7 @@
 #include "GridButton.h"
 #include "../SoundFX/SoundFX.h"
 #include "../Images/Images.h"
+#include "../Screen//ScreenHandler.h"
 
 GridButton::GridButton() {
 }
@@ -36,14 +37,16 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
     HelperFunctions::centerText(box, text);
     //
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
-    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+    HelperFunctions::positionTextByBounds(box, number, {30,30});
 }
 
 GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonData):sprite3D(Images::get3DImage(pokemonData.number),1, pokemonData.cols) {
-    box.setSize({90, 110});
-    box.setFillColor(sf::Color::Green);
-    box.setOutlineColor(sf::Color::White);
-    box.setOutlineThickness(2);
+    this->pokemonData = pokemonData;
+    box.setSize({100, 110});
+    box.setTexture(&Images::getImage(BOX));
+    box.setFillColor(sf::Color::Blue);
+//    box.setOutlineColor(sf::Color::White);
+//    box.setOutlineThickness(2);
     box.setPosition(pos);
 
     ///img text, replaced with an animated sprite.
@@ -63,7 +66,7 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonD
     //text or sprite is centered.
 //    HelperFunctions::centerItem(box, sprite3D);
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
-    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+    HelperFunctions::positionTextByBounds(box, number, {numPos.x,numPos.y});
 
 
     sprite3D.setTime(40);
@@ -84,7 +87,8 @@ sf::Vector2f GridButton::getSize() {
 void GridButton::setPosition(sf::Vector2f pos) {
     box.setPosition(pos);
     HelperFunctions::centerTextVertically(box, pokemonName, 95);
-    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+//    HelperFunctions::positionTextByBounds(box, number, {12, 12});
+    HelperFunctions::positionTextByBounds(box, number, {numPos.x,numPos.y});
 //    HelperFunctions::centerText(box, text);
     HelperFunctions::centerItem(box, sprite3D);
 }
@@ -117,9 +121,9 @@ void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         disabledState(HOVERED);
     }
     if (MouseEvents<sf::RectangleShape>::mouseClicked(box, window)) {
-        std::cout << "clicking grid button\n";
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
+
         onClick();
     }
 }
@@ -129,7 +133,8 @@ void GridButton::update() {
     if (checkState(HOVERED)) {
         box.setFillColor(sf::Color::Cyan);
     } else {
-        box.setFillColor(sf::Color::Green);
+//        box.setFillColor(sf::Color::Green);
+        box.setFillColor(sf::Color::Blue);
     }
     sprite3D.update();
 }
@@ -138,6 +143,8 @@ void GridButton::update() {
 // to the main pokemon.
 void GridButton::onClick() {
     std::cout << "clicking function\n";
+    ScreenHandler::setSelectedPokemonData(pokemonData);
+    ScreenHandler::setCurrentScreen(POKEMON);
 }
 
 void GridButton::setOnClickFunction() {

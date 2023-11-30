@@ -8,8 +8,8 @@ add_executable(sfmlTemplate main.cpp
         App.h
         Input/Input.cpp
         Input/Input.h
-        Layout/Layout.cpp
-        Layout/Layout.h
+        Screen/Screen.cpp
+        Screen/Screen.h
         Font/Font.cpp
         Font/Font.h
         Components/GUIComponent.h
@@ -48,29 +48,29 @@ add_executable(sfmlTemplate main.cpp
         SoundFX/SoundFX.cpp
         SoundFX/SoundFX.h
         Item/ItemStruct.h
-        Layout/MainScreen/MainScreen.cpp
-        Layout/MainScreen/MainScreen.h
-        Layout/PokemonScreen/PokemonScreen.cpp
-        Layout/PokemonScreen/PokemonScreen.h
-        Layout/SearchInput/SearchInput.cpp
-        Layout/SearchInput/SearchInput.h
-        Layout/SideMenu/SideMenu.cpp
-        Layout/SideMenu/SideMenu.h
+        Screen/Home/Home.cpp
+        Screen/Home/Home.h
+        Screen/PokemonScreen/PokemonScreen.cpp
+        Screen/PokemonScreen/PokemonScreen.h
+        Screen/SearchInput/SearchInput.cpp
+        Screen/SearchInput/SearchInput.h
+        Screen/SideMenu/SideMenu.cpp
+        Screen/SideMenu/SideMenu.h
         Images/Images.cpp
         Images/Images.h
         AnimatedSprite/AnimatedSprite.cpp
         AnimatedSprite/AnimatedSprite.h
-        Layout/MainScreen/Views/GridView.cpp
-        Layout/MainScreen/Views/GridView.h
+        Screen/Home/Views/GridView.cpp
+        Screen/Home/Views/GridView.h
         Button/GridButton.cpp
         Button/GridButton.h
         Button/TileButton.cpp
         Button/TileButton.h
-        Layout/Logo/Logo.cpp
-        Layout/Logo/Logo.h
+        Screen/Logo/Logo.cpp
+        Screen/Logo/Logo.h
         Components/ButtonInterface.h
-        Layout/MainScreen/MainScreenButton/MainScreenButton.cpp
-        Layout/MainScreen/MainScreenButton/MainScreenButton.h
+        Screen/MainScreenButton/MainScreenButton.cpp
+        Screen/MainScreenButton/MainScreenButton.h
         StateManager/PokemonManager.cpp
         StateManager/PokemonManager.h
         Data/PokemonStruct.h
@@ -81,7 +81,11 @@ add_executable(sfmlTemplate main.cpp
         Container/Container.cpp
         Container/Container.h
         Text/Text.cpp
-        Text/Text.h)
+        Text/Text.h
+        SFMLPokedexEnums.h
+        Screen/ScreenEnum.h
+        Screen/ScreenHandler.cpp
+        Screen/ScreenHandler.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

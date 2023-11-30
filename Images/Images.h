@@ -12,7 +12,7 @@
 
 enum images
 {
-    LOGO, BACKGROUND1, BACKGROUND2, BACKGROUND3
+    LOGO, BACKGROUND1, BACKGROUND2, BACKGROUND3, BUTTON, BOX
 };
 class Images {
 private:
@@ -29,7 +29,7 @@ private:
 public:
     Images();
 
-    static sf::Texture &getImage(images image);
+    static  const sf::Texture &getImage(images image);
     static sf::Texture &get3DImage(int i);
 
 };

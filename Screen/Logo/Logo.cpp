@@ -6,6 +6,7 @@
 #include "../../Images/Images.h"
 #include "../../SoundFX/SoundFX.h"
 #include "../../MouseEvents/MouseEvents.h"
+#include "../ScreenHandler.h"
 
 ///perfect initializer for the logo container.
 Logo::Logo() {
@@ -19,9 +20,9 @@ Logo::Logo() {
 
 /**
  * button Interface methods
- * */
+ **/
 void Logo::onClick() {
-    //TODO: send the user to the main home page.
+    ScreenHandler::setCurrentScreen(HOME);
 }
 
 void Logo::setOnClickFunction() {

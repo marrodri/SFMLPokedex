@@ -11,7 +11,10 @@
 #include "../Components/ButtonInterface.h"
 #include "../Data/PokemonStruct.h"
 #include "../AnimatedSprite/AnimatedSprite.h"
-
+struct coordStruct {
+    float x;
+    float y;
+};
 class GridButton : public GUIComponent, private ButtonInterface {
 private:
     sf::RectangleShape box;
@@ -20,6 +23,7 @@ private:
     AnimatedSprite sprite3D;
     sf::Text pokemonName;
     PokemonStruct pokemonData;
+    coordStruct numPos = {13,16};
     //TODO: create a pointer struct for storing the Pokemon
     /**
     * button interface methods

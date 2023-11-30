@@ -20,7 +20,6 @@ public:
     /**
      * main
      **/
-    static void init();
     static void addComponent(GUIComponent& component);
     static void run();
 

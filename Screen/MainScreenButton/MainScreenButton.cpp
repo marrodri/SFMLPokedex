@@ -3,14 +3,17 @@
 //
 
 #include "MainScreenButton.h"
-#include "../../../Font/Font.h"
-#include "../../../Helper/HelperFunctions.h"
-#include "../../../SoundFX/SoundFX.h"
-#include "../../../MouseEvents/MouseEvents.h"
+#include "../../Font/Font.h"
+#include "../../Helper/HelperFunctions.h"
+#include "../../SoundFX/SoundFX.h"
+#include "../../MouseEvents/MouseEvents.h"
+#include "../../Images/Images.h"
+#include "../ScreenHandler.h"
 
 MainScreenButton::MainScreenButton(sf::Vector2f position, std::string text) {
 
     buttonContainer.setPosition(position);
+    buttonContainer.setTexture(&Images::getImage(BUTTON));
     this->text.setString(text);
     this->text.setFont(Font::getFont());
     this->text.setCharacterSize(24);
@@ -37,7 +40,6 @@ void MainScreenButton::onClickSound() {
 }
 
 
-
 void MainScreenButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 //    GUIComponent::draw(target, states);
     target.draw(buttonContainer);
@@ -45,15 +47,14 @@ void MainScreenButton::draw(sf::RenderTarget &target, sf::RenderStates states) c
 }
 
 void MainScreenButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (MouseEvents<sf::RectangleShape>::hovered(buttonContainer,window)) {
+    if (MouseEvents<sf::RectangleShape>::hovered(buttonContainer, window)) {
         if (!checkState(HOVERED)) {
             SoundFX::playHoverSound();
             MouseEvents<sf::RectangleShape>::setHand(window);
         }
         enableState(HOVERED);
-    }
-    else {
-        if(checkState(HOVERED)){
+    } else {
+        if (checkState(HOVERED)) {
             MouseEvents<sf::RectangleShape>::setArrow(window);
         }
         disabledState(HOVERED);
@@ -63,6 +64,7 @@ void MainScreenButton::addEventHandler(sf::RenderWindow &window, sf::Event event
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
         onClick();
+        ScreenHandler::setCurrentScreen(HOME);
     }
 }
 

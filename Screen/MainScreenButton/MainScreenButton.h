@@ -6,8 +6,8 @@
 #define SFMLTEMPLATE_MAINSCREENBUTTON_H
 
 
-#include "../../../Components/GUIComponent.h"
-#include "../../../Components/ButtonInterface.h"
+#include "../../Components/GUIComponent.h"
+#include "../../Components/ButtonInterface.h"
 
 class MainScreenButton : public GUIComponent, private ButtonInterface{
 private:
