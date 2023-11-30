@@ -6,8 +6,19 @@
 #define SFMLTEMPLATE_POKEMONSCREEN_H
 
 
-class PokemonScreen {
+#include "../../Components/GUIComponent.h"
+#include "../../Container/Container.h"
+#include "../../Text/Text.h"
 
+class PokemonScreen: public GUIComponent {
+private:
+    sf::RectangleShape container;
+    sf::Text title;
+public:
+    PokemonScreen();
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
+    void update() override;
 };
 
 

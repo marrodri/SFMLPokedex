@@ -8,7 +8,7 @@
 ///       dropdown that will show the results from its
 ///       search
 SearchInput::SearchInput() {
-    textInput.setSize({680,80});
+    textInput.setSize({715,80});
     textInput.setFillColor(sf::Color::Magenta);
     textInput.setOutlineThickness(1);
     textInput.setOutlineColor(sf::Color::White);
@@ -25,7 +25,6 @@ void SearchInput::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 
 void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 //    GUIComponent::addEventHandler(window, event);
-
 }
 
 void SearchInput::update() {

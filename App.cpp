@@ -18,6 +18,7 @@
 #include "AnimatedSprite/AnimatedSprite.h"
 #include "Button/GridButton.h"
 #include "Layout/MainScreen/MainScreen.h"
+#include "Layout/PokemonScreen/PokemonScreen.h"
 
 std::vector<GUIComponent*> App::components;
 
@@ -58,19 +59,20 @@ void App::run() {
     SideMenu sideMenu;
     ///Logo
     Logo logo;
-
     ///Background
     Layout screen(sf::Vector2f({WINDOW_WIDTH, WINDOW_HEIGHT}));
+    PokemonScreen pokemonScreen;
     /**
      * order of animation(far behind->most from): background->screen
      * */
 //    addComponent(screen);
 //    addComponent(animatedSprite);
 
-    addComponent(mainScreen);
+//    addComponent(mainScreen);
     addComponent(searchInput);
     addComponent(sideMenu);
     addComponent(logo);
+    addComponent(pokemonScreen);
     while (window.isOpen())
     {
         sf::Event event;

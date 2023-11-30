@@ -77,7 +77,11 @@ add_executable(sfmlTemplate main.cpp
         Data/PokemonList.cpp
         Data/PokemonList.h
         SFMLPokedex.cpp
-        SFMLPokedex.h)
+        SFMLPokedex.h
+        Container/Container.cpp
+        Container/Container.h
+        Text/Text.cpp
+        Text/Text.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
