@@ -8,14 +8,14 @@
 
 Home::Home(): gridView(sf::Vector2f (250, 100)) {
     int j=0;
-    for (int i =0; i<32; i++) {
+    for (int i =0; i<28; i++) {
         gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j));
         PokemonStruct passedPok = SFMLPokedex::pokemonList.getPokemonData(j);
         std::cout << passedPok.number << "\n";
         std::cout << passedPok.name << "\n";
         std::cout << passedPok.about << "\n";
         j++;
-        if(j==3){
+        if (j==3) {
             j=0;
         }
     }

@@ -12,13 +12,15 @@ private:
     sf::Text text;
 public:
     Text();
-    Text(const std::string &str, int fontSize, sf::Vector2f pos, sf::Font &font);
+
+    Text(const std::string &str, int fontSize,  sf::Font &font,sf::Vector2f pos);
 
     /**
      * setters
      **/
     void setFont(sf::Font &font);
     void setOrigin(sf::Vector2f &origin);
+    void setPosition(const sf::Vector2f &pos);
 
     /**
      * getters

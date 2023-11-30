@@ -11,7 +11,7 @@
 PokemonScreen::PokemonScreen() {
     container.setSize({90*8, 4*110});
     container.setPosition({250, 100});
-    container.setFillColor(sf::Color::Blue);
+    container.setFillColor(sf::Color::Green);
     title.setFont(Font::getFont());
     title.setString("Pokemon Screen");
     title.setCharacterSize(24);
@@ -21,6 +21,12 @@ PokemonScreen::PokemonScreen() {
 void PokemonScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(container);
     target.draw(title);
+    header.draw(target, states);
+    spriteDisplay.draw(target,states);
+    description.draw(target,states);
+    evolutions.draw(target, states);
+    pokemonWeakness.draw(target,states);
+    pokemonType.draw(target,states);
 }
 
 void PokemonScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -29,4 +35,5 @@ void PokemonScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
 void PokemonScreen::update() {
 //    GUIComponent::update();
+// TODO: animate pokemonScreen.
 }

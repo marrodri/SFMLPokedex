@@ -85,7 +85,23 @@ add_executable(sfmlTemplate main.cpp
         SFMLPokedexEnums.h
         Screen/ScreenEnum.h
         Screen/ScreenHandler.cpp
-        Screen/ScreenHandler.h)
+        Screen/ScreenHandler.h
+        Screen/PokemonScreen/Elements/Header.cpp
+        Screen/PokemonScreen/Elements/Header.h
+        Screen/EditMode/EditMode.cpp
+        Screen/EditMode/EditMode.h
+        Screen/PokemonScreen/Elements/SpriteDisplay.cpp
+        Screen/PokemonScreen/Elements/SpriteDisplay.h
+        Screen/PokemonScreen/Elements/Description.cpp
+        Screen/PokemonScreen/Elements/Description.h
+        Screen/PokemonScreen/Elements/Content.cpp
+        Screen/PokemonScreen/Elements/Content.h
+        Screen/PokemonScreen/Elements/Evolutions.cpp
+        Screen/PokemonScreen/Elements/Evolutions.h
+        Screen/PokemonScreen/Elements/PokemonWeakness.cpp
+        Screen/PokemonScreen/Elements/PokemonWeakness.h
+        Screen/PokemonScreen/Elements/PokemonType.cpp
+        Screen/PokemonScreen/Elements/PokemonType.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

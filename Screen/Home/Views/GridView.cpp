@@ -49,7 +49,7 @@ GridButton *GridView::createNewGridButton(PokemonStruct &pokemonData) {
         sf::Vector2f size = listOfGridButtons.back()->getSize();
         sf::Vector2f pos = listOfGridButtons.back()->getPosition();
 
-        if (listOfGridButtons.size() % 8 == 0) {
+        if (listOfGridButtons.size() % 7 == 0) {
             //increment it's y coordinates.
             newGridButton->setPosition({position.x, pos.y + size.y + 2});
         } else {

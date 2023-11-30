@@ -9,9 +9,22 @@
 #include "../../Components/GUIComponent.h"
 #include "../../Container/Container.h"
 #include "../../Text/Text.h"
+#include "Elements/Header.h"
+#include "Elements/SpriteDisplay.h"
+#include "Elements/Description.h"
+#include "Elements/Evolutions.h"
+#include "Elements/PokemonWeakness.h"
+#include "Elements/PokemonType.h"
 
 class PokemonScreen: public GUIComponent {
 private:
+    Header header;
+    SpriteDisplay spriteDisplay;
+    Description description;
+    Evolutions evolutions;
+    PokemonType pokemonType;
+    PokemonWeakness pokemonWeakness;
+
     sf::RectangleShape container;
     sf::Text title;
 public:

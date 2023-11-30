@@ -26,9 +26,6 @@ public:
     //selectedPokemon
     static void setSelectedPokemonData(PokemonStruct &pokemonData);
     static PokemonStruct &getSelectedPokemonData();
-
-
-
 };
 
 

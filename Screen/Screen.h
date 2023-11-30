@@ -25,7 +25,7 @@ class Screen : public GUIComponent {
     //pokemon screen'
     Home mainScreen;
     PokemonScreen pokemonScreen;
-    screenEnum currScreenEnum = HOME;
+    screenEnum currScreenEnum = POKEMON;
 
     int currPage;
     int numberOfPages;
@@ -48,7 +48,6 @@ public:
     /**
      * setters
      **/
-    void setScreen(screenEnum screen);
 
     /**
      * getters

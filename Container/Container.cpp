@@ -4,7 +4,7 @@
 
 #include "Container.h"
 Container::Container(){}
-Container::Container(sf::Vector2f pos, sf::Vector2f size, sf::Color &color) {
+Container::Container(sf::Vector2f pos, sf::Vector2f size, const sf::Color &color) {
     container.setPosition(pos);
     container.setSize(size);
     container.setFillColor(color);
@@ -32,8 +32,16 @@ sf::Vector2f Container::getSize() {
     return container.getGlobalBounds();
 }
 
- sf::FloatRect Container::getLocalBounds() const{
+sf::FloatRect Container::getLocalBounds() const{
     return container.getLocalBounds();
+}
+
+void Container::setPosition(const sf::Vector2f &pos) {
+    container.setPosition(pos);
+}
+
+void Container::setOrigin(sf::Vector2f &origin) {
+
 }
 
 
@@ -53,3 +61,9 @@ void Container::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 void Container::update() {
 //    GUIComponent::update();
 }
+
+void Container::setTexture(const sf::Texture &texture) {
+    container.setTexture(&texture);
+}
+
+

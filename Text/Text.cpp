@@ -4,8 +4,11 @@
 
 #include "Text.h"
 
+Text::Text() {
 
-Text::Text(const std::string &str, int fontSize, sf::Vector2f pos, sf::Font &font) {
+}
+
+Text::Text(const std::string &str, int fontSize,  sf::Font &font,sf::Vector2f pos) {
 
     text.setString(str);
     text.setCharacterSize(fontSize);
@@ -53,3 +56,9 @@ void Text::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 void Text::update() {
 //    GUIComponent::update();
 }
+
+void Text::setPosition(const sf::Vector2f &pos) {
+    text.setPosition(pos);
+}
+
+
