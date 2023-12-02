@@ -9,25 +9,31 @@
 #include "../../../Components/GUIComponent.h"
 #include "../../../Container/Container.h"
 #include "../../../Text/Text.h"
+#include "../../../AnimatedSprite/AnimatedSprite.h"
+#include "../../../Components/PokemonScreenInterface.h"
 
 class SpriteDisplay : public GUIComponent{
 private:
     Container container;
     Text placeholder;
+    AnimatedSprite sprite3D;
+    PokemonStruct pokemonData;
 
+    bool isLoaded = false;
 public:
     SpriteDisplay();
-    SpriteDisplay(int pokemonNo);
+    SpriteDisplay(int pokemonNo, int cols);
 
     /**
-     * GUI
+     * GUI Component
      **/
-
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+
 };
 
 

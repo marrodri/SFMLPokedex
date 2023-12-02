@@ -21,6 +21,7 @@ public:
     void setFont(sf::Font &font);
     void setOrigin(sf::Vector2f &origin);
     void setPosition(const sf::Vector2f &pos);
+    void setString(const std::string &str);
 
     /**
      * getters

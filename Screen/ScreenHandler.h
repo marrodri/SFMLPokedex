@@ -8,6 +8,7 @@
 #include "ScreenEnum.h"
 #include "../Data/PokemonStruct.h"
 #include <iostream>
+#include <map>
 
 //the main screen left and right buttons
 //will have to check the current screen as it will .
@@ -19,13 +20,25 @@ class ScreenHandler {
 private:
     static screenEnum currScreen;
     static PokemonStruct selectedPokemonData;
+    static bool pokemonScreenLoaded;
+    static std::map<pokemonScreenElementsEnum, bool> pokemonScreenElementsLoaded;
+    static std::map<homeScreenElementsEnum, bool> homeScreenElementsLoaded;
 public:
     static void setCurrentScreen(screenEnum screen);
     static screenEnum getCurrScreen();
 
-    //selectedPokemon
+    /// selectedPokemon
     static void setSelectedPokemonData(PokemonStruct &pokemonData);
     static PokemonStruct &getSelectedPokemonData();
+
+    /// pokemonScreen Status;
+    static void setPokemonScreenElementLoaded(pokemonScreenElementsEnum pokemonScreenElement, bool isLoaded);
+    static bool getPokemonScreenElementLoaded(pokemonScreenElementsEnum pokemonScreenElement);
+    static void toggleOffPokemonScreenElements();
+
+    ///home screen
+    static void setHomeScreenLoaded(bool isLoaded);
+    static bool isHomeScreenLoaded();
 };
 
 

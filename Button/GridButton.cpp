@@ -100,10 +100,10 @@ void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     ///
     target.draw(box);
 //    target.draw(text);
-
+    sprite3D.draw(target,states);
     target.draw(number);
     target.draw(pokemonName);
-    sprite3D.draw(target,states);
+
 }
 
 void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {

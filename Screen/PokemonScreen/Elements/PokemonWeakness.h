@@ -9,6 +9,7 @@
 #include "../../../Components/GUIComponent.h"
 #include "../../../Text/Text.h"
 #include "../../../Container/Container.h"
+#include "../../../Components/PokemonScreenInterface.h"
 
 class PokemonWeakness : public  GUIComponent{
 private:

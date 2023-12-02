@@ -10,6 +10,9 @@
 #include "../../../Data/PokemonStruct.h"
 #include "../../../Text/Text.h"
 #include "../../../Container/Container.h"
+#include "../../../Components/PokemonScreenInterface.h"
+#include <string>
+#include <iostream>
 
 
 class Header: public GUIComponent {
@@ -21,6 +24,7 @@ private:
     Container editIcon;
     Container printIcon;
     Container saveIcon;
+    PokemonStruct pokemonData;
 public:
     Header();
     Header(PokemonStruct &pokemonData, sf::Vector2f position);
@@ -34,6 +38,9 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+    /***/
+//    void setPokemonStruct(PokemonStruct &selectedPokemonData) override;
 };
 
 

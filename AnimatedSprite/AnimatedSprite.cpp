@@ -82,3 +82,9 @@ void AnimatedSprite::update() {
 //    GUIComponent::update();
     animate();
 }
+
+void AnimatedSprite::setNewSprite(sf::Texture &texture, int rows, int cols) {
+    this->rows =rows;
+    this->cols = cols;
+    setup(texture, rows, cols);
+}

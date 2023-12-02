@@ -8,8 +8,9 @@
 
 #include "../../../Container/Container.h"
 #include "../../../Text/Text.h"
+#include "../../../Components/PokemonScreenInterface.h"
 
-class Description: public GUIComponent {
+class Description: public GUIComponent{
 
 private:
     Container container;

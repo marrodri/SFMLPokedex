@@ -9,6 +9,7 @@
 #include "../../../Components/GUIComponent.h"
 #include "../../../Container/Container.h"
 #include "../../../Text/Text.h"
+#include "../../../AnimatedSprite/AnimatedSprite.h"
 
 //for evolutions constructor.
 //container({470, 150}, {450, 200}, sf::Color::Blue),
@@ -18,10 +19,16 @@ class Evolutions : public GUIComponent{
 private:
     Container container;
     Text placeholder;
-
+    AnimatedSprite firstEvol;
+    Text firstEvolName;
+    AnimatedSprite secEvol;
+    Text secEvolName;
+    AnimatedSprite finalEvol;
+    Text finalEvolName;
+//    icon arrow.
 public:
     Evolutions();
-    Evolutions(int pokemonNo);
+    Evolutions(const std::array<int,3> &evolutions, int cols);
 
     /**
      * GUI

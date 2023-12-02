@@ -37,9 +37,9 @@ sf::Vector2f Text::getPosition() {
 void Text::setOrigin(sf::Vector2f &origin) {
     text.setOrigin(origin);
 }
-//void Text::setOrigin(sf::Vector2f &origin) {
-//    text.setOrigin(origin);
-//}
+void Text::setString(const std::string &str){
+    text.setString(str);
+}
 
 /**
  * GUI component

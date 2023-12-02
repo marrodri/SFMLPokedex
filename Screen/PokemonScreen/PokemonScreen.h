@@ -15,6 +15,7 @@
 #include "Elements/Evolutions.h"
 #include "Elements/PokemonWeakness.h"
 #include "Elements/PokemonType.h"
+#include "../../Components/PokemonScreenInterface.h"
 
 class PokemonScreen: public GUIComponent {
 private:
@@ -24,9 +25,11 @@ private:
     Evolutions evolutions;
     PokemonType pokemonType;
     PokemonWeakness pokemonWeakness;
+    PokemonStruct pokemonData;
 
     sf::RectangleShape container;
     sf::Text title;
+
 public:
     PokemonScreen();
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;

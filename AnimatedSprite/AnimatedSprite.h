@@ -38,6 +38,8 @@ public:
 
     void setTime(int time);
 
+    void setNewSprite(sf::Texture &texture, int rows, int cols);
+
     //1 row, how many cols?
     AnimatedSprite(sf::Texture &texture, int cols);
 

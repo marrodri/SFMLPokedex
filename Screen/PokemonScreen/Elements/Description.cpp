@@ -21,6 +21,7 @@ void Description::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 }
 
 void Description::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+
 }
 
 void Description::update() {

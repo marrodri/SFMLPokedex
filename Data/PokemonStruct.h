@@ -17,6 +17,7 @@ struct PokemonStruct {
 //    this could be just an array of numbers, and the frontend just fetches the pointers from the array.
     std::array<int,3> evolutions;
     int cols;
+    int numOfEvolutions;
 //    TypesEnum type;
 //    std::vector<TypesEnum> weaknesses;
 //    std::string pathCry;

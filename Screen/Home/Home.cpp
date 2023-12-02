@@ -15,7 +15,7 @@ Home::Home(): gridView(sf::Vector2f (250, 100)) {
         std::cout << passedPok.name << "\n";
         std::cout << passedPok.about << "\n";
         j++;
-        if (j==3) {
+        if (j==13) {
             j=0;
         }
     }

@@ -6,15 +6,16 @@
 #include "../../../Font/Font.h"
 #include "../../../Helper/HelperFunctions.h"
 #include "../../../Images/Images.h"
+#include "../../ScreenHandler.h"
+#include "../../../MouseEvents/MouseEvents.h"
+#include "../../../SoundFX/SoundFX.h"
 
 Header::Header() : container({250, 100}, {90 * 8, 40}, sf::Color::Magenta),
                    pokemonName("Pokemon Name", 25, Font::getFont(), {250, 100}),
                    pokemonNo("001:", 25, Font::getFont(), {300, 100}),
                    backIcon({180, 100}, {40, 40}, sf::Color::Red),
-                   editIcon({180, 100}, {40, 40}, sf::Color::Yellow),
-                   printIcon({180, 100}, {40, 40}, sf::Color::White),
-                   saveIcon({180, 100}, {40, 40}, sf::Color::Cyan){
-    backIcon.setTexture(Images::getImage(BOX));
+                   saveIcon({180, 100}, {40, 40}, sf::Color::Cyan) {
+    backIcon.setTexture(Images::getImage(CROSS));
     HelperFunctions::centerItemHorizontally(container, pokemonName, 200);
     HelperFunctions::centerItemHorizontally(container, pokemonNo, 70);
     HelperFunctions::positionItemByBounds(container, backIcon, {0, 0});
@@ -36,19 +37,47 @@ void Header::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     backIcon.draw(target, states);
 
-     editIcon.draw(target,states);
-     printIcon.draw(target,states);
-     //TODO: move this to the edit screen.
+    editIcon.draw(target, states);
+    printIcon.draw(target, states);
+    //TODO: move this to the edit screen.
 //    saveIcon.draw(target,states);
 }
 
 void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-//    GUIComponent::addEventHandler(window, event);
+
+    if (MouseEvents<Container>::hovered(backIcon, window)) {
+        if (!checkState(HOVERED)) {
+            SoundFX::playHoverSound();
+            MouseEvents<sf::RectangleShape>::setHand(window);
+        }
+        enableState(HOVERED);
+    } else {
+        if (checkState(HOVERED)) {
+            MouseEvents<sf::RectangleShape>::setArrow(window);
+        }
+        disabledState(HOVERED);
+    }
+
+    if (MouseEvents<Container>::mouseClicked(backIcon, window)) {
+        std::cout << "clicking logo button, going home\n";
+        SoundFX::playClickSound();
+        MouseEvents<sf::RectangleShape>::setArrow(window);
+        ScreenHandler::setCurrentScreen(HOME);
+        ScreenHandler::toggleOffPokemonScreenElements();
+
+    }
+
 }
 
 void Header::update() {
-//    GUIComponent::update();
+    if (ScreenHandler::getCurrScreen() == POKEMON) {
+        this->pokemonData = ScreenHandler::getSelectedPokemonData();
+        pokemonNo.setString(std::to_string(pokemonData.number));
+        pokemonName.setString(pokemonData.name);
+    }
 }
+
+
 
 
 

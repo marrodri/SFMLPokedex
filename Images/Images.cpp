@@ -24,6 +24,8 @@ std::string Images::getPath(images image) {
             return "";
         case BOX:
             return "Resources/Sprites/Textures/grey_box.png";
+        case CROSS:
+            return "Resources/Sprites/Textures/red_cross.png";
     }
     return "";
 }
@@ -59,6 +61,8 @@ std::string Images::get3DPokemonPath(int pokemonNo) {
             return "Resources/Sprites/3DSprites/011.png";
         case 12:
             return "Resources/Sprites/3DSprites/012.png";
+        case 13:
+            return "Resources/Sprites/3DSprites/013.png";
     }
     return "";
 }
@@ -81,5 +85,4 @@ const sf::Texture &Images::getImage(images image) {
 sf::Texture &Images::get3DImage(int i){
     load3DTexture(i);
     return textures3D[i];
-
 }

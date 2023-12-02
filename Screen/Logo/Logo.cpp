@@ -23,6 +23,7 @@ Logo::Logo() {
  **/
 void Logo::onClick() {
     ScreenHandler::setCurrentScreen(HOME);
+    ScreenHandler::toggleOffPokemonScreenElements();
 }
 
 void Logo::setOnClickFunction() {
@@ -47,8 +48,6 @@ void Logo::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void Logo::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-//    GUIComponent::addEventHandler(window, event);
-
     if (MouseEvents<sf::RectangleShape>::hovered(logoContainer,window)) {
         if (!checkState(HOVERED)) {
             SoundFX::playHoverSound();
