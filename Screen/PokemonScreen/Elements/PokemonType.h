@@ -15,6 +15,9 @@ class PokemonType : public GUIComponent{
 private:
     Container container;
     Text placeholder;
+    Container firstType;
+    Container secondType;
+    Container thirdType;
 public:
     PokemonType();
     PokemonType(int pokemonNo);

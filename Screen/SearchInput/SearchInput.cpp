@@ -8,11 +8,11 @@
 ///       dropdown that will show the results from its
 ///       search
 SearchInput::SearchInput() {
-    textInput.setSize({715,80});
-    textInput.setFillColor(sf::Color::Magenta);
-    textInput.setOutlineThickness(1);
-    textInput.setOutlineColor(sf::Color::White);
-    textInput.setPosition(250,10);
+    textInput.setSize({715,50});
+    textInput.setFillColor(sf::Color::White);
+    textInput.setOutlineThickness(3);
+    textInput.setOutlineColor(sf::Color::Black);
+    textInput.setPosition(250,40);
 }
 
 std::string &SearchInput::getCurrentInput() {
@@ -24,11 +24,11 @@ void SearchInput::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 }
 
 void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-//    GUIComponent::addEventHandler(window, event);
+
 }
 
 void SearchInput::update() {
-//    GUIComponent::update();
+
 }
 
 

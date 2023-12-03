@@ -10,7 +10,7 @@
 #include "../../../MouseEvents/MouseEvents.h"
 #include "../../../SoundFX/SoundFX.h"
 
-Header::Header() : container({250, 100}, {90 * 8, 40}, sf::Color::Magenta),
+Header::Header() : container({250, 100}, {90 * 8, 40}, sf::Color(0x4287f5ff)),
                    pokemonName("Pokemon Name", 25, Font::getFont(), {250, 100}),
                    pokemonNo("001:", 25, Font::getFont(), {300, 100}),
                    backIcon({180, 100}, {40, 40}, sf::Color::Red),

@@ -14,7 +14,10 @@ class Description: public GUIComponent{
 
 private:
     Container container;
-    Text placeholder;
+    Text title;
+    Text textField;
+    PokemonStruct pokemonData;
+
 public:
     Description();
     Description(int pokemonNo);

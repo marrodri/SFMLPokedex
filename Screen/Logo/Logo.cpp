@@ -11,9 +11,7 @@
 ///perfect initializer for the logo container.
 Logo::Logo() {
     logoContainer.setSize({230,80});
-    logoContainer.setOutlineThickness(1);
-    logoContainer.setOutlineColor(sf::Color::White);
-    logoContainer.setPosition(10,20);
+    logoContainer.setPosition(10,35);
     logoContainer.setTexture(&Images::getImage(LOGO));
     logoContainer.setSize({230,60});
 }

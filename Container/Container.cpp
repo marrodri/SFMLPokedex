@@ -8,7 +8,7 @@ Container::Container(sf::Vector2f pos, sf::Vector2f size, const sf::Color &color
     container.setPosition(pos);
     container.setSize(size);
     container.setFillColor(color);
-    container.setOutlineThickness(0.5);
+    container.setOutlineThickness(2);
     container.setOutlineColor(sf::Color::White);
 
     /**

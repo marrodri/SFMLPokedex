@@ -5,10 +5,16 @@
 #include "Description.h"
 #include "../../../Helper/HelperFunctions.h"
 #include "../../../Font/Font.h"
+#include "../../ScreenHandler.h"
 
 Description::Description(): container({470, 150}, {450, 200}, sf::Color::Blue),
-                            placeholder("Description", 25, Font::getFont(), {250, 100}) {
-    HelperFunctions::centerItem(container, placeholder);
+                            title("Description:", 25, Font::getFont(), {250, 100}),
+                            textField("about pokemon", 20, Font::getFont(), {250, 300})
+                            {
+    HelperFunctions::positionItemByBounds(container, title,{80,20});
+                                HelperFunctions::positionItemByBounds(container, textField,{90,50});
+
+//    ScreenHandler::getSelectedPokemonData().about;
 }
 
 Description::Description(int pokemonNo) {
@@ -17,7 +23,8 @@ Description::Description(int pokemonNo) {
 
 void Description::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(container);
-    target.draw(placeholder);
+    target.draw(title);
+    target.draw(textField);
 }
 
 void Description::addEventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -25,4 +32,12 @@ void Description::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void Description::update() {
+    if (!ScreenHandler::getPokemonScreenElementLoaded(DESCRIPTION)) {
+        pokemonData = ScreenHandler::getSelectedPokemonData();
+        textField.setString(pokemonData.about);
+        ScreenHandler::setPokemonScreenElementLoaded(DESCRIPTION, true);
+    }
+    if (ScreenHandler::getPokemonScreenElementLoaded(DESCRIPTION)) {
+//        sprite3D.update();
+    }
 }

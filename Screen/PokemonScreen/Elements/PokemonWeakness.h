@@ -15,6 +15,10 @@ class PokemonWeakness : public  GUIComponent{
 private:
     Container container;
     Text placeholder;
+    Container firstWeakness;
+    Container secondWeakness;
+    Container thirdWeakness;
+    //TODO: Container weaknesses
 public:
     PokemonWeakness();
     PokemonWeakness(int pokemonNo);

@@ -9,8 +9,8 @@
 SideMenu::SideMenu() {
 
     sideMenuContainer.setSize({230,445});
-    sideMenuContainer.setFillColor(sf::Color::Red);
-    sideMenuContainer.setOutlineThickness(1);
+    sideMenuContainer.setFillColor(sf::Color(0x7cbde6ff));
+    sideMenuContainer.setOutlineThickness(3);
     sideMenuContainer.setOutlineColor(sf::Color::White);
     sideMenuContainer.setPosition(10,100);
 
