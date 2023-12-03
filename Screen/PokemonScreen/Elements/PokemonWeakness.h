@@ -4,8 +4,6 @@
 
 #ifndef SFMLTEMPLATE_POKEMONWEAKNESS_H
 #define SFMLTEMPLATE_POKEMONWEAKNESS_H
-
-
 #include "../../../Components/GUIComponent.h"
 #include "../../../Text/Text.h"
 #include "../../../Container/Container.h"

@@ -45,6 +45,13 @@ void ScreenHandler::toggleOffPokemonScreenElements() {
     }
 }
 
+void ScreenHandler::toggleOnPokemonScreenElements() {
+    for (int i = 0; i < LAST_POKEMON_SCREEN_ELEMENT; i++) {
+        //go through the states map, enable to false.
+        pokemonScreenElementsLoaded[static_cast<pokemonScreenElementsEnum>(i)] = true;
+    }
+}
+
 
 
 ///home screen

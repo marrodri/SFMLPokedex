@@ -16,7 +16,6 @@ PokemonScreen::PokemonScreen() : spriteDisplay(1, 41), evolutions(std::array<int
     std::cout << "Displaying pokemon screen:" << ScreenHandler::getSelectedPokemonData().name << "\n";
     container.setSize({90 * 8, 4 * 110});
     container.setPosition({250, 100});
-//    container.setFillColor(sf::Color::Green);
     title.setFont(Font::getFont());
     title.setString("Pokemon Screen");
     title.setCharacterSize(24);
@@ -47,12 +46,10 @@ void PokemonScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void PokemonScreen::update() {
-//    if (ScreenHandler::getCurrScreen() == POKEMON) {
         header.update();
         spriteDisplay.update();
         description.update();
         evolutions.update();
         pokemonWeakness.update();
         pokemonType.update();
-//    }
 }

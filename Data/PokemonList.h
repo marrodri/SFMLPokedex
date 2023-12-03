@@ -11,7 +11,7 @@
 class PokemonList {
 private:
     std::array<PokemonStruct, 25> pokemonList = {
-            PokemonStruct({1, "Bulbasaur", "Resources/Sprites/3DSprites/001.png",
+            PokemonStruct({1, "Bulbasaur", "Resources/Sprites/3DSprites/001.pngsdfkasjfna,jfnaw awe aewfawe\nwe fwefaen\naeawe\n",
                            std::array<int, 3>({1, 2, 3}), 41, 3, {FIRE, FLYING, PSYCHIC}, {GRASS, POISON}}),
             PokemonStruct({2, "Ivysaur", "Resources/Sprites/3DSprites/002.png",
                            std::array<int, 3>({1, 2, 3}), 49, 3, {FIRE, FLYING, ICE}, {GRASS, POISON}}),

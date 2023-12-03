@@ -102,7 +102,10 @@ add_executable(sfmlTemplate main.cpp
         Screen/PokemonScreen/Elements/PokemonWeakness.h
         Screen/PokemonScreen/Elements/PokemonType.cpp
         Screen/PokemonScreen/Elements/PokemonType.h
-        Components/PokemonScreenInterface.h)
+        Components/PokemonScreenInterface.h
+        TextField/TextField.cpp
+        TextField/TextField.h
+        Components/ContainerInterface.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

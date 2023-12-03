@@ -10,9 +10,11 @@
 #include <iostream>
 #include "../Letter/Letter.h"
 
+#include <array>
 class MultiText : public GUIComponent {
 private:
     sf::Glyph prevLetterGlyph;
+    std::vector<std::list<Letter>> multiTextGrid;
     std::list<Letter> multiText;
     Letter prevLetter;
     bool isKeyPressed = false;
@@ -35,6 +37,8 @@ private:
     void updateCursorPosition();
     void highlightText();
     bool isKeyword(std::list<Letter>::iterator letter);
+    ///These are needed for the search, migrate them to the
+    ///searchInput class. Here its not required.
     bool stringCompare(const std::string &keyword, std::list<Letter>::iterator letter);
     int getKeywordLen(std::list<Letter>::iterator letter);
 public:
@@ -46,8 +50,14 @@ public:
      * methods
      **/
     void deleteText();
+    //  TODO: push new letter to the lattest array item.
+    //however, if the char is a '\n', call pushNewLine().
     void pushNewLetter(char newCharacter);
-
+    //  TODO: push a new array that will form a new linebreak.
+    void pushNewLine();
+    //  TODO: delete the most recent line. like a stack.
+    //        a line is push
+    void deleteLine();
     /**
      * Iterators.
      **/
@@ -61,6 +71,8 @@ public:
     void setPosition(sf::Vector2f position);
     void setTextCharacterSize(int textCharacterSize);
     void setFont(sf::Font &font);
+    void setColor();
+    //TODO: migrate this to the textField.
     void setOnFocus(bool focus);
 //    void setTextTypeColor(Letter &letter);
 

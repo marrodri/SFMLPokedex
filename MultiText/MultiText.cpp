@@ -7,11 +7,13 @@
 
 
 MultiText::MultiText() {
-    std::string initString="multi-text initial";
-    for (char letter: initString) {
-        pushNewLetter(letter);
-    }
+//    std::string initString="multi-text initial";
+//    for (char letter: initString) {
+//        pushNewLetter(letter);
+//    }
 }
+
+
 
 MultiText::MultiText(sf::Vector2f position, int sizeFont, sf::Font &font){
     initialPosition = position;
@@ -94,44 +96,21 @@ bool MultiText::stringCompare(const std::string &keyword, iterator letter){
     return false;
 }
 
-//return the size of the keyword, otherwise
+/// TODO: can use this for the search bar, when looking for pokemons.
+///        there should be an option to enable search and disable search
+///         so it can be used for the textField.
 bool MultiText::isKeyword(std::list<Letter>::iterator letter){
-    if(letter->getChar() == 'i' || letter->getChar() == 'c' || letter->getChar() == 'd' || letter->getChar() == 'f'){
-//        return true;
-        if(stringCompare("int", letter)){
-            return true;
-        }
-        if(stringCompare("char", letter)){
-            return true;
-        }
-        if(stringCompare("double", letter)){
-            return true;
-        }
-        if(stringCompare("float", letter)){
-            return true;
-        }
-    }
-
-    return false;
 }
 
+/// TODO: delete this later in the future.
 int MultiText::getKeywordLen(std::list<Letter>::iterator letter){
-    if(stringCompare("int", letter)){
-        return 3;
-    }
-    if(stringCompare("char", letter)){
-        return 4;
-    }
-    if(stringCompare("double", letter)){
-        return 6;
-    }
-    if(stringCompare("float", letter)){
-        return 5;
-    }
-    return 0;
+
 }
 
-
+///TODO: make this to a change font color.
+///     And create another static class that holds
+///     the configuration of the whole app for
+///     changing its theme.
 void MultiText::highlightText() {
     int keywordLen =0;
     for(auto letter=multiText.begin(); letter != multiText.end(); )
@@ -219,7 +198,7 @@ void MultiText::update() {
         clock.restart();
     }
     updateCursorPosition();
-    highlightText();
+//    highlightText();
 }
 
 void MultiText::draw(sf::RenderTarget &target, sf::RenderStates states) const {

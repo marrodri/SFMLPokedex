@@ -9,13 +9,15 @@
 #include "../../../Container/Container.h"
 #include "../../../Text/Text.h"
 #include "../../../Components/PokemonScreenInterface.h"
+#include "../../../TextField/TextField.h"
 
 class Description: public GUIComponent{
 
 private:
     Container container;
     Text title;
-    Text textField;
+//    Text textField;
+    TextField textField;
     PokemonStruct pokemonData;
 
 public:

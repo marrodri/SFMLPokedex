@@ -36,6 +36,9 @@ public:
     static bool getPokemonScreenElementLoaded(pokemonScreenElementsEnum pokemonScreenElement);
     static void toggleOffPokemonScreenElements();
 
+    static void toggleOnPokemonScreenElements();
+
+
     ///home screen
     static void setHomeScreenLoaded(bool isLoaded);
     static bool isHomeScreenLoaded();
