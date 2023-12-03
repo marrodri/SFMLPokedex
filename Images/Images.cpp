@@ -62,7 +62,10 @@ std::string Images::get3DPokemonPath(int pokemonNo) {
             return "Resources/Sprites/3DSprites/012.png";
         case 13:
             return "Resources/Sprites/3DSprites/013.png";
-    }
+        case 14:
+            return "Resources/Sprites/3DSprites/014.png";
+        case 15:
+            return "Resources/Sprites/3DSprites/015.png";}
     return "";
 }
 

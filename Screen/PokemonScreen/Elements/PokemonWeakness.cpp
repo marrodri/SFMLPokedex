@@ -6,6 +6,7 @@
 #include "../../../Font/Font.h"
 #include "../../../Helper/HelperFunctions.h"
 #include "../../../Images/Images.h"
+#include "../../ScreenHandler.h"
 
 
 PokemonWeakness::PokemonWeakness() : container({720, 360}, {200, 80}, sf::Color(0xe67c7cff)),
@@ -37,9 +38,15 @@ void PokemonWeakness::draw(sf::RenderTarget &target, sf::RenderStates states) co
 }
 
 void PokemonWeakness::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-//    GUIComponent::addEventHandler(window, event);
+
 }
 
 void PokemonWeakness::update() {
-//    GUIComponent::update();
+    if (!ScreenHandler::getPokemonScreenElementLoaded(POKEMON_WEAKNESS)) {
+        pokemonData = ScreenHandler::getSelectedPokemonData();
+        firstWeakness.setTexture(Images::getPokemonTypeImage(pokemonData.weaknesses[0]));
+        secondWeakness.setTexture(Images::getPokemonTypeImage(pokemonData.weaknesses[1]));
+        thirdWeakness.setTexture(Images::getPokemonTypeImage(pokemonData.weaknesses[2]));
+        ScreenHandler::setPokemonScreenElementLoaded(POKEMON_WEAKNESS, true);
+    }
 }

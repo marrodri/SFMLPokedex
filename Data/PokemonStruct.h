@@ -18,10 +18,8 @@ struct PokemonStruct {
     std::array<int,3> evolutions;
     int cols;
     int numOfEvolutions;
-//    TypesEnum type;
-//    std::vector<TypesEnum> weaknesses;
-//    std::string pathCry;
-
+    std::array<TypesEnum,3> weaknesses;
+    std::array<TypesEnum,2> types;
 };
 
 #endif //SFMLTEMPLATE_POKEMONSTRUCT_H

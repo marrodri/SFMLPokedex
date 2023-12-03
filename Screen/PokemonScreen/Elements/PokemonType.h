@@ -18,6 +18,7 @@ private:
     Container firstType;
     Container secondType;
     Container thirdType;
+    PokemonStruct pokemonData;
 public:
     PokemonType();
     PokemonType(int pokemonNo);

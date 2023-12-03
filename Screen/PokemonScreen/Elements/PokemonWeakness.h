@@ -19,6 +19,7 @@ private:
     Container secondWeakness;
     Container thirdWeakness;
     //TODO: Container weaknesses
+    PokemonStruct pokemonData;
 public:
     PokemonWeakness();
     PokemonWeakness(int pokemonNo);

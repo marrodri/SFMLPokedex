@@ -30,16 +30,15 @@ void SpriteDisplay::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void SpriteDisplay::update() {
-
-    if (!ScreenHandler::getPokemonScreenElementLoaded(SPRITEDISPLAY)) {
+    if (!ScreenHandler::getPokemonScreenElementLoaded(SPRITE_DISPLAY)) {
         pokemonData = ScreenHandler::getSelectedPokemonData();
 //        sprite3D.setTexture(Images::get3DImage(pokemonData.number));
         sprite3D = AnimatedSprite(Images::get3DImage(pokemonData.number), 1, pokemonData.cols);
         sprite3D.setTime(40);
         HelperFunctions::centerItem(container, sprite3D);
-        ScreenHandler::setPokemonScreenElementLoaded(SPRITEDISPLAY, true);
+        ScreenHandler::setPokemonScreenElementLoaded(SPRITE_DISPLAY, true);
     }
-    if (ScreenHandler::getPokemonScreenElementLoaded(SPRITEDISPLAY)) {
+    if (ScreenHandler::getPokemonScreenElementLoaded(SPRITE_DISPLAY)) {
         sprite3D.update();
     }
 }
