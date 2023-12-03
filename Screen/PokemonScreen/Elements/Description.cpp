@@ -24,11 +24,11 @@ Description::Description(int pokemonNo) {
 void Description::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(container);
     target.draw(title);
-//    target.draw(textField);
+    target.draw(textField);
 }
 
 void Description::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-
+    textField.addEventHandler(window, event);
 }
 
 void Description::update() {
@@ -38,6 +38,6 @@ void Description::update() {
         ScreenHandler::setPokemonScreenElementLoaded(DESCRIPTION, true);
     }
     if (ScreenHandler::getPokemonScreenElementLoaded(DESCRIPTION)) {
-//        sprite3D.update();
+        textField.update();
     }
 }

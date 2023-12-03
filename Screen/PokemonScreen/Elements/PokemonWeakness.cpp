@@ -47,9 +47,6 @@ void PokemonWeakness::update() {
         firstWeakness.setTexture(Images::getPokemonTypeImage(pokemonData.weaknesses[0]));
         secondWeakness.setTexture(Images::getPokemonTypeImage(pokemonData.weaknesses[1]));
         thirdWeakness.setTexture(Images::getPokemonTypeImage(pokemonData.weaknesses[2]));
-        HelperFunctions::centerItemHorizontally(container, firstWeakness, 55);
-        HelperFunctions::centerItemHorizontally(container, secondWeakness, 125);
-        HelperFunctions::centerItemHorizontally(container, thirdWeakness, 160);
         ScreenHandler::setPokemonScreenElementLoaded(POKEMON_WEAKNESS, true);
     }
 }

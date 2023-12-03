@@ -31,6 +31,7 @@ private:
     bool isFocussed = true;
 
 
+
     /**
      * private methods.
      **/
@@ -43,8 +44,10 @@ private:
     int getKeywordLen(std::list<Letter>::iterator letter);
 public:
     MultiText();
+
     MultiText(int xPos, int yPos, int sizeFont);
     MultiText(sf::Vector2f position, int sizeFont, sf::Font &font);
+    MultiText(const std::string initStr, sf::Vector2f position, int sizeFont, sf::Font &font);
 
     /**
      * methods

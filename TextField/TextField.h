@@ -14,13 +14,14 @@
 //size: 450, 200.
 class TextField : public  GUIComponent{
 private:
-    MultiText multiText;
+    //ui
     Container container;
-    bool isFocused = false;
     sf::Font font;
     sf::Color color;
+    //data and logic objects
+    MultiText multiText;
     std::stack<HistoryNode> actionHistory;
-
+//    bool isFocused = false;
     ///check the length of the current array item
     ///and see if it has reached the border. if it does
     ///create a new array that increments the y padding.
@@ -44,6 +45,8 @@ public:
     ///  of the current last array item.
     TextField();
     TextField(const std::string &initStr);
+
+    bool isTextColiding();
 
 
     //TODO: this is going to be needed for the global config.

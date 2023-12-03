@@ -7,10 +7,22 @@
 
 
 MultiText::MultiText() {
-//    std::string initString="multi-text initial";
-//    for (char letter: initString) {
-//        pushNewLetter(letter);
-//    }
+
+
+}
+
+MultiText::MultiText(const std::string initStr, sf::Vector2f position, int sizeFont, sf::Font &font){
+    initialPosition = position;
+    characterSize = sizeFont;
+
+    cursor.setFont(font);
+    cursor.setString("|");
+    cursor.setCharacterSize(sizeFont);
+    cursor.setPosition(position.x, position.y);
+
+    for (char letter: initStr) {
+        pushNewLetter(letter);
+    }
 }
 
 
@@ -189,6 +201,7 @@ void MultiText::setOnFocus(bool focus) {
  **/
 
 void MultiText::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+
 }
 
 void MultiText::update() {

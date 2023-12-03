@@ -16,7 +16,6 @@ class Description: public GUIComponent{
 private:
     Container container;
     Text title;
-//    Text textField;
     TextField textField;
     PokemonStruct pokemonData;
 

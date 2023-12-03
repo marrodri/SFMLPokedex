@@ -41,7 +41,7 @@ void Container::setPosition(const sf::Vector2f &pos) {
 }
 
 void Container::setOrigin(sf::Vector2f &origin) {
-    container.setOrigin(origin);
+//    container.setOrigin(origin);
 }
 
 
