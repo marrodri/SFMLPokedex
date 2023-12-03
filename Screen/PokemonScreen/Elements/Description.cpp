@@ -34,6 +34,7 @@ void Description::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 void Description::update() {
     if (!ScreenHandler::getPokemonScreenElementLoaded(DESCRIPTION)) {
         pokemonData = ScreenHandler::getSelectedPokemonData();
+        textField.clear();
         textField.setText(pokemonData.about);
         ScreenHandler::setPokemonScreenElementLoaded(DESCRIPTION, true);
     }

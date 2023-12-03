@@ -39,8 +39,6 @@ void Header::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     editIcon.draw(target, states);
     printIcon.draw(target, states);
-    //TODO: move this to the edit screen.
-//    saveIcon.draw(target,states);
 }
 
 void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {

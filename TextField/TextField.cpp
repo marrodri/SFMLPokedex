@@ -12,7 +12,7 @@
 //size: 450, 200.
 //constructor params 20, Font::getFont(), {250, 300}
 TextField::TextField(const std::string &initStr) : container({470, 185}, {450, 165}, sf::Color(0x223573ff)),
-                                                   multiText(initStr,{470, 185}, 12, Font::getFont()) {
+                                                   multiText(initStr,{470, 185},{450, 165}, 12, Font::getFont()) {
     /**
      * pass the pos where it shall be initial pos
      **/
@@ -28,6 +28,10 @@ void TextField::setText(const std::string &str) {
     ///         in it, it will check for \n for adding new lines
     ///         and check if the current line has collided for
     ///         adding a new line.
+    clear();
+    for(auto letter:str){
+        multiText.pushNewLetter(letter);
+    }
 }
 
 
@@ -80,8 +84,11 @@ void TextField::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                 //when using backspace, store the write function with the most recent character to write it back.
             }
         } else if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)
-                   && !isTextColiding()) {
+                   ) {
             //when writing characters, store the delete function to history.
+            if(isTextColiding()){
+                multiText.pushNewLine();
+            }
             multiText.pushNewLetter(event.text.unicode);
             History::pushNewAction('\0', DELETE, TEXTINPUT);
         }
@@ -103,6 +110,14 @@ TextField::TextField() {
 
 bool TextField::isTextColiding() {
      return (multiText.getFullWidth() >= (container.getSize().x -10));;
+}
+
+void TextField::clear() {
+    while(!multiText.empty()){
+        multiText.deleteText();
+    }
+
+
 }
 
 

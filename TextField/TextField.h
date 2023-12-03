@@ -57,6 +57,7 @@ public:
     //TODO: nedded for showing the transparent background.
     void setAlpha(int alpha);
     void setText(const std::string &str);
+    void clear();
 
     /**
      * GUI

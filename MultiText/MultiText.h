@@ -15,16 +15,18 @@ class MultiText : public GUIComponent {
 private:
     sf::Glyph prevLetterGlyph;
     std::vector<std::list<Letter>> multiTextGrid;
-    std::list<Letter> multiText;
+    int lines = 0;
     Letter prevLetter;
     bool isKeyPressed = false;
     sf::Vector2f initialPosition;
     int characterSize=24;
+    sf::Vector2f bounds;
 
 //  attributes for cursor.
     bool toggleCursor = false;
     sf::Clock clock;
     sf::Text cursor;
+    float yPadding = 13;
 
     //isOnFocus(bonus), this should be used only in
     //the eventHandler and someparts in update();
@@ -47,7 +49,7 @@ public:
 
     MultiText(int xPos, int yPos, int sizeFont);
     MultiText(sf::Vector2f position, int sizeFont, sf::Font &font);
-    MultiText(const std::string initStr, sf::Vector2f position, int sizeFont, sf::Font &font);
+    MultiText(const std::string initStr, sf::Vector2f position, sf::Vector2f bounds,int sizeFont,sf::Font &font);
 
     /**
      * methods
