@@ -28,9 +28,7 @@ void App::run() {
     /*
      * initializing UI
      * */
-    SearchInput  searchInput;
-    SideMenu sideMenu;
-    Logo logo;
+
     Screen screen(sf::Vector2f({WINDOW_WIDTH, WINDOW_HEIGHT}));
 
     /**
@@ -40,9 +38,6 @@ void App::run() {
      * adding components
      */
     addComponent(screen);
-    addComponent(searchInput);
-    addComponent(sideMenu);
-    addComponent(logo);
 
     while (window.isOpen())
     {

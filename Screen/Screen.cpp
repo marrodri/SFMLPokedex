@@ -46,6 +46,9 @@ void Screen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     }
     target.draw(leftButton);
     target.draw(rightButton);
+    target.draw(searchInput);
+    target.draw(sideMenu);
+    target.draw(logo);
 }
 
 void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -56,6 +59,10 @@ void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     }
     leftButton.addEventHandler(window, event);
     rightButton.addEventHandler(window, event);
+
+    searchInput.addEventHandler(window, event);
+    sideMenu.addEventHandler(window, event);
+    logo.addEventHandler(window, event);
 }
 
 void Screen::update() {
@@ -64,6 +71,9 @@ void Screen::update() {
     } else if (ScreenHandler::getCurrScreen() == POKEMON) {
         pokemonScreen.update();
     }
+    searchInput.update();
+    sideMenu.update();
+    logo.update();
 }
 
 

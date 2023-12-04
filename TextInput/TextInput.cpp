@@ -4,6 +4,7 @@
 
 #include "TextInput.h"
 #include "../MouseEvents/MouseEvents.h"
+#include "../Font/Font.h"
 
 TextInput::TextInput() {
 
@@ -11,14 +12,12 @@ TextInput::TextInput() {
 
 TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
                      sf::Font &textInputfont, sf::Font &labelFont, std::string label):
-                     multiText(position, 24, labelFont)
+                     multiText(position, 24, labelFont),
+                     container(position, size, sf::Color::White)
  {
     ///initializing textInputArea.
-    textInputArea.setSize(size);
-    textInputArea.setPosition(position);
-    textInputArea.setFillColor(sf::Color::Black);
-    textInputArea.setOutlineColor(sf::Color::White);
-    textInputArea.setOutlineThickness(1);
+    container.setOutlineColor(sf::Color::Black);
+    container.setOutlineThickness(3);
 
     ///initializing label
     this->label.setLabelString(label);
@@ -35,7 +34,7 @@ TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
 }
 
 bool TextInput::isTextColiding() {
-    return (multiText.getFullWidth() >= (textInputArea.getSize().x -10));
+    return (multiText.getFullWidth() >= (container.getSize().x -10));
 }
 
 
@@ -70,7 +69,7 @@ void TextInput::useSnapshotText() {
 void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
     ///mouse event handler
-    if (MouseEvents<sf::RectangleShape>::hovered(textInputArea, window))
+    if (MouseEvents<Container>::hovered(container, window))
     {
         enableState(HOVERED);
     }
@@ -78,7 +77,7 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         disabledState(HOVERED);
     }
     if(MouseEvents<sf::RectangleShape>::mouseClicked(window, event)){
-        if(MouseEvents<sf::RectangleShape>::hovered(textInputArea, window)){
+        if(MouseEvents<Container>::hovered(container, window)){
             enableState(CLICKED);
         }
         else{
@@ -87,8 +86,8 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     }
     ///keypress event handler
     if (event.type == sf::Event::KeyPressed && isFocused) {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)
-        ){
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)
+        ) {
             if (KeyShortcuts::isUndo(event) && !History::empty()){
                 HistoryNode prevAction = History::undoAction();
                 switch(prevAction.action){
@@ -124,10 +123,11 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
 void TextInput::update() {
     if(checkState(HOVERED) && !checkState(CLICKED)){
-        textInputArea.setFillColor(sf::Color::Blue);
+        //add a lower grey color when being hovered.
+        container.setFillColor(sf::Color(0xdcdcdeff));
     }
     else{
-        textInputArea.setFillColor(sf::Color::Black);
+        container.setFillColor(sf::Color::White);
     }
     if(checkState(CLICKED)){
         isFocused = true;
@@ -143,7 +143,7 @@ void TextInput::update() {
 }
 
 void TextInput::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    target.draw(textInputArea);
+    container.draw(target, states);
     target.draw(label);
     target.draw(multiText);
 }

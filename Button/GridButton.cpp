@@ -68,14 +68,12 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonD
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
     HelperFunctions::positionTextByBounds(box, number, {numPos.x,numPos.y});
 
-
-    sprite3D.setTime(40);
+    sprite3D.setTime(30);
 }
 
 /**
  * Getters
  **/
-
 sf::Vector2f GridButton::getPosition() {
     return box.getPosition();
 }
@@ -123,7 +121,6 @@ void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if (MouseEvents<sf::RectangleShape>::mouseClicked(box, window)) {
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
-
         onClick();
     }
 }

@@ -30,19 +30,25 @@ public:
       * */
     void setOrigin(sf::Vector2f &origin);
     void setPosition(const sf::Vector2f &pos);
-    void setColor(const sf::Color &color);
+    void setFillColor(const sf::Color &color);
     void setTexture(const sf::Texture &texture);
-//      container.setPosition(pos);
-//      container.setSize(size);
-//      container.setFillColor(color);
-//      container.setOutlineThickness(0.5);
-//      container.setOutlineColor(sf::Color::White);
+    void setSize(sf::Vector2f size);
+    void setOutlineThickness(float outlineThickness);
+    void setOutlineColor(const sf::Color &color);
+
+
+    /**
+     * gui components
+     * */
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+
+
 };
 
 

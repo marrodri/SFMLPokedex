@@ -10,6 +10,7 @@
 #include "../MultiText/MultiText.h"
 #include "../Label/Label.h"
 #include "../KeyShortcuts/KeyShortcuts.h"
+#include "../Container/Container.h"
 //#include "../History/Actions.h"
 //#include "../History/History.h"
 //#include "../Snapshot/Snapshot.h"
@@ -24,7 +25,8 @@ class TextInput : public GUIComponent {
 
 private:
     MultiText multiText;
-    sf::RectangleShape textInputArea;
+//    sf::RectangleShape textInputArea;
+    Container container;
     Label label;
     bool isFocused = true;
     std::stack<HistoryNode> actionHistory;

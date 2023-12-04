@@ -66,4 +66,23 @@ void Container::setTexture(const sf::Texture &texture) {
     container.setTexture(&texture);
 }
 
+void Container::setFillColor(const sf::Color &color) {
+    container.setFillColor(color);
+}
+
+void Container::setSize(sf::Vector2f size) {
+    container.setSize(size);
+
+}
+
+void Container::setOutlineThickness(float outlineThickness) {
+    container.setOutlineThickness(outlineThickness);
+
+}
+
+void Container::setOutlineColor(const sf::Color &color) {
+    container.setOutlineColor(color);
+
+}
+
 

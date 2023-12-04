@@ -6,11 +6,14 @@
 #define SFMLTEMPLATE_SEARCHINPUT_H
 
 #include "../../Components/GUIComponent.h"
+#include "../../TextInput/TextInput.h"
+
 class SearchInput :public GUIComponent {
 private:
-    sf::RectangleShape textInput;
-    sf::Text placeholder;
-    //try to create the cursor move back and forth.
+    sf::Text label;
+    TextInput textInput;
+    Container labelContainer;
+    // try to create the cursor move back and forth.
     //    TextInput class.
 public:
     SearchInput();

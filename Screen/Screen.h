@@ -10,6 +10,9 @@
 #include "Home/Home.h"
 #include "ScreenEnum.h"
 #include "MainScreenButton/MainScreenButton.h"
+#include "Logo/Logo.h"
+#include "SideMenu/SideMenu.h"
+#include "SearchInput/SearchInput.h"
 
 
 //this is where the background will be used.
@@ -39,6 +42,10 @@ class Screen : public GUIComponent {
     sf::Text bgmTitle;
     sf::Text sfxOrigin;
     sf::Text BackgroundImageName;
+
+    SearchInput  searchInput;
+    SideMenu sideMenu;
+    Logo logo;
 
 public:
     Screen();
