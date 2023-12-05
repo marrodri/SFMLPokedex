@@ -87,6 +87,8 @@ public:
      * getters
      **/
      int getFullWidth();
+     //this is needed for the search text input.
+     std::string getString();
      bool empty();
      Letter &top();
 
