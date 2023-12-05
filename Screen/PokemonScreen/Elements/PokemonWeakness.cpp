@@ -10,7 +10,7 @@
 
 
 PokemonWeakness::PokemonWeakness() : container({720, 360}, {200, 80}, sf::Color(0xe67c7cff)),
-                                     placeholder("PokemonWeakness", 15, Font::getFont(), {250, 100}),
+                                     placeholder("PokemonWeakness", 15, Font::getFont(OPEN_SANS), {250, 100}),
                                      firstWeakness({100, 100}, {60, 25}, sf::Color::White),
                                      secondWeakness({100, 100}, {60, 25}, sf::Color::White),
                                      thirdWeakness({100, 100}, {60, 25}, sf::Color::White) {

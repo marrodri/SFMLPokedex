@@ -16,7 +16,7 @@ PokemonScreen::PokemonScreen() : spriteDisplay(1, 41), evolutions(std::array<int
     std::cout << "Displaying pokemon screen:" << ScreenHandler::getSelectedPokemonData().name << "\n";
     container.setSize({90 * 8, 4 * 110});
     container.setPosition({250, 100});
-    title.setFont(Font::getFont());
+    title.setFont(Font::getFont(OPEN_SANS));
     title.setString("Pokemon Screen");
     title.setCharacterSize(24);
     HelperFunctions::centerItem(container, title);

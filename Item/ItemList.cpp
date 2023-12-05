@@ -25,7 +25,7 @@ template<typename T>
 void ItemList<T>::pushItem(ItemStruct newItemData) {
     Item<T> newItem;
     newItem.setOnClickFunction(newItemData.functPtr);
-    newItem.setFont(Font::getFont());
+    newItem.setFont(Font::getFont(OPEN_SANS));
     newItem.setText(newItemData.text);
     newItem.setTextColor(sf::Color::White);
 
@@ -42,7 +42,7 @@ template<typename T>
 void ItemList<T>::pushItem(Item<T> &newItem) {
 //    Item<T> newItem;
 //    newItem.setOnClickFunction(newItemData.functPtr);
-    newItem.setFont(Font::getFont());
+    newItem.setFont(Font::getFont(OPEN_SANS));
 //    newItem.setText(newItemData.text);
     newItem.setTextColor(sf::Color::White);
 

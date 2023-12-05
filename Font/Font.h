@@ -8,13 +8,18 @@
 
 #include <SFML/Graphics/Font.hpp>
 
+enum fontsEnum{
+    OPEN_SANS, PIXEL
+};
+
 class Font {
 private:
-    static sf::Font font;
-    static void loadFont();
+    static std::map<fontsEnum, sf::Font> fonts;
+    static void loadFont(fontsEnum font);
+    static std::string getPath(fontsEnum font);
 
 public:
-    static sf::Font &getFont();
+    static sf::Font &getFont(fontsEnum font);
 };
 
 

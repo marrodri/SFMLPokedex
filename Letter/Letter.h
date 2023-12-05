@@ -11,11 +11,12 @@ class Letter : public GUIComponent {
 private:
     sf::Glyph glyphData;
     sf::Text text;
+
     char characterCode;
 public:
     Letter();
-    Letter(char characterCode, sf::Font &font, int characterSize);
-
+//    Letter(char characterCode, sf::Font &font, int characterSize);
+    Letter(char characterCode, sf::Font &font, int characterSize, const sf::Color &color);
     /**sfml*/
     void addEventHandler(sf::RenderWindow &window, sf::Event event);
 

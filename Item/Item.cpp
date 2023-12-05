@@ -12,7 +12,7 @@
 
 template<typename T>
 Item<T>::Item() {
-    setFont(Font::getFont());
+    setFont(Font::getFont(OPEN_SANS));
     textUI.setString("sample Text");
     textUI.setCharacterSize(10);
 

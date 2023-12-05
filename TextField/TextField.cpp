@@ -12,10 +12,15 @@
 //size: 450, 200.
 //constructor params 20, Font::getFont(), {250, 300}
 TextField::TextField(const std::string &initStr) : container({470, 185}, {450, 165}, sf::Color(0x223573ff)),
-                                                   multiText(initStr,{470, 185},{450, 165}, 12, Font::getFont()) {
+                                                   multiText(initStr,{470, 185},{450, 165}, 12, Font::getFont(OPEN_SANS)) {
     /**
      * pass the pos where it shall be initial pos
      **/
+     ///TODO: create a static class that fetches the color
+     ///     for the textField description. Where that
+     ///     static class setting, can be changed from the
+     ///     menuBar. This is anothe global class for the config.
+    multiText.setColor(sf::Color::White);
 
 }
 

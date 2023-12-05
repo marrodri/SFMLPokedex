@@ -16,10 +16,12 @@ MultiText::MultiText(const std::string initStr, sf::Vector2f position, sf::Vecto
     characterSize = sizeFont;
     this->bounds=bounds;
 
-    cursor.setFont(font);
+    cursor.setFont(Font::getFont(OPEN_SANS));
     cursor.setString("|");
     cursor.setCharacterSize(sizeFont);
     cursor.setPosition(position.x, position.y);
+    cursor.setFillColor(color);
+    this->font = font;
     pushNewLine();
     for (char letter: initStr) {
         pushNewLetter(letter);
@@ -31,12 +33,15 @@ MultiText::MultiText(sf::Vector2f position, int sizeFont, sf::Font &font) {
     initialPosition = position;
     characterSize = sizeFont;
 
-    cursor.setFont(font);
+    cursor.setFont(Font::getFont(OPEN_SANS));
+
     cursor.setString("|");
     cursor.setCharacterSize(sizeFont);
     cursor.setPosition(position.x, position.y);
+    cursor.setFillColor(color);
 
     std::string initString = "multi-text initial";
+    pushNewLine();
 //
 }
 
@@ -74,7 +79,11 @@ void MultiText::pushNewLetter(char newCharacter) {
 
         return;
     }
-    Letter newLetter(newCharacter, Font::getFont(), characterSize);
+    std::cout << "push letter with size of:" << characterSize<<"\n";
+    std::cout << "multiText bound x:" << bounds.x<<"\n";
+    std::cout << "multiText bound y:" << bounds.y<<"\n";
+
+    Letter newLetter(newCharacter, this->font, characterSize, color);
     ///highlighting different letter.
 //    setTextTypeColor(newLetter);
 
@@ -245,7 +254,10 @@ void MultiText::update() {
         toggleCursor = !toggleCursor;
         clock.restart();
     }
-    updateCursorPosition();
+
+        updateCursorPosition();
+
+
 //    highlightText();
 }
 
@@ -265,6 +277,11 @@ void MultiText::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     if (toggleCursor && isFocussed) {
         target.draw(cursor);
     }
+}
+
+void MultiText::setColor(const sf::Color &color) {
+    this->color = color;
+
 }
 
 

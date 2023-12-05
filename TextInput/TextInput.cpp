@@ -12,17 +12,18 @@ TextInput::TextInput() {
 
 TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
                      sf::Font &textInputfont, sf::Font &labelFont, std::string label):
-                     multiText(position, 24, labelFont),
+                     multiText("",position, size, 32, Font::getFont(PIXEL)),
                      container(position, size, sf::Color::White)
  {
     ///initializing textInputArea.
     container.setOutlineColor(sf::Color::Black);
     container.setOutlineThickness(3);
 
+    multiText.setColor(sf::Color::Black);
     ///initializing label
     this->label.setLabelString(label);
     this->label.setFont(labelFont);
-    this->label.setFontSize(24);
+    this->label.setFontSize(32);
     //find a way to calculate the space between characterSize and position.
     sf::Vector2f labelPos = sf::Vector2f ({position.x, position.y - (size.y / 2) - 24});
     this->label.setPosition(labelPos);
@@ -30,7 +31,7 @@ TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
     ///initialize multiText
     multiText.setPosition(position);
     multiText.setFont(textInputfont);
-    multiText.setTextCharacterSize(24);
+    multiText.setTextCharacterSize(38);
 }
 
 bool TextInput::isTextColiding() {

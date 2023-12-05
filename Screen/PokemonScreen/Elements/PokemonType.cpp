@@ -9,7 +9,7 @@
 #include "../../ScreenHandler.h"
 
 PokemonType::PokemonType() : container({720, 440}, {200, 80}, sf::Color(0xbfbfbfff)),
-                             placeholder("Pokemon Type", 15, Font::getFont(), {250, 100}),
+                             placeholder("Pokemon Type", 15, Font::getFont(OPEN_SANS), {250, 100}),
                              firstType({100, 100}, {60, 25}, sf::Color::White),
                              secondType({100, 100}, {60, 25}, sf::Color::White),
                              thirdType({100, 100}, {60, 25}, sf::Color::White) {

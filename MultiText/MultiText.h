@@ -19,8 +19,10 @@ private:
     Letter prevLetter;
     bool isKeyPressed = false;
     sf::Vector2f initialPosition;
-    int characterSize=24;
+    int characterSize=64;
     sf::Vector2f bounds;
+    sf::Color color;
+    sf::Font font;
 
 //  attributes for cursor.
     bool toggleCursor = false;
@@ -76,7 +78,7 @@ public:
     void setPosition(sf::Vector2f position);
     void setTextCharacterSize(int textCharacterSize);
     void setFont(sf::Font &font);
-    void setColor();
+    void setColor(const sf::Color &color);
     //TODO: migrate this to the textField.
     void setOnFocus(bool focus);
 //    void setTextTypeColor(Letter &letter);

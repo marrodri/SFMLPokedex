@@ -8,9 +8,10 @@
 #include "../../ScreenHandler.h"
 
 Description::Description(): container({470, 150}, {450, 200}, sf::Color::Blue),
-                            title("Description:", 25, Font::getFont(), {250, 100}),
+                            title("Description:", 25, Font::getFont(OPEN_SANS), {250, 100}),
                             textField("about pokemon")
                             {
+
     HelperFunctions::positionItemByBounds(container, title,{80,20});
 //                        HelperFunctions::positionItemByBounds(container, textField,{90,50});
 

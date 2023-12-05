@@ -15,7 +15,7 @@ MainScreenButton::MainScreenButton(sf::Vector2f position, std::string text) {
     buttonContainer.setPosition(position);
     buttonContainer.setTexture(&Images::getImage(BUTTON));
     this->text.setString(text);
-    this->text.setFont(Font::getFont());
+    this->text.setFont(Font::getFont(OPEN_SANS));
     this->text.setCharacterSize(24);
     buttonContainer.setSize({35, 35});
     HelperFunctions::centerText(buttonContainer, this->text);

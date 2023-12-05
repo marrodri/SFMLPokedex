@@ -5,16 +5,20 @@
 #include "Letter.h"
 
 
+#include <iostream>
 Letter::Letter() {
 }
 
-Letter::Letter(char characterCode, sf::Font &font, int characterSize) {
+Letter::Letter(char characterCode, sf::Font &font, int characterSize, const sf::Color &color) {
+    std::cout << "characterSize from Letter: " << characterSize << "\n";
     this->characterCode = characterCode;
     text.setFont(font);
     text.setString(characterCode);
     text.setCharacterSize(characterSize);
+    text.setFillColor(color);
     glyphData = font.getGlyph(characterCode, characterSize, "regular");
     text.setPosition(0,0);
+
 }
 
 void Letter::setPosition(float x, float y){

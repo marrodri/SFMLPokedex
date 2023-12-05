@@ -12,10 +12,11 @@
 
 //(sf::Vector2f position, sf::Vector2f size, sf::Font &textInputfont,
 // sf::Font &labelFont, std::string label)
-SearchInput::SearchInput(): textInput({405, 40},{550, 50},Font::getFont(), Font::getFont(),""),
+
+SearchInput::SearchInput(): textInput({405, 40},{550, 50},Font::getFont(PIXEL), Font::getFont(PIXEL),""),
 
 labelContainer({250,40},{150,50}, sf::Color::White),
-label("SEARCH: ",Font::getFont(),32){
+label("SEARCH: ",Font::getFont(PIXEL),32){
     labelContainer.setOutlineColor(sf::Color::Black);
     labelContainer.setOutlineThickness(3);
     label.setFillColor(sf::Color::Black);

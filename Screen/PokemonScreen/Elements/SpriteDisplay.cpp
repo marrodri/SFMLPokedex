@@ -9,7 +9,7 @@
 #include "../../ScreenHandler.h"
 
 SpriteDisplay::SpriteDisplay() : container({260, 150}, {200, 200}, sf::Color::Blue),
-                                 placeholder("Sprite Animation", 25, Font::getFont(), {250, 100}) {
+                                 placeholder("Sprite Animation", 25, Font::getFont(OPEN_SANS), {250, 100}) {
 
     HelperFunctions::centerItem(container, placeholder);
 }

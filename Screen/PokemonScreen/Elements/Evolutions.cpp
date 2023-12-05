@@ -11,13 +11,13 @@
 
 Evolutions::Evolutions() :
         container({260, 360}, {450, 160}, sf::Color(0x81e67cff)),
-        placeholder("Evolutions", 25, Font::getFont(), {250, 100}) {
+        placeholder("Evolutions", 25, Font::getFont(OPEN_SANS), {250, 100}) {
     HelperFunctions::centerItem(container, placeholder);
 }
 
 //TODO: reupdate this firstEval.
 Evolutions::Evolutions(const std::array<int, 3> &evolutions, int cols) :
-        placeholder("Evolutions:", 25, Font::getFont(), {250, 100}),
+        placeholder("Evolutions:", 25, Font::getFont(OPEN_SANS), {250, 100}),
         container({260, 360}, {450, 160}, sf::Color(0x81e67cff)),
         firstArrow({}, {40, 40}, sf::Color::White),
         secondArrow({}, {40, 40}, sf::Color::White),

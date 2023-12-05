@@ -8,7 +8,11 @@
 
 Home::Home(): gridView(sf::Vector2f (250, 100)) {
     int j=0;
+
     for (int i =0; i<28; i++) {
+        //TODO: implement the filter here that will check the current
+        //      pokemondata, if it passes the filter, push it; otherwise
+        //      skip it. HINT: This is going to be much easier than expected.
         gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j));
         PokemonStruct passedPok = SFMLPokedex::pokemonList.getPokemonData(j);
         std::cout << passedPok.number << "\n";

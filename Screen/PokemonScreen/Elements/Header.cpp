@@ -11,8 +11,8 @@
 #include "../../../SoundFX/SoundFX.h"
 
 Header::Header() : container({250, 100}, {90 * 8, 40}, sf::Color(0x4287f5ff)),
-                   pokemonName("Pokemon Name", 25, Font::getFont(), {250, 100}),
-                   pokemonNo("001:", 25, Font::getFont(), {300, 100}),
+                   pokemonName("Pokemon Name", 25, Font::getFont(OPEN_SANS), {250, 100}),
+                   pokemonNo("001:", 25, Font::getFont(OPEN_SANS), {300, 100}),
                    backIcon({180, 100}, {40, 40}, sf::Color::Red),
                    saveIcon({180, 100}, {40, 40}, sf::Color::Cyan) {
     backIcon.setTexture(Images::getImage(CROSS));

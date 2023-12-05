@@ -23,7 +23,7 @@ GridView::GridView(sf::Vector2f pos) : position(pos) {
 
 ///private method
 GridButton *GridView::createNewGridButton(int i) {
-    GridButton *newGridButton = new GridButton(Font::getFont(), position, 1);
+    GridButton *newGridButton = new GridButton(Font::getFont(OPEN_SANS), position, 1);
     if (listOfGridButtons.empty()) {
         newGridButton->setPosition(position);
     } else {
@@ -42,7 +42,7 @@ GridButton *GridView::createNewGridButton(int i) {
 }
 
 GridButton *GridView::createNewGridButton(PokemonStruct &pokemonData) {
-    GridButton *newGridButton = new GridButton(Font::getFont(), position, pokemonData);
+    GridButton *newGridButton = new GridButton(Font::getFont(OPEN_SANS), position, pokemonData);
     if (listOfGridButtons.empty()) {
         newGridButton->setPosition(position);
     } else {
