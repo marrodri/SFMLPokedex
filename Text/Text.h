@@ -29,6 +29,7 @@ public:
     sf::FloatRect getLocalBounds() const;
     sf::FloatRect getGlobalBounds() const;
     sf::Vector2f getPosition();
+    const std::string &getString();
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 

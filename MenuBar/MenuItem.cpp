@@ -6,27 +6,29 @@
 #include "../Helper/HelperFunctions.h"
 #include "../MouseEvents/MouseEvents.h"
 
+
 MenuItem::MenuItem() {
 
 }
+
 
 MenuItem::MenuItem(Container container, Text text) : menuItemContainer(container), MenuItemText(text) {
     HelperFunctions::centerItem(menuItemContainer, MenuItemText);
     menuItemContainer.setOutlineThickness(0);
 }
 
-template<typename T>
-void MenuItem::onClickTemplateFunction(void (*pTemplateFunc)(), T &objInst) {
-
-}
-
 /**
  * MenuItem gui component
- * */
+ **/
 
 void MenuItem::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(menuItemContainer);
     target.draw(MenuItemText);
+}
+
+void MenuItem::setString(const std::string &str) {
+    std::cout << "setting: " << str << "\n";
+    title = str;
 }
 
 void MenuItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -35,20 +37,26 @@ void MenuItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     } else {
         disabledState(HOVERED);
     }
-    if (MouseEvents<sf::RectangleShape>::mouseClicked(window, event)) {
-        if (MouseEvents<Container>::hovered(menuItemContainer, window)) {
-            enableState(CLICKED);
-            enableState(FOCUSED);
-        } else {
-            disabledState(CLICKED);
-            disabledState(FOCUSED);
-        }
+    if (MouseEvents<sf::RectangleShape>::mouseClicked(window, event) && checkState(HOVERED)) {
+        enableState(CLICKED);
+        enableState(FOCUSED);
+        onClick();
+//        disabledState(CLICKED);
+
+//        if (MouseEvents<Container>::hovered(menuItemContainer, window)) {
+
+//
+//        } else {
+//            disabledState(CLICKED);
+//            disabledState(FOCUSED);
+//        }
     }
 }
 
 void MenuItem::update() {
     if (checkState(HOVERED) && !checkState(CLICKED)) {
         //add a lower grey color when being hovered.
+//        onClick();
         menuItemContainer.setFillColor(sf::Color::Blue);
         MenuItemText.setColor(sf::Color::White);
     } else {
@@ -57,10 +65,9 @@ void MenuItem::update() {
     }
 }
 
-
 /**
  * container interface
- * */
+ **/
 sf::Vector2f MenuItem::getPosition() {
     return menuItemContainer.getPosition();
 }
@@ -106,5 +113,27 @@ void MenuItem::setOutlineColor(const sf::Color &color) {
     menuItemContainer.setOutlineColor(color);
 }
 
+//void setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
+void MenuItem::setOnClickFunction(void (*pFunc)(void)) {
+    this->pFunc = pFunc;
+
+//    (AppHandler::*(pOnClick))();
+
+
+    //example from
+//    (*objInst.*(pTemplateFunc))();
+}
+
+void MenuItem::onClick() {
+    std::cout << "clickon  |" << title << "|\n";
+    if (pFunc) {
+        std::cout << "MENU ITEM IS  INITIALIZED\n";
+//        AppHandler::(*pFunc)();
+        pFunc();
+    } else {
+        std::cout << "MENU ITEM pFunc NOT INITIALIZED\n";
+    }
+
+}
 
 

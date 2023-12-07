@@ -76,3 +76,6 @@ void Text::setPosition(const sf::Vector2f &pos) {
 }
 
 
+const std::string &Text::getString() {
+    return text.getString();
+}

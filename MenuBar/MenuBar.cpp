@@ -51,8 +51,6 @@ void MenuBar::update() {
     for (auto menu = menus.begin(); menu != menus.end(); menu++) {
         menu->update();
     }
-
-
 }
 
 /**

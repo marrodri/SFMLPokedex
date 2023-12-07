@@ -9,26 +9,30 @@
 #include "../Container/Container.h"
 #include "../Text/Text.h"
 #include "../Components/ContainerInterface.h"
+#include "../AppHandler.h"
 
 class MenuItem : public GUIComponent, public ContainerInterface {
 private:
     Container menuItemContainer;
     Text MenuItemText;
+    std::string title="";
 
 
     /**
      * function pointers.
      * */
-//    void (*pFunc)() = nullptr;
-//    T *objInst;
-//    void (T::*pTemplateFunc)() = nullptr;
+    void (*pFunc)() = nullptr;
 
 public:
     MenuItem();
     MenuItem(Container container, Text text);
+    /**
+     * methods
+     * */
+    void setOnClickFunction(void (*pOnClick)());
 
-    template<typename T>
-    void inline onClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
+    void onClick();
+    void setString(const std::string &str);
 
 
     /**
@@ -39,6 +43,8 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+
 
     /**
      * Container interface

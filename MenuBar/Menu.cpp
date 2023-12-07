@@ -3,9 +3,15 @@
 //
 
 #include "Menu.h"
+#include "../AppHandler.h"
 
 Menu::Menu() {
 
+}
+
+void callAppHandlerMethod() {
+//    AppHandler::changeBackground();/**/
+    std::cout << "callingAppHandlerMethod\n";
 }
 
 Menu::Menu(menuOptionsEnum optionEnum) {
@@ -20,6 +26,7 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                         Container({WINDOW_OPTION_POS.x, WINDOW_OPTION_POS.y + 30}, {80, 30}, sf::Color::White),
                         Text("exit", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
                 newOption.setOutlineThickness(0.5);
+                newOption.setOnClickFunction(&AppHandler::closeProgram);
                 newOption.setOutlineColor(sf::Color::Black);
                 menuOptions.pushItemVertically(newOption);
             }
@@ -34,6 +41,7 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                                    Text("open", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
                 newOption.setOutlineThickness(0.5);
                 newOption.setOutlineColor(sf::Color::Black);
+                newOption.setOnClickFunction(&AppHandler::openFileTree);
                 menuOptions.pushItemVertically(newOption);
             }
             break;
@@ -49,16 +57,23 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                         newOption = MenuItem(Container({THEME_MENU_POS.x, 30}, {160, 30}, sf::Color::White),
                                              Text("Change Background", 14, sf::Color::Black, Font::getFont(OPEN_SANS),
                                                   {0, 0}));
+                        newOption.setString("Change Background");
+                        newOption.setOnClickFunction(&AppHandler::changeBackground);
                         break;
                     case 1:
                         newOption = MenuItem(Container({THEME_MENU_POS.x, 30}, {160, 30}, sf::Color::White),
                                              Text("Change Font Color", 14, sf::Color::Black, Font::getFont(OPEN_SANS),
                                                   {0, 0}));
+                        newOption.setString("Change Font Color");
+                        newOption.setOnClickFunction(&AppHandler::changeFontColor);
                         break;
                     case 2:
                         newOption = MenuItem(Container({THEME_MENU_POS.x, 30}, {160, 30}, sf::Color::White),
                                              Text("Change Font Family", 14, sf::Color::Black, Font::getFont(OPEN_SANS),
                                                   {0, 0}));
+                        newOption.setString("Change Font Color");
+
+                        newOption.setOnClickFunction(&AppHandler::changeFontFamily);
                         break;
                 }
                 newOption.setOutlineThickness(0.5);
@@ -87,6 +102,12 @@ void Menu::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if (menuItem.checkState(FOCUSED)) {
         for (auto menuOption = menuOptions.begin(); menuOption != menuOptions.end(); menuOption++) {
             menuOption->addEventHandler(window, event);
+            if (menuOption->checkState(CLICKED)) {
+                menuOption->disabledState(CLICKED);
+                menuOption->disabledState(FOCUSED);
+                menuItem.disabledState(CLICKED);
+                menuItem.disabledState(FOCUSED);
+            }
         }
     }
 
@@ -95,10 +116,8 @@ void Menu::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 void Menu::update() {
     ///update for visibility.
     menuItem.update();
-    if (menuItem.checkState(FOCUSED)) {
-        for (auto menuOption = menuOptions.begin(); menuOption != menuOptions.end(); menuOption++) {
-            menuOption->update();
-        }
+    for (auto menuOption = menuOptions.begin(); menuOption != menuOptions.end(); menuOption++) {
+        menuOption->update();
     }
 }
 

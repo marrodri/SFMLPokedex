@@ -35,7 +35,7 @@ bool MouseEvents<T>::mouseClicked(T &object, sf::RenderWindow &window) {
 template<typename T>
 bool MouseEvents<T>::mouseClicked(sf::RenderWindow &window, sf::Event event) {
     countClicks(event);
-    return event.type == sf::Event::MouseButtonReleased;
+    return (event.type == sf::Event::MouseButtonReleased);
 }
 
 template<typename T>
