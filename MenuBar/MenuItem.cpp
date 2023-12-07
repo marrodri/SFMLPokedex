@@ -3,9 +3,21 @@
 //
 
 #include "MenuItem.h"
+#include "../Helper/HelperFunctions.h"
+
+MenuItem::MenuItem() {
+
+}
+
+MenuItem::MenuItem(Container container, Text text) : menuContainer(container), menuText(text) {
+    HelperFunctions::centerItem(menuContainer, menuText);
+    menuContainer.setOutlineThickness(0);
+}
+
 
 void MenuItem::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-//    GUIComponent::draw(target, states);
+    target.draw(menuContainer);
+    target.draw(menuText);
 }
 
 void MenuItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -59,3 +71,4 @@ void MenuItem::setOutlineThickness(float outlineThickness) {
 void MenuItem::setOutlineColor(const sf::Color &color) {
     menuContainer.setOutlineColor(color);
 }
+

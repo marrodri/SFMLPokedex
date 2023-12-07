@@ -8,10 +8,13 @@
 
 #include "../Container/Container.h"
 #include "../Components/ContainerInterface.h"
+#include "Menu.h"
 
 class MenuBar :public GUIComponent, public ContainerInterface{
 private:
     Container menuBarContainer;
+    ItemList<Menu> menus;
+    Menu windowMenu;
 public:
     MenuBar();
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;

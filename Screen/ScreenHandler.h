@@ -27,6 +27,7 @@ private:
     //special cases
     static bool searchInputFocused;
     static bool pokemonScreenLoaded;
+    static bool menuBarFocused;
 public:
     static void setCurrentScreen(screenEnum screen);
     static screenEnum getCurrScreen();
@@ -46,9 +47,16 @@ public:
     ///home screen
     static void setHomeScreenLoaded(bool isLoaded);
     static bool isHomeScreenLoaded();
-    //searchInputFocus.
+
+    ///searchInputFocus.
     static bool isSearchInputFocused();
     static void setSearchInputIsFocused(bool option);
+
+    ///navbar focus.
+    ///when one of the navbars is open,
+    /// ignore the evenhandler of all the other remaining elements.
+    static bool isMenuBarFocused();
+    static void setMenuBarIsFocused(bool option);
 };
 
 

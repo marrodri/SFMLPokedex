@@ -8,7 +8,7 @@ Text::Text() {
 
 }
 
-Text::Text(const std::string &str, int fontSize,  sf::Font &font,sf::Vector2f pos) {
+Text::Text(const std::string &str, int fontSize, sf::Font &font, sf::Vector2f pos) {
 
     text.setString(str);
     text.setCharacterSize(fontSize);
@@ -17,16 +17,25 @@ Text::Text(const std::string &str, int fontSize,  sf::Font &font,sf::Vector2f po
     text.setFillColor(sf::Color::White);
 }
 
+Text::Text(const std::string &str, int fontSize, const sf::Color &color, sf::Font &font, sf::Vector2f pos) {
+
+    text.setString(str);
+    text.setCharacterSize(fontSize);
+    text.setPosition(pos);
+    text.setFont(font);
+    text.setFillColor(color);
+}
+
 
 void Text::setFont(sf::Font &font) {
     text.setFont(font);
 }
 
-sf::FloatRect Text::getLocalBounds() const{
+sf::FloatRect Text::getLocalBounds() const {
     return text.getLocalBounds();
 }
 
-sf::FloatRect Text::getGlobalBounds() const{
+sf::FloatRect Text::getGlobalBounds() const {
     return text.getGlobalBounds();
 }
 
@@ -37,11 +46,12 @@ sf::Vector2f Text::getPosition() {
 void Text::setOrigin(sf::Vector2f &origin) {
     text.setOrigin(origin);
 }
-void Text::setString(const std::string &str){
+
+void Text::setString(const std::string &str) {
     text.setString(str);
 }
 
-void Text::setColor(const sf::Color &color){
+void Text::setColor(const sf::Color &color) {
     text.setFillColor(color);
 }
 

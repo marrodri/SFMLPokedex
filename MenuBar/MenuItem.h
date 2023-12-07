@@ -16,6 +16,7 @@ private:
     Text menuText;
 public:
     MenuItem();
+    MenuItem(Container container, Text text);
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 

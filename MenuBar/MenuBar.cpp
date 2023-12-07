@@ -4,12 +4,17 @@
 
 #include "MenuBar.h"
 
-MenuBar::MenuBar():menuBarContainer({0,0},{1000,30},sf::Color(0xc9c9c9ff)) {
-menuBarContainer.setOutlineThickness(0);
+MenuBar::MenuBar() : menuBarContainer({0, 0}, {1000, 30}, sf::Color(0xc9c9c9ff)) {
+    menuBarContainer.setOutlineThickness(0);
+    windowMenu = Menu(WINDOW_MENU);
+    menus.pushItemHorizontally(windowMenu);
 }
 
 void MenuBar::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(menuBarContainer);
+    for (auto menu = menus.begin(); menu != menus.end(); menu++) {
+        menu->draw(target, states);
+    }
 }
 
 void MenuBar::addEventHandler(sf::RenderWindow &window, sf::Event event) {

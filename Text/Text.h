@@ -14,7 +14,7 @@ public:
     Text();
 
     Text(const std::string &str, int fontSize,  sf::Font &font,sf::Vector2f pos);
-
+    Text(const std::string &str, int fontSize, const sf::Color &color, sf::Font &font, sf::Vector2f pos);
     /**
      * setters
      **/

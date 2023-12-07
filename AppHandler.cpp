@@ -16,3 +16,10 @@ std::string AppHandler::getSearchInput() {
 void AppHandler::updateSearchInput(const std::string &input) {
     searchInput = input;
 }
+
+/**
+ * menu Methods
+ **/
+
+
+

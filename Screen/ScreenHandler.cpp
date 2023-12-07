@@ -8,6 +8,8 @@
 screenEnum ScreenHandler::currScreen;
 PokemonStruct ScreenHandler::selectedPokemonData;
 bool ScreenHandler::searchInputFocused;
+bool ScreenHandler::menuBarFocused;
+
 
 std::map<pokemonScreenElementsEnum, bool> ScreenHandler::pokemonScreenElementsLoaded;
 std::map<homeScreenElementsEnum, bool> ScreenHandler::homeScreenElementsLoaded;
@@ -54,7 +56,7 @@ void ScreenHandler::toggleOnPokemonScreenElements() {
     }
 }
 
-bool ScreenHandler::isSearchInputFocused(){
+bool ScreenHandler::isSearchInputFocused() {
     return searchInputFocused;
 }
 
@@ -64,4 +66,12 @@ void ScreenHandler::setSearchInputIsFocused(bool option) {
 
 
 ///home screen
+
+bool ScreenHandler::isMenuBarFocused() {
+    return menuBarFocused;
+}
+
+void ScreenHandler::setMenuBarIsFocused(bool option) {
+    menuBarFocused = option;
+}
 

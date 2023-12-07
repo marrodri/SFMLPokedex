@@ -22,22 +22,6 @@ ItemList<T>::ItemList(std::vector<ItemStruct> initlist) {
  * methods
  * */
 
-///TODO: delete this one.
-template<typename T>
-void ItemList<T>::pushItem(ItemStruct newItemData) {
-    T newItem;
-//    newItem.setOnClickFunction(newItemData.functPtr);
-//    newItem.setFont(Font::getFont(OPEN_SANS));
-//    newItem.setText(newItemData.text);
-//    newItem.setTextColor(sf::Color::White);
-
-    if (itemList.empty()) {
-        newItem.setPosition({initPos.x, initPos.y + 30});
-    } else {
-        newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 30});
-    }
-    itemList.push_back(newItem);
-}
 
 template<typename T>
 void ItemList<T>::pushItemHorizontally(T &newItem) {
