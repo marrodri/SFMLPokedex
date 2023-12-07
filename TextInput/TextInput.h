@@ -28,13 +28,18 @@ private:
 //    sf::RectangleShape textInputArea;
     Container container;
     Label label;
-    bool isFocused = true;
+//    bool isFocused = true;
     std::stack<HistoryNode> actionHistory;
     bool isTextColiding();
 public:
     TextInput();
     TextInput(sf::Vector2f position, sf::Vector2f size, sf::Font &textInputfont, sf::Font &labelFont, std::string label);
 
+
+    /**
+     * getters
+     * */
+     const std::string &getInput();
     /**
      * snapshot methods
      * */
@@ -46,6 +51,8 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+    bool isFocused();
 
 protected:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;

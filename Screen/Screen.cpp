@@ -52,7 +52,7 @@ void Screen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (ScreenHandler::getCurrScreen() == HOME) {
+    if (ScreenHandler::getCurrScreen() == HOME && !ScreenHandler::isSearchInputFocused()) {
         mainScreen.addEventHandler(window, event);
     } else if (ScreenHandler::getCurrScreen() == POKEMON) {
         pokemonScreen.addEventHandler(window, event);

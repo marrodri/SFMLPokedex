@@ -14,7 +14,7 @@
 #include "../Helper/HelperFunctions.h"
 #include "../SoundFX/SoundFX.h"
 
-enum ItemType {SELECTED,OPTION};
+enum ItemType {SELECTED , OPTION};
 template<typename T>
 class Item : public GUIComponent {
 private:

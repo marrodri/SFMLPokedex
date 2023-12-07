@@ -11,10 +11,9 @@ TextInput::TextInput() {
 }
 
 TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
-                     sf::Font &textInputfont, sf::Font &labelFont, std::string label):
-                     multiText("",position, size, 32, Font::getFont(PIXEL)),
-                     container(position, size, sf::Color::White)
- {
+                     sf::Font &textInputfont, sf::Font &labelFont, std::string label) :
+        multiText("", position, size, 32, Font::getFont(PIXEL)),
+        container(position, size, sf::Color::White) {
     ///initializing textInputArea.
     container.setOutlineColor(sf::Color::Black);
     container.setOutlineThickness(3);
@@ -25,7 +24,7 @@ TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
     this->label.setFont(labelFont);
     this->label.setFontSize(32);
     //find a way to calculate the space between characterSize and position.
-    sf::Vector2f labelPos = sf::Vector2f ({position.x, position.y - (size.y / 2) - 24});
+    sf::Vector2f labelPos = sf::Vector2f({position.x, position.y - (size.y / 2) - 24});
     this->label.setPosition(labelPos);
 
     ///initialize multiText
@@ -35,7 +34,7 @@ TextInput::TextInput(sf::Vector2f position, sf::Vector2f size,
 }
 
 bool TextInput::isTextColiding() {
-    return (multiText.getFullWidth() >= (container.getSize().x -10));
+    return (multiText.getFullWidth() >= (container.getSize().x - 10));
 }
 
 
@@ -45,8 +44,8 @@ bool TextInput::isTextColiding() {
 void TextInput::snapshotTextString() {
     std::string newSnapshot;
     std::cout << "snapshoting new string to snapshot\n";
-    for(auto letterIterator = multiText.begin(); letterIterator != multiText.end(); letterIterator++){
-        std::cout << letterIterator->getChar() <<"\n";
+    for (auto letterIterator = multiText.begin(); letterIterator != multiText.end(); letterIterator++) {
+        std::cout << letterIterator->getChar() << "\n";
         newSnapshot += letterIterator->getChar();
     }
     setStringSnapshot(newSnapshot);
@@ -54,10 +53,10 @@ void TextInput::snapshotTextString() {
 
 void TextInput::useSnapshotText() {
     std::string snapshotedString = getStringSnapshot();
-    while(!multiText.empty()){
+    while (!multiText.empty()) {
         multiText.deleteText();
     }
-    for(char letter: snapshotedString){
+    for (char letter: snapshotedString) {
         multiText.pushNewLetter(letter);
     }
 }
@@ -70,28 +69,27 @@ void TextInput::useSnapshotText() {
 void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
     ///mouse event handler
-    if (MouseEvents<Container>::hovered(container, window))
-    {
+    if (MouseEvents<Container>::hovered(container, window)) {
         enableState(HOVERED);
-    }
-    else{
+    } else {
         disabledState(HOVERED);
     }
-    if(MouseEvents<sf::RectangleShape>::mouseClicked(window, event)){
-        if(MouseEvents<Container>::hovered(container, window)){
+    if (MouseEvents<sf::RectangleShape>::mouseClicked(window, event)) {
+        if (MouseEvents<Container>::hovered(container, window)) {
             enableState(CLICKED);
-        }
-        else{
+            enableState(FOCUSED);
+        } else {
             disabledState(CLICKED);
+            disabledState(FOCUSED);
         }
     }
     ///keypress event handler
-    if (event.type == sf::Event::KeyPressed && isFocused) {
+    if (event.type == sf::Event::KeyPressed && checkState(FOCUSED)) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)
-        ) {
-            if (KeyShortcuts::isUndo(event) && !History::empty()){
+                ) {
+            if (KeyShortcuts::isUndo(event) && !History::empty()) {
                 HistoryNode prevAction = History::undoAction();
-                switch(prevAction.action){
+                switch (prevAction.action) {
                     case WRITE:
                         multiText.pushNewLetter(prevAction.letter);
                         break;
@@ -99,23 +97,20 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                         multiText.deleteText();
                         break;
                 }
-            }
-            else if (KeyShortcuts::isSaveSnapshot(event))
-            {
+            } else if (KeyShortcuts::isSaveSnapshot(event)) {
                 snapshotTextString();
-            }
-            else if (KeyShortcuts::isUseSnapshot(event)){
+            } else if (KeyShortcuts::isUseSnapshot(event)) {
                 useSnapshotText();
             }
         }
-        //when deleting a character,
+            //when deleting a character,
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && !multiText.empty()) {
             History::pushNewAction(multiText.top().getChar(), WRITE, TEXTINPUT);
             multiText.deleteText();
             //when using backspace, store the write function with the most recent character to write it back.
         }
     } else if (event.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)
-               && !isTextColiding() && isFocused) {
+               && !isTextColiding() && checkState(FOCUSED)) {
         //when writing characters, store the delete function to history.
         multiText.pushNewLetter(event.text.unicode);
         History::pushNewAction('\0', DELETE, TEXTINPUT);
@@ -123,22 +118,20 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void TextInput::update() {
-    if(checkState(HOVERED) && !checkState(CLICKED)){
+    if (checkState(HOVERED) && !checkState(CLICKED)) {
         //add a lower grey color when being hovered.
         container.setFillColor(sf::Color(0xdcdcdeff));
-    }
-    else{
+    } else {
         container.setFillColor(sf::Color::White);
     }
-    if(checkState(CLICKED)){
-        isFocused = true;
-        multiText.setOnFocus(true);
+    if (checkState(CLICKED)) {
+//        isFocused = true;
+//        multiText.setOnFocus(true);
+    } else if (!checkState(CLICKED)) {
+//        isFocused = false;
+//        multiText.setOnFocus(false);
     }
-    else if(!checkState(CLICKED)){
-        isFocused = false;
-        multiText.setOnFocus(false);
-    }
-    if(isFocused){
+    if (checkState(FOCUSED)) {
         multiText.update();
     }
 }
@@ -147,4 +140,12 @@ void TextInput::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     container.draw(target, states);
     target.draw(label);
     target.draw(multiText);
+}
+
+const std::string &TextInput::getInput() {
+    return multiText.getString();
+}
+
+bool TextInput::isFocused() {
+    return States::checkState(FOCUSED);
 }

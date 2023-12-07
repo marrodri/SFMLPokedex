@@ -5,6 +5,7 @@
 #include "GridView.h"
 #include "../../../Font/Font.h"
 #include "../../../Data/PokemonStruct.h"
+#include "../../ScreenHandler.h"
 
 /**
  * constructors
@@ -87,6 +88,7 @@ void GridView::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void GridView::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+//    if(ScreenHandler::)
     for (GridButton *gridButton: listOfGridButtons) {
         gridButton->addEventHandler(window, event);
     }

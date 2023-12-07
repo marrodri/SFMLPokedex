@@ -7,23 +7,31 @@
 
 #include "../../Components/GUIComponent.h"
 #include "../../TextInput/TextInput.h"
+#include "../../Item/ItemList.h"
+#include "SearchItem.h"
 
 class SearchInput :public GUIComponent {
 private:
     sf::Text label;
     TextInput textInput;
     Container labelContainer;
+    ItemList<SearchItem> searchResults;
+    int searchResultsCounter=0;
     // try to create the cursor move back and forth.
     //    TextInput class.
+    SearchItem &createNewSearchResult(PokemonStruct pokemonData);
 public:
     SearchInput();
 
     /**
      * methods
-     * */
+     **/
     //this will be used for fetching the existing pokemon,
     //in the binary tree.
     std::string &getCurrentInput();
+
+    bool isFocused();
+
 
 
     /**
@@ -36,6 +44,7 @@ public:
     void update() override;
 
 
+    void clearResults();
 };
 
 

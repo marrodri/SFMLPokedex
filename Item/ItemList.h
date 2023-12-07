@@ -17,7 +17,7 @@ class ItemList {
 private:
     sf::Vector2f initPos;
 public:
-    std::vector<Item<T>> itemList;
+    std::vector<T> itemList;
     ItemList();
     ItemList(std::vector<ItemStruct> initlist);
 
@@ -28,13 +28,13 @@ public:
     void setInitPos(sf::Vector2f initPos);
 
     void pushItem(ItemStruct newItemData);
-    void pushItem(Item<T> &newItem);
+    void pushItem(T &newItem);
     void popItem();
     /**
      * getters
      * */
-    std::vector<Item<T>> &getItemList();
-    Item<T> &getItem(int i);
+    std::vector<T> &getItemList();
+    T &getItem(int i);
 
 
 
@@ -42,16 +42,13 @@ public:
      * iterators
      **/
 
-    typedef  typename std::vector<Item<T>>::iterator iterator;
+    typedef  typename std::vector<T>::iterator iterator;
     iterator begin();
     iterator end();
 
-    typedef  typename std::vector<Item<T>>::const_iterator constIterator;
+    typedef  typename std::vector<T>::const_iterator constIterator;
     constIterator begin() const;
     constIterator end() const;
-
-
-
 };
 
 #include "ItemList.cpp"

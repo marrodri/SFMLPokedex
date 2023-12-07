@@ -3,9 +3,11 @@
 //
 
 #include "ScreenHandler.h"
+#include "../States/States.h"
 
 screenEnum ScreenHandler::currScreen;
 PokemonStruct ScreenHandler::selectedPokemonData;
+bool ScreenHandler::searchInputFocused;
 
 std::map<pokemonScreenElementsEnum, bool> ScreenHandler::pokemonScreenElementsLoaded;
 std::map<homeScreenElementsEnum, bool> ScreenHandler::homeScreenElementsLoaded;
@@ -52,6 +54,13 @@ void ScreenHandler::toggleOnPokemonScreenElements() {
     }
 }
 
+bool ScreenHandler::isSearchInputFocused(){
+    return searchInputFocused;
+}
+
+void ScreenHandler::setSearchInputIsFocused(bool option) {
+    searchInputFocused = option;
+}
 
 
 ///home screen

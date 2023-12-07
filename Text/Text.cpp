@@ -41,6 +41,10 @@ void Text::setString(const std::string &str){
     text.setString(str);
 }
 
+void Text::setColor(const sf::Color &color){
+    text.setFillColor(color);
+}
+
 /**
  * GUI component
  * */

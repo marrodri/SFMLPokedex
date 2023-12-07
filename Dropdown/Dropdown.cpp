@@ -4,44 +4,47 @@
 
 #include "Dropdown.h"
 
+//TODO, create the dropdown container.
+//DropdownItem()
+
 Dropdown::Dropdown(){
 //    button.setOnClickFunction(&Dropdown::toggleDropdownMenu);
-    button.setText("button 1");
-    button.setOnClickTemplateFunction(&Dropdown::toggleDropdownMenu, *this);
-
-    itemList.setInitPos(button.getPos());
-
-    Item<Dropdown> button1;
-    button1.setText("button 1");
-    button1.setOnClickTemplateFunction(&Dropdown::setData, *this);
-    Item<Dropdown> button2;
-    button2.setText("button 2");
-    button2.setOnClickTemplateFunction(&Dropdown::setData, *this);
-
-    Item<Dropdown> button3;
-    button3.setText("button 3");
-    button3.setOnClickTemplateFunction(&Dropdown::setData, *this);
-
-    itemList.pushItem(button1);
-    itemList.pushItem(button2);
-    itemList.pushItem(button3);
+//    button.setText("button 1");
+//    button.setOnClickTemplateFunction(&Dropdown::toggleDropdownMenu, *this);
+//
+//    itemList.setInitPos(button.getPos());
+//
+//    Item<Dropdown> button1;
+//    button1.setText("button 1");
+//    button1.setOnClickTemplateFunction(&Dropdown::setData, *this);
+//    Item<Dropdown> button2;
+//    button2.setText("button 2");
+//    button2.setOnClickTemplateFunction(&Dropdown::setData, *this);
+//
+//    Item<Dropdown> button3;
+//    button3.setText("button 3");
+//    button3.setOnClickTemplateFunction(&Dropdown::setData, *this);
+//
+//    itemList.pushItem(button1);
+//    itemList.pushItem(button2);
+//    itemList.pushItem(button3);
 }
 
 void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(button);
     if (isDropdownVisible) {
-        for (auto itemIterator = itemList.begin();  itemIterator != itemList.end(); ++itemIterator){
-            itemIterator->draw(target, states);
-        }
+//        for (auto itemIterator = itemList.begin();  itemIterator != itemList.end(); ++itemIterator){
+//            itemIterator->draw(target, states);
+//        }
     }
 }
 
 void Dropdown::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     button.addEventHandler(window,event);
     if (isDropdownVisible) {
-        for (auto itemIterator = itemList.begin();  itemIterator != itemList.end(); ++itemIterator){
-            itemIterator->addEventHandler(window, event);
-        }
+//        for (auto itemIterator = itemList.begin();  itemIterator != itemList.end(); ++itemIterator){
+//            itemIterator->addEventHandler(window, event);
+//        }
     }
 }
 

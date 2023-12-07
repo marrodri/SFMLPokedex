@@ -37,10 +37,11 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
     HelperFunctions::centerText(box, text);
     //
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
-    HelperFunctions::positionTextByBounds(box, number, {30,30});
+    HelperFunctions::positionTextByBounds(box, number, {30, 30});
 }
 
-GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonData):sprite3D(Images::get3DImage(pokemonData.number),1, pokemonData.cols) {
+GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonData) : sprite3D(
+        Images::get3DImage(pokemonData.number), 1, pokemonData.cols) {
     this->pokemonData = pokemonData;
     box.setSize({100, 110});
     box.setTexture(&Images::getImage(BOX));
@@ -66,7 +67,7 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonD
     //text or sprite is centered.
 //    HelperFunctions::centerItem(box, sprite3D);
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
-    HelperFunctions::positionTextByBounds(box, number, {numPos.x,numPos.y});
+    HelperFunctions::positionTextByBounds(box, number, {numPos.x, numPos.y});
 
     sprite3D.setTime(30);
 }
@@ -86,7 +87,7 @@ void GridButton::setPosition(sf::Vector2f pos) {
     box.setPosition(pos);
     HelperFunctions::centerTextVertically(box, pokemonName, 95);
 //    HelperFunctions::positionTextByBounds(box, number, {12, 12});
-    HelperFunctions::positionTextByBounds(box, number, {numPos.x,numPos.y});
+    HelperFunctions::positionTextByBounds(box, number, {numPos.x, numPos.y});
 //    HelperFunctions::centerText(box, text);
     HelperFunctions::centerItem(box, sprite3D);
 }
@@ -98,7 +99,7 @@ void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     ///
     target.draw(box);
 //    target.draw(text);
-    sprite3D.draw(target,states);
+    sprite3D.draw(target, states);
     target.draw(number);
     target.draw(pokemonName);
 

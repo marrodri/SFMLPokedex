@@ -105,7 +105,9 @@ add_executable(sfmlTemplate main.cpp
         Components/PokemonScreenInterface.h
         TextField/TextField.cpp
         TextField/TextField.h
-        Components/ContainerInterface.h)
+        Components/ContainerInterface.h
+        Screen/SearchInput/SearchItem.cpp
+        Screen/SearchInput/SearchItem.h)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

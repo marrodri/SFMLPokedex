@@ -23,7 +23,7 @@ private:
     sf::Vector2f bounds;
     sf::Color color;
     sf::Font font;
-
+    std::string inputtedString;
 //  attributes for cursor.
     bool toggleCursor = false;
     sf::Clock clock;
@@ -88,7 +88,7 @@ public:
      **/
      int getFullWidth();
      //this is needed for the search text input.
-     std::string getString();
+     std::string &getString();
      bool empty();
      Letter &top();
 

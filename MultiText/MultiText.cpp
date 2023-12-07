@@ -62,13 +62,18 @@ MultiText::iterator MultiText::end() {
  * */
 void MultiText::deleteText() {
     multiTextGrid[lines - 1].pop_back();
+    inputtedString.pop_back();
     if(multiTextGrid[lines - 1].empty() && lines > 1){
         multiTextGrid.pop_back();
+        inputtedString.pop_back();
         lines--;
     }
 }
 
 void MultiText::pushNewLine() {
+    if(!multiTextGrid.empty()){
+        inputtedString.push_back('\n');
+    }
     multiTextGrid.push_back(std::list<Letter>());
     lines = multiTextGrid.size();
 }
@@ -84,6 +89,7 @@ void MultiText::pushNewLetter(char newCharacter) {
     std::cout << "multiText bound y:" << bounds.y<<"\n";
 
     Letter newLetter(newCharacter, this->font, characterSize, color);
+    inputtedString.push_back(newCharacter);
     ///highlighting different letter.
 //    setTextTypeColor(newLetter);
 
@@ -282,6 +288,10 @@ void MultiText::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 void MultiText::setColor(const sf::Color &color) {
     this->color = color;
 
+}
+
+std::string &MultiText::getString() {
+    return inputtedString;
 }
 
 

@@ -4,6 +4,7 @@
 
 #ifndef SFMLTEMPLATE_ITEMLIST_CPP
 #define SFMLTEMPLATE_ITEMLIST_CPP
+
 #include "ItemList.h"
 
 
@@ -21,36 +22,33 @@ ItemList<T>::ItemList(std::vector<ItemStruct> initlist) {
  * methods
  * */
 
+///TODO: delete this one.
 template<typename T>
 void ItemList<T>::pushItem(ItemStruct newItemData) {
-    Item<T> newItem;
-    newItem.setOnClickFunction(newItemData.functPtr);
-    newItem.setFont(Font::getFont(OPEN_SANS));
-    newItem.setText(newItemData.text);
-    newItem.setTextColor(sf::Color::White);
+    T newItem;
+//    newItem.setOnClickFunction(newItemData.functPtr);
+//    newItem.setFont(Font::getFont(OPEN_SANS));
+//    newItem.setText(newItemData.text);
+//    newItem.setTextColor(sf::Color::White);
 
-    if(itemList.empty()){
-        newItem.setPosition({initPos.x, initPos.y+30});
-    }
-    else{
+    if (itemList.empty()) {
+        newItem.setPosition({initPos.x, initPos.y + 30});
+    } else {
         newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 30});
     }
     itemList.push_back(newItem);
 }
 
-template<typename T>
-void ItemList<T>::pushItem(Item<T> &newItem) {
-//    Item<T> newItem;
-//    newItem.setOnClickFunction(newItemData.functPtr);
-    newItem.setFont(Font::getFont(OPEN_SANS));
-//    newItem.setText(newItemData.text);
-    newItem.setTextColor(sf::Color::White);
 
-    if(itemList.empty()){
-        newItem.setPosition({initPos.x, initPos.y+30});
-    }
-    else{
-        newItem.setPosition({itemList.back().getPos().x, itemList.back().getPos().y + 30});
+template<typename T>
+void ItemList<T>::pushItem(T &newItem) {
+    if (itemList.empty()) {
+        itemList.push_back(newItem);
+    } else {
+//        sf::Vector2f newPos = sf::Vector2f(
+//                );
+        newItem.setPosition({itemList.back().getPosition().x, itemList.back().getPosition().y + itemList.back().getSize().
+                y});
     }
     itemList.push_back(newItem);
 }
@@ -58,7 +56,7 @@ void ItemList<T>::pushItem(Item<T> &newItem) {
 
 template<typename T>
 void ItemList<T>::popItem() {
-
+    itemList.pop_back();
 }
 
 template<typename T>
@@ -71,7 +69,7 @@ void ItemList<T>::setInitPos(sf::Vector2f initPos) {
  **/
 
 template<typename T>
-typename ItemList<T>::iterator ItemList<T>::begin(){
+typename ItemList<T>::iterator ItemList<T>::begin() {
     return itemList.begin();
 }
 
@@ -94,13 +92,13 @@ typename ItemList<T>::constIterator ItemList<T>::end() const {
 /**
  * getters
  * */
- template<typename T>
-std::vector<Item<T>> &ItemList<T>::getItemList() {
+template<typename T>
+std::vector<T> &ItemList<T>::getItemList() {
     return itemList;
 }
 
 template<typename T>
-Item<T> &ItemList<T>::getItem(int i) {
+T &ItemList<T>::getItem(int i) {
     return itemList(i);
 }
 

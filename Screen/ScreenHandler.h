@@ -20,9 +20,13 @@ class ScreenHandler {
 private:
     static screenEnum currScreen;
     static PokemonStruct selectedPokemonData;
-    static bool pokemonScreenLoaded;
+
     static std::map<pokemonScreenElementsEnum, bool> pokemonScreenElementsLoaded;
     static std::map<homeScreenElementsEnum, bool> homeScreenElementsLoaded;
+
+    //special cases
+    static bool searchInputFocused;
+    static bool pokemonScreenLoaded;
 public:
     static void setCurrentScreen(screenEnum screen);
     static screenEnum getCurrScreen();
@@ -42,6 +46,9 @@ public:
     ///home screen
     static void setHomeScreenLoaded(bool isLoaded);
     static bool isHomeScreenLoaded();
+    //searchInputFocus.
+    static bool isSearchInputFocused();
+    static void setSearchInputIsFocused(bool option);
 };
 
 
