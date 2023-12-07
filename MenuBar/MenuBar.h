@@ -15,6 +15,8 @@ private:
     Container menuBarContainer;
     ItemList<Menu> menus;
     Menu windowMenu;
+    Menu fileMenu;
+    Menu themeMenu;
 public:
     MenuBar();
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;

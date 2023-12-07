@@ -24,17 +24,42 @@ Menu::Menu(menuOptionsEnum optionEnum) {
 
             break;
         case FILE_MENU:
-            button = MenuItem(Container({0, 0}, {80, 30}, sf::Color::White),
-                              Text("window", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
+            button = MenuItem(Container({FILE_MENU_POS.x, FILE_MENU_POS.y}, {80, 30}, sf::Color::White),
+                              Text("File", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
+            button.setOutlineThickness(0.9);
+            button.setOutlineColor(sf::Color::Black);
             for (int i = 0; i < 1; i++) {
-                MenuItem newOption(Container({0, 30}, {80, 30}, sf::Color::White),
-                                   Text("exit", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
+                MenuItem newOption(Container({FILE_MENU_POS.x, 30}, {80, 30}, sf::Color::White),
+                                   Text("open", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
                 options.pushItemVertically(newOption);
             }
             break;
         case THEME_MENU:
-            button = MenuItem(Container({0, 0}, {80, 30}, sf::Color::White),
-                              Text("window", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
+            button = MenuItem(Container({THEME_MENU_POS.x, THEME_MENU_POS.y}, {160, 30}, sf::Color::White),
+                              Text("Theme", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
+            button.setOutlineThickness(0.9);
+            button.setOutlineColor(sf::Color::Red);
+            for (int i = 0; i < 3; i++) {
+                MenuItem newOption;
+                switch (i) {
+                    case 0:
+                        newOption = MenuItem(Container({THEME_MENU_POS.x, 30}, {160, 30}, sf::Color::White),
+                                             Text("Change Background", 14, sf::Color::Black, Font::getFont(OPEN_SANS),
+                                                  {0, 0}));
+                        break;
+                    case 1:
+                        newOption = MenuItem(Container({THEME_MENU_POS.x, 30}, {160, 30}, sf::Color::White),
+                                             Text("Change Font Color", 14, sf::Color::Black, Font::getFont(OPEN_SANS),
+                                                  {0, 0}));
+                        break;
+                    case 2:
+                        newOption = MenuItem(Container({THEME_MENU_POS.x, 30}, {160, 30}, sf::Color::White),
+                                             Text("Change Font Family", 14, sf::Color::Black, Font::getFont(OPEN_SANS),
+                                                  {0, 0}));
+                        break;
+                }
+                options.pushItemVertically(newOption);
+            }
             break;
     }
 }

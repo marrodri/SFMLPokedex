@@ -19,12 +19,15 @@ class Menu : public GUIComponent, public ContainerInterface{
 private:
     MenuItem button;
     ItemList<MenuItem> options;
+    /**
+     * const variables.
+     * */
      sf::Vector2f WINDOW_OPTION_POS={0,0};
      sf::Vector2f WINDOW_OPTION_SIZE= {80, 30};
-//    const sf::Vector2f FILE_MENU_POS={};
-//    const sf::Vector2f FILE_MENU_SIZE={};
-//    const sf::Vector2f THEME_MENU_POS={};
-//    const sf::Vector2f THEME_MENU_SIZE={};
+     sf::Vector2f FILE_MENU_POS={80, 0};
+     sf::Vector2f FILE_MENU_SIZE={};
+     sf::Vector2f THEME_MENU_POS={160, 0};
+     sf::Vector2f THEME_MENU_SIZE={};
 
 
 public:

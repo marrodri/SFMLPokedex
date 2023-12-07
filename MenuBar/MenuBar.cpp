@@ -7,7 +7,11 @@
 MenuBar::MenuBar() : menuBarContainer({0, 0}, {1000, 30}, sf::Color(0xc9c9c9ff)) {
     menuBarContainer.setOutlineThickness(0);
     windowMenu = Menu(WINDOW_MENU);
+    fileMenu = Menu(FILE_MENU);
+    themeMenu = Menu(THEME_MENU);
     menus.pushItemHorizontally(windowMenu);
+    menus.pushItemHorizontally(fileMenu);
+    menus.pushItemHorizontally(themeMenu);
 }
 
 void MenuBar::draw(sf::RenderTarget &target, sf::RenderStates states) const {

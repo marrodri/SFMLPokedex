@@ -50,6 +50,7 @@ void MenuItem::setOrigin(sf::Vector2f &origin) {
 
 void MenuItem::setPosition(const sf::Vector2f &pos) {
     menuContainer.setPosition(pos);
+    HelperFunctions::centerItem(menuContainer, menuText);
 }
 
 void MenuItem::setFillColor(const sf::Color &color) {
