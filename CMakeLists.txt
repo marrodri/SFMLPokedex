@@ -110,6 +110,12 @@ add_executable(sfmlTemplate main.cpp
         Screen/SearchInput/SearchItem.h
         AppHandler.cpp
         AppHandler.h
+        MenuBar/MenuBar.cpp
+        MenuBar/MenuBar.h
+        MenuBar/Menu.cpp
+        MenuBar/Menu.h
+        MenuBar/MenuItem.cpp
+        MenuBar/MenuItem.h
 )
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 

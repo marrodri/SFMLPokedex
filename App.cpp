@@ -9,6 +9,7 @@
 #include "Screen/SideMenu/SideMenu.h"
 #include "Screen/Logo/Logo.h"
 #include "Screen/SearchInput/SearchInput.h"
+#include "MenuBar/MenuBar.h"
 
 
 std::vector<GUIComponent *> App::components;
@@ -31,7 +32,7 @@ void App::run() {
      * */
 
     Screen screen(sf::Vector2f({WINDOW_WIDTH, WINDOW_HEIGHT}));
-
+    MenuBar menuBar;
     /**
      * order of animation(far behind->most from): background->screen
      **/
@@ -39,6 +40,7 @@ void App::run() {
     * adding components
     */
     addComponent(screen);
+    addComponent(menuBar);
 
     while (window.isOpen()) {
         sf::Event event;

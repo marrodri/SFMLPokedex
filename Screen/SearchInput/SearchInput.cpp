@@ -51,7 +51,7 @@ void SearchInput::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 
 void SearchInput::clearResults() {
     std::cout << "deleting containers\n";
-    int results=searchResults.getItemList().size();
+    int results = searchResults.getItemList().size();
     for (float i = 0; i < results; i += 1) {
         //pos{405, 40},size{550, 50}
         searchResults.popItem();
@@ -91,9 +91,9 @@ void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
             itemIterator->addEventHandler(window, event);
         }
     }
-    if(!textInput.checkState(FOCUSED)){
-        clearResults();
-    }
+//    if(!textInput.checkState(FOCUSED)){
+//        clearResults();
+//    }
     ScreenHandler::setSearchInputIsFocused(textInput.isFocused());
 
 }
@@ -103,7 +103,7 @@ void SearchInput::update() {
     for (auto itemIterator = searchResults.begin(); itemIterator != searchResults.end(); ++itemIterator) {
         itemIterator->update();
     }
-    if (!ScreenHandler::isSearchInputFocused()) {
+    if (!ScreenHandler::isSearchInputFocused() && searchResults.getItemList().size() > 0) {
         clearResults();
     }
 
