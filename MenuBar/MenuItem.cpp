@@ -41,15 +41,6 @@ void MenuItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         enableState(CLICKED);
         enableState(FOCUSED);
         onClick();
-//        disabledState(CLICKED);
-
-//        if (MouseEvents<Container>::hovered(menuItemContainer, window)) {
-
-//
-//        } else {
-//            disabledState(CLICKED);
-//            disabledState(FOCUSED);
-//        }
     }
 }
 
