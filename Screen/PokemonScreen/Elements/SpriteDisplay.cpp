@@ -16,7 +16,7 @@ SpriteDisplay::SpriteDisplay() : container({260, 150}, {200, 200}, sf::Color::Bl
 
 SpriteDisplay::SpriteDisplay(int pokemonNo, int cols) : container({260, 150}, {200, 200}, sf::Color::Blue),
                                                         sprite3D(Images::get3DImage(pokemonNo), 1, cols) {
-    sprite3D.setTime(40);;
+    sprite3D.setTime(20);
     HelperFunctions::centerItem(container, sprite3D);
 }
 
@@ -34,7 +34,7 @@ void SpriteDisplay::update() {
         pokemonData = ScreenHandler::getSelectedPokemonData();
 //        sprite3D.setTexture(Images::get3DImage(pokemonData.number));
         sprite3D = AnimatedSprite(Images::get3DImage(pokemonData.number), 1, pokemonData.cols);
-        sprite3D.setTime(40);
+        sprite3D.setTime(20);
         HelperFunctions::centerItem(container, sprite3D);
         ScreenHandler::setPokemonScreenElementLoaded(SPRITE_DISPLAY, true);
     }

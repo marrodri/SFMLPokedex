@@ -22,6 +22,11 @@ public:
     /**
      * menu bar configuration.
      **/
+    static void closeProgram();
+    static void openFileTree();
+    static void changeBackground();
+    static void changeFontFamily();
+    static void changeFontColor();
 
 
     /**

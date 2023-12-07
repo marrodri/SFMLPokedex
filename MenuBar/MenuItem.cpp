@@ -15,8 +15,13 @@ MenuItem::MenuItem(Container container, Text text) : menuItemContainer(container
     menuItemContainer.setOutlineThickness(0);
 }
 
+template<typename T>
+void MenuItem::onClickTemplateFunction(void (*pTemplateFunc)(), T &objInst) {
+
+}
+
 /**
- * MenuItem.
+ * MenuItem gui component
  * */
 
 void MenuItem::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -100,4 +105,6 @@ void MenuItem::setOutlineThickness(float outlineThickness) {
 void MenuItem::setOutlineColor(const sf::Color &color) {
     menuItemContainer.setOutlineColor(color);
 }
+
+
 

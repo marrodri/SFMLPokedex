@@ -24,9 +24,9 @@ Evolutions::Evolutions(const std::array<int, 3> &evolutions, int cols) :
         firstEvol(Images::get3DImage(evolutions[0]), 1, cols),
         secEvol(Images::get3DImage(evolutions[0]), 1, cols),
         finalEvol(Images::get3DImage(evolutions[0]), 1, cols) {
-    firstEvol.setTime(50);
-    secEvol.setTime(50);
-    finalEvol.setTime(50);
+    firstEvol.setTime(20);
+    secEvol.setTime(20);
+    finalEvol.setTime(20);
 
     firstArrow.setTexture(Images::getImage(ARROW));
     secondArrow.setTexture(Images::getImage(ARROW));
@@ -59,6 +59,8 @@ void Evolutions::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void Evolutions::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+// TODO BONUS: later add a clicking functionality for each evolution that
+//              goes to their own page. This should be easy.
 }
 
 void Evolutions::update() {
@@ -74,16 +76,16 @@ void Evolutions::update() {
                   << SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[2]).cols << "\n";
         firstEvol =
                 AnimatedSprite(Images::get3DImage(pokemonData.evolutions[0]), 1,
-                               SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[0]-1).cols);
-        firstEvol.setTime(40);
-        //second evolution
+                               SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[0] - 1).cols);
         secEvol = AnimatedSprite(Images::get3DImage(pokemonData.evolutions[1]), 1,
-                                 SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[1] -1).cols);
-        secEvol.setTime(40);
-        //final evolution
+                                 SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[1] - 1).cols);
         finalEvol = AnimatedSprite(Images::get3DImage(pokemonData.evolutions[2]), 1,
-                                   SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[2] -1).cols);
-        finalEvol.setTime(40);
+                                   SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[2] - 1).cols);
+
+
+        firstEvol.setTime(20);
+        secEvol.setTime(20);
+        finalEvol.setTime(20);
 
         //bring the helperFunctions from the constructor.
         HelperFunctions::centerItemHorizontally(container, firstEvol, 50);

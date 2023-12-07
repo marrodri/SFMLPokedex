@@ -10,21 +10,39 @@
 #include "../Text/Text.h"
 #include "../Components/ContainerInterface.h"
 
-class MenuItem: public GUIComponent, public ContainerInterface{
+class MenuItem : public GUIComponent, public ContainerInterface {
 private:
     Container menuItemContainer;
     Text MenuItemText;
+
+
+    /**
+     * function pointers.
+     * */
+//    void (*pFunc)() = nullptr;
+//    T *objInst;
+//    void (T::*pTemplateFunc)() = nullptr;
 
 public:
     MenuItem();
     MenuItem(Container container, Text text);
 
+    template<typename T>
+    void inline onClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
+
+
+    /**
+     * GUI component
+     * */
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
 
+    /**
+     * Container interface
+     * */
     sf::Vector2f getPosition() override;
 
     sf::Vector2f getSize() override;

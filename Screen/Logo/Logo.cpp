@@ -10,10 +10,10 @@
 
 ///perfect initializer for the logo container.
 Logo::Logo() {
-    logoContainer.setSize({230,80});
-    logoContainer.setPosition(10,35);
+    logoContainer.setSize({230, 80});
+    logoContainer.setPosition(10, 35);
     logoContainer.setTexture(&Images::getImage(LOGO));
-    logoContainer.setSize({230,60});
+    logoContainer.setSize({230, 60});
 }
 
 /**
@@ -46,27 +46,32 @@ void Logo::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void Logo::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (MouseEvents<sf::RectangleShape>::hovered(logoContainer,window)) {
-        if (!checkState(HOVERED)) {
-            SoundFX::playHoverSound();
-            MouseEvents<sf::RectangleShape>::setHand(window);
+    ///
+
+
+    if (!ScreenHandler::isMenuBarFocused()) {
+        if (MouseEvents<sf::RectangleShape>::hovered(logoContainer, window)) {
+            if (!checkState(HOVERED)) {
+                SoundFX::playHoverSound();
+                MouseEvents<sf::RectangleShape>::setHand(window);
+            }
+            enableState(HOVERED);
+        } else {
+            if (checkState(HOVERED)) {
+                MouseEvents<sf::RectangleShape>::setArrow(window);
+            }
+            disabledState(HOVERED);
         }
-        enableState(HOVERED);
-    }
-    else {
-        if(checkState(HOVERED)){
+        ///
+        if (MouseEvents<sf::RectangleShape>::mouseClicked(logoContainer, window)) {
+            std::cout << "clicking logo menuItem, going home\n";
+            SoundFX::playClickSound();
             MouseEvents<sf::RectangleShape>::setArrow(window);
+            onClick();
         }
-        disabledState(HOVERED);
-    }
-    if (MouseEvents<sf::RectangleShape>::mouseClicked(logoContainer, window)) {
-        std::cout << "clicking logo menuItem, going home\n";
-        SoundFX::playClickSound();
-        MouseEvents<sf::RectangleShape>::setArrow(window);
-        onClick();
     }
 }
 
 void Logo::update() {
-//    GUIComponent::update();
+
 }

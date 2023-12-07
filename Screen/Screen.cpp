@@ -52,9 +52,10 @@ void Screen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (ScreenHandler::getCurrScreen() == HOME && !ScreenHandler::isSearchInputFocused()) {
+    if (ScreenHandler::getCurrScreen() == HOME && !ScreenHandler::isSearchInputFocused() &&
+        !ScreenHandler::isMenuBarFocused()) {
         mainScreen.addEventHandler(window, event);
-    } else if (ScreenHandler::getCurrScreen() == POKEMON) {
+    } else if (ScreenHandler::getCurrScreen() == POKEMON && !ScreenHandler::isMenuBarFocused()) {
         pokemonScreen.addEventHandler(window, event);
     }
     leftButton.addEventHandler(window, event);

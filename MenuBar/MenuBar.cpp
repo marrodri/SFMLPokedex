@@ -3,6 +3,7 @@
 //
 
 #include "MenuBar.h"
+#include "../Screen/ScreenHandler.h"
 
 MenuBar::MenuBar() : menuBarContainer({0, 0}, {1000, 30}, sf::Color(0xc9c9c9ff)) {
     menuBarContainer.setOutlineThickness(0);
@@ -26,7 +27,6 @@ void MenuBar::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     ///eventhandler on the items.
     if (MouseEvents<Container>::hovered(menuBarContainer, window)) {
         enableState(HOVERED);
-
     } else {
         disabledState(HOVERED);
     }
@@ -38,6 +38,7 @@ void MenuBar::addEventHandler(sf::RenderWindow &window, sf::Event event) {
             disabledState(CLICKED);
             disabledState(FOCUSED);
         }
+        ScreenHandler::setMenuBarIsFocused(checkState(FOCUSED));
     }
     for (auto menu = menus.begin(); menu != menus.end(); menu++) {
         menu->addEventHandler(window, event);
