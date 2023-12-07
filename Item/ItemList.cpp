@@ -47,8 +47,9 @@ void ItemList<T>::pushItem(T &newItem) {
     } else {
 //        sf::Vector2f newPos = sf::Vector2f(
 //                );
-        newItem.setPosition({itemList.back().getPosition().x, itemList.back().getPosition().y + itemList.back().getSize().
-                y});
+        newItem.setPosition(
+                {itemList.back().getPosition().x, itemList.back().getPosition().y + itemList.back().getSize().
+                        y});
     }
     itemList.push_back(newItem);
 }
@@ -56,7 +57,8 @@ void ItemList<T>::pushItem(T &newItem) {
 
 template<typename T>
 void ItemList<T>::popItem() {
-    itemList.pop_back();
+    if (!itemList.empty())
+        itemList.pop_back();
 }
 
 template<typename T>

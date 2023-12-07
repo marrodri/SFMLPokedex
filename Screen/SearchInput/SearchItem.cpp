@@ -28,10 +28,12 @@ void SearchItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
     } else { States::disabledState(HOVERED); }
     if (MouseEvents<Container>::mouseClicked(container, window)) {
+        ScreenHandler::toggleOffPokemonScreenElements();
         std::cout << "searchItemClicked\n";
         std::cout << "clicking function\n";
         ScreenHandler::setSelectedPokemonData(pokemonData);
         ScreenHandler::setCurrentScreen(POKEMON);
+
     }
 }
 

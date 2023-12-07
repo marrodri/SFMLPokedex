@@ -107,7 +107,10 @@ add_executable(sfmlTemplate main.cpp
         TextField/TextField.h
         Components/ContainerInterface.h
         Screen/SearchInput/SearchItem.cpp
-        Screen/SearchInput/SearchItem.h)
+        Screen/SearchInput/SearchItem.h
+        AppHandler.cpp
+        AppHandler.h
+)
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

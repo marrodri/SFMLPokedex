@@ -16,10 +16,15 @@ private:
     TextInput textInput;
     Container labelContainer;
     ItemList<SearchItem> searchResults;
+    std::array<int,5> fetchedPokemons = {-1,-1,-1,-1};
     int searchResultsCounter=0;
+    bool isSearched = false;
     // try to create the cursor move back and forth.
     //    TextInput class.
     SearchItem &createNewSearchResult(PokemonStruct pokemonData);
+    bool isEndOfTheArray(const std::string &str1, const std::string &str2);
+    std::array<int,5> searchPokemonDatabase(const std::string &search);
+
 public:
     SearchInput();
 

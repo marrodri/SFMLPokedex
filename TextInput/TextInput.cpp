@@ -5,6 +5,7 @@
 #include "TextInput.h"
 #include "../MouseEvents/MouseEvents.h"
 #include "../Font/Font.h"
+#include "../AppHandler.h"
 
 TextInput::TextInput() {
 
@@ -92,9 +93,11 @@ void TextInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                 switch (prevAction.action) {
                     case WRITE:
                         multiText.pushNewLetter(prevAction.letter);
+                        AppHandler::updateSearchInput(multiText.getString());
                         break;
                     case DELETE:
                         multiText.deleteText();
+                        AppHandler::updateSearchInput(multiText.getString());
                         break;
                 }
             } else if (KeyShortcuts::isSaveSnapshot(event)) {

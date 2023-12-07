@@ -8,6 +8,7 @@
 #include "SearchItem.h"
 #include "../../SFMLPokedex.h"
 #include "../ScreenHandler.h"
+#include "../../AppHandler.h"
 
 /// TODO: bring the working textInput and modify it with a
 ///       dropdown that will show the results from it's
@@ -25,7 +26,6 @@ SearchItem &SearchInput::createNewSearchResult(PokemonStruct pokemonData) {
     newItem->setPosition({405, 90});
     return *newItem;
 }
-
 
 SearchInput::SearchInput() : textInput({405, 40}, {550, 50}, Font::getFont(PIXEL), Font::getFont(PIXEL), ""),
                              labelContainer({250, 40}, {150, 50}, sf::Color::White),
@@ -49,9 +49,10 @@ void SearchInput::draw(sf::RenderTarget &target, sf::RenderStates states) const 
     }
 }
 
-void SearchInput::clearResults(){
+void SearchInput::clearResults() {
     std::cout << "deleting containers\n";
-    for (float i = 0; i < 5; i += 1) {
+    int results=searchResults.getItemList().size();
+    for (float i = 0; i < results; i += 1) {
         //pos{405, 40},size{550, 50}
         searchResults.popItem();
     }
@@ -64,19 +65,34 @@ void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     textInput.addEventHandler(window, event);
     if (textInput.checkState(FOCUSED)) {
         std::cout << "textInput updated: " << textInput.getInput() << "\n";
-        if (!textInput.getInput().empty() && searchResultsCounter < 5) {
-            for (float i = 0; i < 5; i += 1) {
-                SearchItem newItem = createNewSearchResult(SFMLPokedex::pokemonList.getPokemonData(i));
-                searchResults.pushItem(newItem);
-                searchResultsCounter++;
+        if (!textInput.getInput().empty()) {
+            if (isSearched) {
+                clearResults();
+                isSearched = false;
             }
-        } else if ((textInput.getInput().empty() && searchResultsCounter > 0)) {
+            fetchedPokemons = searchPokemonDatabase(textInput.getInput());
+            for (int i = 0; i < 5; i += 1) {
+                std::cout << "fetchedPokemon: " << fetchedPokemons[i];
+                if (fetchedPokemons[i] >= 1) {
+                    std::cout << fetchedPokemons[i] << "name: "
+                              << SFMLPokedex::pokemonList.getPokemonData(fetchedPokemons[i]).name << "\n";
+                    SearchItem newItem = createNewSearchResult(
+                            SFMLPokedex::pokemonList.getPokemonData(fetchedPokemons[i]));
+                    searchResults.pushItem(newItem);
+                    searchResultsCounter++;
+                }
+            }
+            isSearched = true;
+        } else if ((textInput.getInput().empty())) {
             clearResults();
         }
         ///itemlist eventhandler
         for (auto itemIterator = searchResults.begin(); itemIterator != searchResults.end(); ++itemIterator) {
             itemIterator->addEventHandler(window, event);
         }
+    }
+    if(!textInput.checkState(FOCUSED)){
+        clearResults();
     }
     ScreenHandler::setSearchInputIsFocused(textInput.isFocused());
 
@@ -87,8 +103,7 @@ void SearchInput::update() {
     for (auto itemIterator = searchResults.begin(); itemIterator != searchResults.end(); ++itemIterator) {
         itemIterator->update();
     }
-
-    if (!ScreenHandler::isSearchInputFocused() && searchResultsCounter > 0) {
+    if (!ScreenHandler::isSearchInputFocused()) {
         clearResults();
     }
 
@@ -97,6 +112,34 @@ void SearchInput::update() {
 bool SearchInput::isFocused() {
 
 //    return ;
+}
+
+std::array<int, 5> SearchInput::searchPokemonDatabase(const std::string &search) {
+    std::array<int, 5> newArr = {-1, -1, -1, -1, -1};
+    int j = 0;
+    for (int i = 0; i < 38 && j < 5; i++) {
+        if (isEndOfTheArray(search, SFMLPokedex::pokemonList.getPokemonData(i).name)) {
+            newArr[j] = i;
+            j++;
+        }
+    }
+    return newArr;
+}
+
+bool SearchInput::isEndOfTheArray(const std::string &str1, const std::string &str2) {
+    //if str1 reaches the '\0' return true.
+    int j = 0;
+    for (int i = 0; i < str2.size(); i++) {
+
+        if (!str1[j] || !str2[i]) {
+            return true;
+        }
+        if (tolower(str1[j]) != tolower(str2[i])) {
+            return false;
+        }
+        j++;
+    }
+    return false;
 }
 
 

@@ -14,15 +14,13 @@
 class App {
 private:
     static std::vector<GUIComponent*> components;
+
 public:
-
-
     /**
      * main
      **/
     static void addComponent(GUIComponent& component);
     static void run();
-
 };
 
 
