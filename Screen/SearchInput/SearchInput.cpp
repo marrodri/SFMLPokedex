@@ -78,7 +78,7 @@ void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                               << SFMLPokedex::pokemonList.getPokemonData(fetchedPokemons[i]).name << "\n";
                     SearchItem newItem = createNewSearchResult(
                             SFMLPokedex::pokemonList.getPokemonData(fetchedPokemons[i]));
-                    searchResults.pushItem(newItem);
+                    searchResults.pushItemVertically(newItem);
                     searchResultsCounter++;
                 }
             }

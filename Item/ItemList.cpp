@@ -39,14 +39,23 @@ void ItemList<T>::pushItem(ItemStruct newItemData) {
     itemList.push_back(newItem);
 }
 
-
 template<typename T>
-void ItemList<T>::pushItem(T &newItem) {
+void ItemList<T>::pushItemHorizontally(T &newItem) {
     if (itemList.empty()) {
         itemList.push_back(newItem);
     } else {
-//        sf::Vector2f newPos = sf::Vector2f(
-//                );
+        newItem.setPosition(
+                {itemList.back().getPosition().x + itemList.back().getSize().
+                        x, itemList.back().getPosition().y});
+    }
+    itemList.push_back(newItem);
+}
+
+template<typename T>
+void ItemList<T>::pushItemVertically(T &newItem)  {
+    if (itemList.empty()) {
+        itemList.push_back(newItem);
+    } else {
         newItem.setPosition(
                 {itemList.back().getPosition().x, itemList.back().getPosition().y + itemList.back().getSize().
                         y});

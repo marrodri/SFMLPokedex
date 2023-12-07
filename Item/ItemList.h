@@ -28,7 +28,8 @@ public:
     void setInitPos(sf::Vector2f initPos);
 
     void pushItem(ItemStruct newItemData);
-    void pushItem(T &newItem);
+    void pushItemVertically(T &newItem);
+    void pushItemHorizontally(T &newItem);
     void popItem();
     /**
      * getters
