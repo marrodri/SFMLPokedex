@@ -57,7 +57,7 @@ void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     }
 
     if (MouseEvents<Container>::mouseClicked(backIcon, window)) {
-        std::cout << "clicking logo button, going home\n";
+        std::cout << "clicking logo menuItem, going home\n";
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
         ScreenHandler::setCurrentScreen(HOME);

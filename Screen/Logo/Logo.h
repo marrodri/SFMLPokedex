@@ -13,7 +13,7 @@ private:
     sf::RectangleShape logoContainer;
 
     /**
-    * button interface methods
+    * menuItem interface methods
     **/
     void onClick() override;
     void setOnClickFunction() override;

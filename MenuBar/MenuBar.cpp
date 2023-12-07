@@ -21,13 +21,42 @@ void MenuBar::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     }
 }
 
+
 void MenuBar::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     ///eventhandler on the items.
+    if (MouseEvents<Container>::hovered(menuBarContainer, window)) {
+        enableState(HOVERED);
+
+    } else {
+        disabledState(HOVERED);
+    }
+    if (MouseEvents<sf::RectangleShape>::mouseClicked(window, event)) {
+        if (MouseEvents<Container>::hovered(menuBarContainer, window)) {
+            enableState(CLICKED);
+            enableState(FOCUSED);
+        } else {
+            disabledState(CLICKED);
+            disabledState(FOCUSED);
+        }
+    }
+    for (auto menu = menus.begin(); menu != menus.end(); menu++) {
+        menu->addEventHandler(window, event);
+    }
 }
 
 void MenuBar::update() {
     ///update on the items.
+
+    for (auto menu = menus.begin(); menu != menus.end(); menu++) {
+        menu->update();
+    }
+
+
 }
+
+/**
+ * Container interface
+ * */
 
 sf::Vector2f MenuBar::getPosition() {
     return sf::Vector2f();

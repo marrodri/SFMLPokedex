@@ -12,8 +12,9 @@
 
 class MenuItem: public GUIComponent, public ContainerInterface{
 private:
-    Container menuContainer;
-    Text menuText;
+    Container menuItemContainer;
+    Text MenuItemText;
+
 public:
     MenuItem();
     MenuItem(Container container, Text text);

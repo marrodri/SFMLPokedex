@@ -17,7 +17,7 @@ Logo::Logo() {
 }
 
 /**
- * button Interface methods
+ * menuItem Interface methods
  **/
 void Logo::onClick() {
     ScreenHandler::setCurrentScreen(HOME);
@@ -60,7 +60,7 @@ void Logo::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         disabledState(HOVERED);
     }
     if (MouseEvents<sf::RectangleShape>::mouseClicked(logoContainer, window)) {
-        std::cout << "clicking logo button, going home\n";
+        std::cout << "clicking logo menuItem, going home\n";
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
         onClick();

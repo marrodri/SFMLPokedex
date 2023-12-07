@@ -26,7 +26,7 @@ private:
     coordStruct numPos = {13,16};
     //TODO: create a pointer struct for storing the Pokemon
     /**
-    * button interface methods
+    * menuItem interface methods
     **/
     void onClick() override;
 

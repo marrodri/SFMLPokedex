@@ -17,8 +17,8 @@ enum menuOptionsEnum {WINDOW_MENU, FILE_MENU, THEME_MENU};
 
 class Menu : public GUIComponent, public ContainerInterface{
 private:
-    MenuItem button;
-    ItemList<MenuItem> options;
+    MenuItem menuItem;
+    ItemList<MenuItem> menuOptions;
     /**
      * const variables.
      * */

@@ -5,7 +5,7 @@
 #ifndef SFMLTEMPLATE_EVENTHANDLER_H
 #define SFMLTEMPLATE_EVENTHANDLER_H
 
-//activate when an event occurs(like pressing a button, or mouse is clicked a specific area)
+//activate when an event occurs(like pressing a menuItem, or mouse is clicked a specific area)
 #include <SFML/Graphics.hpp>
 class EventHandler {
 public:

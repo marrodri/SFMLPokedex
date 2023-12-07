@@ -16,7 +16,7 @@ private:
 
 
     /**
-    * button interface methods
+    * menuItem interface methods
     **/
     void onClick() override;
     void setOnClickFunction() override;

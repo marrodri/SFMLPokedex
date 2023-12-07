@@ -60,7 +60,7 @@ void MainScreenButton::addEventHandler(sf::RenderWindow &window, sf::Event event
         disabledState(HOVERED);
     }
     if (MouseEvents<sf::RectangleShape>::mouseClicked(buttonContainer, window)) {
-        std::cout << "clicking grid button\n";
+        std::cout << "clicking grid menuItem\n";
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
         onClick();
