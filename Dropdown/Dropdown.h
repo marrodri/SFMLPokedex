@@ -7,15 +7,21 @@
 
 #include "../Item/ItemList.h"
 #include "../Components/GUIComponent.h"
+#include "DropdownItem.h"
+#include "../Text/Text.h"
 
-class Dropdown :public  GUIComponent{
+class Dropdown :public  GUIComponent, public ContainerInterface{
 private:
-    Item<Dropdown> button;
-    ItemList<Dropdown> itemList;
+    Item selectedFilter;
+    Container dropdownContainer;
+    Text dropdownLabel;
+//    DropdownItem buttondropDownItem;
+//    ItemList<DropdownItem> itemList;
+    ItemList<Item> itemList;
     bool isDropdownVisible=true;
     sf::Vector2f initPos;
 
-    Item<Dropdown> *selectedItem;
+    Item *selectedItem;
     /// TODO: create a variable to store the item that will be used to draw.
     ///       when clicking the selectedItem, it will show the dropdown menu.
     ///       and when clicking the one of the other items, pass the reference
@@ -26,19 +32,13 @@ private:
 public:
     Dropdown();
 
-    /**
-     *
-     **/
-     void setButton(std::string text, void (*pFunct)());
-     void setItemList(std::vector<ItemStruct> listOfItemStructs);
-
-     //*
-     //
+     //**
+     // methods
      // */
     void toggleDropdownMenu();
-    void setData(Item<Dropdown> &clickedItem);
 
-    /*
+
+    /**
      * GUIComponent virtual methods
      * */
 
@@ -47,6 +47,30 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+
+private:
+    sf::Vector2f getPosition() override;
+
+    sf::Vector2f getSize() override;
+
+    sf::FloatRect getLocalBounds() const override;
+
+    sf::FloatRect getGlobalBounds() const override;
+
+    void setOrigin(sf::Vector2f &origin) override;
+
+    void setPosition(const sf::Vector2f &pos) override;
+
+    void setFillColor(const sf::Color &color) override;
+
+    void setTexture(const sf::Texture &texture) override;
+
+    void setSize(sf::Vector2f size) override;
+
+    void setOutlineThickness(float outlineThickness) override;
+
+    void setOutlineColor(const sf::Color &color) override;
 };
 
 

@@ -10,6 +10,7 @@
 #include "Screen/Logo/Logo.h"
 #include "Screen/SearchInput/SearchInput.h"
 #include "MenuBar/MenuBar.h"
+#include "Dropdown/Dropdown.h"
 
 
 std::vector<GUIComponent *> App::components;
@@ -33,14 +34,16 @@ void App::run() {
 
     Screen screen(sf::Vector2f({WINDOW_WIDTH, WINDOW_HEIGHT}));
     MenuBar menuBar;
+    Dropdown dropdown;
     /**
      * order of animation(far behind->most from): background->screen
      **/
     /**
     * adding components
     */
-    addComponent(screen);
-    addComponent(menuBar);
+//    addComponent(screen);
+//    addComponent(menuBar);
+    addComponent(dropdown);
 
     while (window.isOpen()) {
         sf::Event event;

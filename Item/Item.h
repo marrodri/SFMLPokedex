@@ -13,62 +13,88 @@
 #include "ItemStruct.h"
 #include "../Helper/HelperFunctions.h"
 #include "../SoundFX/SoundFX.h"
+#include "../Components/ContainerInterface.h"
+#include "../Data/PokemonStruct.h"
+#include "../Container/Container.h"
 
-enum ItemType {SELECTED , OPTION};
-template<typename T>
-class Item : public GUIComponent {
+
+class Item : public GUIComponent, public ContainerInterface {
 private:
-    sf::RectangleShape box;
+    Container dropdownItemContainer;
     sf::Text textUI;
     sf::Color hoveredColor = sf::Color::Blue;
     std::string data;
-    ItemType itemType;
+    TypesEnum pokemonTypeFilter;
 
 
-    /**
-     * function pointers.
-     * */
-    void (*pFunc)() = nullptr;
-    T *objInst;
-    void (T::*pTemplateFunc)() = nullptr;
-    void (T::*pTemplateFuncWithItem)(Item &item) = nullptr;
 public:
     Item();
+
     /**
      * onClick function
      * */
-     void onClick();
+    void onClick();
+    void setPokemonType(TypesEnum pokemonType);
+    void getPokemonType();
 
     /**
      * setters
      * */
-     void setObjInstantce(T &obj) {
-            objInst = obj;
-    }
 
-    void setPosition(sf::Vector2f position);
+    void setPosition(const sf::Vector2f &pos) override;
+
     void setText(const std::string &text);
+
     void setFont(sf::Font &font);
+
     void setTextColor(const sf::Color &color);
+
     void setBorderWidth(int borderWidth);
+
     void setHoverColor(const sf::Color &color);
-    //TODO: check how to create a dropdown shadow for the item.
-    void setDropdownShadow();
-    //TODO: check how to pass a function that will be run when being clicked.
-    void setOnClickFunction(void (*pOnClick)());
-    void setOnClickTemplateFunction(void (T::*pTemplateFunc)(), T &objInst);
-    void setOnClickTemplateFunction(void (T::*pTemplateFuncWithItem)(Item<T> &item), T &objInst);
+
 
     /**
      * getters
-     * */
-     sf::Vector2f getPos();
-     std::string &getData();
+     **/
+    sf::Vector2f getPos();
+
+    std::string &getData();
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
+
     void update() override;
+
+    /**
+     * container interface
+     * */
+public:
+    sf::Vector2f getPosition() override;
+
+    sf::Vector2f getSize() override;
+
+    sf::FloatRect getLocalBounds() const override;
+
+    sf::FloatRect getGlobalBounds() const override;
+
+    void setOrigin(sf::Vector2f &origin) override;
+
+//    void setPosition(const sf::Vector2f &pos) override {
+//        box.setPosition(pos);
+//    }
+
+    void setFillColor(const sf::Color &color) override;
+
+    void setTexture(const sf::Texture &texture) override;
+
+    void setSize(sf::Vector2f size) override;
+
+    void setOutlineThickness(float outlineThickness) override;
+
+    void setOutlineColor(const sf::Color &color) override;
 };
 
-#include "Item.cpp"
+
 #endif //SFMLTEMPLATE_ITEM_H

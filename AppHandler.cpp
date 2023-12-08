@@ -5,6 +5,11 @@
 #include "AppHandler.h"
 
 std::string AppHandler::searchInput;
+TypesEnum AppHandler::pokemonTypeFilter1;
+TypesEnum AppHandler::pokemonTypeFilter2;
+TypesEnum AppHandler::pokemonWeaknessFilter1;
+TypesEnum AppHandler::pokemonWeaknessFilter2;
+TypesEnum AppHandler::pokemonWeaknessFilter3;
 
 /**
  * searchInput methods
@@ -41,6 +46,24 @@ void AppHandler::changeFontColor() {
     std::cout << "running changeFontColor from AppHandler" << std::endl;
 }
 
+/**
+ * filter methods
+ * */
 
+void AppHandler::setPokemonTypeFilter1(){
+    std::cout << "setting pokemon type filter 1\n";
+}
+void AppHandler::setPokemonTypeFilter2(){
+    std::cout << "setting pokemon type filter 2\n";
+}
+void AppHandler::setPokemonWeaknessFilter1(){
+    std::cout << "setting pokemon weakness filter 1\n";
+}
+void AppHandler::setPokemonWeaknessFilter2(){
+    std::cout << "setting pokemon weakness filter 2\n";
+}
+void AppHandler::setPokemonWeaknessFilter3(){
+    std::cout << "setting pokemon weakness filter 3\n";
+}
 
 
