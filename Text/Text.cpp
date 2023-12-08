@@ -9,7 +9,6 @@ Text::Text() {
 }
 
 Text::Text(const std::string &str, int fontSize, sf::Font &font, sf::Vector2f pos) {
-
     text.setString(str);
     text.setCharacterSize(fontSize);
     text.setPosition(pos);
@@ -18,7 +17,6 @@ Text::Text(const std::string &str, int fontSize, sf::Font &font, sf::Vector2f po
 }
 
 Text::Text(const std::string &str, int fontSize, const sf::Color &color, sf::Font &font, sf::Vector2f pos) {
-
     text.setString(str);
     text.setCharacterSize(fontSize);
     text.setPosition(pos);
@@ -59,23 +57,29 @@ void Text::setColor(const sf::Color &color) {
  * GUI component
  * */
 void Text::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-//    GUIComponent::draw(target, states);
     target.draw(text);
 }
 
 void Text::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-//    GUIComponent::addEventHandler(window, event);
+
 }
 
 void Text::update() {
-//    GUIComponent::update();
+
 }
 
 void Text::setPosition(const sf::Vector2f &pos) {
     text.setPosition(pos);
 }
 
-
 const std::string &Text::getString() {
     return text.getString();
+}
+
+void Text::setCharacterSize(const int fontSize) {
+    text.setCharacterSize(fontSize);
+}
+
+void Text::setFillColor(const sf::Color &color) {
+    text.setFillColor(color);
 }

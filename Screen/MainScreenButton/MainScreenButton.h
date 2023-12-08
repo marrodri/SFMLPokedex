@@ -12,7 +12,7 @@
 class MainScreenButton : public GUIComponent, private ButtonInterface{
 private:
     sf::RectangleShape buttonContainer;
-    sf::Text text; //TODO: update text to a texture for the arrows.
+    sf::Text text; //TODO: update dropdownItemText to a texture for the arrows.
 
 
     /**

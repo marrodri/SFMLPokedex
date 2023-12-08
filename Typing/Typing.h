@@ -19,8 +19,8 @@ public:
     //define the multiText class.
     //and from the TypingClass it should update the multiText class.
     //once you have the correct form of implementing the content.
-    //make the text input, that will write only inside boundaries.
-    //also, keep with the idea of creating the text cursor when being on focus on the textInput.
+    //make the dropdownItemText input, that will write only inside boundaries.
+    //also, keep with the idea of creating the dropdownItemText cursor when being on focus on the textInput.
 
     //other stuff to work on: undo for the textInput; top navBar.
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;

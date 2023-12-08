@@ -87,7 +87,7 @@ public:
      * getters
      **/
      int getFullWidth();
-     //this is needed for the search text input.
+     //this is needed for the search dropdownItemText input.
      std::string &getString();
      bool empty();
      Letter &top();

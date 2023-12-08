@@ -5,11 +5,11 @@
 #include "AppHandler.h"
 
 std::string AppHandler::searchInput;
-TypesEnum AppHandler::pokemonTypeFilter1;
-TypesEnum AppHandler::pokemonTypeFilter2;
-TypesEnum AppHandler::pokemonWeaknessFilter1;
-TypesEnum AppHandler::pokemonWeaknessFilter2;
-TypesEnum AppHandler::pokemonWeaknessFilter3;
+TypesEnum AppHandler::pokemonTypeFilter1=ANOTHERTYPE;
+TypesEnum AppHandler::pokemonTypeFilter2=ANOTHERTYPE;
+TypesEnum AppHandler::pokemonWeaknessFilter1=ANOTHERTYPE;
+TypesEnum AppHandler::pokemonWeaknessFilter2=ANOTHERTYPE;
+TypesEnum AppHandler::pokemonWeaknessFilter3=ANOTHERTYPE;
 
 /**
  * searchInput methods
@@ -50,20 +50,51 @@ void AppHandler::changeFontColor() {
  * filter methods
  * */
 
-void AppHandler::setPokemonTypeFilter1(){
+void AppHandler::setPokemonTypeFilter1(TypesEnum pokemonType) {
+    pokemonTypeFilter1 = pokemonType;
     std::cout << "setting pokemon type filter 1\n";
+
 }
-void AppHandler::setPokemonTypeFilter2(){
+
+void AppHandler::setPokemonTypeFilter2(TypesEnum pokemonType) {
+    pokemonTypeFilter2 = pokemonType;
     std::cout << "setting pokemon type filter 2\n";
 }
-void AppHandler::setPokemonWeaknessFilter1(){
+
+void AppHandler::setPokemonWeaknessFilter1(TypesEnum pokemonType) {
+    pokemonWeaknessFilter1 = pokemonType;
     std::cout << "setting pokemon weakness filter 1\n";
 }
-void AppHandler::setPokemonWeaknessFilter2(){
+
+void AppHandler::setPokemonWeaknessFilter2(TypesEnum pokemonType) {
+    pokemonWeaknessFilter2 = pokemonType;
     std::cout << "setting pokemon weakness filter 2\n";
 }
-void AppHandler::setPokemonWeaknessFilter3(){
+
+void AppHandler::setPokemonWeaknessFilter3(TypesEnum pokemonType) {
+    pokemonWeaknessFilter3 = pokemonType;
     std::cout << "setting pokemon weakness filter 3\n";
+}
+
+
+TypesEnum AppHandler::getPokemonTypeFilter1() {
+    return pokemonTypeFilter1;
+}
+
+TypesEnum AppHandler::getPokemonTypeFilter2() {
+    return pokemonTypeFilter2;
+}
+
+TypesEnum AppHandler::getPokemonWeaknessFilter1() {
+    return pokemonWeaknessFilter1;
+}
+
+TypesEnum AppHandler::getPokemonWeaknessFilter2() {
+    return pokemonWeaknessFilter2;
+}
+
+TypesEnum AppHandler::getPokemonWeaknessFilter3() {
+    return pokemonWeaknessFilter3;
 }
 
 

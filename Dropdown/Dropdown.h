@@ -12,16 +12,14 @@
 
 class Dropdown :public  GUIComponent, public ContainerInterface{
 private:
-    Item selectedFilter;
+    DropdownItem selectedFilter;
     Container dropdownContainer;
     Text dropdownLabel;
-//    DropdownItem buttondropDownItem;
-//    ItemList<DropdownItem> itemList;
-    ItemList<Item> itemList;
-    bool isDropdownVisible=true;
+    ItemList<DropdownItem> itemList;
+    ItemList<DropdownItem> itemList2;
+    ItemList<DropdownItem> itemList3;
+    bool isDropdownVisible=false;
     sf::Vector2f initPos;
-
-    Item *selectedItem;
     /// TODO: create a variable to store the item that will be used to draw.
     ///       when clicking the selectedItem, it will show the dropdown menu.
     ///       and when clicking the one of the other items, pass the reference
@@ -31,12 +29,13 @@ private:
     ///         pokemons from the pokedex.
 public:
     Dropdown();
+    Dropdown(const std::string &strLabel, void (*pFuncType)(TypesEnum), sf::Vector2f containerPos);
+//    Dropdown(void (*pFuncType)(TypesEnum), const std::string &lableStr, sf::Vector2f pos);
 
      //**
      // methods
      // */
     void toggleDropdownMenu();
-
 
     /**
      * GUIComponent virtual methods

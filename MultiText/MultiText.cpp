@@ -40,7 +40,7 @@ MultiText::MultiText(sf::Vector2f position, int sizeFont, sf::Font &font) {
     cursor.setPosition(position.x, position.y);
     cursor.setFillColor(color);
 
-    std::string initString = "multi-text initial";
+    std::string initString = "multi-dropdownItemText initial";
     pushNewLine();
 //
 }

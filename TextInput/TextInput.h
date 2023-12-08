@@ -20,7 +20,7 @@ class TextInput : public GUIComponent {
 /**
  *    -textInput, this will have a box that will define the size of the input,
  *    x and y coordinates for the position. An on focus click that will focus the object when being clicked on.
- *    and the text must be centered and must not go outside of the text.
+ *    and the dropdownItemText must be centered and must not go outside of the dropdownItemText.
  * */
 
 private:

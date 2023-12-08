@@ -3,19 +3,26 @@
 //
 
 #include "Dropdown.h"
+#include "../AppHandler.h"
 
 //TODO, create the dropdown container.
 //DropdownItem()
 
-Dropdown::Dropdown() : dropdownContainer({50, 50}, {200, 200}, sf::Color::White),
+Dropdown::Dropdown() : dropdownContainer({50, 50}, {200, 100}, sf::Color::White),
                        dropdownLabel("Pokemon Type 1", 24, Font::getFont(PIXEL), {50, 50}) {
+
     dropdownLabel.setColor(sf::Color::Black);
-    Item button1;
-    button1.setText("menuItem 1");
-    Item button2;
-    button2.setText("menuItem 2");
-    Item button3;
-    button3.setText("menuItem 3");
+    DropdownItem button1(POISON);
+
+    button1.setOnClickFunct(&AppHandler::setPokemonTypeFilter1);
+    DropdownItem button2(PSYCHIC);
+    button2.setOnClickFunct(&AppHandler::setPokemonTypeFilter1);
+    DropdownItem button3(ELECTRIC);
+    button3.setOnClickFunct(&AppHandler::setPokemonTypeFilter1);
+    DropdownItem button4(NORMAL);
+    button4.setOnClickFunct(&AppHandler::setPokemonTypeFilter1);
+    DropdownItem button5(ROCK);
+    button5.setOnClickFunct(&AppHandler::setPokemonTypeFilter1);
 
     ///TODO for tomorrow friday 8:
     ///another button for displaying the selected items.
@@ -24,19 +31,57 @@ Dropdown::Dropdown() : dropdownContainer({50, 50}, {200, 200}, sf::Color::White)
     ///connect the AppHandler dropdown filters to the dropdown class.
     ///whether by passing as a pointer, or connect it with the front end the bakcend class.
     HelperFunctions::positionItemByBounds(dropdownContainer, dropdownLabel, {60, 15});
-    HelperFunctions::positionItemByBounds(dropdownContainer, button1, {0, 50});
-    itemList.pushItemVertically(button1);
-    itemList.pushItemVertically(button2);
-    itemList.pushItemVertically(button3);
+    HelperFunctions::positionItemByBounds(dropdownContainer, selectedFilter, {0, 50});
+    HelperFunctions::positionItemByBounds(dropdownContainer, button1, {0, 80});
+    itemList.pushItemHorizontally(button1);
+    itemList.pushItemHorizontally(button2);
+    itemList.pushItemHorizontally(button3);
+    itemList.pushItemHorizontally(button4);
+    itemList.pushItemHorizontally(button5);
+
+}
+
+///TODO: work on this one.
+//init pos{50, 50}
+//strLabel: Pokemon Type 1
+Dropdown::Dropdown(const std::string &strLabel, void (*pFuncType)(TypesEnum), sf::Vector2f containerPos)
+        : dropdownContainer(containerPos, {200, 75}, sf::Color::White),
+
+          dropdownLabel(strLabel, 24, Font::getFont(PIXEL), containerPos) {
+
+
+    dropdownContainer.setOutlineThickness(2);
+    dropdownContainer.setOutlineColor(sf::Color::Black);
+    HelperFunctions::positionItemByBoundsNoOrigin(dropdownContainer, dropdownLabel, {10, 0});
+    HelperFunctions::positionItemByBounds(dropdownContainer, selectedFilter, {10, 35});
+    for (int i = 0; i < 5; i++) {
+        //go through the states map, enable to false.
+        DropdownItem newButton(static_cast<TypesEnum>(i));
+        newButton.setOnClickFunct(pFuncType);
+        HelperFunctions::positionItemByBounds(dropdownContainer, newButton, {10, 65});
+        itemList.pushItemVertically(newButton);
+    }
+    for (int i = 5; i < 10; i++) {
+        //go through the states map, enable to false.
+        DropdownItem newButton(static_cast<TypesEnum>(i));
+        newButton.setOnClickFunct(pFuncType);
+        HelperFunctions::positionItemByBounds(dropdownContainer, newButton, {110, 65});
+        itemList2.pushItemVertically(newButton);
+    }
+    dropdownLabel.setColor(sf::Color::Black);
 }
 
 void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     target.draw(dropdownContainer);
     target.draw(dropdownLabel);
+    //selectedFilter is not initialized.
     target.draw(selectedFilter);
     if (isDropdownVisible) {
         for (auto itemIterator = itemList.begin(); itemIterator != itemList.end(); ++itemIterator) {
+            itemIterator->draw(target, states);
+        }
+        for (auto itemIterator = itemList2.begin(); itemIterator != itemList2.end(); ++itemIterator) {
             itemIterator->draw(target, states);
         }
     }
@@ -45,8 +90,21 @@ void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 void Dropdown::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 //    selectedFilter.addEventHandler(window, event);
 //    upon clicking the selectedFilter.
+    selectedFilter.addEventHandler(window, event);
+    if (selectedFilter.checkState(CLICKED)) {
+        toggleDropdownMenu();
+        selectedFilter.disabledState(HOVERED);
+        selectedFilter.disabledState(CLICKED);
+        enableState(FOCUSED);
+    } else if (!isDropdownVisible) {
+        disabledState(FOCUSED);
+    }
+
     if (isDropdownVisible) {
         for (auto itemIterator = itemList.begin(); itemIterator != itemList.end(); ++itemIterator) {
+            itemIterator->addEventHandler(window, event);
+        }
+        for (auto itemIterator = itemList2.begin(); itemIterator != itemList2.end(); ++itemIterator) {
             itemIterator->addEventHandler(window, event);
         }
     }
@@ -56,6 +114,9 @@ void Dropdown::update() {
     selectedFilter.update();
     if (isDropdownVisible) {
         for (auto itemIterator = itemList.begin(); itemIterator != itemList.end(); ++itemIterator) {
+            itemIterator->update();
+        }
+        for (auto itemIterator = itemList2.begin(); itemIterator != itemList2.end(); ++itemIterator) {
             itemIterator->update();
         }
     }
@@ -111,7 +172,7 @@ void Dropdown::setOutlineColor(const sf::Color &color) {
 }
 
 
-//void Dropdown::setData(Item &clickedItem) {
+//void Dropdown::setData(DropdownItem &clickedItem) {
 //    //when this item is click, pass the data of the item to the header, with the goal of
 //    // displaying the data at the main menuItem. How?
 //    //ways to do it: pass the MAIN item that must be updated. and when the item which the

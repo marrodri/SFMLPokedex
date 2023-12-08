@@ -66,6 +66,17 @@ void HelperFunctions::positionItemByBounds(const T &obj, U &item, sf::Vector2f p
     item.setPosition({tRect.left + position.x, tRect.top + position.y});
 }
 
+template<typename T, typename U>
+void HelperFunctions::positionItemByBoundsNoOrigin(const T &obj, U &item, sf::Vector2f position){
+    sf::FloatRect itemRect = item.getGlobalBounds();
+    sf::FloatRect tRect = obj.getGlobalBounds();
+    sf::Vector2f center = {itemRect.width/2.0f, itemRect.height/2.f};
+    sf::Vector2f localBounds = {center.x + item.getLocalBounds().left, center.y + item.getLocalBounds().top};
+    sf::Vector2f rounded = {std::round(localBounds.x), std::round(localBounds.y)};
+//    item.setOrigin(rounded);
+    item.setPosition({tRect.left + position.x, tRect.top + position.y});
+}
+
 
 template<typename T>
 void HelperFunctions::centerTextVertically(const T &obj, sf::Text &text, float yCoord)

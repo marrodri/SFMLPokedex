@@ -28,6 +28,8 @@ public:
 
     template<typename T, typename U>
     void inline static positionItemByBounds(const T &obj, U &item, sf::Vector2f position);
+    template<typename T, typename U>
+    void inline static positionItemByBoundsNoOrigin(const T &obj, U &item, sf::Vector2f position);
 };
 
 

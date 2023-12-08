@@ -22,6 +22,8 @@ public:
     void setOrigin(sf::Vector2f &origin);
     void setPosition(const sf::Vector2f &pos);
     void setString(const std::string &str);
+    void setCharacterSize(const int fontSize);
+    void setFillColor(const sf::Color &color);
 
     /**
      * getters

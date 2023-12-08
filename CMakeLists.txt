@@ -37,8 +37,8 @@ add_executable(sfmlTemplate main.cpp
         KeyShortcuts/KeyShortcuts.h
         MouseEvents/MouseEvents.cpp
         MouseEvents/MouseEvents.h
-        Item/Item.cpp
-        Item/Item.h
+        Dropdown/DropdownItem.cpp
+        Dropdown/DropdownItem.h
         Item/ItemList.cpp
         Item/ItemList.h
         Helper/HelperFunctions.cpp

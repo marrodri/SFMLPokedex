@@ -18,7 +18,7 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
 
     box.setPosition(pos);
 
-    ///img text, replaced with an animated sprite.
+    ///img dropdownItemText, replaced with an animated sprite.
     text.setFont(font);
     text.setCharacterSize(15);
     text.setString("Sprite");
@@ -33,7 +33,7 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, int i) {
     pokemonName.setString("Charizard");
     pokemonName.setFont(font);
 
-    //text or sprite is centered.
+    //dropdownItemText or sprite is centered.
     HelperFunctions::centerText(box, text);
     //
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
@@ -50,10 +50,10 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonD
 //    box.setOutlineThickness(2);
     box.setPosition(pos);
 
-    ///img text, replaced with an animated sprite.
-//    text.setFont(font);
-//    text.setCharacterSize(15);
-//    text.setString("Sprite");
+    ///img dropdownItemText, replaced with an animated sprite.
+//    dropdownItemText.setFont(font);
+//    dropdownItemText.setCharacterSize(15);
+//    dropdownItemText.setString("Sprite");
 
     ///number in top left cornet
     number.setCharacterSize(15);
@@ -64,7 +64,7 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonD
     pokemonName.setString(pokemonData.name);
     pokemonName.setFont(font);
 
-    //text or sprite is centered.
+    //dropdownItemText or sprite is centered.
 //    HelperFunctions::centerItem(box, sprite3D);
     HelperFunctions::centerTextVertically(box, pokemonName, 80);
     HelperFunctions::positionTextByBounds(box, number, {numPos.x, numPos.y});
@@ -88,7 +88,7 @@ void GridButton::setPosition(sf::Vector2f pos) {
     HelperFunctions::centerTextVertically(box, pokemonName, 95);
 //    HelperFunctions::positionTextByBounds(box, number, {12, 12});
     HelperFunctions::positionTextByBounds(box, number, {numPos.x, numPos.y});
-//    HelperFunctions::centerText(box, text);
+//    HelperFunctions::centerText(box, dropdownItemText);
     HelperFunctions::centerItem(box, sprite3D);
 }
 
@@ -98,7 +98,7 @@ void GridButton::setPosition(sf::Vector2f pos) {
 void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     ///
     target.draw(box);
-//    target.draw(text);
+//    target.draw(dropdownItemText);
     sprite3D.draw(target, states);
     target.draw(number);
     target.draw(pokemonName);
