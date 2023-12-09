@@ -116,6 +116,11 @@ add_executable(sfmlTemplate main.cpp
         MenuBar/Menu.h
         MenuBar/MenuItem.cpp
         MenuBar/MenuItem.h
+        FileTree/FileHelper.cpp
+        FileTree/FileItem.cpp
+        FileTree/FileNode.cpp
+        FileTree/FileTree.cpp
+        FileTree/NaryTree/NaryTree.cpp
 )
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 

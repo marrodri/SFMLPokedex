@@ -101,4 +101,15 @@ void HelperFunctions::positionTextByBounds(const T &obj, sf::Text &text, sf::Vec
     text.setPosition({tRect.left + position.x, tRect.top + position.y});
 }
 
+
+sf::Text &HelperFunctions::setUpText(sf::Font &font, int fontSize, sf::Vector2f pos) {
+    sf::Text *newText = new sf::Text;
+    newText->setFont(font);
+    newText->setCharacterSize(fontSize);
+    newText->setPosition(pos);
+    return *newText;
+
+}
+
+
 #endif

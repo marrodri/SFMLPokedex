@@ -1,0 +1,60 @@
+//
+// Created by Marthel Rodriguez on 11/20/23.
+//
+
+#ifndef SFMLTEMPLATE_FILETREE_H
+#define SFMLTEMPLATE_FILETREE_H
+
+
+#include "../Components/GUIComponent.h"
+#include "./FileNode.h"
+#include <iostream>
+
+class FileTree : public GUIComponent{
+private:
+    //the root node of the tree
+    FileNode* root = nullptr;
+
+
+    FileNode *createNewFileNode(const std::filesystem::directory_entry &dirEntry, int depth);
+    void makeTree();
+//    void push(TreeNode<std::string> *parent, int depth);
+    void print(TreeNode<std::string> *node);
+
+
+    //finds the parent and add the item to the parent.
+    // If the parent isn't found, a new parent is created
+    void push(FileNode *node, int depth);
+    //traverses the tree ad adds the evenhandlers for each of the nodes
+    void traverse(FileNode* &root, sf::RenderWindow& window, sf::Event event);
+    sf::Vector2f initPosition = {0, 0};
+
+
+    //private recursively draw.
+    void draw(FileNode *node, sf::RenderTarget &window, sf::RenderStates states);
+public:
+    //constructors
+    FileTree();
+
+    //this is the public version of push
+    void push(std::string parent, std::string item = "NULL");
+
+    //draws the root node of the tree
+    virtual void draw(sf::RenderTarget& window, sf::RenderStates states) const;
+
+    //does nothing now
+    virtual void applySnapshot(const Snapshot& snapshot);
+
+    //calls the traverse function to add the event handlers to each node
+    virtual void addEventHandler(sf::RenderWindow& window, sf::Event event);
+
+    //does nothing now
+    virtual void update();
+    //does nothing now
+    virtual Snapshot& getSnapshot();
+    //does nothing now
+    virtual sf::FloatRect getGlobalBounds();
+};
+
+
+#endif //SFMLTEMPLATE_FILETREE_H
