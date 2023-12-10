@@ -47,7 +47,7 @@ void SearchItem::update() {
 }
 
 /**
- * container interface methods
+ * fileItemContainer interface methods
  * */
 
 sf::Vector2f SearchItem::getPosition() {

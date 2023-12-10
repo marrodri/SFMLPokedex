@@ -80,7 +80,7 @@ public:
     void update() override;
 
     /**
-     * container interface
+     * fileItemContainer interface
      * */
 public:
     sf::Vector2f getPosition() override;

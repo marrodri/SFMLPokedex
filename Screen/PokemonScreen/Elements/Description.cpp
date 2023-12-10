@@ -13,7 +13,7 @@ Description::Description(): container({470, 150}, {450, 200}, sf::Color::Blue),
                             {
 
     HelperFunctions::positionItemByBounds(container, title,{80,20});
-//                        HelperFunctions::positionItemByBounds(container, textField,{90,50});
+//                        HelperFunctions::positionItemByBounds(fileItemContainer, textField,{90,50});
 
 //    ScreenHandler::getSelectedPokemonData().about;
 }

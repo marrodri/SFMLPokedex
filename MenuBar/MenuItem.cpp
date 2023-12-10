@@ -57,7 +57,7 @@ void MenuItem::update() {
 }
 
 /**
- * container interface
+ * fileItemContainer interface
  **/
 sf::Vector2f MenuItem::getPosition() {
     return menuItemContainer.getPosition();

@@ -13,9 +13,9 @@
 #include "../../../Data/PokemonStruct.h"
 
 //for evolutions constructor.
-//container({470, 150}, {450, 200}, sf::Color::Blue),
+//fileItemContainer({470, 150}, {450, 200}, sf::Color::Blue),
 //placeholder("Description", 25, Font::getFont(), {250, 100}) {
-//HelperFunctions::centerItem(container, placeholder);
+//HelperFunctions::centerItem(fileItemContainer, placeholder);
 class Evolutions : public GUIComponent{
 private:
     Container container;

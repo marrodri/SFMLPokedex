@@ -5,7 +5,7 @@
 #include "Dropdown.h"
 #include "../AppHandler.h"
 
-//TODO, create the dropdown container.
+//TODO, create the dropdown fileItemContainer.
 //DropdownItem()
 
 Dropdown::Dropdown() : dropdownContainer({50, 50}, {200, 100}, sf::Color::White),

@@ -97,4 +97,8 @@ T &ItemList<T>::getItem(int i) {
     return itemList(i);
 }
 
+template<typename T>
+bool ItemList<T>::empty(){
+    return itemList.empty();
+}
 #endif

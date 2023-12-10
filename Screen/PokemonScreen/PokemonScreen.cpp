@@ -8,7 +8,7 @@
 #include "../ScreenHandler.h"
 
 
-//container(sf::Vector2f pos, sf::Vector2f size, sf::Color &color)
+//fileItemContainer(sf::Vector2f pos, sf::Vector2f size, sf::Color &color)
 //title(const std::string &str, int fontSize, sf::Vector2f pos, sf::Font &font);
 //ScreenHandler::getSelectedPokemonData().number
 //ScreenHandler::getSelectedPokemonData().cols

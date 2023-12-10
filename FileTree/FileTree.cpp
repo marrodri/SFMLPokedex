@@ -11,27 +11,29 @@ FileTree::FileTree() {
     makeTree();
 
     ///logic for left padding by the depth of the children from NAry tree.
-//    container.setPosition({position.x +(data.depth*10), position.y});
+//    fileItemContainer.setPosition({position.x +(data.depth*10), position.y});
 }
 
-void FileTree::push(FileNode *node, int depth) {
-    if (node) {
-        std::set<FileNode*> newChildren;
-        for (const auto & entry : std::filesystem::directory_iterator(node->getData().getPath())){
-            FileNode* newChild = createNewFileNode(entry, depth);
+void FileTree::push(FileItem &node, int depth) {
+//    if (node) {
+//        std::set<FileNode*> newChildren;
+        ItemList<FileItem> newChildren;
+        for (const auto & entry : std::filesystem::directory_iterator(node.getPath())){
+//            FileNode* newChild = createNewFileNode(entry, depth);
+            FileItem newChild = createNewFileItem(entry, depth);
 
-            if (newChild->getData().getFileType() == std::filesystem::file_type::directory) {
+            if (newChild.getFileType() == std::filesystem::file_type::directory) {
                 push(newChild, depth+1);
             }
-            newChildren.insert(newChild);
+            newChildren.pushItemVertically(newChild);
         }
-        node->setChildren(newChildren);
-    }
+        node.setChildren(newChildren);
+//    }
 }
 
-FileNode *FileTree::createNewFileNode(const std::filesystem::directory_entry &dirEntry, int depth) {
+FileItem &FileTree::createNewFileItem(const std::filesystem::directory_entry &dirEntry, int depth) {
 
-    FileNode *newFileNode;
+    FileItem *newFileItem;
     TreeNode<std::string> newData;
     ///
     newData.path = dirEntry.path();
@@ -40,9 +42,10 @@ FileNode *FileTree::createNewFileNode(const std::filesystem::directory_entry &di
     newData.depth = depth;
 
     ///
-    newFileNode = new FileNode(newData,{120,35},{100,100});
+    newFileItem=new FileItem(newData, {120,35}, {100,100});
+//    newFileNode = new FileNode(newData,{120,35},{100,100});
     std::cout << "new fileNode created at the depth: " << depth <<"\n";
-    return newFileNode;
+    return *newFileItem;
 }
 
 void FileTree::makeTree() {
@@ -53,19 +56,21 @@ void FileTree::makeTree() {
         rootData.fileName="Files";
         rootData.depth = 0;
         //
-        root = new FileNode(rootData, {120,35},{100,100});
+        root = new FileItem(rootData, {120,35},{100,100});
 
-        std::set<FileNode*> newChildren;
+//        std::set<FileNode*> newChildren;
+        ItemList<FileItem> newChildren;
 
 //        previous param: root->path
         //TODO: it's required to build an iterator.
         for (const std::filesystem::directory_entry & entry : std::filesystem::directory_iterator(rootData.path)){
             //createNewFileNode();
-            FileNode * newChild = createNewFileNode(entry, 1);
-            if(newChild->getData().getFileType() ==std::filesystem::file_type::directory){
-                push(newChild, newChild->getData().getDepth()+1);
+            FileItem newChild = createNewFileItem(entry, 1);
+//            FileItem newFileItem = FileItem();
+            if(newChild.getFileType() ==std::filesystem::file_type::directory){
+                push(newChild, newChild.getDepth()+1);
             }
-            newChildren.insert(newChild);
+            newChildren.pushItemVertically(newChild);
         }
         root->setChildren(newChildren);
     }
@@ -86,13 +91,11 @@ void FileTree::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     //    root->draw(window,states);
     sf::Vector2f initYpos;
     window.draw(*root);
-    initYpos = root->getData().getPosition();
-    if(!root->getChildren().empty()){
+    initYpos = root->getPosition();
+    if(!root->empty()){
         root->getChildren().begin();
     }
     //recursively iterate for the children to go.
-
-
 }
 
 void FileTree::applySnapshot(const Snapshot &snapshot) {

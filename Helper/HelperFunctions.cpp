@@ -108,7 +108,6 @@ sf::Text &HelperFunctions::setUpText(sf::Font &font, int fontSize, sf::Vector2f 
     newText->setCharacterSize(fontSize);
     newText->setPosition(pos);
     return *newText;
-
 }
 
 

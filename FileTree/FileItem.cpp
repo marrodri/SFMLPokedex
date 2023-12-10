@@ -15,31 +15,32 @@ FileItem::FileItem(std::string text, sf::Vector2f size, sf::Vector2f position) {
     //depth for padding
     data.depth;
     int depth=10;
-    ///init container
-    container.setSize(size);
-    container.setPosition({position.x +(depth*10), position.y});
-    container.setFillColor(sf::Color::Blue);
+    ///init fileItemContainer
+    fileItemContainer.setSize(size);
+    fileItemContainer.setPosition({position.x + (depth * 10), position.y});
+    fileItemContainer.setFillColor(sf::Color::Blue);
 
     ///init textUI
-    this->text = HelperFunctions::setUpText(Font::getFont(OPEN_SANS),12, {12,12});
-    this->text.setString(text);
-    HelperFunctions::centerText(container, this->text);
+    this->fileItemText = Text(text, 12, Font::getFont(OPEN_SANS), {12, 12});
+//    = HelperFunctions::setUpText(Font::getFont(OPEN_SANS),12, {12,12});
+    this->fileItemText.setString(text);
+    HelperFunctions::centerItem(fileItemContainer, this->fileItemText);
 }
 
 FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f position){
     ///init data to store
     this->data = data;
-    ///init container
-    container.setSize(size);
-    container.setPosition({position});
-    container.setFillColor(sf::Color::Blue);
+    ///init fileItemContainer
+    fileItemContainer.setSize(size);
+    fileItemContainer.setPosition({position});
+    fileItemContainer.setFillColor(sf::Color::Blue);
 
     ///init textUI
-    this->text = HelperFunctions::setUpText(Font::getFont(OPEN_SANS),12, {12,12});
-    this->text.setString(data.fileName);
-    HelperFunctions::centerText(container, this->text);
+    this->fileItemText  = Text(data.fileName, 12, Font::getFont(OPEN_SANS), {12, 12});
+    this->fileItemText.setString(data.fileName);
+    HelperFunctions::centerItem(fileItemContainer, this->fileItemText);
 }
-/**
+/**x
  *
  * */
 
@@ -48,8 +49,8 @@ FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f 
  * */
 void FileItem::draw(sf::RenderTarget &window, sf::RenderStates states) const {
 
-    window.draw(container);
-    window.draw(text);
+    window.draw(fileItemContainer);
+    window.draw(fileItemText);
     window.draw(icon);
 }
 
@@ -64,9 +65,6 @@ void FileItem::update() {
 /**
  * getters
  * */
-sf::FloatRect FileItem::getGlobalBounds() const {
-    return container.getGlobalBounds();
-}
 
 int FileItem::getDepth() {
     return data.depth;
@@ -80,11 +78,55 @@ std::filesystem::file_type &FileItem::getFileType(){
     return data.typeOfFile;
 }
 
-void FileItem::setPosition(sf::Vector2f pos){
-    container.setPosition(pos);
-    HelperFunctions::centerText(container, text);
+sf::Vector2f FileItem::getPosition() {
+    return fileItemContainer.getPosition();
 }
 
-sf::Vector2f FileItem::getPosition() const {
-    return container.getPosition();
+sf::Vector2f FileItem::getSize() {
+    return fileItemContainer.getSize();
+}
+
+sf::FloatRect FileItem::getLocalBounds() const {
+    return fileItemContainer.getLocalBounds();
+}
+
+sf::FloatRect FileItem::getGlobalBounds() const {
+    return fileItemContainer.getGlobalBounds();
+}
+
+void FileItem::setOrigin(sf::Vector2f &origin) {
+    fileItemContainer.setOrigin(origin);
+}
+
+void FileItem::setPosition(const sf::Vector2f &pos) {
+    fileItemContainer.setPosition(pos);
+    HelperFunctions::centerItem(fileItemContainer, fileItemText);
+}
+
+void FileItem::setFillColor(const sf::Color &color) {
+    fileItemContainer.setFillColor(color);
+}
+
+void FileItem::setTexture(const sf::Texture &texture) {
+    fileItemContainer.setTexture(texture);
+}
+
+void FileItem::setSize(sf::Vector2f size) {
+    fileItemContainer.setSize(size);
+}
+
+void FileItem::setOutlineThickness(float outlineThickness) {
+    fileItemContainer.setOutlineThickness(outlineThickness);
+}
+
+void FileItem::setOutlineColor(const sf::Color &color) {
+    fileItemContainer.setOutlineColor(color);
+}
+
+void FileItem::setChildren(const ItemList<FileItem> &children){
+    this->children = children;
+}
+
+ItemList<FileItem> &FileItem::getChildren(){
+    return this->children;
 }

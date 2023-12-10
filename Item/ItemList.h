@@ -16,8 +16,10 @@ template<typename T>
 class ItemList {
 private:
     sf::Vector2f initPos;
-public:
+    ///this is the main reason why this class must be a template.
     std::vector<T> itemList;
+public:
+
     ItemList();
     ItemList(std::vector<ItemStruct> initlist);
 
@@ -49,6 +51,8 @@ public:
     typedef  typename std::vector<T>::const_iterator constIterator;
     constIterator begin() const;
     constIterator end() const;
+
+    bool empty();
 };
 
 #include "ItemList.cpp"

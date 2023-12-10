@@ -8,7 +8,7 @@
 #include "../../MouseEvents/MouseEvents.h"
 #include "../ScreenHandler.h"
 
-///perfect initializer for the logo container.
+///perfect initializer for the logo fileItemContainer.
 Logo::Logo() {
     logoContainer.setSize({230, 80});
     logoContainer.setPosition(10, 35);

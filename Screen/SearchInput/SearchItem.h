@@ -13,7 +13,7 @@
 
 class SearchItem: public GUIComponent, public ContainerInterface{
 private:
-    //BONUS: an container for the icon
+    //BONUS: an fileItemContainer for the icon
     Container container;
     Text text;
     PokemonStruct pokemonData;
@@ -23,7 +23,7 @@ public:
 
 
     /**
-     * container virtual methods
+     * fileItemContainer virtual methods
      * */
     sf::Vector2f getPosition();
 
