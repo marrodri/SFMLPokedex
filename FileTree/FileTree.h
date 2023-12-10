@@ -7,7 +7,7 @@
 
 
 #include "../Components/GUIComponent.h"
-#include "./FileNode.h"
+#include "./FileItem.h"
 #include <iostream>
 
 class FileTree : public GUIComponent{
@@ -18,21 +18,14 @@ private:
 
     FileItem &createNewFileItem(const std::filesystem::directory_entry &dirEntry, int depth);
     void makeTree();
-//    void push(TreeNode<std::string> *parent, int depth);
     void print(TreeNode<std::string> *node);
 
 
     //finds the parent and add the item to the parent.
     // If the parent isn't found, a new parent is created
-//    void push(FileNode *node, int depth);
     void push(FileItem &node, int depth);
-    //traverses the tree ad adds the evenhandlers for each of the nodes
-    void traverse(FileNode* &root, sf::RenderWindow& window, sf::Event event);
     sf::Vector2f initPosition = {0, 0};
 
-
-    //private recursively draw.
-    void draw(FileNode *node, sf::RenderTarget &window, sf::RenderStates states);
 public:
     //constructors
     FileTree();
@@ -54,7 +47,7 @@ public:
     //does nothing now
     virtual Snapshot& getSnapshot();
     //does nothing now
-    virtual sf::FloatRect getGlobalBounds();
+//    virtual sf::FloatRect getGlobalBounds();
 };
 
 

@@ -48,15 +48,15 @@ void App::run() {
     /**
     * adding components
     */
-//    addComponent(screen);
-//    addComponent(menuBar);
+    addComponent(screen);
+    addComponent(menuBar);
 //
 //
 //
-//    addComponent(dropdown4);
-//    addComponent(dropdown3);
-//    addComponent(dropdown2);
-//    addComponent(dropdown1);
+    addComponent(dropdown4);
+    addComponent(dropdown3);
+    addComponent(dropdown2);
+    addComponent(dropdown1);
     addComponent(fileTree);
 
     while (window.isOpen()) {

@@ -18,6 +18,48 @@ ItemList<T>::ItemList(std::vector<ItemStruct> initlist) {
 
 }
 
+
+/**
+ * position methods
+ * */
+template<typename T>
+void ItemList<T>::updateListPosition(sf::Vector2f pos) {
+//
+//    for (auto item = itemList.begin(); item != itemList.end(); item++) {
+//        sf::Vector2f prevPos = item->getPosition();
+//        item->setPosition({prevPos.x + pos.x, prevPos.y + pos.y});
+//    }
+
+    auto item = itemList.begin();
+    if (item != itemList.end()) {
+        std::cout << "posx: " << pos.x << ", posy: " << pos.y << "\n";
+        item->setPosition(pos);
+        sf::Vector2f prevPos = item->getPosition();
+        item++;
+        while (item != itemList.end()) {
+            item->setPosition({prevPos.x, prevPos.y + item->getSize().y});
+            prevPos = item->getPosition();
+            item++;
+        }
+    }
+}
+
+template<typename T>
+void ItemList<T>::setColumnListPosition(sf::Vector2f pos) {
+
+    auto item = itemList.begin();
+//    if (item) {
+
+
+        item->setPosition(pos);
+        item++;
+        while (item != itemList.end()) {
+            sf::Vector2f prevPos = item->getPosition();
+            item->setPosition({prevPos.x, prevPos.y + item->getSize().y});
+        }
+//    }
+}
+
 /**
  * methods
  * */
@@ -36,7 +78,7 @@ void ItemList<T>::pushItemHorizontally(T &newItem) {
 }
 
 template<typename T>
-void ItemList<T>::pushItemVertically(T &newItem)  {
+void ItemList<T>::pushItemVertically(T &newItem) {
     if (itemList.empty()) {
         itemList.push_back(newItem);
     } else {
@@ -44,7 +86,21 @@ void ItemList<T>::pushItemVertically(T &newItem)  {
                 {itemList.back().getPosition().x, itemList.back().getPosition().y + itemList.back().getSize().
                         y});
     }
+//    itemList.insert(itemList.begin(),newItem);
     itemList.push_back(newItem);
+}
+
+
+template<typename T>
+void ItemList<T>::pushFrontItemVertically(T &newItem) {
+    if (itemList.empty()) {
+        itemList.push_back(newItem);
+    } else {
+        newItem.setPosition(
+                {itemList.back().getPosition().x, itemList.back().getPosition().y + itemList.back().getSize().
+                        y});
+    }
+    itemList.insert(itemList.begin(), newItem);
 }
 
 
@@ -98,7 +154,15 @@ T &ItemList<T>::getItem(int i) {
 }
 
 template<typename T>
-bool ItemList<T>::empty(){
+bool ItemList<T>::empty() {
     return itemList.empty();
 }
+
+template<typename T>
+sf::Vector2f ItemList<T>::getLastItemPosition() {
+    if (itemList.size() > 0) {
+        return itemList[itemList.size() - 1].getPosition();
+    }
+}
+
 #endif

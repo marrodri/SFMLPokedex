@@ -24,6 +24,10 @@ sf::Vector2f Container::getPosition() {
     return container.getPosition();
 }
 
+sf::Vector2f Container::getPosition() const {
+    return container.getPosition();
+}
+
 sf::Vector2f Container::getSize() {
     return container.getSize();
 }

@@ -14,7 +14,6 @@
 #include "../Text/Text.h"
 #include "../Item/ItemList.h"
 
-//public item: it's going to be of type Item<FileNode>
 class FileItem : public GUIComponent, public ContainerInterface {
 
 private:

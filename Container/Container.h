@@ -21,7 +21,8 @@ public:
      * getters;
      **/
      sf::Vector2f getPosition();
-     sf::Vector2f getSize();
+    sf::Vector2f getPosition() const;
+    sf::Vector2f getSize();
      sf::FloatRect getLocalBounds() const;
      sf::FloatRect getGlobalBounds() const;
 
