@@ -4,6 +4,7 @@
 
 #include "Menu.h"
 #include "../AppHandler.h"
+#include "../Screen/ScreenHandler.h"
 
 Menu::Menu() {
 
@@ -15,6 +16,7 @@ void callAppHandlerMethod() {
 }
 
 Menu::Menu(menuOptionsEnum optionEnum) {
+    menuOption = optionEnum;
     switch (optionEnum) {
         case WINDOW_MENU:
             menuItem = MenuItem(Container(WINDOW_OPTION_POS, WINDOW_OPTION_SIZE, sf::Color::White),
@@ -28,7 +30,7 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                 newOption.setOutlineThickness(0.5);
                 newOption.setOnClickFunction(&AppHandler::closeProgram);
                 newOption.setOutlineColor(sf::Color::Black);
-                menuOptions.pushItemVertically(newOption);
+                menuButtons.pushItemVertically(newOption);
             }
             break;
         case FILE_MENU:
@@ -42,7 +44,7 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                 newOption.setOutlineThickness(0.5);
                 newOption.setOutlineColor(sf::Color::Black);
                 newOption.setOnClickFunction(&AppHandler::openFileTree);
-                menuOptions.pushItemVertically(newOption);
+                menuButtons.pushItemVertically(newOption);
             }
             break;
         case THEME_MENU:
@@ -78,7 +80,7 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                 }
                 newOption.setOutlineThickness(0.5);
                 newOption.setOutlineColor(sf::Color::Black);
-                menuOptions.pushItemVertically(newOption);
+                menuButtons.pushItemVertically(newOption);
             }
             break;
     }
@@ -89,7 +91,7 @@ void Menu::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(menuItem);
     //if visible.
     if (menuItem.checkState(FOCUSED)) {
-        for (auto menuOption = menuOptions.begin(); menuOption != menuOptions.end(); menuOption++) {
+        for (auto menuOption = menuButtons.begin(); menuOption != menuButtons.end(); menuOption++) {
             menuOption->draw(target, states);
         }
     }
@@ -97,26 +99,44 @@ void Menu::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
 void Menu::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     ///onClick for the buttons.
+    ///parent button
     menuItem.addEventHandler(window, event);
 //    menuItem.checkState(FOCUSED)
+    ///children of the parent
     if (menuItem.checkState(FOCUSED)) {
-        for (auto menuOption = menuOptions.begin(); menuOption != menuOptions.end(); menuOption++) {
-            menuOption->addEventHandler(window, event);
-            if (menuOption->checkState(CLICKED)) {
-                menuOption->disabledState(CLICKED);
-                menuOption->disabledState(FOCUSED);
+        ScreenHandler::enableOpenedMenuBarOption(menuOption);
+        for (auto menuButton = menuButtons.begin(); menuButton != menuButtons.end(); menuButton++) {
+            menuButton->addEventHandler(window, event);
+            /// -upon Clicking, a menuOption, this will disable
+            /// all the children and the parent navBar.
+            if (menuButton->checkState(CLICKED)) {
+                std::cout << "!!!!!!!!!!!!!menuOption is clicked\n";
                 menuItem.disabledState(CLICKED);
                 menuItem.disabledState(FOCUSED);
+                menuButton->disabledState(CLICKED);
+                menuButton->disabledState(FOCUSED);
+                if(menuOption == WINDOW_MENU){
+                    window.close();
+                }
             }
         }
+    }
+    else{
+
     }
 
 }
 
 void Menu::update() {
     ///update for visibility.
+    if(!menuItem.checkState(FOCUSED)){
+        ScreenHandler::disableOpenedMenuBarOption(menuOption);
+    }
+    else{
+        std::cout << "!!!+++++++menubar is focused++++++!!!!\n";
+    }
     menuItem.update();
-    for (auto menuOption = menuOptions.begin(); menuOption != menuOptions.end(); menuOption++) {
+    for (auto menuOption = menuButtons.begin(); menuOption != menuButtons.end(); menuOption++) {
         menuOption->update();
     }
 }

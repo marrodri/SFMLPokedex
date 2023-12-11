@@ -15,24 +15,27 @@ Home::Home() : gridView(sf::Vector2f(250, 100)) {
         //TODO: implement the filter here that will check the current
         //      pokemondata, if it passes the filter, push it; otherwise
         //      skip it. HINT: This is going to be much easier than expected.
-//        gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j));
-        gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j + 28));
+        gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j));
+//        gridView.pushItem(SFMLPokedex::pokemonList.getPokemonData(j + 28));
         PokemonStruct passedPok = SFMLPokedex::pokemonList.getPokemonData(j);
         std::cout << passedPok.number << "\n";
         std::cout << passedPok.name << "\n";
         std::cout << passedPok.about << "\n";
         j++;
-        if (((j + 28)) == 38) {
-            j = 0;
-        }
-//        if (((j))==28) {
-//            j=0;
+//        if (((j + 28)) == 38) {
+//            j = 0;
 //        }
+        if (((j))==28) {
+            j=0;
+        }
     }
 
-    homeScreenContainer.setFillColor(sf::Color::Black);
-    homeScreenContainer.setPosition({247, 100});
-    homeScreenContainer.setSize({699, 490});
+    homeScreenContainer.setFillColor(sf::Color(0x34c0ebff));
+    homeScreenContainer.setSize({710, 490});
+    homeScreenContainer.setOutlineThickness(3);
+
+    homeScreenContainer.setPosition({250, 98});
+
 
 //    currPageIndex.setFont(Font::getFont());
 //    currPageIndex.setCharacterSize(24);

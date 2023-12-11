@@ -58,12 +58,15 @@ void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     } else if (ScreenHandler::getCurrScreen() == POKEMON && !ScreenHandler::isMenuBarFocused()) {
         pokemonScreen.addEventHandler(window, event);
     }
-    leftButton.addEventHandler(window, event);
-    rightButton.addEventHandler(window, event);
+    if(!ScreenHandler::isMenuBarFocused()){
+        leftButton.addEventHandler(window, event);
+        rightButton.addEventHandler(window, event);
 
-    searchInput.addEventHandler(window, event);
-    sideMenu.addEventHandler(window, event);
-    logo.addEventHandler(window, event);
+        searchInput.addEventHandler(window, event);
+        sideMenu.addEventHandler(window, event);
+        logo.addEventHandler(window, event);
+    }
+
 }
 
 void Screen::update() {

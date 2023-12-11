@@ -1,0 +1,8 @@
+//
+// Created by Marthel Rodriguez on 12/11/23.
+//
+
+#ifndef SFMLTEMPLATE_MENUOPTIONSENUM_H
+#define SFMLTEMPLATE_MENUOPTIONSENUM_H
+enum menuOptionsEnum {WINDOW_MENU, FILE_MENU, THEME_MENU};
+#endif //SFMLTEMPLATE_MENUOPTIONSENUM_H

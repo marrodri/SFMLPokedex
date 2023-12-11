@@ -5,11 +5,11 @@
 #include "AppHandler.h"
 
 std::string AppHandler::searchInput;
-TypesEnum AppHandler::pokemonTypeFilter1=ANOTHERTYPE;
-TypesEnum AppHandler::pokemonTypeFilter2=ANOTHERTYPE;
-TypesEnum AppHandler::pokemonWeaknessFilter1=ANOTHERTYPE;
-TypesEnum AppHandler::pokemonWeaknessFilter2=ANOTHERTYPE;
-TypesEnum AppHandler::pokemonWeaknessFilter3=ANOTHERTYPE;
+TypesEnum AppHandler::pokemonTypeFilter1 = ANOTHERTYPE;
+TypesEnum AppHandler::pokemonTypeFilter2 = ANOTHERTYPE;
+TypesEnum AppHandler::pokemonWeaknessFilter1 = ANOTHERTYPE;
+TypesEnum AppHandler::pokemonWeaknessFilter2 = ANOTHERTYPE;
+TypesEnum AppHandler::pokemonWeaknessFilter3 = ANOTHERTYPE;
 
 /**
  * searchInput methods

@@ -38,7 +38,10 @@ void MenuBar::addEventHandler(sf::RenderWindow &window, sf::Event event) {
             disabledState(CLICKED);
             disabledState(FOCUSED);
         }
-        ScreenHandler::setMenuBarIsFocused(checkState(FOCUSED));
+        ScreenHandler::setMenuBarIsFocused((ScreenHandler::checkOpenedMenuBarOption(FILE_MENU)
+                                            || ScreenHandler::checkOpenedMenuBarOption(WINDOW_MENU) ||
+                                            ScreenHandler::checkOpenedMenuBarOption(THEME_MENU)
+                                           ));
     }
     for (auto menu = menus.begin(); menu != menus.end(); menu++) {
         menu->addEventHandler(window, event);

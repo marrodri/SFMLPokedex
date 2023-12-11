@@ -7,12 +7,13 @@
 
 #include "../../Components/GUIComponent.h"
 #include "./Views/GridView.h"
+#include "../../Container/Container.h"
 //#include "MainScreenButton/MainScreenButton.h"
 
 class Home: public GUIComponent{
 private:
     GridView gridView;
-    sf::RectangleShape homeScreenContainer;
+    Container homeScreenContainer;
 
 public:
     Home();

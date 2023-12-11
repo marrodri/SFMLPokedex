@@ -5,6 +5,7 @@
 #include "MenuItem.h"
 #include "../Helper/HelperFunctions.h"
 #include "../MouseEvents/MouseEvents.h"
+#include "../Screen/ScreenHandler.h"
 
 
 MenuItem::MenuItem() {

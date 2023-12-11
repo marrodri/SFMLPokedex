@@ -13,11 +13,22 @@ class AppHandler {
 private:
     static std::string searchInput;
 
+    /**
+     * filters
+     * */
     static TypesEnum pokemonTypeFilter1;
     static TypesEnum pokemonTypeFilter2;
     static TypesEnum pokemonWeaknessFilter1;
     static TypesEnum pokemonWeaknessFilter2;
     static TypesEnum pokemonWeaknessFilter3;
+
+    /**
+     * home page no page.
+     * */
+     static int currPage;
+     static int pageMaxCap();
+     static int listOfPokemons;
+
 
 
 public:
@@ -66,6 +77,14 @@ public:
     /**
      * fileTree configuration.
      **/
+
+    /**
+     * home page;
+     * */
+     void nextPage();
+     void prevPage();
+     int getCurrentPage();
+     void setPageMaxCap();
 
 };
 

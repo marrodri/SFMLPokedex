@@ -7,6 +7,8 @@
 
 #include "ScreenEnum.h"
 #include "../Data/PokemonStruct.h"
+#include "../MenuBar/MenuItem.h"
+#include "../MenuBar/MenuOptionsEnum.h"
 #include <iostream>
 #include <map>
 
@@ -24,21 +26,29 @@ private:
     static std::map<pokemonScreenElementsEnum, bool> pokemonScreenElementsLoaded;
     static std::map<homeScreenElementsEnum, bool> homeScreenElementsLoaded;
 
+
+    static std::map<menuOptionsEnum, bool> openedMenuBarOptions;
     //special cases
     static bool searchInputFocused;
     static bool pokemonScreenLoaded;
-    static bool menuBarFocused;
+    static bool menuBarFocused ;
+
+
 public:
     static void setCurrentScreen(screenEnum screen);
+
     static screenEnum getCurrScreen();
 
     /// selectedPokemon
     static void setSelectedPokemonData(PokemonStruct &pokemonData);
+
     static PokemonStruct &getSelectedPokemonData();
 
     /// pokemonScreen Status;
     static void setPokemonScreenElementLoaded(pokemonScreenElementsEnum pokemonScreenElement, bool isLoaded);
+
     static bool getPokemonScreenElementLoaded(pokemonScreenElementsEnum pokemonScreenElement);
+
     static void toggleOffPokemonScreenElements();
 
     static void toggleOnPokemonScreenElements();
@@ -46,17 +56,26 @@ public:
 
     ///home screen
     static void setHomeScreenLoaded(bool isLoaded);
+
     static bool isHomeScreenLoaded();
 
     ///searchInputFocus.
     static bool isSearchInputFocused();
+
     static void setSearchInputIsFocused(bool option);
 
     ///navbar focus.
     ///when one of the navbars is open,
     /// ignore the evenhandler of all the other remaining elements.
     static bool isMenuBarFocused();
+
     static void setMenuBarIsFocused(bool option);
+
+    static void enableOpenedMenuBarOption(menuOptionsEnum menuOption);
+
+    static void disableOpenedMenuBarOption(menuOptionsEnum menuOption);
+
+    static bool checkOpenedMenuBarOption(menuOptionsEnum menuOption);
 };
 
 

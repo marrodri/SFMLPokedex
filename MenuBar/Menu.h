@@ -12,13 +12,14 @@
 #include "../Text/Text.h"
 #include "MenuItem.h"
 #include "../Item/ItemList.h"
+#include "MenuOptionsEnum.h"
 
-enum menuOptionsEnum {WINDOW_MENU, FILE_MENU, THEME_MENU};
 
 class Menu : public GUIComponent, public ContainerInterface{
 private:
     MenuItem menuItem;
-    ItemList<MenuItem> menuOptions;
+    ItemList<MenuItem> menuButtons;
+    menuOptionsEnum menuOption;
     /**
      * const variables.
      * */

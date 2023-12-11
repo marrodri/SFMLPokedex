@@ -49,15 +49,16 @@ void App::run() {
     * adding components
     */
     addComponent(screen);
-    addComponent(menuBar);
-//
-//
-//
+
+
+
+
     addComponent(dropdown4);
     addComponent(dropdown3);
     addComponent(dropdown2);
     addComponent(dropdown1);
-    addComponent(fileTree);
+    addComponent(menuBar);
+//    addComponent(fileTree);
 
     while (window.isOpen()) {
         sf::Event event;
