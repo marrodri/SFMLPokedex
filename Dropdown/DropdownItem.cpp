@@ -56,51 +56,67 @@ TypesEnum DropdownItem::getPokemonType() {
 void DropdownItem::setText(TypesEnum pokemonType) {
     switch (pokemonType) {
         case BUG:
+            data= "BUG";
             dropdownItemText.setString("BUG");
             break;
         case DRAGON:
+            data= "DRAGON";
             dropdownItemText.setString("DRAGON");
             break;
         case ELECTRIC:
+            data= "ELECTRIC";
             dropdownItemText.setString("ELECTRIC");
             break;
         case FIGHTING:
+            data= "FIGHTING";
             dropdownItemText.setString("FIGHTING");
             break;
         case FIRE:
+            data= "FIRE";
             dropdownItemText.setString("FIRE");
             break;
         case FLYING:
+            data= "FLYING";
             dropdownItemText.setString("FLYING");
             break;
         case GHOST:
+            data= "GHOST";
             dropdownItemText.setString("GHOST");
             break;
         case GRASS:
+            data= "GRASS";
             dropdownItemText.setString("GRASS");
             break;
         case GROUND:
+            data= "GROUND";
             dropdownItemText.setString("GROUND");
             break;
         case ICE:
+            data= "ICE";
             dropdownItemText.setString("ICE");
             break;
         case NORMAL:
+            data= "NORMAL";
             dropdownItemText.setString("NORMAL");
             break;
         case POISON:
+            data= "POISON";
             dropdownItemText.setString("POISON");
             break;
         case PSYCHIC:
+            data= "PSYCHIC";
             dropdownItemText.setString("PSYCHIC");
             break;
         case ROCK:
+            data= "ROCK";
             dropdownItemText.setString("ROCK");
             break;
         case WATER:
+            data= "WATER";
             dropdownItemText.setString("WATER");
             break;
         case ANOTHERTYPE:
+            data= "ANOTHERTYPE";
             dropdownItemText.setString("ANOTHERTYPE");
             break;
 

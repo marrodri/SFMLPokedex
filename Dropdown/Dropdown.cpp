@@ -103,9 +103,23 @@ void Dropdown::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if (isDropdownVisible) {
         for (auto itemIterator = itemList.begin(); itemIterator != itemList.end(); ++itemIterator) {
             itemIterator->addEventHandler(window, event);
+            if(itemIterator->checkState(CLICKED)){
+                selectedFilter.setText(itemIterator->getData());
+                itemIterator->disabledState(CLICKED);
+                itemIterator->disabledState(FOCUSED);
+                isDropdownVisible=false;
+            }
         }
         for (auto itemIterator = itemList2.begin(); itemIterator != itemList2.end(); ++itemIterator) {
             itemIterator->addEventHandler(window, event);
+            if(itemIterator->checkState(CLICKED)){
+                if(itemIterator->checkState(CLICKED)){
+                    selectedFilter.setText(itemIterator->getData());
+                    itemIterator->disabledState(CLICKED);
+                    itemIterator->disabledState(FOCUSED);
+                    isDropdownVisible=false;
+                }
+            }
         }
     }
 }
