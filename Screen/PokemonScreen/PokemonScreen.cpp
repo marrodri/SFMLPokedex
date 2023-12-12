@@ -23,7 +23,7 @@ PokemonScreen::PokemonScreen() : spriteDisplay(1, 41), evolutions(std::array<int
 }
 
 void PokemonScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    if (ScreenHandler::getCurrScreen() == POKEMON) {
+    if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN) {
         target.draw(container);
         target.draw(title);
         header.draw(target, states);
@@ -36,7 +36,7 @@ void PokemonScreen::draw(sf::RenderTarget &target, sf::RenderStates states) cons
 }
 
 void PokemonScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (ScreenHandler::getCurrScreen() == POKEMON) {
+    if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN) {
         header.addEventHandler(window, event);
         description.addEventHandler(window, event);
         evolutions.addEventHandler(window, event);

@@ -20,7 +20,7 @@ Logo::Logo() {
  * menuItem Interface methods
  **/
 void Logo::onClick() {
-    ScreenHandler::setCurrentScreen(HOME);
+    ScreenHandler::setCurrentScreen(HOME_SCREEN);
     ScreenHandler::toggleOffPokemonScreenElements();
 }
 

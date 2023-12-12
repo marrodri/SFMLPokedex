@@ -19,6 +19,23 @@ Header::Header() : container({250, 100}, {90 * 8, 40}, sf::Color(0x4287f5ff)),
     HelperFunctions::centerItemHorizontally(container, pokemonName, 200);
     HelperFunctions::centerItemHorizontally(container, pokemonNo, 70);
     HelperFunctions::positionItemByBounds(container, backIcon, {0, 0});
+    backIcon.setOutlineThickness(0);
+
+    HelperFunctions::positionItemByBounds(container, editIcon, {580, 0});
+    HelperFunctions::positionItemByBounds(container, printIcon, {630, 0});
+    HelperFunctions::positionItemByBounds(container, saveIcon, {680, 0});
+}
+
+Header::Header(std::string title) : container({250, 100}, {90 * 8, 40}, sf::Color(0x67d686ff)),
+                                    pokemonName(title, 25, Font::getFont(OPEN_SANS), {250, 100}),
+                                    pokemonNo("", 25, Font::getFont(OPEN_SANS), {300, 100}),
+                                    backIcon({180, 100}, {40, 40}, sf::Color::Red),
+                                    saveIcon({180, 100}, {40, 40}, sf::Color::Cyan) {
+    backIcon.setTexture(Images::getImage(CROSS));
+    backIcon.setOutlineThickness(0);
+    HelperFunctions::centerItemHorizontally(container, pokemonName, 280);
+    HelperFunctions::centerItemHorizontally(container, pokemonNo, 70);
+    HelperFunctions::positionItemByBounds(container, backIcon, {0, 0});
 
 
     HelperFunctions::positionItemByBounds(container, editIcon, {580, 0});
@@ -37,8 +54,8 @@ void Header::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
     backIcon.draw(target, states);
 
-    editIcon.draw(target, states);
-    printIcon.draw(target, states);
+//    editIcon.draw(target, states);
+//    printIcon.draw(target, states);
 }
 
 void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -60,7 +77,7 @@ void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         std::cout << "clicking logo menuItem, going home\n";
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
-        ScreenHandler::setCurrentScreen(HOME);
+        ScreenHandler::setCurrentScreen(HOME_SCREEN);
         ScreenHandler::toggleOffPokemonScreenElements();
 
     }
@@ -68,12 +85,14 @@ void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void Header::update() {
-    if (ScreenHandler::getCurrScreen() == POKEMON) {
+    if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN) {
         this->pokemonData = ScreenHandler::getSelectedPokemonData();
         pokemonNo.setString(std::to_string(pokemonData.number));
         pokemonName.setString(pokemonData.name);
     }
 }
+
+
 
 
 

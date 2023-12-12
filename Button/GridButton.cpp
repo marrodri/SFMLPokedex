@@ -142,7 +142,7 @@ void GridButton::update() {
 void GridButton::onClick() {
     std::cout << "clicking function\n";
     ScreenHandler::setSelectedPokemonData(pokemonData);
-    ScreenHandler::setCurrentScreen(POKEMON);
+    ScreenHandler::setCurrentScreen(POKEMON_SCREEN);
 }
 
 void GridButton::setOnClickFunction() {

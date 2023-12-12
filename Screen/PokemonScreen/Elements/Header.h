@@ -28,7 +28,7 @@ private:
 public:
     Header();
     Header(PokemonStruct &pokemonData, sf::Vector2f position);
-
+    Header(std::string title);
     /**
      * sfml
      * */

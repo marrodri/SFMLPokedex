@@ -124,6 +124,8 @@ add_executable(sfmlTemplate main.cpp
         Pokemon/Pokemon.cpp
         Pokemon/Pokemon.h
         MenuBar/MenuOptionsEnum.h
+        Screen/FileTreeScreen/FileTreeScreen.cpp
+        Screen/FileTreeScreen/FileTreeScreen.h
 )
 target_link_libraries(sfmlTemplate sfml-graphics sfml-audio)
 

@@ -13,6 +13,7 @@
 #include "Logo/Logo.h"
 #include "SideMenu/SideMenu.h"
 #include "SearchInput/SearchInput.h"
+#include "FileTreeScreen/FileTreeScreen.h"
 
 
 //this is where the background will be used.
@@ -28,13 +29,19 @@ class Screen : public GUIComponent {
     //pokemon screen'
     Home mainScreen;
     PokemonScreen pokemonScreen;
-    screenEnum currScreenEnum = POKEMON;
+    FileTreeScreen fileTreeScreen;
+    screenEnum currScreenEnum = POKEMON_SCREEN;
 
     int currPage;
     int numberOfPages;
     ///IMPORTANT DRAW RIGHT NOW
     ///TODO: add the logic of going to previous page and next page
     ///     to the onClick of these 2 attributes.
+
+
+    ///getGlobalBounds
+    ///left bounds.
+    ///getGlobalBounds.bottonm.
     MainScreenButton leftButton;
     MainScreenButton rightButton;
     //later

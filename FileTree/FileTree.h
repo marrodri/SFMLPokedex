@@ -10,6 +10,16 @@
 #include "./FileItem.h"
 #include <iostream>
 
+/**
+ * accordeon.
+ * -
+ * -
+ * -
+ * -
+ * -
+ * */
+
+
 class FileTree : public GUIComponent{
 private:
     //the root node of the tree

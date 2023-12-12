@@ -38,27 +38,32 @@ Screen::Screen(sf::Vector2f dimensions, sf::Font font) : leftButton({840, 551}, 
 
 void Screen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(background);
+
     ///TODO: Draw the other elements of the front-end.
-    if (ScreenHandler::getCurrScreen() == HOME) {
-        mainScreen.draw(target, states);
-    } else if (ScreenHandler::getCurrScreen() == POKEMON) {
-        pokemonScreen.draw(target, states);
+    if (ScreenHandler::getCurrScreen() == HOME_SCREEN) {
+        target.draw(mainScreen);
+    } else if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN) {
+        target.draw(pokemonScreen);
+    } else if (ScreenHandler::getCurrScreen() == FILE_TREE_SCREEN) {
+        target.draw(fileTreeScreen);
     }
-    target.draw(leftButton);
-    target.draw(rightButton);
+//    target.draw(leftButton);
+//    target.draw(rightButton);
     target.draw(searchInput);
     target.draw(sideMenu);
     target.draw(logo);
 }
 
 void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (ScreenHandler::getCurrScreen() == HOME && !ScreenHandler::isSearchInputFocused() &&
+    if (ScreenHandler::getCurrScreen() == HOME_SCREEN && !ScreenHandler::isSearchInputFocused() &&
         !ScreenHandler::isMenuBarFocused()) {
         mainScreen.addEventHandler(window, event);
-    } else if (ScreenHandler::getCurrScreen() == POKEMON && !ScreenHandler::isMenuBarFocused()) {
+    } else if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN && !ScreenHandler::isMenuBarFocused()) {
         pokemonScreen.addEventHandler(window, event);
+    } else if (ScreenHandler::getCurrScreen() == FILE_TREE_SCREEN) {
+        fileTreeScreen.addEventHandler(window, event);
     }
-    if(!ScreenHandler::isMenuBarFocused()){
+    if (!ScreenHandler::isMenuBarFocused()) {
         leftButton.addEventHandler(window, event);
         rightButton.addEventHandler(window, event);
 
@@ -70,10 +75,12 @@ void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void Screen::update() {
-    if (ScreenHandler::getCurrScreen() == HOME) {
+    if (ScreenHandler::getCurrScreen() == HOME_SCREEN) {
         mainScreen.update();
-    } else if (ScreenHandler::getCurrScreen() == POKEMON) {
+    } else if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN) {
         pokemonScreen.update();
+    } else if (ScreenHandler::getCurrScreen() == FILE_TREE_SCREEN) {
+        fileTreeScreen.update();
     }
     searchInput.update();
     sideMenu.update();

@@ -64,7 +64,7 @@ void MainScreenButton::addEventHandler(sf::RenderWindow &window, sf::Event event
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
         onClick();
-        ScreenHandler::setCurrentScreen(HOME);
+        ScreenHandler::setCurrentScreen(HOME_SCREEN);
     }
 }
 

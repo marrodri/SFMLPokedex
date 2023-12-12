@@ -32,7 +32,7 @@ void SearchItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         std::cout << "searchItemClicked\n";
         std::cout << "clicking function\n";
         ScreenHandler::setSelectedPokemonData(pokemonData);
-        ScreenHandler::setCurrentScreen(POKEMON);
+        ScreenHandler::setCurrentScreen(POKEMON_SCREEN);
 
     }
 }

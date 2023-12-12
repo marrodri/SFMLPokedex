@@ -104,7 +104,11 @@ void FileTree::makeTree() {
 
 
 void FileTree::draw(sf::RenderTarget &window, sf::RenderStates states) const {
+
     window.draw(*root);
+
+
+
 //    if(!root->empty()){
 //        root->getChildren().begin();
 //        for(auto fileItem =root->getChildren().begin(); fileItem != root->getChildren().end(); fileItem++){

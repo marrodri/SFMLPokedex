@@ -3,6 +3,7 @@
 //
 
 #include "AppHandler.h"
+#include "Screen/ScreenHandler.h"
 
 std::string AppHandler::searchInput;
 TypesEnum AppHandler::pokemonTypeFilter1 = ANOTHERTYPE;
@@ -32,6 +33,7 @@ void AppHandler::closeProgram() {
 void AppHandler::openFileTree() {
     std::cout << "running openFileTree from AppHandler" << std::endl;
     std::cout << "OPENING FILE TREE SCREEN" << std::endl;
+    ScreenHandler::setCurrentScreen(FILE_TREE_SCREEN);
 }
 
 void AppHandler::changeBackground() {

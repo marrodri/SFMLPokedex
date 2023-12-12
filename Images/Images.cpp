@@ -18,10 +18,11 @@ std::string Images::getPath(images image) {
             return "Resources/Images/logo/sfmlPokedex_logo.png";
         case BACKGROUND1:
             return "Resources/Images/pokemon-background-blue-opacity.png";
+        case BACKGROUND2:
+            return "Resources/Images/backgroundImages/pokemon-background-black-white.png";
         case BUTTON:
             return "Resources/Sprites/Textures/blue_button.png";
-        case BACKGROUND3:
-            return "";
+
         case BOX:
             return "Resources/Sprites/Textures/grey_box.png";
         case CROSS:
