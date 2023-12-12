@@ -8,7 +8,7 @@
 #include "../../Images/Images.h"
 #include "../../AppHandler.h"
 
-FileTreeScreen::FileTreeScreen(): header("Select a file to unlock a pokemon") {
+FileTreeScreen::FileTreeScreen() : header("Select a file to unlock a pokemon") {
     fileTreeBackgrounImage.setSize({90 * 8, 4 * 110});
     fileTreeBackgrounImage.setTexture(Images::getImage(BACKGROUND2));
     fileTreeBackgrounImage.setPosition({250, 100});
@@ -22,13 +22,37 @@ FileTreeScreen::FileTreeScreen(): header("Select a file to unlock a pokemon") {
     fileTreePlaceHolder.setString("FileTree screen");
     fileTreePlaceHolder.setCharacterSize(24);
     HelperFunctions::centerItem(fileTreeContainer, fileTreePlaceHolder);
+
+
+    fileItem1 = FileItem("Files", {120, 30}, {100, 100});
+    fileItem1.setOutlineThickness(1);
+
+    fileItem2 = FileItem("Pikachu.pok", {120, 30}, {110, 135});
+    fileItem2.setOutlineThickness(1);
+
+    fileItem3 = FileItem("Blastoise.pok", {120, 30}, {110, 170});
+    fileItem3.setOutlineThickness(1);
+
+
+    fileItem4 = FileItem("Mew.pok", {120, 30}, {110, 205});
+    fileItem4.setOutlineThickness(1);
+    HelperFunctions::positionItemByBounds(fileTreeContainer, fileItem1, {10, 100});
+    HelperFunctions::positionItemByBounds(fileTreeContainer, fileItem2, {35, 131});
+    HelperFunctions::positionItemByBounds(fileTreeContainer, fileItem3, {35, 162});
+    HelperFunctions::positionItemByBounds(fileTreeContainer, fileItem4, {35, 193});
 }
 
 void FileTreeScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(fileTreeBackgrounImage);
     target.draw(fileTreeContainer);
-    target.draw(fileTreePlaceHolder);
+//    target.draw(fileTreePlaceHolder);
+    target.draw(fileItem1);
+    target.draw(fileItem2);
+    target.draw(fileItem3);
+    target.draw(fileItem4);
+
     target.draw(header);
+
 }
 
 void FileTreeScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
