@@ -6,11 +6,23 @@
 #include "Screen/ScreenHandler.h"
 
 std::string AppHandler::searchInput;
+//PokemonList AppHandler::pokemonList;
 TypesEnum AppHandler::pokemonTypeFilter1 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonTypeFilter2 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonWeaknessFilter1 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonWeaknessFilter2 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonWeaknessFilter3 = ANOTHERTYPE;
+
+int AppHandler::currPage=0;
+int AppHandler::pageMaxCap=2;
+
+/**
+* app configuration
+* */
+int AppHandler::currentTheme=0;
+int AppHandler::currentFontSize=0;
+int AppHandler::currentFontFamily=0;
+int AppHandler::currentFontColor=0;
 
 /**
  * searchInput methods
@@ -38,6 +50,10 @@ void AppHandler::openFileTree() {
 
 void AppHandler::changeBackground() {
     std::cout << "running changeBackground from AppHandler" << std::endl;
+    std::array<int, 3> backgroundColor={};
+    std::array<int, 3> fileTreeBackgroundColor={};
+    std::array<int, 3> homeScreenBackgroundColor={};
+
 }
 
 void AppHandler::changeFontFamily() {
@@ -55,7 +71,6 @@ void AppHandler::changeFontColor() {
 void AppHandler::setPokemonTypeFilter1(TypesEnum pokemonType) {
     pokemonTypeFilter1 = pokemonType;
     std::cout << "setting pokemon type filter 1\n";
-
 }
 
 void AppHandler::setPokemonTypeFilter2(TypesEnum pokemonType) {
@@ -99,4 +114,15 @@ TypesEnum AppHandler::getPokemonWeaknessFilter3() {
     return pokemonWeaknessFilter3;
 }
 
+void AppHandler::nextPage() {
+    if(currPage < pageMaxCap-1){
+        currPage++;
+    }
+}
+
+void AppHandler::prevPage() {
+    if(currPage > 0){
+        currPage--;
+    }
+}
 

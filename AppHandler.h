@@ -8,11 +8,11 @@
 #include <iostream>
 #include <string>
 #include "Data/PokemonStruct.h"
+#include "Data/PokemonList.h"
 
 class AppHandler {
 private:
     static std::string searchInput;
-
     /**
      * filters
      * */
@@ -26,12 +26,22 @@ private:
      * home page no page.
      * */
      static int currPage;
-     static int pageMaxCap();
-     static int listOfPokemons;
+     static int pageMaxCap;
+
+     /**
+      * app configuration
+      * */
+      static int currentTheme;
+      static int currentFontSize;
+      static int currentFontFamily;
+      static int currentFontColor;
 
 
 
 public:
+    //make this private
+//    static PokemonList pokemonList;
+
     /**
      * searchInput methods
      **/
@@ -81,10 +91,10 @@ public:
     /**
      * home page;
      * */
-     void nextPage();
-     void prevPage();
-     int getCurrentPage();
-     void setPageMaxCap();
+     static void nextPage();
+     static void prevPage();
+     static int getCurrentPage();
+     static void setPageMaxCap();
 
 };
 

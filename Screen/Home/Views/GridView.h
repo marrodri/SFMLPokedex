@@ -30,6 +30,7 @@ public:
     void pushItem(int i);
     void pushItem(PokemonStruct &pokemonData);
     void updateGridButtonData(PokemonStruct &pokemonData, int i);
+    void clear();
 
     /**
      * overriden methods

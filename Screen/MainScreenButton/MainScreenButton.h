@@ -8,8 +8,9 @@
 
 #include "../../Components/GUIComponent.h"
 #include "../../Components/ButtonInterface.h"
+#include "../../Components/ContainerInterface.h"
 
-class MainScreenButton : public GUIComponent, private ButtonInterface{
+class MainScreenButton : public GUIComponent, public ContainerInterface,private ButtonInterface{
 private:
     sf::RectangleShape buttonContainer;
     sf::Text text; //TODO: update dropdownItemText to a texture for the arrows.
@@ -33,6 +34,32 @@ public:
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
 
     void update() override;
+
+    /**
+     * container interface methods
+     * */
+
+    sf::Vector2f getPosition() override;
+
+    sf::Vector2f getSize() override;
+
+    sf::FloatRect getLocalBounds() const override;
+
+    sf::FloatRect getGlobalBounds() const override;
+
+    void setOrigin(sf::Vector2f &origin) override;
+
+    void setPosition(const sf::Vector2f &pos) override;
+
+    void setFillColor(const sf::Color &color) override;
+
+    void setTexture(const sf::Texture &texture) override;
+
+    void setSize(sf::Vector2f size) override;
+
+    void setOutlineThickness(float outlineThickness) override;
+
+    void setOutlineColor(const sf::Color &color) override;
 };
 
 

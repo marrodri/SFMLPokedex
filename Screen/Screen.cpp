@@ -4,7 +4,6 @@
 
 #include "Screen.h"
 #include "ScreenHandler.h"
-#include "../SFMLPokedex.h"
 
 
 Screen::Screen() : leftButton({840, 551}, "L"),
@@ -17,7 +16,7 @@ Screen::Screen() : leftButton({840, 551}, "L"),
 Screen::Screen(sf::Vector2f windowSize) : leftButton({840, 551}, "L"),
                                           rightButton({890, 551}, "R") {
     ///TODO: DEBUGGER CODE, DELETE THIS WHEN IT WORKS.
-//    ScreenHandler::setSelectedPokemonData(SFMLPokedex::pokemonList.getPokemonData(0));
+//    ScreenHandler::setSelectedPokemonData(AppHandler::pokemonList.getPokemonData(0));
 //    ScreenHandler::setCurrentScreen(POKEMON);
 
     background.setFillColor(sf::Color::Blue);
@@ -47,8 +46,8 @@ void Screen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     } else if (ScreenHandler::getCurrScreen() == FILE_TREE_SCREEN) {
         target.draw(fileTreeScreen);
     }
-//    target.draw(leftButton);
-//    target.draw(rightButton);
+    target.draw(leftButton);
+    target.draw(rightButton);
     target.draw(searchInput);
     target.draw(sideMenu);
     target.draw(logo);
@@ -64,12 +63,22 @@ void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         fileTreeScreen.addEventHandler(window, event);
     }
     if (!ScreenHandler::isMenuBarFocused()) {
+//        if(){
+//
+//        }
+
         leftButton.addEventHandler(window, event);
         rightButton.addEventHandler(window, event);
 
         searchInput.addEventHandler(window, event);
         sideMenu.addEventHandler(window, event);
         logo.addEventHandler(window, event);
+        if(MouseEvents<MainScreenButton>::mouseClicked(leftButton,window)){
+            AppHandler::prevPage();
+        }
+        if(MouseEvents<MainScreenButton>::mouseClicked(rightButton,window)){
+            AppHandler::prevPage();
+        }
     }
 
 }

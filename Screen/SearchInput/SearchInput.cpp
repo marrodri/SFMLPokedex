@@ -6,7 +6,6 @@
 #include "../../Font/Font.h"
 #include "../../Helper/HelperFunctions.h"
 #include "SearchItem.h"
-#include "../../SFMLPokedex.h"
 #include "../ScreenHandler.h"
 #include "../../AppHandler.h"
 
@@ -75,9 +74,9 @@ void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                 std::cout << "fetchedPokemon: " << fetchedPokemons[i];
                 if (fetchedPokemons[i] >= 1) {
                     std::cout << fetchedPokemons[i] << "name: "
-                              << SFMLPokedex::pokemonList.getPokemonData(fetchedPokemons[i]).name << "\n";
+                              << PokemonList::getPokemonData(fetchedPokemons[i]).name << "\n";
                     SearchItem newItem = createNewSearchResult(
-                            SFMLPokedex::pokemonList.getPokemonData(fetchedPokemons[i]));
+                            PokemonList::getPokemonData(fetchedPokemons[i]));
                     searchResults.pushItemVertically(newItem);
                     searchResultsCounter++;
                 }
@@ -118,7 +117,7 @@ std::array<int, 5> SearchInput::searchPokemonDatabase(const std::string &search)
     std::array<int, 5> newArr = {-1, -1, -1, -1, -1};
     int j = 0;
     for (int i = 0; i < 38 && j < 5; i++) {
-        if (isEndOfTheArray(search, SFMLPokedex::pokemonList.getPokemonData(i).name)) {
+        if (isEndOfTheArray(search, PokemonList::getPokemonData(i).name)) {
             newArr[j] = i;
             j++;
         }

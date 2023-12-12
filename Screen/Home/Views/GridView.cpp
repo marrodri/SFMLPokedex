@@ -99,3 +99,7 @@ void GridView::update() {
         gridButton->update();
     }
 }
+
+void GridView::clear() {
+        listOfGridButtons.clear();
+}

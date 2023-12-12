@@ -125,6 +125,10 @@ void TextField::clear() {
 
 }
 
+std::string &TextField::getString() {
+    return multiText.getString();
+}
+
 
 
 

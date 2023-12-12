@@ -30,6 +30,13 @@ void Description::draw(sf::RenderTarget &target, sf::RenderStates states) const 
 
 void Description::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     textField.addEventHandler(window, event);
+    if(event.type == sf::Event::TextEntered){
+        std::cout << "setting data to " << pokemonData.number << ": "<< pokemonData.name <<"\n";
+        PokemonList::setDescription(pokemonData.number, textField.getString());
+    }
+
+
+
 }
 
 void Description::update() {
@@ -37,9 +44,12 @@ void Description::update() {
         pokemonData = ScreenHandler::getSelectedPokemonData();
         textField.clear();
         textField.setText(pokemonData.about);
+
+
         ScreenHandler::setPokemonScreenElementLoaded(DESCRIPTION, true);
     }
     if (ScreenHandler::getPokemonScreenElementLoaded(DESCRIPTION)) {
         textField.update();
+
     }
 }

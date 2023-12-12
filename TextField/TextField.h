@@ -58,6 +58,7 @@ public:
     void setAlpha(int alpha);
     void setText(const std::string &str);
     void clear();
+    std::string &getString();
 
     /**
      * GUI

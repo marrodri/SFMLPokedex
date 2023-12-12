@@ -71,3 +71,47 @@ void MainScreenButton::addEventHandler(sf::RenderWindow &window, sf::Event event
 void MainScreenButton::update() {
 //    GUIComponent::update();
 }
+
+sf::Vector2f MainScreenButton::getPosition() {
+    return buttonContainer.getPosition();
+}
+
+sf::Vector2f MainScreenButton::getSize() {
+    return buttonContainer.getSize();
+}
+
+sf::FloatRect MainScreenButton::getLocalBounds() const {
+    return buttonContainer.getLocalBounds();
+}
+
+sf::FloatRect MainScreenButton::getGlobalBounds() const {
+    return buttonContainer.getGlobalBounds();
+}
+
+void MainScreenButton::setOrigin(sf::Vector2f &origin) {
+    buttonContainer.setOrigin(origin);
+}
+
+void MainScreenButton::setPosition(const sf::Vector2f &pos) {
+    buttonContainer.setPosition(pos);
+}
+
+void MainScreenButton::setFillColor(const sf::Color &color) {
+    buttonContainer.setFillColor(color);
+}
+
+void MainScreenButton::setTexture(const sf::Texture &texture) {
+    buttonContainer.setTexture(&texture);
+}
+
+void MainScreenButton::setSize(sf::Vector2f size) {
+    buttonContainer.setSize(size);
+}
+
+void MainScreenButton::setOutlineThickness(float outlineThickness) {
+    buttonContainer.setOutlineThickness(outlineThickness);
+}
+
+void MainScreenButton::setOutlineColor(const sf::Color &color) {
+    buttonContainer.setOutlineColor(color);
+}

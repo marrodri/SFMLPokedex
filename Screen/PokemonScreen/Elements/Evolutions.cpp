@@ -7,7 +7,6 @@
 #include "../../../Helper/HelperFunctions.h"
 #include "../../../Images/Images.h"
 #include "../../ScreenHandler.h"
-#include "../../../SFMLPokedex.h"
 
 Evolutions::Evolutions() :
         container({260, 360}, {450, 160}, sf::Color(0x81e67cff)),
@@ -69,18 +68,18 @@ void Evolutions::update() {
         pokemonData = ScreenHandler::getSelectedPokemonData();
 
         std::cout << "firstEvol " << pokemonData.evolutions[0] << "cols: "
-                  << SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[0]).cols << "\n";
+                  << PokemonList::getPokemonData(pokemonData.evolutions[0]).cols << "\n";
         std::cout << "secondEvol " << pokemonData.evolutions[1] << "cols: "
-                  << SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[1]).cols << "\n";
+                  << PokemonList::getPokemonData(pokemonData.evolutions[1]).cols << "\n";
         std::cout << "finalEvol " << pokemonData.evolutions[2] << "cols: "
-                  << SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[2]).cols << "\n";
+                  << PokemonList::getPokemonData(pokemonData.evolutions[2]).cols << "\n";
         firstEvol =
                 AnimatedSprite(Images::get3DImage(pokemonData.evolutions[0]), 1,
-                               SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[0] - 1).cols);
+                               PokemonList::getPokemonData(pokemonData.evolutions[0] - 1).cols);
         secEvol = AnimatedSprite(Images::get3DImage(pokemonData.evolutions[1]), 1,
-                                 SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[1] - 1).cols);
+                                 PokemonList::getPokemonData(pokemonData.evolutions[1] - 1).cols);
         finalEvol = AnimatedSprite(Images::get3DImage(pokemonData.evolutions[2]), 1,
-                                   SFMLPokedex::pokemonList.getPokemonData(pokemonData.evolutions[2] - 1).cols);
+                                   PokemonList::getPokemonData(pokemonData.evolutions[2] - 1).cols);
 
 
         firstEvol.setTime(20);

@@ -76,8 +76,6 @@ add_executable(sfmlTemplate main.cpp
         Data/PokemonStruct.h
         Data/PokemonList.cpp
         Data/PokemonList.h
-        SFMLPokedex.cpp
-        SFMLPokedex.h
         Container/Container.cpp
         Container/Container.h
         Text/Text.cpp
