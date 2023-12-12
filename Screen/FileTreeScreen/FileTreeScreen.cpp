@@ -6,6 +6,7 @@
 #include "../../Font/Font.h"
 #include "../../Helper/HelperFunctions.h"
 #include "../../Images/Images.h"
+#include "../../AppHandler.h"
 
 FileTreeScreen::FileTreeScreen(): header("Select a file to unlock a pokemon") {
     fileTreeBackgrounImage.setSize({90 * 8, 4 * 110});
@@ -36,6 +37,8 @@ void FileTreeScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) 
 
 void FileTreeScreen::update() {
     header.update();
+
+    fileTreeContainer.setFillColor(AppHandler::getFileTreeBackgroundColor());
 
 }
 

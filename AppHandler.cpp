@@ -7,22 +7,35 @@
 
 std::string AppHandler::searchInput;
 //PokemonList AppHandler::pokemonList;
+
+
+/**
+ *
+ * */
+bool AppHandler::pokemonFilterHasChanged = false;
 TypesEnum AppHandler::pokemonTypeFilter1 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonTypeFilter2 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonWeaknessFilter1 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonWeaknessFilter2 = ANOTHERTYPE;
 TypesEnum AppHandler::pokemonWeaknessFilter3 = ANOTHERTYPE;
 
-int AppHandler::currPage=0;
-int AppHandler::pageMaxCap=2;
+int AppHandler::currPage = 0;
+int AppHandler::pageMaxCap = 2;
 
 /**
 * app configuration
 * */
-int AppHandler::currentTheme=0;
-int AppHandler::currentFontSize=0;
-int AppHandler::currentFontFamily=0;
-int AppHandler::currentFontColor=0;
+int AppHandler::currentTheme = 0;
+int AppHandler::currentFontSize = 0;
+int AppHandler::currentFontFamily = 0;
+int AppHandler::currentFontColor = 0;
+std::array<sf::Color, 3> AppHandler::backgroundColor = {sf::Color::Blue, sf::Color::Yellow, sf::Color(0x236635ff)};
+std::array<sf::Color, 3> AppHandler::fileTreeBackgroundColor = {sf::Color(0x4290e3af), sf::Color::Yellow,
+                                                                sf::Color(0x72ad68af)};
+
+std::array<sf::Color, 3> AppHandler::subcontainersBackgroundColor = {sf::Color(0x4290e3af), sf::Color::Yellow,
+                                                                     sf::Color(0x74edadff)};
+PokemonList AppHandler::pokemonList;
 
 /**
  * searchInput methods
@@ -48,16 +61,27 @@ void AppHandler::openFileTree() {
     ScreenHandler::setCurrentScreen(FILE_TREE_SCREEN);
 }
 
+
+sf::Color &AppHandler::getBackgroundColor() {
+    return backgroundColor[currentTheme];
+}
+
+sf::Color &AppHandler::getFileTreeBackgroundColor() {
+    return fileTreeBackgroundColor[currentTheme];
+}
+
 void AppHandler::changeBackground() {
     std::cout << "running changeBackground from AppHandler" << std::endl;
-    std::array<int, 3> backgroundColor={};
-    std::array<int, 3> fileTreeBackgroundColor={};
-    std::array<int, 3> homeScreenBackgroundColor={};
-
+    if (currentTheme >= 3) {
+        currentTheme = 0;
+    } else {
+        currentTheme++;
+    }
 }
 
 void AppHandler::changeFontFamily() {
     std::cout << "running changeFontFamily from AppHandler" << std::endl;
+
 }
 
 void AppHandler::changeFontColor() {
@@ -69,6 +93,7 @@ void AppHandler::changeFontColor() {
  * */
 
 void AppHandler::setPokemonTypeFilter1(TypesEnum pokemonType) {
+    pokemonFilterHasChanged=true;
     pokemonTypeFilter1 = pokemonType;
     std::cout << "setting pokemon type filter 1\n";
 }
@@ -95,6 +120,7 @@ void AppHandler::setPokemonWeaknessFilter3(TypesEnum pokemonType) {
 
 
 TypesEnum AppHandler::getPokemonTypeFilter1() {
+
     return pokemonTypeFilter1;
 }
 
@@ -115,14 +141,22 @@ TypesEnum AppHandler::getPokemonWeaknessFilter3() {
 }
 
 void AppHandler::nextPage() {
-    if(currPage < pageMaxCap-1){
+    if (currPage < pageMaxCap - 1) {
         currPage++;
     }
 }
 
 void AppHandler::prevPage() {
-    if(currPage > 0){
+    if (currPage > 0) {
         currPage--;
     }
+}
+
+void AppHandler::setPokemonFilterHasChanged(bool filterHasChanged) {
+    pokemonFilterHasChanged = filterHasChanged;
+}
+
+bool AppHandler::getPokemonFilterHasChanged() {
+    return pokemonFilterHasChanged;
 }
 

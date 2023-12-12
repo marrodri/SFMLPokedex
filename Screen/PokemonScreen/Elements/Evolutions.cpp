@@ -68,18 +68,18 @@ void Evolutions::update() {
         pokemonData = ScreenHandler::getSelectedPokemonData();
 
         std::cout << "firstEvol " << pokemonData.evolutions[0] << "cols: "
-                  << PokemonList::getPokemonData(pokemonData.evolutions[0]).cols << "\n";
+                  << AppHandler::pokemonList.getPokemonData(pokemonData.evolutions[0]).cols << "\n";
         std::cout << "secondEvol " << pokemonData.evolutions[1] << "cols: "
-                  << PokemonList::getPokemonData(pokemonData.evolutions[1]).cols << "\n";
+                  << AppHandler::pokemonList.getPokemonData(pokemonData.evolutions[1]).cols << "\n";
         std::cout << "finalEvol " << pokemonData.evolutions[2] << "cols: "
-                  << PokemonList::getPokemonData(pokemonData.evolutions[2]).cols << "\n";
+                  << AppHandler::pokemonList.getPokemonData(pokemonData.evolutions[2]).cols << "\n";
         firstEvol =
                 AnimatedSprite(Images::get3DImage(pokemonData.evolutions[0]), 1,
-                               PokemonList::getPokemonData(pokemonData.evolutions[0] - 1).cols);
+                               AppHandler::pokemonList.getPokemonData(pokemonData.evolutions[0] - 1).cols);
         secEvol = AnimatedSprite(Images::get3DImage(pokemonData.evolutions[1]), 1,
-                                 PokemonList::getPokemonData(pokemonData.evolutions[1] - 1).cols);
+                                 AppHandler::pokemonList.getPokemonData(pokemonData.evolutions[1] - 1).cols);
         finalEvol = AnimatedSprite(Images::get3DImage(pokemonData.evolutions[2]), 1,
-                                   PokemonList::getPokemonData(pokemonData.evolutions[2] - 1).cols);
+                                   AppHandler::pokemonList.getPokemonData(pokemonData.evolutions[2] - 1).cols);
 
 
         firstEvol.setTime(20);

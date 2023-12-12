@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <SFML/Graphics/Color.hpp>
 #include "Data/PokemonStruct.h"
 #include "Data/PokemonList.h"
 
@@ -16,6 +17,7 @@ private:
     /**
      * filters
      * */
+    static bool pokemonFilterHasChanged;
     static TypesEnum pokemonTypeFilter1;
     static TypesEnum pokemonTypeFilter2;
     static TypesEnum pokemonWeaknessFilter1;
@@ -25,22 +27,26 @@ private:
     /**
      * home page no page.
      * */
-     static int currPage;
-     static int pageMaxCap;
+    static int currPage;
+    static int pageMaxCap;
 
-     /**
-      * app configuration
-      * */
-      static int currentTheme;
-      static int currentFontSize;
-      static int currentFontFamily;
-      static int currentFontColor;
+    /**
+     * app configuration
+     * */
+    static int currentTheme;
+    static int currentFontSize;
+    static int currentFontFamily;
+    static int currentFontColor;
 
+    /**/
+    static std::array<sf::Color, 3> backgroundColor;
+    static std::array<sf::Color, 3> fileTreeBackgroundColor;
+    static std::array<sf::Color, 3> subcontainersBackgroundColor;
 
 
 public:
     //make this private
-//    static PokemonList pokemonList;
+    static PokemonList pokemonList;
 
     /**
      * searchInput methods
@@ -66,6 +72,8 @@ public:
     /**
      * filter configuration
      * */
+     static void setPokemonFilterHasChanged(bool filterHasChanged);
+     static bool getPokemonFilterHasChanged();
     static void setPokemonTypeFilter1(TypesEnum pokemonType);
 
     static void setPokemonTypeFilter2(TypesEnum pokemonType);
@@ -78,9 +86,13 @@ public:
 
 
     static TypesEnum getPokemonTypeFilter1();
+
     static TypesEnum getPokemonTypeFilter2();
+
     static TypesEnum getPokemonWeaknessFilter1();
+
     static TypesEnum getPokemonWeaknessFilter2();
+
     static TypesEnum getPokemonWeaknessFilter3();
 
 
@@ -91,10 +103,18 @@ public:
     /**
      * home page;
      * */
-     static void nextPage();
-     static void prevPage();
-     static int getCurrentPage();
-     static void setPageMaxCap();
+    static void nextPage();
+
+    static void prevPage();
+
+    static int getCurrentPage();
+
+    static void setPageMaxCap();
+
+    static sf::Color &getBackgroundColor();
+
+    static sf::Color &getFileTreeBackgroundColor();
+
 
 };
 

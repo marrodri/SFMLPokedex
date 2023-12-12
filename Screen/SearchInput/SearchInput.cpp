@@ -74,9 +74,9 @@ void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
                 std::cout << "fetchedPokemon: " << fetchedPokemons[i];
                 if (fetchedPokemons[i] >= 1) {
                     std::cout << fetchedPokemons[i] << "name: "
-                              << PokemonList::getPokemonData(fetchedPokemons[i]).name << "\n";
+                              << AppHandler::pokemonList.getPokemonData(fetchedPokemons[i]).name << "\n";
                     SearchItem newItem = createNewSearchResult(
-                            PokemonList::getPokemonData(fetchedPokemons[i]));
+                            AppHandler::pokemonList.getPokemonData(fetchedPokemons[i]));
                     searchResults.pushItemVertically(newItem);
                     searchResultsCounter++;
                 }
@@ -117,7 +117,7 @@ std::array<int, 5> SearchInput::searchPokemonDatabase(const std::string &search)
     std::array<int, 5> newArr = {-1, -1, -1, -1, -1};
     int j = 0;
     for (int i = 0; i < 38 && j < 5; i++) {
-        if (isEndOfTheArray(search, PokemonList::getPokemonData(i).name)) {
+        if (isEndOfTheArray(search, AppHandler::pokemonList.getPokemonData(i).name)) {
             newArr[j] = i;
             j++;
         }

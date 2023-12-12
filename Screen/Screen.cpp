@@ -80,10 +80,10 @@ void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
             AppHandler::prevPage();
         }
     }
-
 }
 
 void Screen::update() {
+    background.setFillColor(AppHandler::getBackgroundColor());
     if (ScreenHandler::getCurrScreen() == HOME_SCREEN) {
         mainScreen.update();
     } else if (ScreenHandler::getCurrScreen() == POKEMON_SCREEN) {

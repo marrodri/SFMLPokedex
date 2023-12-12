@@ -16,7 +16,7 @@ DropdownItem::DropdownItem() {
     dropdownItemContainer.setSize({100, 30});
 
     setFont(Font::getFont(PIXEL));
-    dropdownItemText.setString("sample Text");
+    dropdownItemText.setString("filter type");
     dropdownItemText.setCharacterSize(24);
     dropdownItemText.setFillColor(sf::Color::Black);
 
