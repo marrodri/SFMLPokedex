@@ -94,7 +94,6 @@ void SearchInput::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 //        clearResults();
 //    }
     ScreenHandler::setSearchInputIsFocused(textInput.isFocused());
-
 }
 
 void SearchInput::update() {
@@ -105,7 +104,6 @@ void SearchInput::update() {
     if (!ScreenHandler::isSearchInputFocused() && searchResults.getItemList().size() > 0) {
         clearResults();
     }
-
 }
 
 bool SearchInput::isFocused() {

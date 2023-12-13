@@ -11,6 +11,9 @@
 #include "../Components/ButtonInterface.h"
 #include "../Data/PokemonStruct.h"
 #include "../AnimatedSprite/AnimatedSprite.h"
+#include "../Container/Container.h"
+#include "../Text/Text.h"
+
 struct coordStruct {
     float x;
     float y;
@@ -22,9 +25,18 @@ private:
     sf::Text number;
     AnimatedSprite sprite3D;
     sf::Text pokemonName;
+    //TODO: create a pointer struct for storing the Pokemon
     PokemonStruct pokemonData;
     coordStruct numPos = {13,16};
-    //TODO: create a pointer struct for storing the Pokemon
+
+    /**locked gridview component*/
+    Container mask;
+    Text lockedText;
+
+
+
+
+
     /**
     * menuItem interface methods
     **/

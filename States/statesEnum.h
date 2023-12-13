@@ -7,7 +7,7 @@
 #define SFMLTEMPLATE_STATESENUM_H
 
 enum statesEnum{
-    HOVERED, CLICKED, HIDDEN, FOCUSED
+    HOVERED, CLICKED, HIDDEN, FOCUSED, OPENED, CLOSED
 
 
     //add above this.

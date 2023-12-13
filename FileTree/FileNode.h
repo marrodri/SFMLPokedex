@@ -16,6 +16,7 @@ private:
     //this is all the child nodes in the tree
     std::set<FileNode*> children;
 
+
     //this tells the draw function whether or not to show the node's children
     //this is done by toggling a state on and off
     void toggleChlidren();
@@ -31,9 +32,9 @@ public:
     FileNode(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f position);
     FileNode(sf::Image image_icon, std::string &text, sf::Vector2f size, sf::Vector2f position);
 
-    /*
+    /**
      * setter
-     * */
+     **/
     void setData(const FileItem &data);
     void setPosition(const sf::Vector2f position);
     void setChildren(const std::set<FileNode*> &children);

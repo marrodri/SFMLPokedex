@@ -6,6 +6,7 @@
 #include "../SoundFX/SoundFX.h"
 #include "../Images/Images.h"
 #include "../Screen//ScreenHandler.h"
+#include "../Font/Font.h"
 
 GridButton::GridButton() {
 }
@@ -46,9 +47,18 @@ GridButton::GridButton(sf::Font &font, sf::Vector2f pos, PokemonStruct &pokemonD
     box.setSize({100, 110});
     box.setTexture(&Images::getImage(BOX));
     box.setFillColor(sf::Color::Blue);
-//    box.setOutlineColor(sf::Color::White);
-//    box.setOutlineThickness(2);
     box.setPosition(pos);
+
+    /**
+     * locked components.
+     * */
+    mask.setPosition(pos);
+    mask.setSize({100, 110});
+    mask.setTexture(Images::getImage(BOX));
+    mask.setFillColor(sf::Color(0x000000af));
+    lockedText = Text("Locked", 12, Font::getFont(OPEN_SANS), {100, 100});
+    HelperFunctions::centerItem(mask, lockedText);
+
 
     ///img dropdownItemText, replaced with an animated sprite.
 //    dropdownItemText.setFont(font);
@@ -84,55 +94,64 @@ sf::Vector2f GridButton::getSize() {
 }
 
 void GridButton::setPosition(sf::Vector2f pos) {
+    mask.setPosition({pos.x, pos.y});
     box.setPosition(pos);
     HelperFunctions::centerTextVertically(box, pokemonName, 95);
-//    HelperFunctions::positionTextByBounds(box, number, {12, 12});
     HelperFunctions::positionTextByBounds(box, number, {numPos.x, numPos.y});
-//    HelperFunctions::centerText(box, dropdownItemText);
+    HelperFunctions::centerItem(mask, lockedText);
     HelperFunctions::centerItem(box, sprite3D);
+
 }
 
 /**
  * GUI Methods
  **/
 void GridButton::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-    ///
+
     target.draw(box);
-//    target.draw(dropdownItemText);
     sprite3D.draw(target, states);
     target.draw(number);
     target.draw(pokemonName);
+    if (pokemonData.isLocked) {
+        target.draw(mask);
+        target.draw(lockedText);
+    }
 
 }
 
 void GridButton::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     ///
-    if (MouseEvents<sf::RectangleShape>::hovered(box, window)) {
-        if (!checkState(HOVERED)) {
-            SoundFX::playHoverSound();
-            MouseEvents<sf::RectangleShape>::setHand(window);
+    if (!pokemonData.isLocked) {
+        if (MouseEvents<sf::RectangleShape>::hovered(box, window) && !pokemonData.isLocked) {
+            if (!checkState(HOVERED)) {
+                SoundFX::playHoverSound();
+                MouseEvents<sf::RectangleShape>::setHand(window);
+            }
+            enableState(HOVERED);
+        } else {
+            if (checkState(HOVERED)) {
+                MouseEvents<sf::RectangleShape>::setArrow(window);
+            }
+            disabledState(HOVERED);
         }
-        enableState(HOVERED);
-    } else {
-        if (checkState(HOVERED)) {
+        if (MouseEvents<sf::RectangleShape>::mouseClicked(box, window)) {
+            SoundFX::playClickSound();
             MouseEvents<sf::RectangleShape>::setArrow(window);
+            onClick();
         }
-        disabledState(HOVERED);
-    }
-    if (MouseEvents<sf::RectangleShape>::mouseClicked(box, window)) {
-        SoundFX::playClickSound();
-        MouseEvents<sf::RectangleShape>::setArrow(window);
-        onClick();
     }
 }
 
 void GridButton::update() {
     ///
-    if (checkState(HOVERED)) {
-        box.setFillColor(sf::Color::Cyan);
-    } else {
+    if (!pokemonData.isLocked) {
+        if (checkState(HOVERED)) {
+            box.setFillColor(sf::Color::Cyan);
+        } else {
 //        box.setFillColor(sf::Color::Green);
-        box.setFillColor(sf::Color::Blue);
+            box.setFillColor(sf::Color::Blue);
+        }
+
     }
     sprite3D.update();
 }

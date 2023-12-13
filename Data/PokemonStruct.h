@@ -20,6 +20,7 @@ struct PokemonStruct {
     int numOfEvolutions;
     std::array<TypesEnum,3> weaknesses;
     std::array<TypesEnum,2> types;
+    bool isLocked;
 };
 
 #endif //SFMLTEMPLATE_POKEMONSTRUCT_H
