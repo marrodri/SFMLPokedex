@@ -5,6 +5,7 @@
 #include "FileItem.h"
 #include "../Helper/HelperFunctions.h"
 #include "../Font/Font.h"
+#include "../Images/Images.h"
 
 
 FileItem::FileItem() {
@@ -20,6 +21,8 @@ FileItem::FileItem(std::string text, sf::Vector2f size, sf::Vector2f position) {
     fileItemContainer.setPosition({position.x + (depth * 10), position.y});
 
     fileItemContainer.setFillColor(sf::Color::Blue);
+    fileItemContainer.setOutlineThickness(2);
+    fileItemContainer.setOutlineColor(sf::Color::White);
 
     ///init textUI
     this->fileItemText = Text(text, 12, Font::getFont(OPEN_SANS), {12, 12});
@@ -34,10 +37,19 @@ FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f 
     ///init fileItemContainer
     fileItemContainer.setSize(size);
     fileItemContainer.setPosition({position});
+    fileItemContainer.setOutlineThickness(1);
+    fileItemContainer.setOutlineColor(sf::Color::White);
     if (data.typeOfFile == std::filesystem::file_type::directory) {
         fileItemContainer.setFillColor(sf::Color::Blue);
+        icon.setTexture(Images::getImage(FOLDER));
+        icon.setSize({20, 20});
+
+        HelperFunctions::positionItemByBounds(fileItemContainer, icon, {10, 10});
     } else {
         fileItemContainer.setFillColor(sf::Color::Green);
+        icon.setTexture(Images::getImage(FILE_IMG));
+        icon.setSize({20, 20});
+        HelperFunctions::positionItemByBounds(fileItemContainer, icon, {10, 10});
     }
 
 
@@ -47,55 +59,44 @@ FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f 
     HelperFunctions::centerItem(fileItemContainer, this->fileItemText);
 }
 
-/**x
+/**
  *
- * */
+ **/
 
 /**
  * GUI Methods
- * */
+ **/
 void FileItem::draw(sf::RenderTarget &window, sf::RenderStates states) const {
 
     window.draw(fileItemContainer);
     window.draw(fileItemText);
-//    std::cout << "drawing fileItem: " << data.fileName << " placed  at:{x" << fileItemContainer.getPosition().x
-//              << ", y:" << fileItemContainer.getPosition().y << "\n";
-//    window.draw(icon);
-//TODO: add a toggler that when its
-    for (auto fileItem = children.begin(); fileItem != children.end(); fileItem++) {
-        fileItem->draw(window, states);
-    }
+    window.draw(icon);
 }
 
 void FileItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        for (auto fileItem = children.begin(); fileItem != children.end(); fileItem++) {
-            if (fileItem->getFileType() == std::filesystem::file_type::directory) {
-                fileItem->children.updateListPosition(
-                        sf::Vector2f(fileItem->getPosition().x, fileItem->getPosition().y + fileItem->getSize().y));
-                fileItem++;
-                if (!fileItem->children.empty()) {
-                    fileItem->children.getLastItemPosition();
-                    children.updateListPosition({fileItem->getPosition().x,
-                                                 fileItem->children.getLastItemPosition().y + fileItem->getSize().y});
+    ///TODO: add a hover effect on the button.
+    ///      also remember to add the function that will pass the
+    ///         filepath to read its content.
+    if (MouseEvents<Container>::hovered(fileItemContainer, window)) {
+        enableState(HOVERED);
+    } else {
+        disabledState(HOVERED);
+    }
+    if (MouseEvents<Container>::mouseClicked(window, event) &&
+        MouseEvents<Container>::hovered(fileItemContainer, window)) {
+        //kinda works, but it still receiving data.
+//        if () {
+        enableState(CLICKED);
+        SoundFX::playClickSound();
 
-                }
-            }
-        }
+        std::cout << "click file of " << data.fileName << "\n";
+//            pFunct();
+//        }
     }
-    //TODO continue here.
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
-        for (auto fileItem = children.begin(); fileItem != children.end(); fileItem++) {
-            if (fileItem->getFileType() == std::filesystem::file_type::directory) {
-                fileItem->getPosition();
-                fileItem->children.updateListPosition(sf::Vector2f(fileItem->getPosition() + fileItem->getSize()));
-            }
-        }
-    }
+
 }
 
 void FileItem::update() {
-//    GUIComponent::update();
 
 }
 
@@ -119,6 +120,10 @@ sf::Vector2f FileItem::getPosition() {
     return fileItemContainer.getPosition();
 }
 
+sf::Vector2f FileItem::getPosition() const {
+    return fileItemContainer.getPosition();
+}
+
 sf::Vector2f FileItem::getSize() {
     return fileItemContainer.getSize();
 }
@@ -137,6 +142,7 @@ void FileItem::setOrigin(sf::Vector2f &origin) {
 
 void FileItem::setPosition(const sf::Vector2f &pos) {
     fileItemContainer.setPosition(pos);
+    HelperFunctions::positionItemByBounds(fileItemContainer, icon, {10, 10});
     HelperFunctions::centerItem(fileItemContainer, fileItemText);
 }
 
@@ -160,14 +166,12 @@ void FileItem::setOutlineColor(const sf::Color &color) {
     fileItemContainer.setOutlineColor(color);
 }
 
-void FileItem::setChildren(const ItemList<FileItem> &children) {
-    this->children = children;
-}
-
-ItemList<FileItem> &FileItem::getChildren() {
-    return this->children;
-}
 
 std::string FileItem::getFileName() {
     return data.fileName;
+}
+
+void FileItem::setIconTexture(const sf::Texture &iconTexture) {
+    icon.setTexture(iconTexture);
+
 }

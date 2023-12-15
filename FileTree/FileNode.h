@@ -21,9 +21,7 @@ private:
     //this is done by toggling a state on and off
     void toggleChlidren();
 
-    //this is called in the draw function to reposition the children so they
-    //are indented and below the parent.
-    void reposition() const;
+
 public:
     // this is so I can use the iterator for the children map publicly
     typedef typename std::set<FileNode*>::iterator iterator;
@@ -38,14 +36,17 @@ public:
     void setData(const FileItem &data);
     void setPosition(const sf::Vector2f position);
     void setChildren(const std::set<FileNode*> &children);
-    //does nothing now
+    //needed to set the width of the component.
     sf::FloatRect getGlobalBounds();
     //returns true if the node has no children, otherwise false
     bool isLeaf() const;
     //getters and setters
     FileItem &getData();
+    std::set<FileNode*>&getChildren() ;
 
-    std::set<FileNode*>&getChildren();
+    //this is called in the draw function to reposition the children so they
+    //are indented and below the parent.
+    void reposition() const;
 
 
     /**
@@ -65,6 +66,7 @@ public:
     virtual void addEventHandler(sf::RenderWindow& window, sf::Event event);
     //does nothing now
     virtual void update();
+
 
 
 

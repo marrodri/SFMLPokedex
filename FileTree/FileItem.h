@@ -21,13 +21,11 @@ private:
     Text fileItemText;
     Container icon;
     Container fileItemContainer;
-    ItemList<FileItem> children;
     //this is the folder or file icon
     ///TODO: padding must be incremented based of the depth of the item.
     float padding = 5;
 
-    //set the texture to the icon rectangleShape
-    void setIcon(sf::Texture &icon);
+
 
     // TODO: create a setter that will pass a static method which will run to read
     //the path of the file to unlock the pokemon. GO and start with a base template.
@@ -60,6 +58,10 @@ public:
     //TODO: when clicking one, change the background color.
     void setFocus();
 
+
+    //set the texture to the icon rectangleShape
+    void setIconTexture(const sf::Texture &iconTexture);
+
     bool getIsFocused();
 
     std::string getFileName();
@@ -67,6 +69,7 @@ public:
 //    //uses an enum to change the icon to a folder or file
 
     sf::Vector2f getPosition() override;
+    sf::Vector2f getPosition() const;
 
     sf::Vector2f getSize() override;
 
@@ -89,7 +92,6 @@ public:
     void setOutlineColor(const sf::Color &color) override;
 
     void setChildren(const ItemList<FileItem> &children);
-    ItemList<FileItem> &getChildren();
 };
 
 

@@ -29,6 +29,10 @@ std::string Images::getPath(images image) {
             return "Resources/Sprites/Textures/red_cross.png";
         case ARROW:
             return "Resources/Sprites/Textures/grey_sliderRight.png";
+        case FOLDER:
+            return "Resources/Images/folder.png";
+        case FILE_IMG:
+            return "Resources/Images/file.png";
     }
     return "";
 }

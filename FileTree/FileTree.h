@@ -7,7 +7,7 @@
 
 
 #include "../Components/GUIComponent.h"
-#include "./FileItem.h"
+#include "./FileNode.h"
 #include <iostream>
 
 /**
@@ -24,16 +24,16 @@ class FileTree : public GUIComponent{
 private:
     //the root node of the tree
 //    FileNode* rootx = nullptr;
-    FileItem *root= nullptr;
+    FileNode *root= nullptr;
 
-    FileItem &createNewFileItem(const std::filesystem::directory_entry &dirEntry, int depth);
+    FileNode *createNewFileNode(const std::filesystem::directory_entry &dirEntry, int depth);
     void makeTree();
     void print(TreeNode<std::string> *node);
 
 
     //finds the parent and add the item to the parent.
     // If the parent isn't found, a new parent is created
-    void push(FileItem &node, int depth);
+    void push(FileNode *node, int depth);
     sf::Vector2f initPosition = {0, 0};
 
 public:

@@ -34,10 +34,8 @@ void App::run() {
      * */
 
     Screen screen(sf::Vector2f({WINDOW_WIDTH, WINDOW_HEIGHT}));
-    MenuBar menuBar;
+//    MenuBar menuBar;
     FileTree fileTree;
-    //init pos{50, 50}
-//strLabel: Pokemon Type 1
     Dropdown dropdown1("Pokemon Type Filter 1", &AppHandler::setPokemonTypeFilter1, {20, 105});
     Dropdown dropdown2("Pokemon Type Filter 2", &AppHandler::setPokemonTypeFilter2, {20, 195});
     Dropdown dropdown3("Pokemon Weakness Filter 1", &AppHandler::setPokemonWeaknessFilter1, {20, 285});
@@ -48,17 +46,13 @@ void App::run() {
     /**
     * adding components
     */
-    addComponent(screen);
-
-
-
-
-    addComponent(dropdown4);
-    addComponent(dropdown3);
-    addComponent(dropdown2);
-    addComponent(dropdown1);
-    addComponent(menuBar);
-//    addComponent(fileTree);
+//    addComponent(screen);
+//    addComponent(dropdown4);
+//    addComponent(dropdown3);
+//    addComponent(dropdown2);
+//    addComponent(dropdown1);
+//    addComponent(menuBar);
+    addComponent(fileTree);
 
     while (window.isOpen()) {
         sf::Event event;
