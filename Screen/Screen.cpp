@@ -46,8 +46,6 @@ void Screen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     } else if (ScreenHandler::getCurrScreen() == FILE_TREE_SCREEN) {
         target.draw(fileTreeScreen);
     }
-    target.draw(leftButton);
-    target.draw(rightButton);
     target.draw(searchInput);
     target.draw(sideMenu);
     target.draw(logo);
@@ -63,20 +61,13 @@ void Screen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         fileTreeScreen.addEventHandler(window, event);
     }
     if (!ScreenHandler::isMenuBarFocused()) {
-//        if(){
-//
-//        }
-
-        leftButton.addEventHandler(window, event);
-        rightButton.addEventHandler(window, event);
-
         searchInput.addEventHandler(window, event);
         sideMenu.addEventHandler(window, event);
         logo.addEventHandler(window, event);
-        if(MouseEvents<MainScreenButton>::mouseClicked(leftButton,window)){
+        if (MouseEvents<MainScreenButton>::mouseClicked(leftButton, window)) {
             AppHandler::prevPage();
         }
-        if(MouseEvents<MainScreenButton>::mouseClicked(rightButton,window)){
+        if (MouseEvents<MainScreenButton>::mouseClicked(rightButton, window)) {
             AppHandler::prevPage();
         }
     }

@@ -52,7 +52,7 @@ Menu::Menu(menuOptionsEnum optionEnum) {
                                 Text("Theme", 14, sf::Color::Black, Font::getFont(OPEN_SANS), {0, 0}));
             menuItem.setOutlineThickness(0.9);
             menuItem.setOutlineColor(sf::Color::Black);
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 1; i++) {
                 MenuItem newOption;
                 switch (i) {
                     case 0:
