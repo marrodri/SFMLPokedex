@@ -6,6 +6,8 @@
 #include "../Helper/HelperFunctions.h"
 #include "../Font/Font.h"
 #include "../Images/Images.h"
+#include "../AppHandler.h"
+#include "../Screen/ScreenHandler.h"
 
 
 FileItem::FileItem() {
@@ -26,7 +28,6 @@ FileItem::FileItem(std::string text, sf::Vector2f size, sf::Vector2f position) {
 
     ///init textUI
     this->fileItemText = Text(text, 12, Font::getFont(OPEN_SANS), {12, 12});
-//    = HelperFunctions::setUpText(Font::getFont(OPEN_SANS),12, {12,12});
     this->fileItemText.setString(text);
     HelperFunctions::centerItem(fileItemContainer, this->fileItemText);
 }
@@ -43,7 +44,6 @@ FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f 
         fileItemContainer.setFillColor(sf::Color::Blue);
         icon.setTexture(Images::getImage(FOLDER));
         icon.setSize({20, 20});
-
         HelperFunctions::positionItemByBounds(fileItemContainer, icon, {10, 10});
     } else {
         fileItemContainer.setFillColor(sf::Color::Green);
@@ -51,8 +51,6 @@ FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f 
         icon.setSize({20, 20});
         HelperFunctions::positionItemByBounds(fileItemContainer, icon, {10, 10});
     }
-
-
     ///init textUI
     this->fileItemText = Text(data.fileName, 12, Font::getFont(OPEN_SANS), {12, 12});
     this->fileItemText.setString(data.fileName);
@@ -60,14 +58,9 @@ FileItem::FileItem(TreeNode<std::string> &data, sf::Vector2f size, sf::Vector2f 
 }
 
 /**
- *
- **/
-
-/**
  * GUI Methods
  **/
 void FileItem::draw(sf::RenderTarget &window, sf::RenderStates states) const {
-
     window.draw(fileItemContainer);
     window.draw(fileItemText);
     window.draw(icon);
@@ -85,13 +78,14 @@ void FileItem::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if (MouseEvents<Container>::mouseClicked(window, event) &&
         MouseEvents<Container>::hovered(fileItemContainer, window)) {
         //kinda works, but it still receiving data.
-//        if () {
         enableState(CLICKED);
         SoundFX::playClickSound();
+        if(data.typeOfFile !=std::filesystem::file_type::directory && (0!=data.fileName.compare("Files"))){
+            std::cout << "viewing the file: " << data.fileName << "\n";
+            AppHandler::readFile(data.path);
+            ScreenHandler::setCurrentScreen(HOME_SCREEN);
 
-        std::cout << "click file of " << data.fileName << "\n";
-//            pFunct();
-//        }
+        }
     }
 
 }

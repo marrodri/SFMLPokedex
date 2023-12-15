@@ -40,6 +40,12 @@ Home::Home() : gridView(sf::Vector2f(250, 100)) {
 }
 
 bool Home::checkFilter(int j) {
+
+    if (AppHandler::getPokemonTypeFilter1() == ANOTHERTYPE &&
+        AppHandler::getPokemonTypeFilter2() == ANOTHERTYPE &&
+        AppHandler::getPokemonWeaknessFilter1() == ANOTHERTYPE &&
+        AppHandler::getPokemonWeaknessFilter2() == ANOTHERTYPE
+            ) { return true; }
     if (AppHandler::getPokemonTypeFilter1() == AppHandler::pokemonList.getPokemonData(j).types[0] ||
         AppHandler::getPokemonTypeFilter1() == AppHandler::pokemonList.getPokemonData(j).types[1]) {
         return true;

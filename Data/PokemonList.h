@@ -68,7 +68,7 @@ private:
             PokemonStruct({24, "Arbok", "Need more research about Arbok",
                            std::array<int, 3>({23, 24, -1}), 80, 1, {}, {POISON},false}),
             PokemonStruct({25, "Pikachu", "Need more research about Pikachu",
-                           std::array<int, 3>({25, 26, -1}), 33, 2, {}, {ELECTRIC},true}),
+                           std::array<int, 3>({25, 26, -1}), 33, 2, {}, {ELECTRIC},true, 12}),
 
             PokemonStruct({26, "Raichu", "Need more research about Raichu",
                            std::array<int, 3>({25, 26, -1}), 29, 2, {}, {ELECTRIC},false}),
@@ -115,6 +115,7 @@ public:
 
     PokemonStruct &getPokemonData(int index);
     void setDescription(int index, std::string &descr);
+    void unlockPikachu();
 
     //paging.
     void setCurrentPage(int i);

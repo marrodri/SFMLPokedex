@@ -22,13 +22,11 @@ FileTreeScreen::FileTreeScreen() : header("Select a file to unlock a pokemon") {
     fileTreePlaceHolder.setString("FileTree screen");
     fileTreePlaceHolder.setCharacterSize(24);
     HelperFunctions::centerItem(fileTreeContainer, fileTreePlaceHolder);
-    fileTree = FileTree();
 }
 
 void FileTreeScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(fileTreeBackgrounImage);
     target.draw(fileTreeContainer);
-
     target.draw(header);
     target.draw(fileTree);
 
@@ -36,14 +34,13 @@ void FileTreeScreen::draw(sf::RenderTarget &target, sf::RenderStates states) con
 
 void FileTreeScreen::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     header.addEventHandler(window, event);
-    fileTree.addEventHandler(window,event);
+    fileTree.addEventHandler(window, event);
 }
 
 void FileTreeScreen::update() {
     fileTreeContainer.setFillColor(AppHandler::getFileTreeBackgroundColor());
     header.update();
     fileTree.update();
-
 
 
 }

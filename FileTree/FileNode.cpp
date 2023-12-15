@@ -83,10 +83,9 @@ void FileNode::toggleChlidren() {
 void FileNode::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     //TODO: get the boundaries of fileItem and handle the logic wh
     //      when being clicked on it.
-
-    if (MouseEvents<FileItem>::mouseClicked(data, window) && MouseEvents<FileItem>::hovered(data, window)) {
+    data.addEventHandler(window, event);
+    if (MouseEvents<FileItem>::mouseClicked(data, window) && MouseEvents<FileItem>::hovered(data, window) ) {
         toggleChlidren();
-        data.addEventHandler(window, event);
 
     }
     if (checkState(OPENED)) {
@@ -138,8 +137,5 @@ sf::FloatRect FileNode::getGlobalBounds() {
 }
 
 
-//void FileNode::setChildren(const ItemList<FileItem> &children) {
-//    this->children = children;
-//}
 
 

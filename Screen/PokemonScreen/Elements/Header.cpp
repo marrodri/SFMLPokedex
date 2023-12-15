@@ -78,6 +78,7 @@ void Header::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         SoundFX::playClickSound();
         MouseEvents<sf::RectangleShape>::setArrow(window);
         ScreenHandler::setCurrentScreen(HOME_SCREEN);
+        AppHandler::setPokemonFilterHasChanged(true);
         ScreenHandler::toggleOffPokemonScreenElements();
 
     }

@@ -2,6 +2,7 @@
 // Created by Marthel Rodriguez on 12/6/23.
 //
 
+#include <locale>
 #include "AppHandler.h"
 #include "Screen/ScreenHandler.h"
 
@@ -93,31 +94,31 @@ void AppHandler::changeFontColor() {
  **/
 
 void AppHandler::setPokemonTypeFilter1(TypesEnum pokemonType) {
-    pokemonFilterHasChanged=true;
+    pokemonFilterHasChanged = true;
     pokemonTypeFilter1 = pokemonType;
     std::cout << "setting pokemon type filter 1\n";
 }
 
 void AppHandler::setPokemonTypeFilter2(TypesEnum pokemonType) {
-    pokemonFilterHasChanged=true;
+    pokemonFilterHasChanged = true;
     pokemonTypeFilter2 = pokemonType;
     std::cout << "setting pokemon type filter 2\n";
 }
 
 void AppHandler::setPokemonWeaknessFilter1(TypesEnum pokemonType) {
-    pokemonFilterHasChanged=true;
+    pokemonFilterHasChanged = true;
     pokemonWeaknessFilter1 = pokemonType;
     std::cout << "setting pokemon weakness filter 1\n";
 }
 
 void AppHandler::setPokemonWeaknessFilter2(TypesEnum pokemonType) {
-    pokemonFilterHasChanged=true;
+    pokemonFilterHasChanged = true;
     pokemonWeaknessFilter2 = pokemonType;
     std::cout << "setting pokemon weakness filter 2\n";
 }
 
 void AppHandler::setPokemonWeaknessFilter3(TypesEnum pokemonType) {
-    pokemonFilterHasChanged=true;
+    pokemonFilterHasChanged = true;
     pokemonWeaknessFilter3 = pokemonType;
     std::cout << "setting pokemon weakness filter 3\n";
 }
@@ -163,6 +164,31 @@ void AppHandler::setPokemonFilterHasChanged(bool filterHasChanged) {
 bool AppHandler::getPokemonFilterHasChanged() {
     return pokemonFilterHasChanged;
 }
+
+void AppHandler::readFile(std::string filePath) {
+    std::cout << "reading file: " << filePath << std::endl;
+    std::ifstream file;
+    file.open(filePath);
+
+    std::string fetchedData;
+    file >> fetchedData;
+    //open the file.
+    //read the file.
+    //if the file has 12. call unlockPikachu.
+    std::cout << "fetchedData:" << fetchedData << "\n";
+    if (!fetchedData.empty()) {
+        if (stoi(fetchedData) == pokemonList.getPokemonData(24).codeToUnlock) {
+            std::cout << "YES it WORKS!!!" << std::endl;
+            pokemonList.unlockPikachu();
+            pokemonFilterHasChanged = true;
+        }
+    } else {
+        std::cout << "not the pikachu file" << std::endl;
+    }
+    file.close();
+}
+
+
 
 
 

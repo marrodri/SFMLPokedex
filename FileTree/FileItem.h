@@ -13,7 +13,7 @@
 #include "../Container/Container.h"
 #include "../Text/Text.h"
 #include "../Item/ItemList.h"
-
+#include <string>
 class FileItem : public GUIComponent, public ContainerInterface {
 
 private:

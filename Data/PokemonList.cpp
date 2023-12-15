@@ -20,5 +20,10 @@ void PokemonList::setDescription(int index, std::string &descr) {
 
 }
 
+void PokemonList::unlockPikachu() {
+    pokemonList[24].isLocked = false;
+
+}
+
 
 

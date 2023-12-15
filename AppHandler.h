@@ -10,7 +10,7 @@
 #include <SFML/Graphics/Color.hpp>
 #include "Data/PokemonStruct.h"
 #include "Data/PokemonList.h"
-
+#include "fstream"
 class AppHandler {
 private:
     static std::string searchInput;
@@ -116,6 +116,13 @@ public:
     static sf::Color &getFileTreeBackgroundColor();
 
 
+    /**
+     *
+     * */
+     static void unlockPikachu();
+
+
+     static void readFile(std::string filePath);
 };
 
 

@@ -45,7 +45,7 @@ void FileTree::makeTree() {
         rootData.fileName = "Files";
         rootData.depth = 0;
         //
-        root = new FileNode(rootData, {120, 35}, {100, 100});
+        root = new FileNode(rootData, {120, 35}, {300, 170});
 
         std::set<FileNode *> newChildren;
         for (const std::filesystem::directory_entry &entry: std::filesystem::directory_iterator(rootData.path)) {
