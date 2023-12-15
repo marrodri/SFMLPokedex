@@ -90,7 +90,7 @@ void AppHandler::changeFontColor() {
 
 /**
  * filter methods
- * */
+ **/
 
 void AppHandler::setPokemonTypeFilter1(TypesEnum pokemonType) {
     pokemonFilterHasChanged=true;
@@ -99,21 +99,25 @@ void AppHandler::setPokemonTypeFilter1(TypesEnum pokemonType) {
 }
 
 void AppHandler::setPokemonTypeFilter2(TypesEnum pokemonType) {
+    pokemonFilterHasChanged=true;
     pokemonTypeFilter2 = pokemonType;
     std::cout << "setting pokemon type filter 2\n";
 }
 
 void AppHandler::setPokemonWeaknessFilter1(TypesEnum pokemonType) {
+    pokemonFilterHasChanged=true;
     pokemonWeaknessFilter1 = pokemonType;
     std::cout << "setting pokemon weakness filter 1\n";
 }
 
 void AppHandler::setPokemonWeaknessFilter2(TypesEnum pokemonType) {
+    pokemonFilterHasChanged=true;
     pokemonWeaknessFilter2 = pokemonType;
     std::cout << "setting pokemon weakness filter 2\n";
 }
 
 void AppHandler::setPokemonWeaknessFilter3(TypesEnum pokemonType) {
+    pokemonFilterHasChanged=true;
     pokemonWeaknessFilter3 = pokemonType;
     std::cout << "setting pokemon weakness filter 3\n";
 }
@@ -159,4 +163,7 @@ void AppHandler::setPokemonFilterHasChanged(bool filterHasChanged) {
 bool AppHandler::getPokemonFilterHasChanged() {
     return pokemonFilterHasChanged;
 }
+
+
+
 

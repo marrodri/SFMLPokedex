@@ -11,6 +11,7 @@
 #include "../../Components/ContainerInterface.h"
 #include "../PokemonScreen/Elements/Header.h"
 #include "../../FileTree/FileItem.h"
+#include "../../FileTree/FileTree.h"
 
 class FileTreeScreen: public GUIComponent, public ContainerInterface {
 private:
@@ -18,10 +19,7 @@ private:
     Container fileTreeBackgrounImage;
     Text fileTreePlaceHolder;
     Header header;
-    FileItem fileItem1;
-    FileItem fileItem2;
-    FileItem fileItem3;
-    FileItem fileItem4;
+    FileTree fileTree;
 public:
     FileTreeScreen();
 

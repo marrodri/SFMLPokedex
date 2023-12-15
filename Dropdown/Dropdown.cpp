@@ -72,7 +72,6 @@ Dropdown::Dropdown(const std::string &strLabel, void (*pFuncType)(TypesEnum), sf
 }
 
 void Dropdown::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-
     target.draw(dropdownContainer);
     target.draw(dropdownLabel);
     //selectedFilter is not initialized.
@@ -99,7 +98,6 @@ void Dropdown::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     } else if (!isDropdownVisible) {
         disabledState(FOCUSED);
     }
-
     if (isDropdownVisible) {
         for (auto itemIterator = itemList.begin(); itemIterator != itemList.end(); ++itemIterator) {
             itemIterator->addEventHandler(window, event);

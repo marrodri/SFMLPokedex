@@ -39,6 +39,28 @@ Home::Home() : gridView(sf::Vector2f(250, 100)) {
 //    currPageIndex.setPosition({760, 552});
 }
 
+bool Home::checkFilter(int j) {
+    if (AppHandler::getPokemonTypeFilter1() == AppHandler::pokemonList.getPokemonData(j).types[0] ||
+        AppHandler::getPokemonTypeFilter1() == AppHandler::pokemonList.getPokemonData(j).types[1]) {
+        return true;
+    }
+    if (AppHandler::getPokemonTypeFilter2() == AppHandler::pokemonList.getPokemonData(j).types[0] ||
+        AppHandler::getPokemonTypeFilter2() == AppHandler::pokemonList.getPokemonData(j).types[1]) {
+        return true;
+    }
+    if (AppHandler::getPokemonWeaknessFilter1() == AppHandler::pokemonList.getPokemonData(j).weaknesses[0] ||
+        AppHandler::getPokemonWeaknessFilter1() == AppHandler::pokemonList.getPokemonData(j).weaknesses[1] ||
+        AppHandler::getPokemonWeaknessFilter1() == AppHandler::pokemonList.getPokemonData(j).weaknesses[2]) {
+        return true;
+    }
+    if (AppHandler::getPokemonWeaknessFilter2() == AppHandler::pokemonList.getPokemonData(j).weaknesses[0] ||
+        AppHandler::getPokemonWeaknessFilter2() == AppHandler::pokemonList.getPokemonData(j).weaknesses[1] ||
+        AppHandler::getPokemonWeaknessFilter2() == AppHandler::pokemonList.getPokemonData(j).weaknesses[2]) {
+        return true;
+    }
+    return false;
+}
+
 void Home::updateGridView() {
     gridView.clear();
     int j = 0;
@@ -47,7 +69,7 @@ void Home::updateGridView() {
         //TODO: implement the filter here that will check the current
         //      pokemondata, if it passes the filter, push it; otherwise
         //      skip it. HINT: This is going to be much easier than expected.
-        if (AppHandler::getPokemonTypeFilter1() == AppHandler::pokemonList.getPokemonData(j).types[0] || AppHandler::getPokemonTypeFilter1() == AppHandler::pokemonList.getPokemonData(j).types[1]) {
+        if (checkFilter(j)) {
             gridView.pushItem(AppHandler::pokemonList.getPokemonData(j));
         }
         PokemonStruct passedPok = AppHandler::pokemonList.getPokemonData(j);
@@ -70,7 +92,7 @@ void Home::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void Home::update() {
-    if(AppHandler::getPokemonFilterHasChanged()){
+    if (AppHandler::getPokemonFilterHasChanged()) {
         updateGridView();
         AppHandler::setPokemonFilterHasChanged(false);
     }
@@ -79,5 +101,7 @@ void Home::update() {
     //update the currPageIndex;
 
 }
+
+
 
 

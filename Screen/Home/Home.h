@@ -18,6 +18,8 @@ private:
 public:
     Home();
 
+    bool checkFilter(int j);
+
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
