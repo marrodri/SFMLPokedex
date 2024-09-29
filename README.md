@@ -23,7 +23,9 @@ Instructions to run this program on PC will be released later.
 
 # SFML
 To install SFML, please run this command line below, you must have "brew" installed on your mac:
-```brew install SFML```
+```
+brew install SFML
+```
 
 
 # Clion
