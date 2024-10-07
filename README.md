@@ -8,7 +8,8 @@ To run this program, you must open it with CLion and have the SFML library insta
 Link to trailer: [youtube](https://www.youtube.com/watch?v=d4N-jIXv3I0 "SFMLPokedex Trailer")
 
 
-![](https://github.com/marrodri/SFMLPokedex/blob/main/sfmlpokedex_intro.gif)
+### Quick look
+![](https://i.makeagif.com/media/10-07-2024/LbsE7G.gif)
 
 
 
